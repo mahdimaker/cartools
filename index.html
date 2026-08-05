@@ -1,0 +1,1593 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CarTools — Smarter Tools for Smarter Drivers (cartools.app)</title>
+    <meta
+      name="description"
+      content="CarTools is a growing suite of intelligent web applications for drivers: Fuel Analyzer (fuel.cartools.app) and GIG Driver (gig.cartools.app)."
+    />
+    <link rel="icon" type="image/webp" href="./src/images/cartools_logo.webp" />
+    <link rel="stylesheet" href="./src/index.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-500 selection:text-white"
+  >
+    <!-- Fixed Floating Navigation Bar (Sticks everywhere on scroll) -->
+    <header
+      id="header"
+      class="fixed top-4 inset-x-0 z-50 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto transition-all pointer-events-none"
+    >
+      <div
+        class="relative bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-xl shadow-slate-900/10 rounded-2xl h-16 sm:h-18 px-4 sm:px-6 flex items-center justify-between pointer-events-auto"
+      >
+        <!-- Logo & Domain -->
+        <a href="#" id="brand-logo" class="flex items-center group">
+          <img
+            src="./src/images/cartools_logo.webp"
+            alt="CarTools Logo"
+            class="h-9 sm:h-10 w-auto object-contain transition-transform group-hover:scale-105"
+            decoding="async"
+          />
+        </a>
+
+        <!-- Desktop Navigation Links (Centered) -->
+        <nav
+          class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600 absolute left-1/2 -translate-x-1/2"
+        >
+          <a
+            href="./tools/fuel-calculator"
+            class="hover:text-blue-600 transition-colors flex items-center gap-1.5"
+          >
+            <span class="w-2 h-2 rounded-full bg-blue-500"></span> Fuel
+            Analytics
+          </a>
+          <a
+            href="./tools/gig-driver-calculator/"
+            class="hover:text-emerald-600 transition-colors flex items-center gap-1.5"
+          >
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Gig Driver
+          </a>
+          <a
+            href="#faq"
+            class="hover:text-blue-600 transition-colors flex items-center gap-1.5"
+          >
+            <span class="w-2 h-2 rounded-full bg-blue-500"></span> FAQ
+          </a>
+        </nav>
+
+        <!-- Right Side: Quick Launch Button -->
+        <div class="flex items-center gap-3">
+          <a
+            href="#apps"
+            class="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs sm:text-sm font-bold transition-all shadow-md shadow-blue-500/20 cursor-pointer"
+          >
+            <span>Get started</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO SECTION WITH TECH GRADIENT & CARTOOLS BACKGROUND -->
+    <section
+      id="hero"
+      class="relative overflow-hidden pt-28 sm:pt-32 pb-20 lg:pb-28 border-b border-cyan-500/30 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 text-white"
+    >
+      <!-- BACKGROUND IMAGE & TECH GRADIENT OVERLAYS -->
+      <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <!-- The uploaded cartools.webp image as background -->
+        <img
+          src="./src/images/cartools.webp"
+          alt="CarTools Tech Background"
+          class="w-full h-full object-cover object-center filter contrast-[1.05] brightness-[0.82] opacity-85 sm:opacity-90"
+          decoding="async"
+        />
+
+        <!-- High-Tech Color & Vignette Gradients -->
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-slate-950/75 via-slate-950/45 to-slate-950/75 mix-blend-multiply"
+        ></div>
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/10 to-slate-950/90"
+        ></div>
+        <div
+          class="absolute inset-0 bg-gradient-to-tr from-cyan-950/30 via-blue-950/20 to-purple-950/30 mix-blend-color-dodge"
+        ></div>
+
+        <!-- Glowing Tech Spotlights -->
+        <div
+          class="absolute -top-20 left-1/4 w-[30rem] h-[30rem] bg-cyan-500/25 rounded-full blur-[100px]"
+        ></div>
+        <div
+          class="absolute top-1/3 -right-20 w-[28rem] h-[28rem] bg-purple-600/25 rounded-full blur-[100px]"
+        ></div>
+        <div
+          class="absolute -bottom-20 left-1/3 w-[32rem] h-[32rem] bg-blue-600/25 rounded-full blur-[120px]"
+        ></div>
+
+        <!-- High-Tech Cyber Dot Matrix Overlay -->
+        <div
+          class="absolute inset-0 bg-[radial-gradient(#22d3ee30_1px,transparent_1px)] bg-[size:1.5rem_1.5rem]"
+        ></div>
+        <div
+          class="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,182,212,0.04)_50%,transparent_50%)] bg-[size:100%_4px]"
+        ></div>
+      </div>
+
+      <!-- Content Container -->
+      <div
+        class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8"
+      >
+        <!-- Cyber Tag Header -->
+        <div
+          class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-900/80 border border-cyan-400/40 text-cyan-300 text-xs font-mono font-bold uppercase tracking-widest backdrop-blur-xl shadow-xl shadow-cyan-500/10"
+        >
+          <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+          <span>CarTools: Free Web Apps for Drivers</span>
+        </div>
+
+        <!-- Main Title with Glowing Gradient Text -->
+        <h1
+          class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.12] drop-shadow-lg"
+        >
+          Smarter Tools for <br class="hidden sm:inline" />
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400 drop-shadow-[0_0_25px_rgba(34,211,238,0.4)]"
+          >
+            Smarter Drivers
+          </span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p
+          class="text-lg sm:text-xl text-slate-200 leading-relaxed max-w-3xl mx-auto font-normal drop-shadow-md"
+        >
+          CarTools is an intelligent suite of web applications designed to
+          monitor vehicle efficiency, analyze fuel usage, and maximize gig
+          driver profitability in real time.
+        </p>
+
+        <!-- Tech Badges -->
+        <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+          <div
+            class="px-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-700/80 backdrop-blur-xl text-xs font-semibold text-slate-100 flex items-center gap-2.5 shadow-lg"
+          >
+            <span
+              class="w-2.5 h-2.5 rounded-full bg-purple-400 shadow-[0_0_8px_rgba(192,132,252,0.8)]"
+            ></span>
+            Fuel Economy Analytics
+          </div>
+          <div
+            class="px-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-700/80 backdrop-blur-xl text-xs font-semibold text-slate-100 flex items-center gap-2.5 shadow-lg"
+          >
+            <span
+              class="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]"
+            ></span>
+            Gig Net Profit Engine
+          </div>
+          <div
+            class="px-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-700/80 backdrop-blur-xl text-xs font-semibold text-slate-100 flex items-center gap-2.5 shadow-lg"
+          >
+            <span
+              class="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]"
+            ></span>
+            100% Privacy Local Storage
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div
+          class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+        >
+          <a
+            href="#fuel-analyzer"
+            class="w-full sm:w-auto px-7 py-4 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-600 hover:from-blue-500 hover:to-sky-500 text-white font-bold text-base shadow-xl shadow-blue-600/30 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2.5 group cursor-pointer border border-blue-400/30"
+          >
+            <!-- Fuel Pump Nozzle Icon -->
+            <svg
+              class="w-5 h-5 text-blue-200 group-hover:scale-110 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              viewBox="0 0 24 24"
+            >
+              <path d="M3 22V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v17" />
+              <path
+                d="M13 11h3a2 2 0 0 1 2 2v3a2 2 0 0 0 2 2h.5a.5.5 0 0 0 .5-.5V10.5a2.5 2.5 0 0 0-5 0V11"
+              />
+              <path d="M6 8h4" />
+              <path d="M6 12h4" />
+            </svg>
+            <span>Explore Fuel Analyzer</span>
+            <svg
+              class="w-4 h-4 text-blue-200/80 group-hover:translate-x-1 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
+            </svg>
+          </a>
+          <a
+            href="#gig-driver"
+            class="w-full sm:w-auto px-7 py-4 rounded-xl bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white font-bold text-base shadow-xl shadow-emerald-600/30 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2.5 group cursor-pointer border border-emerald-400/30"
+          >
+            <!-- Dollar / Money Icon -->
+            <svg
+              class="w-5 h-5 text-emerald-200 group-hover:scale-110 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <span>Explore GIG Driver</span>
+            <svg
+              class="w-4 h-4 text-emerald-200/80 group-hover:translate-x-1 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
+            </svg>
+          </a>
+        </div>
+
+        <!-- HUD Telemetry Mini Dashboard Glass Bar -->
+        <div class="pt-6 max-w-2xl mx-auto">
+          <div
+            class="p-4 rounded-2xl bg-slate-900/80 border border-cyan-500/30 backdrop-blur-2xl shadow-2xl grid grid-cols-2 sm:grid-cols-3 gap-4 text-left"
+          >
+            <div class="p-3 rounded-xl bg-slate-950/60 border border-slate-800">
+              <span
+                class="block text-[10px] font-mono uppercase text-cyan-400 font-bold tracking-wider"
+                >Avg Fuel Economy</span
+              >
+              <span class="text-base font-bold text-white"
+                >34.2 MPG
+                <span class="text-xs text-slate-400 font-normal"
+                  >(6.8L)</span
+                ></span
+              >
+            </div>
+            <div class="p-3 rounded-xl bg-slate-950/60 border border-slate-800">
+              <span
+                class="block text-[10px] font-mono uppercase text-emerald-400 font-bold tracking-wider"
+                >Gig Net Rate</span
+              >
+              <span class="text-base font-bold text-white"
+                >$26.80
+                <span class="text-xs text-slate-400 font-normal"
+                  >/ hr</span
+                ></span
+              >
+            </div>
+            <div
+              class="col-span-2 sm:col-span-1 p-3 rounded-xl bg-slate-950/60 border border-slate-800 flex items-center gap-2.5"
+            >
+              <div
+                class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"
+              ></div>
+              <div>
+                <span
+                  class="block text-[10px] font-mono uppercase text-slate-400 font-bold tracking-wider"
+                  >System State</span
+                >
+                <span class="text-xs font-bold text-slate-200"
+                  >Local Privacy Active</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OUR APPLICATIONS SECTION -->
+    <section id="apps" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Title -->
+        <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <span
+            class="px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-800 text-xs font-bold uppercase tracking-wider"
+          >
+            Suite Overview
+          </span>
+          <h2
+            class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight"
+          >
+            Our Applications
+          </h2>
+          <p class="text-lg text-slate-600">
+            Two powerful tools designed to give you complete control over fuel
+            costs and driving earnings.
+          </p>
+        </div>
+
+        <!-- APP 1: FUEL ANALYZER -->
+        <div id="fuel-analyzer" class="mb-16 scroll-mt-24">
+          <div
+            class="card-light overflow-hidden border-2 border-blue-100 bg-gradient-to-br from-white via-blue-50/20 to-white"
+          >
+            <div class="p-8 sm:p-12 space-y-8">
+              <div
+                class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-blue-100 pb-6"
+              >
+                <div class="flex items-center gap-4">
+                  <img
+                    src="./src/images/fuel_logo.svg"
+                    alt="Fuel Analyzer Logo"
+                    class="w-12 h-12 rounded-2xl shadow-lg shadow-blue-600/20"
+                  />
+                  <div>
+                    <h3
+                      class="text-2xl sm:text-3xl font-extrabold text-slate-900"
+                    >
+                      Fuel Analyzer
+                    </h3>
+                    <p class="text-sm font-semibold text-blue-700">
+                      fuel.cartools.app
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  class="flex flex-wrap items-center gap-2 self-start sm:self-auto"
+                >
+                  <a
+                    href="/tools/fuel-calculator"
+                    class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-blue-50 border border-blue-200 text-blue-700 hover:bg-blue-100 font-bold text-xs transition-all"
+                  >
+                    <span>Dedicated Page →</span>
+                  </a>
+                  <a
+                    href="https://fuel.cartools.app"
+                    target="_blank"
+                    class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm shadow-md transition-all"
+                  >
+                    <span>Launch App (fuel.cartools.app)</span>
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 space-y-4">
+                  <h4
+                    class="text-2xl font-extrabold text-slate-800 tracking-tight"
+                  >
+                    Fuel Analytics & Vehicle Health
+                  </h4>
+                  <p class="text-slate-600 leading-relaxed text-base">
+                    Track every refueling, monitor fuel economy, analyze vehicle
+                    health, and receive AI-powered maintenance insights.
+                    Understand how your driving habits affect fuel consumption
+                    and discover practical ways to save money.
+                  </p>
+
+                  <div
+                    class="p-4 rounded-xl bg-blue-50/80 border border-blue-200/60 text-xs text-blue-900 space-y-1"
+                  >
+                    <span
+                      class="font-bold uppercase tracking-wide text-[10px] px-2 py-0.5 rounded bg-blue-200/80 text-blue-900 inline-block"
+                      >Perfect For</span
+                    >
+                    <p class="font-medium text-sm text-blue-950">
+                      Everyday drivers, commuters, and car enthusiasts looking
+                      to optimize mileage and prevent engine maintenance.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Mobile Phone Mockup in Header Section -->
+                <div
+                  class="lg:col-span-5 flex flex-col items-center justify-center"
+                >
+                  <div
+                    class="w-44 sm:w-52 rounded-2xl overflow-hidden shadow-xl group relative"
+                  >
+                    <img
+                      src="./src/images/fuel-mobile.webp"
+                      alt="Fuel Analyzer Mobile Interface"
+                      class="w-full h-auto rounded-2xl object-cover block group-hover:scale-[1.02] transition-transform duration-300"
+                      loading="lazy"
+                    />
+                  </div>
+                  <p
+                    class="text-xs font-bold text-blue-700 mt-3 flex items-center gap-1.5"
+                  >
+                    <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                    Mobile Interface Preview
+                  </p>
+                </div>
+              </div>
+
+              <!-- Key Features Section -->
+              <div class="pt-2 space-y-4">
+                <h5
+                  class="text-xs font-extrabold uppercase tracking-wider text-blue-800 flex items-center gap-2"
+                >
+                  <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                  Key Features
+                </h5>
+                <div
+                  class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+                >
+                  <div
+                    class="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs space-y-1.5"
+                  >
+                    <div class="flex items-center gap-2">
+                      <span
+                        class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xs"
+                        >⛽</span
+                      >
+                      <p class="font-bold text-sm text-slate-800">
+                        Smart Fuel Tracking
+                      </p>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                      Log every refueling with mileage, fuel cost, and driving
+                      conditions.
+                    </p>
+                  </div>
+
+                  <div
+                    class="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs space-y-1.5"
+                  >
+                    <div class="flex items-center gap-2">
+                      <span
+                        class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xs"
+                        >🩺</span
+                      >
+                      <p class="font-bold text-sm text-slate-800">
+                        Vehicle Health Score
+                      </p>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                      Monitor your car's overall health with real-time
+                      performance metrics.
+                    </p>
+                  </div>
+
+                  <div
+                    class="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs space-y-1.5"
+                  >
+                    <div class="flex items-center gap-2">
+                      <span
+                        class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xs"
+                        >🤖</span
+                      >
+                      <p class="font-bold text-sm text-slate-800">
+                        AI Diagnostics
+                      </p>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                      Receive intelligent maintenance insights and personalized
+                      recommendations based on your driving data.
+                    </p>
+                  </div>
+
+                  <div
+                    class="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs space-y-1.5"
+                  >
+                    <div class="flex items-center gap-2">
+                      <span
+                        class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xs"
+                        >📈</span
+                      >
+                      <p class="font-bold text-sm text-slate-800">
+                        Fuel Efficiency Analytics
+                      </p>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                      Analyze consumption trends and identify opportunities to
+                      save fuel.
+                    </p>
+                  </div>
+
+                  <div
+                    class="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs space-y-1.5"
+                  >
+                    <div class="flex items-center gap-2">
+                      <span
+                        class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xs"
+                        >💨</span
+                      >
+                      <p class="font-bold text-sm text-slate-800">
+                        Speed & Drag Simulator
+                      </p>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                      Discover how speed, air conditioning, open windows, and
+                      roof racks affect fuel economy.
+                    </p>
+                  </div>
+
+                  <div
+                    class="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs space-y-1.5"
+                  >
+                    <div class="flex items-center gap-2">
+                      <span
+                        class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xs"
+                        >🌍</span
+                      >
+                      <p class="font-bold text-sm text-slate-800">
+                        Global Unit Support
+                      </p>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                      Switch seamlessly between Metric, US Imperial, and UK
+                      measurement systems.
+                    </p>
+                  </div>
+
+                  <div
+                    class="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs space-y-1.5 sm:col-span-2 lg:col-span-3"
+                  >
+                    <div class="flex items-center gap-2">
+                      <span
+                        class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xs"
+                        >📱</span
+                      >
+                      <p class="font-bold text-sm text-slate-800">
+                        Modern Dashboard
+                      </p>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                      A responsive, beautifully designed interface with
+                      optimized Dark and Light themes.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Fuel Analyzer Desktop Mockup Showcase -->
+              <div class="mt-8 pt-2">
+                <div
+                  class="flex items-center justify-between text-xs font-semibold px-1 mb-3"
+                >
+                  <span
+                    class="text-blue-700 flex items-center gap-1.5 font-bold"
+                  >
+                    <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                    Desktop Interface Preview
+                  </span>
+                  <span class="text-slate-500 hidden sm:inline"
+                    >fuel.cartools.app</span
+                  >
+                </div>
+                <div
+                  class="w-full rounded-xl overflow-hidden border border-slate-200 shadow-xl bg-white group"
+                >
+                  <div
+                    class="h-8 bg-slate-100 border-b border-slate-200 px-4 flex items-center gap-2"
+                  >
+                    <div class="flex items-center gap-1.5">
+                      <span
+                        class="w-3 h-3 rounded-full bg-rose-400 inline-block"
+                      ></span>
+                      <span
+                        class="w-3 h-3 rounded-full bg-amber-400 inline-block"
+                      ></span>
+                      <span
+                        class="w-3 h-3 rounded-full bg-emerald-400 inline-block"
+                      ></span>
+                    </div>
+                    <div
+                      class="mx-auto bg-white text-slate-600 text-[11px] font-mono px-4 py-0.5 rounded-md border border-slate-200 shadow-xs"
+                    >
+                      fuel.cartools.app
+                    </div>
+                  </div>
+                  <img
+                    src="./src/images/fuel-desktop.webp"
+                    alt="Fuel Analyzer Desktop Interface"
+                    class="w-full h-auto object-cover block group-hover:scale-[1.01] transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- APP 2: GIG DRIVER -->
+        <div id="gig-driver" class="scroll-mt-24">
+          <div
+            class="card-light overflow-hidden border-2 border-emerald-100 bg-gradient-to-br from-white via-emerald-50/20 to-white"
+          >
+            <div class="p-8 sm:p-12 space-y-8">
+              <div
+                class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-emerald-100 pb-6"
+              >
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-bold shadow-lg shadow-emerald-600/20"
+                  >
+                    <svg
+                      class="w-6 h-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3
+                      class="text-2xl sm:text-3xl font-extrabold text-slate-900"
+                    >
+                      GIG Driver
+                    </h3>
+                    <p class="text-sm font-semibold text-emerald-700">
+                      gig.cartools.app
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  class="flex flex-wrap items-center gap-2 self-start sm:self-auto"
+                >
+                  <a
+                    href="/tools/gig-driver-calculator"
+                    class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 hover:bg-emerald-100 font-bold text-xs transition-all"
+                  >
+                    <span>Dedicated Page →</span>
+                  </a>
+                  <a
+                    href="https://gig.cartools.app"
+                    target="_blank"
+                    class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm shadow-md transition-all"
+                  >
+                    <span>Launch App (gig.cartools.app)</span>
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 space-y-4">
+                  <h4
+                    class="text-2xl font-extrabold text-slate-800 tracking-tight"
+                  >
+                    Know What You Really Earn
+                  </h4>
+                  <p class="text-slate-600 leading-relaxed text-base">
+                    GIG DRIVER is a smart income and expense management platform
+                    built specifically for rideshare, delivery, and gig economy
+                    drivers. It goes beyond simple earnings tracking by
+                    calculating your true net profit after fuel, vehicle
+                    depreciation, tolls, parking, and other operating expenses.
+                  </p>
+
+                  <div
+                    class="p-4 rounded-xl bg-emerald-50/80 border border-emerald-200/60 text-xs text-emerald-900 space-y-1"
+                  >
+                    <span
+                      class="font-bold uppercase tracking-wide text-[10px] px-2 py-0.5 rounded bg-emerald-200/80 text-emerald-900 inline-block"
+                      >Perfect For</span
+                    >
+                    <p class="font-medium text-sm text-emerald-950">
+                      Uber, Lyft, DoorDash, Uber Eats, Amazon Flex, and
+                      Instacart gig drivers tracking real profits.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Mobile Phone Mockup in Header Section -->
+                <div
+                  class="lg:col-span-5 flex flex-col items-center justify-center"
+                >
+                  <div
+                    class="w-44 sm:w-52 rounded-2xl overflow-hidden shadow-xl group relative"
+                  >
+                    <img
+                      src="./src/images/gig-mobile.webp"
+                      alt="GIG Driver Mobile Interface"
+                      class="w-full h-auto rounded-2xl object-cover block group-hover:scale-[1.02] transition-transform duration-300"
+                      loading="lazy"
+                    />
+                  </div>
+                  <p
+                    class="text-xs font-bold text-emerald-700 mt-3 flex items-center gap-1.5"
+                  >
+                    <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                    Mobile Interface Preview
+                  </p>
+                </div>
+              </div>
+
+              <!-- Key Features Section -->
+              <div class="pt-2 space-y-4">
+                <h5
+                  class="text-xs font-extrabold uppercase tracking-wider text-emerald-800 flex items-center gap-2"
+                >
+                  <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                  Key Features
+                </h5>
+                <div
+                  class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+                >
+                  <div
+                    class="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs space-y-1.5"
+                  >
+                    <div class="flex items-center gap-2">
+                      <span
+                        class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs"
+                        >⏱️</span
+                      >
+                      <p class="font-bold text-sm text-slate-800">
+                        Smart Shift Tracking
+                      </p>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                      Record income, distance, working hours, and expenses in
+                      seconds.
+                    </p>
+                  </div>
+
+                  <div
+                    class="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs space-y-1.5"
+                  >
+                    <div class="flex items-center gap-2">
+                      <span
+                        class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs"
+                        >🧮</span
+                      >
+                      <p class="font-bold text-sm text-slate-800">
+                        True Net Profit Calculator
+                      </p>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                      Know exactly how much you actually earn after every hidden
+                      vehicle cost.
+                    </p>
+                  </div>
+
+                  <div
+                    class="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs space-y-1.5"
+                  >
+                    <div class="flex items-center gap-2">
+                      <span
+                        class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs"
+                        >📊</span
+                      >
+                      <p class="font-bold text-sm text-slate-800">
+                        Financial Analytics Dashboard
+                      </p>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                      Monitor hourly profit, profit per mile/km, expense ratios,
+                      and overall business performance.
+                    </p>
+                  </div>
+
+                  <div
+                    class="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs space-y-1.5"
+                  >
+                    <div class="flex items-center gap-2">
+                      <span
+                        class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs"
+                        >🏆</span
+                      >
+                      <p class="font-bold text-sm text-slate-800">
+                        Platform Performance Ranking
+                      </p>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                      Compare Uber, Lyft, DoorDash, Amazon Flex, and other gig
+                      platforms to discover which earns you the most.
+                    </p>
+                  </div>
+
+                  <div
+                    class="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs space-y-1.5"
+                  >
+                    <div class="flex items-center gap-2">
+                      <span
+                        class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs"
+                        >🎯</span
+                      >
+                      <p class="font-bold text-sm text-slate-800">
+                        Strategic AI Insights
+                      </p>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                      Identify inefficient shifts, excessive waiting time, and
+                      opportunities to maximize profitability.
+                    </p>
+                  </div>
+
+                  <div
+                    class="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs space-y-1.5"
+                  >
+                    <div class="flex items-center gap-2">
+                      <span
+                        class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs"
+                        >⚙️</span
+                      >
+                      <p class="font-bold text-sm text-slate-800">
+                        Vehicle Cost Calibration
+                      </p>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                      Personalize fuel consumption, depreciation rates, and fuel
+                      prices for highly accurate calculations.
+                    </p>
+                  </div>
+
+                  <div
+                    class="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs space-y-1.5"
+                  >
+                    <div class="flex items-center gap-2">
+                      <span
+                        class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs"
+                        >📑</span
+                      >
+                      <p class="font-bold text-sm text-slate-800">
+                        Shift History & Reports
+                      </p>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                      Review every shift with detailed profit breakdowns,
+                      filters, notes, and editable records.
+                    </p>
+                  </div>
+
+                  <div
+                    class="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs space-y-1.5 sm:col-span-2 lg:col-span-2"
+                  >
+                    <div class="flex items-center gap-2">
+                      <span
+                        class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs"
+                        >📱</span
+                      >
+                      <p class="font-bold text-sm text-slate-800">
+                        Modern Mobile Experience
+                      </p>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                      A fast, responsive dashboard with an optimized dark theme
+                      designed for drivers on the road.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- GIG Driver Desktop Mockup Showcase -->
+              <div class="mt-8 pt-2">
+                <div
+                  class="flex items-center justify-between text-xs font-semibold px-1 mb-3"
+                >
+                  <span
+                    class="text-emerald-700 flex items-center gap-1.5 font-bold"
+                  >
+                    <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                    Desktop Interface Preview
+                  </span>
+                  <span class="text-slate-500 hidden sm:inline"
+                    >gig.cartools.app</span
+                  >
+                </div>
+                <div
+                  class="w-full rounded-xl overflow-hidden border border-slate-200 shadow-xl bg-white group"
+                >
+                  <div
+                    class="h-8 bg-slate-100 border-b border-slate-200 px-4 flex items-center gap-2"
+                  >
+                    <div class="flex items-center gap-1.5">
+                      <span
+                        class="w-3 h-3 rounded-full bg-rose-400 inline-block"
+                      ></span>
+                      <span
+                        class="w-3 h-3 rounded-full bg-amber-400 inline-block"
+                      ></span>
+                      <span
+                        class="w-3 h-3 rounded-full bg-emerald-400 inline-block"
+                      ></span>
+                    </div>
+                    <div
+                      class="mx-auto bg-white text-slate-600 text-[11px] font-mono px-4 py-0.5 rounded-md border border-slate-200 shadow-xs"
+                    >
+                      gig.cartools.app
+                    </div>
+                  </div>
+                  <img
+                    src="./src/images/gig-desktop.webp"
+                    alt="GIG Driver Desktop Interface"
+                    class="w-full h-auto object-cover block group-hover:scale-[1.01] transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY CARTOOLS SECTION -->
+    <section
+      id="why-cartools"
+      class="py-20 bg-slate-100/80 border-y border-slate-200/80"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <span
+            class="px-3.5 py-1.5 rounded-full bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wider"
+          >
+            Value Pillars
+          </span>
+          <h2
+            class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight"
+          >
+            Why CarTools?
+          </h2>
+          <p class="text-slate-600 text-base">
+            Built from the ground up for privacy, precision, and modern
+            performance.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="card-light p-8 space-y-4">
+            <div
+              class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-xl border border-blue-100"
+            >
+              📊
+            </div>
+            <h3 class="text-xl font-bold text-slate-900">
+              Data-Driven Insights
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Transform raw odometer readings and fuel receipts into clear
+              efficiency curves and financial trends.
+            </p>
+          </div>
+
+          <div class="card-light p-8 space-y-4">
+            <div
+              class="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold text-xl border border-purple-100"
+            >
+              🧠
+            </div>
+            <h3 class="text-xl font-bold text-slate-900">
+              Intelligent AI Analytics
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Automated vehicle health diagnosis and personalized driving advice
+              powered by modern AI models.
+            </p>
+          </div>
+
+          <div class="card-light p-8 space-y-4">
+            <div
+              class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center font-bold text-xl border border-sky-100"
+            >
+              📱
+            </div>
+            <h3 class="text-xl font-bold text-slate-900">
+              Modern Responsive Dashboards
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Lightning-fast UI designed to look stunning on mobile phones,
+              tablets, and desktop displays.
+            </p>
+          </div>
+
+          <div class="card-light p-8 space-y-4">
+            <div
+              class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xl border border-emerald-100"
+            >
+              🧮
+            </div>
+            <h3 class="text-xl font-bold text-slate-900">
+              Accurate Calculations
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Exact calculations accounting for fuel, wear & tear, vehicle
+              depreciation, tolls, and tax credits.
+            </p>
+          </div>
+
+          <div class="card-light p-8 space-y-4">
+            <div
+              class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-xl border border-amber-100"
+            >
+              🔒
+            </div>
+            <h3 class="text-xl font-bold text-slate-900">
+              Privacy-First Local Data
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Your vehicle logs and financial numbers stay stored safely on your
+              device with local storage security.
+            </p>
+          </div>
+
+          <div class="card-light p-8 space-y-4">
+            <div
+              class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-xl border border-indigo-100"
+            >
+              🌐
+            </div>
+            <h3 class="text-xl font-bold text-slate-900">
+              Built for Drivers Worldwide
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Full support for MPG, Liters per 100km, Miles, Kilometers, USD,
+              EUR, and global currencies.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BUILT AROUND REAL DRIVING SECTION -->
+    <section id="built-for-driving" class="py-20 bg-white">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+        <!-- Standalone Frameless Prominent Logo -->
+        <div class="flex justify-center items-center">
+          <img
+            src="./src/images/cartools_logo.webp"
+            alt="CarTools Logo"
+            class="h-20 sm:h-28 md:h-36 w-auto object-contain hover:scale-105 transition-transform duration-300 drop-shadow-sm"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+
+        <h2
+          class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight"
+        >
+          Built Around Real Driving
+        </h2>
+
+        <div
+          class="space-y-6 text-slate-600 text-lg leading-relaxed max-w-3xl mx-auto"
+        >
+          <p>
+            CarTools transforms everyday driving data into actionable insights.
+            Instead of relying on estimates, you'll understand exactly how your
+            vehicle performs, how much it truly costs to operate, and where you
+            can improve efficiency or profitability.
+          </p>
+          <p>
+            Whether you're managing your personal vehicle or running your
+            driving business, CarTools helps you make smarter decisions every
+            mile of the journey.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FREQUENTLY ASKED QUESTIONS SECTION -->
+    <section id="faq" class="py-20 bg-slate-50 border-t border-slate-200">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div class="text-center space-y-3">
+          <span
+            class="px-3.5 py-1.5 rounded-full bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wider"
+          >
+            Got Questions?
+          </span>
+          <h2
+            class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight"
+          >
+            Frequently Asked Questions
+          </h2>
+          <p class="text-slate-600 text-base max-w-2xl mx-auto">
+            Everything you need to know about CarTools applications, privacy,
+            features, and compatibility.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <!-- Q1 -->
+          <details
+            class="group rounded-2xl bg-white border border-slate-200/90 p-5 sm:p-6 transition-all shadow-sm [&[open]]:shadow-md [&[open]]:border-blue-300"
+            open
+          >
+            <summary
+              class="flex items-center justify-between font-bold text-slate-900 text-base sm:text-lg cursor-pointer list-none select-none"
+            >
+              <span>What is CarTools?</span>
+              <span
+                class="ml-4 flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 group-open:bg-blue-50 group-open:text-blue-600 text-slate-500 flex items-center justify-center transition-transform duration-200 group-open:rotate-180"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </span>
+            </summary>
+            <div
+              class="mt-4 pt-3 border-t border-slate-100 text-slate-600 text-sm sm:text-base leading-relaxed"
+            >
+              CarTools is a collection of intelligent web applications designed
+              to help drivers manage their vehicles more efficiently. From fuel
+              consumption tracking to gig driver profit analysis, every tool is
+              built to turn driving data into practical insights.
+            </div>
+          </details>
+
+          <!-- Q2 -->
+          <details
+            class="group rounded-2xl bg-white border border-slate-200/90 p-5 sm:p-6 transition-all shadow-sm [&[open]]:shadow-md [&[open]]:border-blue-300"
+          >
+            <summary
+              class="flex items-center justify-between font-bold text-slate-900 text-base sm:text-lg cursor-pointer list-none select-none"
+            >
+              <span>Which applications are available?</span>
+              <span
+                class="ml-4 flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 group-open:bg-blue-50 group-open:text-blue-600 text-slate-500 flex items-center justify-center transition-transform duration-200 group-open:rotate-180"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </span>
+            </summary>
+            <div
+              class="mt-4 pt-3 border-t border-slate-100 text-slate-600 text-sm sm:text-base leading-relaxed space-y-3"
+            >
+              <p>CarTools currently offers two applications:</p>
+              <ul class="space-y-2 pl-2">
+                <li class="flex items-start gap-2 text-slate-700">
+                  <span
+                    class="w-2 h-2 rounded-full bg-blue-600 mt-2 flex-shrink-0"
+                  ></span>
+                  <span
+                    ><strong class="text-blue-700">Fuel Analytics</strong> —
+                    Monitor fuel consumption, vehicle health, and driving
+                    efficiency.</span
+                  >
+                </li>
+                <li class="flex items-start gap-2 text-slate-700">
+                  <span
+                    class="w-2 h-2 rounded-full bg-emerald-600 mt-2 flex-shrink-0"
+                  ></span>
+                  <span
+                    ><strong class="text-emerald-700">GIG DRIVER</strong> —
+                    Track income, expenses, and true profitability for rideshare
+                    and delivery drivers.</span
+                  >
+                </li>
+              </ul>
+              <p class="text-xs text-slate-500 pt-1">
+                More tools are planned as the platform continues to grow.
+              </p>
+            </div>
+          </details>
+
+          <!-- Q3 -->
+          <details
+            class="group rounded-2xl bg-white border border-slate-200/90 p-5 sm:p-6 transition-all shadow-sm [&[open]]:shadow-md [&[open]]:border-blue-300"
+          >
+            <summary
+              class="flex items-center justify-between font-bold text-slate-900 text-base sm:text-lg cursor-pointer list-none select-none"
+            >
+              <span>Do I need to install anything?</span>
+              <span
+                class="ml-4 flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 group-open:bg-blue-50 group-open:text-blue-600 text-slate-500 flex items-center justify-center transition-transform duration-200 group-open:rotate-180"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </span>
+            </summary>
+            <div
+              class="mt-4 pt-3 border-t border-slate-100 text-slate-600 text-sm sm:text-base leading-relaxed"
+            >
+              No. CarTools is completely web-based. Simply open the application
+              in your browser and start using it—no installation required.
+            </div>
+          </details>
+
+          <!-- Q4 -->
+          <details
+            class="group rounded-2xl bg-white border border-slate-200/90 p-5 sm:p-6 transition-all shadow-sm [&[open]]:shadow-md [&[open]]:border-blue-300"
+          >
+            <summary
+              class="flex items-center justify-between font-bold text-slate-900 text-base sm:text-lg cursor-pointer list-none select-none"
+            >
+              <span>Can I use CarTools on my phone?</span>
+              <span
+                class="ml-4 flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 group-open:bg-blue-50 group-open:text-blue-600 text-slate-500 flex items-center justify-center transition-transform duration-200 group-open:rotate-180"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </span>
+            </summary>
+            <div
+              class="mt-4 pt-3 border-t border-slate-100 text-slate-600 text-sm sm:text-base leading-relaxed"
+            >
+              Yes. Every CarTools application is fully responsive and optimized
+              for desktop, tablet, and mobile devices, providing a smooth
+              experience wherever you are.
+            </div>
+          </details>
+
+          <!-- Q5 -->
+          <details
+            class="group rounded-2xl bg-white border border-slate-200/90 p-5 sm:p-6 transition-all shadow-sm [&[open]]:shadow-md [&[open]]:border-blue-300"
+          >
+            <summary
+              class="flex items-center justify-between font-bold text-slate-900 text-base sm:text-lg cursor-pointer list-none select-none"
+            >
+              <span>Is my data private?</span>
+              <span
+                class="ml-4 flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 group-open:bg-blue-50 group-open:text-blue-600 text-slate-500 flex items-center justify-center transition-transform duration-200 group-open:rotate-180"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </span>
+            </summary>
+            <div
+              class="mt-4 pt-3 border-t border-slate-100 text-slate-600 text-sm sm:text-base leading-relaxed"
+            >
+              Yes. Protecting your privacy is a priority. Many features store
+              data locally in your browser, giving you control over your
+              information while minimizing unnecessary data collection.
+            </div>
+          </details>
+
+          <!-- Q6 -->
+          <details
+            class="group rounded-2xl bg-white border border-slate-200/90 p-5 sm:p-6 transition-all shadow-sm [&[open]]:shadow-md [&[open]]:border-blue-300"
+          >
+            <summary
+              class="flex items-center justify-between font-bold text-slate-900 text-base sm:text-lg cursor-pointer list-none select-none"
+            >
+              <span>Which countries are supported?</span>
+              <span
+                class="ml-4 flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 group-open:bg-blue-50 group-open:text-blue-600 text-slate-500 flex items-center justify-center transition-transform duration-200 group-open:rotate-180"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </span>
+            </summary>
+            <div
+              class="mt-4 pt-3 border-t border-slate-100 text-slate-600 text-sm sm:text-base leading-relaxed"
+            >
+              CarTools is designed for drivers worldwide. Applications support
+              multiple measurement systems, including Metric, US Imperial, and
+              UK units, with automatic region detection where available.
+            </div>
+          </details>
+
+          <!-- Q7 -->
+          <details
+            class="group rounded-2xl bg-white border border-slate-200/90 p-5 sm:p-6 transition-all shadow-sm [&[open]]:shadow-md [&[open]]:border-blue-300"
+          >
+            <summary
+              class="flex items-center justify-between font-bold text-slate-900 text-base sm:text-lg cursor-pointer list-none select-none"
+            >
+              <span>Who is CarTools built for?</span>
+              <span
+                class="ml-4 flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 group-open:bg-blue-50 group-open:text-blue-600 text-slate-500 flex items-center justify-center transition-transform duration-200 group-open:rotate-180"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </span>
+            </summary>
+            <div
+              class="mt-4 pt-3 border-t border-slate-100 text-slate-600 text-sm sm:text-base leading-relaxed space-y-2"
+            >
+              <p>CarTools is designed for:</p>
+              <ul class="space-y-1.5 pl-2">
+                <li class="flex items-center gap-2 text-slate-700">
+                  <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                  Everyday drivers who want to reduce fuel costs
+                </li>
+                <li class="flex items-center gap-2 text-slate-700">
+                  <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Car
+                  enthusiasts interested in vehicle performance
+                </li>
+                <li class="flex items-center gap-2 text-slate-700">
+                  <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                  Rideshare and delivery drivers
+                </li>
+                <li class="flex items-center gap-2 text-slate-700">
+                  <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                  Small fleet owners
+                </li>
+                <li class="flex items-center gap-2 text-slate-700">
+                  <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                  Anyone looking to better understand the real cost of driving
+                </li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- Q8 -->
+          <details
+            class="group rounded-2xl bg-white border border-slate-200/90 p-5 sm:p-6 transition-all shadow-sm [&[open]]:shadow-md [&[open]]:border-blue-300"
+          >
+            <summary
+              class="flex items-center justify-between font-bold text-slate-900 text-base sm:text-lg cursor-pointer list-none select-none"
+            >
+              <span>Will more tools be added?</span>
+              <span
+                class="ml-4 flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 group-open:bg-blue-50 group-open:text-blue-600 text-slate-500 flex items-center justify-center transition-transform duration-200 group-open:rotate-180"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </span>
+            </summary>
+            <div
+              class="mt-4 pt-3 border-t border-slate-100 text-slate-600 text-sm sm:text-base leading-relaxed"
+            >
+              Yes. CarTools is an expanding platform, and new applications
+              focused on vehicle management, maintenance, driving analytics, and
+              cost optimization are planned for future releases.
+            </div>
+          </details>
+
+          <!-- Q9 -->
+          <details
+            class="group rounded-2xl bg-white border border-slate-200/90 p-5 sm:p-6 transition-all shadow-sm [&[open]]:shadow-md [&[open]]:border-blue-300"
+          >
+            <summary
+              class="flex items-center justify-between font-bold text-slate-900 text-base sm:text-lg cursor-pointer list-none select-none"
+            >
+              <span>Do I need technical knowledge to use CarTools?</span>
+              <span
+                class="ml-4 flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 group-open:bg-blue-50 group-open:text-blue-600 text-slate-500 flex items-center justify-center transition-transform duration-200 group-open:rotate-180"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </span>
+            </summary>
+            <div
+              class="mt-4 pt-3 border-t border-slate-100 text-slate-600 text-sm sm:text-base leading-relaxed"
+            >
+              Not at all. Every application is designed with a clean, intuitive
+              interface that makes advanced analytics accessible to
+              everyone—from casual drivers to professionals.
+            </div>
+          </details>
+
+          <!-- Q10 -->
+          <details
+            class="group rounded-2xl bg-white border border-slate-200/90 p-5 sm:p-6 transition-all shadow-sm [&[open]]:shadow-md [&[open]]:border-blue-300"
+          >
+            <summary
+              class="flex items-center justify-between font-bold text-slate-900 text-base sm:text-lg cursor-pointer list-none select-none"
+            >
+              <span>Why choose CarTools?</span>
+              <span
+                class="ml-4 flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 group-open:bg-blue-50 group-open:text-blue-600 text-slate-500 flex items-center justify-center transition-transform duration-200 group-open:rotate-180"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </span>
+            </summary>
+            <div
+              class="mt-4 pt-3 border-t border-slate-100 text-slate-600 text-sm sm:text-base leading-relaxed"
+            >
+              Unlike traditional vehicle tracking apps, CarTools focuses on
+              turning raw driving data into meaningful insights. Our goal is to
+              help you make smarter decisions, reduce operating costs, improve
+              vehicle performance, and maximize profitability through
+              intelligent analytics and modern user experiences.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 text-slate-400 border-t border-slate-800 py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div
+          class="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-slate-800 pb-8"
+        >
+          <div class="flex items-center gap-3">
+            <img
+              src="./src/images/cartools_logo.webp"
+              alt="CarTools Logo"
+              class="h-10 w-auto object-contain rounded-lg"
+              loading="lazy"
+              decoding="async"
+            />
+            <div>
+              <span class="text-white text-lg font-bold">CarTools</span>
+              <span class="text-xs text-slate-500 block">cartools.app</span>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-6 text-sm font-medium">
+            <a
+              href="https://fuel.cartools.app"
+              target="_blank"
+              class="hover:text-blue-400 transition-colors"
+              >Fuel Analyzer (fuel.cartools.app)</a
+            >
+            <a
+              href="https://gig.cartools.app"
+              target="_blank"
+              class="hover:text-emerald-400 transition-colors"
+              >GIG Driver (gig.cartools.app)</a
+            >
+            <a href="#why-cartools" class="hover:text-white transition-colors"
+              >Why CarTools</a
+            >
+            <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+          </div>
+        </div>
+
+        <div
+          class="flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4"
+        >
+          <p>
+            © 2026 CarTools (cartools.app). All rights reserved. Smarter Tools
+            for Smarter Drivers.
+          </p>
+          <div class="flex gap-4">
+            <span>Privacy First</span>
+            <span>•</span>
+            <span>Local Storage</span>
+            <span>•</span>
+            <span>Global Metrics</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Vanilla TS Application Code -->
+    <script src="./src/main.js"></script>
+  </body>
+</html>

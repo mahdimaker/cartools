@@ -1,0 +1,3233 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Title & Metadata Architecture -->
+    <title>
+      Fuel Analyzer — Master Your Fuel Economy & Eliminate Hidden Fuel Costs
+    </title>
+    <meta
+      name="description"
+      content="Fuel Analyzer is an all-in-one fuel management platform. Calculate real fuel consumption, track costs, simulate aerodynamic drag, and analyze efficiency offline."
+    />
+    <meta
+      name="keywords"
+      content="fuel consumption analyzer, gas log app, mileage tracker, speed vs fuel consumption simulator, fuel waste calculator, trip cost estimator, fuel economy calculator"
+    />
+    <meta
+      property="og:title"
+      content="Fuel Analyzer — Master Your Fuel Economy & Eliminate Hidden Fuel Costs"
+    />
+    <meta
+      property="og:description"
+      content="Calculate accurate fuel consumption, analyze driving costs, simulate aerodynamic drag, and get AI insights 100% private & offline."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://fuel.cartools.app" />
+
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="../../src/images/fuel_logo.svg"
+    />
+    <link rel="stylesheet" href="../../src/index.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- WebApplication JSON-LD Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Fuel Analyzer",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "All",
+        "url": "https://fuel.cartools.app",
+        "description": "Calculate exact fuel consumption, simulate speed penalties, track fuel costs, and manage multi-vehicle history offline.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+
+    <!-- FAQPage JSON-LD Rich Snippet Schema for Google Search -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How many refuels do I need before Fuel Analyzer starts calculating fuel consumption?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You only need two complete refueling records. After your second full refuel, Fuel Analyzer has enough information to calculate your real fuel economy and unlock advanced analytics throughout the dashboard."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need to fill the tank completely every time?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Partial refuels are fully supported and can still be recorded. However, full tank refills provide the most accurate fuel consumption calculations."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I manage more than one vehicle?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Fuel Analyzer supports multiple vehicles. Each vehicle has its own profile, fuel history, analytics, reports, and settings, so your data always stays organized."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which measurement systems are supported?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Fuel Analyzer automatically supports drivers worldwide. Available unit systems include: Metric (L/100km, km/L, kilometers), US MPG (Miles per Gallon), and UK Imperial MPG. You can switch between measurement systems at any time."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my data stored online?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All fuel records are stored locally inside your browser. Your information stays on your device and is never uploaded unless you choose to export it yourself."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need to create an account?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No registration is required. Simply open the app, create a vehicle profile, and start tracking your fuel history immediately."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I export my fuel history?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Your complete fuel log can be exported for backup, reporting, or transferring to another device. Existing data can also be imported whenever needed."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How accurate are the calculations?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Fuel Analyzer uses your actual odometer readings and refueling history instead of manufacturer estimates, providing calculations that closely reflect your real driving conditions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What can the AI assistant do?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The AI assistant reviews your fuel history, driving patterns, and vehicle performance to provide personalized recommendations that help improve fuel economy, reduce fuel costs, and identify unusual changes in efficiency."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Fuel Analyzer free to use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Fuel Analyzer is available as a free web application with no registration required."
+            }
+          }
+        ]
+      }
+    </script>
+    <style>
+      /* Custom utility for smooth stacking cards */
+      .sticky-card {
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-slate-50/70 text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white relative overflow-x-hidden min-h-screen flex flex-col"
+  >
+    <!-- Fixed Header Navigation -->
+    <header
+      id="header"
+      class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between"
+      >
+        <!-- Logo & Brand Name -->
+        <a href="../../index.html" class="flex items-center gap-3 group">
+          <img
+            src="../../src/images/fuel_logo.svg"
+            alt="Fuel Analyzer Logo"
+            class="w-9 h-9 sm:w-10 sm:h-10 object-contain rounded-xl shadow-md shadow-blue-600/20 transition-transform group-hover:scale-105"
+            decoding="async"
+          />
+          <span class="text-lg font-black tracking-tight text-slate-900">
+            FUEL <span class="text-blue-600">ANALYZER</span>
+          </span>
+        </a>
+
+        <!-- Navigation Links -->
+        <nav
+          class="hidden lg:flex items-center gap-7 text-xs sm:text-sm font-bold text-slate-600"
+        >
+          <a href="#how-it-works" class="hover:text-blue-600 transition-colors"
+            >How It Works</a
+          >
+          <a href="#dashboard" class="hover:text-blue-600 transition-colors"
+            >Dashboard</a
+          >
+          <a href="#multi-vehicle" class="hover:text-blue-600 transition-colors"
+            >Multi-Vehicle</a
+          >
+          <a
+            href="#smart-refueling"
+            class="hover:text-blue-600 transition-colors"
+            >Refueling</a
+          >
+          <a
+            href="#history-analytics"
+            class="hover:text-blue-600 transition-colors"
+            >Analytics</a
+          >
+          <a href="#ai-insights" class="hover:text-blue-600 transition-colors"
+            >AI Insights</a
+          >
+          <a href="#privacy" class="hover:text-blue-600 transition-colors"
+            >Privacy</a
+          >
+        </nav>
+
+        <!-- Right CTA Button -->
+        <div class="flex items-center gap-3">
+          <a
+            href="https://fuel.cartools.app"
+            target="_blank"
+            class="px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold transition-all shadow-md shadow-blue-600/20 hover:shadow-lg hover:shadow-blue-600/30 transform hover:-translate-y-0.5"
+          >
+            Open App
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-24 sm:pt-28 pb-20 space-y-20 sm:space-y-28">
+      <!-- 1. HERO SECTION -->
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-8">
+        <div
+          class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center"
+        >
+          <!-- Left Column Content -->
+          <div class="lg:col-span-7 space-y-6 text-left">
+            <!-- Eyebrow Badge -->
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/80 text-blue-700 text-xs font-extrabold uppercase tracking-wider"
+            >
+              🚀 ULTIMATE FUEL TRACKER APP
+            </div>
+
+            <!-- Main Headline -->
+            <h1
+              class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.12]"
+            >
+              Master Your <span class="text-blue-600">Fuel Economy.</span><br />
+              Eliminate Hidden Fuel Costs.
+            </h1>
+
+            <!-- Description Paragraphs -->
+            <div
+              class="space-y-3 text-slate-600 text-sm sm:text-base font-medium leading-relaxed"
+            >
+              <p>
+                <strong>Fuel Analyzer</strong> is an all-in-one fuel management
+                platform that helps you understand exactly how your vehicle
+                performs in the real world. By recording your refueling history,
+                the app calculates accurate fuel consumption, analyzes driving
+                costs, estimates vehicle range, and provides personalized
+                insights to help you save money.
+              </p>
+              <p
+                class="text-xs sm:text-sm text-slate-500 bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-2xs"
+              >
+                💡
+                <em
+                  >Unlike your vehicle's onboard computer, Fuel Analyzer uses
+                  your actual odometer readings and fuel purchases to deliver
+                  reliable results based on real driving conditions.</em
+                >
+              </p>
+            </div>
+
+            <!-- "Perfect For" Badges -->
+            <section
+              aria-labelledby="perfect-for-heading"
+              class="space-y-2 pt-2"
+            >
+              <h2
+                id="perfect-for-heading"
+                class="text-xs font-extrabold uppercase tracking-wider text-slate-400"
+              >
+                Perfect for
+              </h2>
+              <ul class="flex flex-wrap gap-2">
+                <li
+                  class="px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-slate-700 text-xs font-bold shadow-2xs flex items-center gap-1.5"
+                >
+                  ⛽ Fuel Mileage Tracking
+                </li>
+                <li
+                  class="px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-slate-700 text-xs font-bold shadow-2xs flex items-center gap-1.5"
+                >
+                  🚗 Daily Commuters
+                </li>
+                <li
+                  class="px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-slate-700 text-xs font-bold shadow-2xs flex items-center gap-1.5"
+                >
+                  📉 Fuel Cost Reduction
+                </li>
+                <li
+                  class="px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-slate-700 text-xs font-bold shadow-2xs flex items-center gap-1.5"
+                >
+                  💼 Rideshare & Delivery Drivers
+                </li>
+                <li
+                  class="px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-slate-700 text-xs font-bold shadow-2xs flex items-center gap-1.5"
+                >
+                  🚙 Fleet & Multi-Vehicle Tracking
+                </li>
+              </ul>
+            </section>
+
+            <!-- Action Buttons -->
+            <div
+              class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2"
+            >
+              <a
+                href="https://fuel.cartools.app"
+                target="_blank"
+                class="px-7 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-sm shadow-lg shadow-blue-600/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 group"
+              >
+                <span>Open Fuel Analyzer App</span>
+                <svg
+                  class="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+              </a>
+              <a
+                href="#how-it-works"
+                class="px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 font-extrabold text-sm border border-slate-200/90 shadow-2xs transition-all flex items-center justify-center gap-2"
+              >
+                <span>See How It Works</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column Preview Image -->
+          <div class="lg:col-span-5 flex items-center justify-center p-2">
+            <img
+              src="../../src/images/fuel-app-2x-hiro.webp"
+              alt="Fuel Economy Tracker App Preview"
+              class="w-full max-w-xs sm:max-w-sm h-auto object-contain"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. HOW IT WORKS SECTION (Interactive Step-by-Step Flow with UI Snippets & Flow Connectors) -->
+      <section
+        id="how-it-works"
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12"
+      >
+        <!-- Section Header -->
+        <div class="space-y-3 max-w-2xl mx-auto text-center">
+          <span
+            class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 text-blue-700 text-xs font-black border border-blue-200/80 shadow-xs"
+          >
+            <svg
+              class="w-4 h-4 text-blue-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2.5"
+                d="M13 10V3L4 14h7v7l9-11h-7z"
+              />
+            </svg>
+            SIMPLE 3-STEP PROCESS
+          </span>
+          <h2
+            class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight"
+          >
+            How Fuel Analyzer Works
+          </h2>
+          <p
+            class="text-sm sm:text-base text-slate-600 font-medium leading-relaxed"
+          >
+            Transform raw fuel receipts into precise driving analytics and real
+            financial savings in three effortless steps.
+          </p>
+        </div>
+
+        <!-- Step Flow Container with Desktop Connecting Line -->
+        <div class="relative">
+          <!-- Background Desktop Flow Line with Connecting Line -->
+          <div
+            class="hidden md:block absolute top-1/2 left-12 right-12 -translate-y-20 pointer-events-none z-0"
+          >
+            <div
+              class="h-0.5 w-full bg-gradient-to-r from-blue-200 via-indigo-300 to-blue-200 border-t border-dashed border-blue-400/50"
+            ></div>
+          </div>
+
+          <!-- 3 Step Cards Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+            <!-- STEP 1 CARD -->
+            <div
+              class="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200/90 shadow-sm relative space-y-6 group hover:border-blue-400 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between"
+            >
+              <div class="space-y-5">
+                <!-- Step Top Header: Badge + Car Icon -->
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <span
+                      class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white font-black text-sm flex items-center justify-center shadow-md shadow-blue-500/25"
+                    >
+                      01
+                    </span>
+                    <span
+                      class="text-xs font-black tracking-wider text-blue-600 uppercase"
+                      >STEP 1</span
+                    >
+                  </div>
+                </div>
+
+                <!-- Step Title & Description -->
+                <div class="space-y-2">
+                  <h3
+                    class="text-xl font-extrabold text-slate-900 group-hover:text-blue-600 transition-colors"
+                  >
+                    Add Your Vehicle Profile
+                  </h3>
+                  <p
+                    class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium"
+                  >
+                    Add your vehicle by entering basic information such as make,
+                    model, year, fuel type, tank capacity, and current odometer
+                    reading.
+                  </p>
+                </div>
+
+                <!-- Step Image Showcase: fuel-step1.webp -->
+                <div
+                  class="rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/80 shadow-inner group-hover:shadow-md transition-all transform group-hover:scale-[1.02]"
+                >
+                  <img
+                    src="../../src/images/fuel-app-step-2x-01.webp"
+                    alt="Fuel Analyzer Step 1 - Vehicle Setup"
+                    class="w-full h-auto object-cover rounded-2xl"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+
+              <!-- Bottom Badge -->
+              <div
+                class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-extrabold text-blue-600"
+              >
+                <span class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                  Quick setup in 60s
+                </span>
+                <span class="group-hover:translate-x-1 transition-transform"
+                  >→</span
+                >
+              </div>
+            </div>
+
+            <!-- STEP 2 CARD -->
+            <div
+              class="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200/90 shadow-sm relative space-y-6 group hover:border-blue-400 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between"
+            >
+              <div class="space-y-5">
+                <!-- Step Top Header: Badge + Gas Station Icon -->
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <span
+                      class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white font-black text-sm flex items-center justify-center shadow-md shadow-blue-500/25"
+                    >
+                      02
+                    </span>
+                    <span
+                      class="text-xs font-black tracking-wider text-blue-600 uppercase"
+                      >STEP 2</span
+                    >
+                  </div>
+                </div>
+
+                <!-- Step Title & Description -->
+                <div class="space-y-2">
+                  <h3
+                    class="text-xl font-extrabold text-slate-900 group-hover:text-blue-600 transition-colors"
+                  >
+                    Record Every Refuel
+                  </h3>
+                  <p
+                    class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium"
+                  >
+                    Each time you visit a gas station, enter the fuel amount,
+                    total cost, odometer reading, and indicate whether it was a
+                    full or partial refill.
+                  </p>
+                </div>
+
+                <!-- Step Image Showcase: fuel-step2.webp -->
+                <div
+                  class="rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/80 shadow-inner group-hover:shadow-md transition-all transform group-hover:scale-[1.02]"
+                >
+                  <img
+                    src="../../src/images/fuel-app-step-2x-02.webp"
+                    alt="Fuel Analyzer Step 2 - Record Refuel"
+                    class="w-full h-auto object-cover rounded-2xl"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+
+              <!-- Bottom Badge -->
+              <div
+                class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-extrabold text-blue-600"
+              >
+                <span class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                  Smart error validation
+                </span>
+                <span class="group-hover:translate-x-1 transition-transform"
+                  >→</span
+                >
+              </div>
+            </div>
+
+            <!-- STEP 3 CARD -->
+            <div
+              class="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200/90 shadow-sm relative space-y-6 group hover:border-blue-400 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between"
+            >
+              <div class="space-y-5">
+                <!-- Step Top Header: Badge + Analytics Icon -->
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <span
+                      class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white font-black text-sm flex items-center justify-center shadow-md shadow-blue-500/25"
+                    >
+                      03
+                    </span>
+                    <span
+                      class="text-xs font-black tracking-wider text-blue-600 uppercase"
+                      >STEP 3</span
+                    >
+                  </div>
+                </div>
+
+                <!-- Step Title & Description -->
+                <div class="space-y-2">
+                  <h3
+                    class="text-xl font-extrabold text-slate-900 group-hover:text-blue-600 transition-colors"
+                  >
+                    Unlock Smart Analytics
+                  </h3>
+                  <p
+                    class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium"
+                  >
+                    After two complete refueling records, Fuel Analyzer begins
+                    calculating your real fuel consumption and unlocks advanced
+                    analytics.
+                  </p>
+                </div>
+
+                <!-- Step Image Showcase: fuel-step3.webp -->
+                <div
+                  class="rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/80 shadow-inner group-hover:shadow-md transition-all transform group-hover:scale-[1.02]"
+                >
+                  <img
+                    src="../../src/images/fuel-app-step-2x-03.webp"
+                    alt="Fuel Analyzer Step 3 - Real Insights"
+                    class="w-full h-auto object-cover rounded-2xl"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+
+              <!-- Bottom Badge -->
+              <div
+                class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-extrabold text-blue-600"
+              >
+                <span class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                  Instant insights unlocked
+                </span>
+                <span class="group-hover:translate-x-1 transition-transform"
+                  >✓</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. DASHBOARD COMMAND CENTER (STACKING CARDS UX) -->
+      <section
+        id="dashboard"
+        class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10"
+      >
+        <!-- Header -->
+        <div class="text-center space-y-3 max-w-2xl mx-auto">
+          <span
+            class="px-3.5 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-extrabold border border-blue-100"
+          >
+            📊 COMMAND CENTER
+          </span>
+          <h2
+            class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight"
+          >
+            The Dashboard
+          </h2>
+          <p class="text-sm text-slate-600 font-medium leading-relaxed">
+            The Dashboard is the command center of Fuel Analyzer. It
+            automatically transforms your refueling history into
+            easy-to-understand insights, allowing you to monitor fuel
+            efficiency, vehicle performance, and fuel expenses from a single
+            screen.
+          </p>
+        </div>
+
+        <!-- Sticky Stack Container -->
+        <div class="space-y-8 relative">
+          <!-- STACK CARD 1: Fuel Consumption Analysis -->
+          <div
+            class="sticky top-24 z-10 p-8 sm:p-10 rounded-3xl bg-white border border-slate-200/90 shadow-xl space-y-6 transition-all"
+          >
+            <div
+              class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-slate-100 pb-5"
+            >
+              <div class="space-y-1">
+                <div class="flex items-center gap-2">
+                  <span
+                    class="w-8 h-8 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm"
+                    >01</span
+                  >
+                  <h3 class="text-2xl font-black text-slate-900">
+                    Fuel Consumption Analysis
+                  </h3>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 font-medium">
+                  See your vehicle's real fuel economy based on actual driving
+                  data instead of manufacturer estimates.
+                </p>
+              </div>
+              <span
+                class="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-extrabold border border-blue-200 shrink-0"
+              >
+                Real Driving Data
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <!-- Left: What You'll See List -->
+              <div class="space-y-3">
+                <h4
+                  class="text-xs font-extrabold uppercase tracking-wider text-slate-400"
+                >
+                  What you'll see
+                </h4>
+                <ul
+                  class="space-y-2 text-xs sm:text-sm font-semibold text-slate-700"
+                >
+                  <li class="flex items-center gap-2.5">
+                    <span
+                      class="w-5 h-5 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-bold"
+                      >✓</span
+                    >
+                    <span>Average fuel consumption (L/100km & MPG)</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span
+                      class="w-5 h-5 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-bold"
+                      >✓</span
+                    >
+                    <span>Fuel efficiency rating score</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span
+                      class="w-5 h-5 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-bold"
+                      >✓</span
+                    >
+                    <span>Estimated remaining driving range</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span
+                      class="w-5 h-5 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-bold"
+                      >✓</span
+                    >
+                    <span>City and highway range prediction</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span
+                      class="w-5 h-5 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-bold"
+                      >✓</span
+                    >
+                    <span>Consumption trends over time</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span
+                      class="w-5 h-5 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-bold"
+                      >✓</span
+                    >
+                    <span>Personalized driving insights</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Right: Why It Matters Highlight Box -->
+              <div
+                class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3 flex flex-col justify-between"
+              >
+                <div>
+                  <span
+                    class="text-xs font-extrabold uppercase tracking-wider text-blue-600"
+                    >Why it matters</span
+                  >
+                  <p
+                    class="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed pt-2"
+                  >
+                    Real fuel consumption helps you understand how efficiently
+                    your vehicle is performing, identify unusual fuel usage, and
+                    improve your driving habits to save fuel.
+                  </p>
+                </div>
+                <div
+                  class="p-3 bg-white rounded-xl border border-slate-200/60 flex items-center justify-between text-xs font-bold text-slate-800"
+                >
+                  <span>Factory vs Real Delta:</span>
+                  <span class="text-amber-600"
+                    >+0.8 L/100km real-world difference</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STACK CARD 2: Fuel Cost Analytics -->
+          <div
+            class="sticky top-28 z-20 p-8 sm:p-10 rounded-3xl bg-white border border-slate-200/90 shadow-xl space-y-6 transition-all"
+          >
+            <div
+              class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-slate-100 pb-5"
+            >
+              <div class="space-y-1">
+                <div class="flex items-center gap-2">
+                  <span
+                    class="w-8 h-8 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm"
+                    >02</span
+                  >
+                  <h3 class="text-2xl font-black text-slate-900">
+                    Fuel Cost Analytics
+                  </h3>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 font-medium">
+                  Understand where every dollar spent on fuel goes and discover
+                  opportunities to save money.
+                </p>
+              </div>
+              <span
+                class="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-extrabold border border-blue-200 shrink-0"
+              >
+                Financial Insights
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <!-- Left: You'll Discover List -->
+              <div class="space-y-3">
+                <h4
+                  class="text-xs font-extrabold uppercase tracking-wider text-slate-400"
+                >
+                  You'll discover
+                </h4>
+                <ul
+                  class="space-y-2 text-xs sm:text-sm font-semibold text-slate-700"
+                >
+                  <li class="flex items-center gap-2.5">
+                    <span
+                      class="w-5 h-5 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-bold"
+                      >✓</span
+                    >
+                    <span>Exact cost per kilometer or mile</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span
+                      class="w-5 h-5 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-bold"
+                      >✓</span
+                    >
+                    <span>Total lifetime fuel spending</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span
+                      class="w-5 h-5 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-bold"
+                      >✓</span
+                    >
+                    <span>Monthly and yearly fuel budget</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span
+                      class="w-5 h-5 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-bold"
+                      >✓</span
+                    >
+                    <span>Estimated fuel waste & cash leaks</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span
+                      class="w-5 h-5 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-bold"
+                      >✓</span
+                    >
+                    <span>Potential yearly savings estimator</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span
+                      class="w-5 h-5 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-bold"
+                      >✓</span
+                    >
+                    <span>Trip cost estimator</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Right: Interactive Embedded Savings Calculator Widget -->
+              <div
+                class="p-6 rounded-2xl bg-blue-50/60 border border-blue-100 space-y-4"
+              >
+                <span
+                  class="text-xs font-extrabold uppercase tracking-wider text-blue-700 block"
+                >
+                  ⚡ Interactive Savings Estimator
+                </span>
+                <div class="space-y-3">
+                  <div class="space-y-1">
+                    <div
+                      class="flex justify-between text-xs font-bold text-slate-700"
+                    >
+                      <span>Monthly Mileage:</span>
+                      <span id="monthlyKmValue" class="text-blue-600"
+                        >1,500 km / month</span
+                      >
+                    </div>
+                    <input
+                      id="monthlyKmInput"
+                      type="range"
+                      min="300"
+                      max="4000"
+                      value="1500"
+                      step="100"
+                      class="w-full accent-blue-600 h-1.5 bg-slate-200 rounded-lg cursor-pointer"
+                    />
+                  </div>
+                  <div class="space-y-1">
+                    <div
+                      class="flex justify-between text-xs font-bold text-slate-700"
+                    >
+                      <span>Gas Price ($/L):</span>
+                      <span id="gasPriceValue" class="text-blue-600"
+                        >$1.65 / Liter</span
+                      >
+                    </div>
+                    <input
+                      id="gasPriceInput"
+                      type="range"
+                      min="0.80"
+                      max="3.00"
+                      value="1.65"
+                      step="0.05"
+                      class="w-full accent-blue-600 h-1.5 bg-slate-200 rounded-lg cursor-pointer"
+                    />
+                  </div>
+                </div>
+
+                <div
+                  class="p-4 rounded-xl bg-white border border-blue-200 text-center space-y-1"
+                >
+                  <span
+                    class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block"
+                    >Potential Yearly Savings</span
+                  >
+                  <div
+                    id="annualSavingsText"
+                    class="text-3xl font-black text-blue-600"
+                  >
+                    $550
+                    <span class="text-sm font-bold text-slate-500">/ yr</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STACK CARD 3: Speed vs. Fuel Efficiency Simulator -->
+          <div
+            class="sticky top-32 z-30 p-8 sm:p-10 rounded-3xl bg-white border border-slate-200/90 shadow-xl space-y-6 transition-all"
+          >
+            <div
+              class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-slate-100 pb-5"
+            >
+              <div class="space-y-1">
+                <div class="flex items-center gap-2">
+                  <span
+                    class="w-8 h-8 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm"
+                    >03</span
+                  >
+                  <h3 class="text-2xl font-black text-slate-900">
+                    Speed vs. Fuel Efficiency Simulator
+                  </h3>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 font-medium">
+                  Discover how driving conditions affect fuel consumption before
+                  you even start your trip.
+                </p>
+              </div>
+              <span
+                class="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-extrabold border border-blue-200 shrink-0"
+              >
+                Live Drag Physics Widget
+              </span>
+            </div>
+
+            <!-- Live Simulator Interface -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+              <!-- Controls Column -->
+              <div
+                class="lg:col-span-7 space-y-4 bg-slate-50 p-5 rounded-2xl border border-slate-200/80"
+              >
+                <div class="space-y-2">
+                  <div class="flex justify-between items-center">
+                    <label
+                      for="speedInput"
+                      class="text-xs font-extrabold text-slate-800"
+                      >Cruising Speed:</label
+                    >
+                    <span
+                      id="speedValue"
+                      class="text-sm font-black text-blue-600 bg-white px-2.5 py-0.5 rounded border border-blue-100"
+                      >110 km/h</span
+                    >
+                  </div>
+                  <input
+                    id="speedInput"
+                    type="range"
+                    min="50"
+                    max="170"
+                    value="110"
+                    step="5"
+                    class="w-full accent-blue-600 h-2 bg-slate-200 rounded-lg cursor-pointer"
+                  />
+                  <div
+                    class="flex justify-between text-[10px] font-bold text-slate-400"
+                  >
+                    <span>50 km/h</span>
+                    <span>90 km/h (Optimal)</span>
+                    <span>170 km/h</span>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 pt-1">
+                  <label
+                    class="flex items-center justify-between p-3 rounded-xl bg-white border border-slate-200 text-xs font-bold text-slate-800 cursor-pointer"
+                  >
+                    <span>❄️ Air Conditioning</span>
+                    <input
+                      id="acToggle"
+                      type="checkbox"
+                      checked
+                      class="w-4 h-4 accent-blue-600 rounded cursor-pointer"
+                    />
+                  </label>
+                  <label
+                    class="flex items-center justify-between p-3 rounded-xl bg-white border border-slate-200 text-xs font-bold text-slate-800 cursor-pointer"
+                  >
+                    <span>🎒 Roof Cargo Rack</span>
+                    <input
+                      id="rackToggle"
+                      type="checkbox"
+                      class="w-4 h-4 accent-blue-600 rounded cursor-pointer"
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <!-- Output Column -->
+              <div
+                class="lg:col-span-5 bg-slate-900 text-white p-6 rounded-2xl border border-slate-800 space-y-4"
+              >
+                <div
+                  class="flex items-center justify-between border-b border-slate-800 pb-2"
+                >
+                  <span
+                    class="text-[10px] font-bold text-slate-400 uppercase tracking-wider"
+                    >Estimated Consumption</span
+                  >
+                  <span
+                    id="dragZoneBadge"
+                    class="px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300 text-[10px] font-extrabold border border-blue-400/30"
+                  >
+                    Moderate Drag
+                  </span>
+                </div>
+                <div class="space-y-1">
+                  <div class="flex items-baseline gap-2">
+                    <span
+                      id="calculatedLiters"
+                      class="text-3xl font-black text-blue-400"
+                      >7.8</span
+                    >
+                    <span class="text-sm font-bold text-slate-300"
+                      >L / 100km</span
+                    >
+                  </div>
+                  <p class="text-xs text-slate-400">
+                    Equivalent to
+                    <span id="calculatedMpg" class="text-white font-bold"
+                      >30.1 US MPG</span
+                    >
+                  </p>
+                </div>
+                <div
+                  class="p-3 rounded-xl bg-slate-800/90 border border-slate-700 text-xs font-extrabold text-blue-300 flex items-center justify-between"
+                >
+                  <span>💸 Extra Drag Cost:</span>
+                  <span id="calculatedExtraCost" class="text-white"
+                    >+$2.85 / 100km</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STACK CARD 4: Vehicle Health Score -->
+          <div
+            class="sticky top-36 z-40 p-8 sm:p-10 rounded-3xl bg-white border border-slate-200/90 shadow-xl space-y-6 transition-all"
+          >
+            <div
+              class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-slate-100 pb-5"
+            >
+              <div class="space-y-1">
+                <div class="flex items-center gap-2">
+                  <span
+                    class="w-8 h-8 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm"
+                    >04</span
+                  >
+                  <h3 class="text-2xl font-black text-slate-900">
+                    Vehicle Health Score
+                  </h3>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 font-medium">
+                  Monitor your vehicle's overall efficiency without relying on
+                  mechanical sensors or OBD dongles.
+                </p>
+              </div>
+              <span
+                class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-extrabold border border-emerald-200 shrink-0"
+              >
+                Sensorless Evaluation
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <!-- Left: Includes List -->
+              <div class="space-y-3">
+                <h4
+                  class="text-xs font-extrabold uppercase tracking-wider text-slate-400"
+                >
+                  Includes
+                </h4>
+                <ul
+                  class="space-y-2 text-xs sm:text-sm font-semibold text-slate-700"
+                >
+                  <li class="flex items-center gap-2.5">
+                    <span
+                      class="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs font-bold"
+                      >✓</span
+                    >
+                    <span>Overall Vehicle Health Score (0–100)</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span
+                      class="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs font-bold"
+                      >✓</span
+                    >
+                    <span>Fuel efficiency variance trends</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span
+                      class="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs font-bold"
+                      >✓</span
+                    >
+                    <span>Estimated driving range stability</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span
+                      class="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs font-bold"
+                      >✓</span
+                    >
+                    <span>Fuel consistency verification</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span
+                      class="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs font-bold"
+                      >✓</span
+                    >
+                    <span>Cost efficiency score</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span
+                      class="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs font-bold"
+                      >✓</span
+                    >
+                    <span>Monthly CO₂ carbon output estimate</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Right: Why It Matters Highlight Box -->
+              <div
+                class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-4 flex flex-col justify-between"
+              >
+                <div>
+                  <span
+                    class="text-xs font-extrabold uppercase tracking-wider text-emerald-700"
+                    >Why it matters</span
+                  >
+                  <p
+                    class="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed pt-2"
+                  >
+                    Changes in your score can help you detect inefficient
+                    driving or potential vehicle issues before they become
+                    expensive repairs.
+                  </p>
+                </div>
+                <div
+                  class="p-4 bg-white rounded-xl border border-slate-200/60 flex items-center justify-between"
+                >
+                  <span class="text-xs font-bold text-slate-800"
+                    >Current Vehicle Health:</span
+                  >
+                  <span class="text-xl font-black text-emerald-600"
+                    >92 / 100</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STACK CARD 5: Efficiency Checklist -->
+          <div
+            class="sticky top-40 z-50 p-8 sm:p-10 rounded-3xl bg-white border border-slate-200/90 shadow-xl space-y-6 transition-all"
+          >
+            <div
+              class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-slate-100 pb-5"
+            >
+              <div class="space-y-1">
+                <div class="flex items-center gap-2">
+                  <span
+                    class="w-8 h-8 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm"
+                    >05</span
+                  >
+                  <h3 class="text-2xl font-black text-slate-900">
+                    Efficiency Checklist
+                  </h3>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 font-medium">
+                  Prevent fuel efficiency problems with automatic mileage-based
+                  maintenance reminders.
+                </p>
+              </div>
+              <span
+                class="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-extrabold border border-blue-200 shrink-0"
+              >
+                Mileage Reminders
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <!-- Left: Reminders List -->
+              <div class="space-y-3">
+                <h4
+                  class="text-xs font-extrabold uppercase tracking-wider text-slate-400"
+                >
+                  Reminders include
+                </h4>
+                <ul
+                  class="space-y-2.5 text-xs sm:text-sm font-semibold text-slate-700"
+                >
+                  <li
+                    class="flex items-center gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200/60"
+                  >
+                    <span
+                      class="w-6 h-6 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold"
+                      >🛞</span
+                    >
+                    <span>Tire pressure checks (Every 1,000 km)</span>
+                  </li>
+                  <li
+                    class="flex items-center gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200/60"
+                  >
+                    <span
+                      class="w-6 h-6 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold"
+                      >🛢️</span
+                    >
+                    <span>Engine oil changes (Every 8,000 km)</span>
+                  </li>
+                  <li
+                    class="flex items-center gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200/60"
+                  >
+                    <span
+                      class="w-6 h-6 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold"
+                      >⚡</span
+                    >
+                    <span>Spark plug inspections</span>
+                  </li>
+                  <li
+                    class="flex items-center gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200/60"
+                  >
+                    <span
+                      class="w-6 h-6 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold"
+                      >📋</span
+                    >
+                    <span>Other mileage-based maintenance tasks</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Right: Why It Matters -->
+              <div
+                class="p-6 rounded-2xl bg-blue-50/50 border border-blue-100 space-y-4 flex flex-col justify-between"
+              >
+                <div>
+                  <span
+                    class="text-xs font-extrabold uppercase tracking-wider text-blue-700"
+                    >Why it matters</span
+                  >
+                  <p
+                    class="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed pt-2"
+                  >
+                    Keeping up with these simple maintenance items helps improve
+                    fuel economy, prevents sudden cash leaks, and extends
+                    overall vehicle life.
+                  </p>
+                </div>
+                <div
+                  class="p-3 bg-white rounded-xl border border-blue-200 text-xs font-extrabold text-blue-800 text-center"
+                >
+                  🛠️ Auto-triggered by recorded odometer readings
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. MULTI-VEHICLE MANAGEMENT SECTION (With Interactive Profile Switcher Preview) -->
+      <section
+        id="multi-vehicle"
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10"
+      >
+        <!-- Header -->
+        <div class="text-center space-y-3 max-w-2xl mx-auto">
+          <span
+            class="px-3.5 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-extrabold border border-blue-100"
+          >
+            🚘 UNLIMITED GARAGE
+          </span>
+          <h2
+            class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight"
+          >
+            Multi-Vehicle Management
+          </h2>
+          <p class="text-sm text-slate-600 font-medium leading-relaxed">
+            Manage all of your vehicles in one place without mixing up fuel
+            history or performance data. Whether you own multiple cars or manage
+            vehicles for your family, Fuel Analyzer creates a separate profile
+            for each vehicle, keeping every calculation and report completely
+            independent.
+          </p>
+        </div>
+
+        <!-- Interactive Vehicle Switcher Card Preview -->
+        <div
+          class="p-8 sm:p-10 rounded-3xl bg-white border border-slate-200/90 shadow-xl space-y-8"
+        >
+          <!-- Interactive Selector Tabs -->
+          <div
+            class="flex flex-wrap items-center justify-center gap-3 border-b border-slate-100 pb-6"
+          >
+            <button
+              onclick="switchVehicle('rav4')"
+              id="veh-btn-rav4"
+              class="veh-tab px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all bg-blue-600 text-white shadow-md shadow-blue-600/20"
+            >
+              🚘 2022 Toyota RAV4 (Daily)
+            </button>
+            <button
+              onclick="switchVehicle('civic')"
+              id="veh-btn-civic"
+              class="veh-tab px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all bg-slate-100 text-slate-700 hover:bg-slate-200"
+            >
+              🚙 2020 Honda Civic (Family)
+            </button>
+            <button
+              onclick="switchVehicle('f150')"
+              id="veh-btn-f150"
+              class="veh-tab px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all bg-slate-100 text-slate-700 hover:bg-slate-200"
+            >
+              🚚 2018 Ford F-150 (Work)
+            </button>
+          </div>
+
+          <!-- Dynamic Display Content Area -->
+          <div
+            id="veh-display"
+            class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
+          >
+            <!-- Left: Vehicle Specs Card -->
+            <div
+              class="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-4"
+            >
+              <div class="flex items-center justify-between">
+                <span id="veh-title" class="text-lg font-black text-slate-900"
+                  >2022 Toyota RAV4</span
+                >
+                <span
+                  id="veh-fuel-tag"
+                  class="px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 text-xs font-extrabold"
+                  >Gasoline</span
+                >
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 text-xs">
+                <div class="p-3 bg-white rounded-xl border border-slate-200/80">
+                  <span class="text-slate-400 block font-bold"
+                    >Tank Capacity</span
+                  >
+                  <span
+                    id="veh-tank"
+                    class="font-extrabold text-slate-900 text-sm"
+                    >55 Liters</span
+                  >
+                </div>
+                <div class="p-3 bg-white rounded-xl border border-slate-200/80">
+                  <span class="text-slate-400 block font-bold"
+                    >Factory Economy</span
+                  >
+                  <span
+                    id="veh-factory"
+                    class="font-extrabold text-slate-900 text-sm"
+                    >7.2 L/100km</span
+                  >
+                </div>
+                <div class="p-3 bg-white rounded-xl border border-slate-200/80">
+                  <span class="text-slate-400 block font-bold"
+                    >Initial Odometer</span
+                  >
+                  <span
+                    id="veh-odo"
+                    class="font-extrabold text-slate-900 text-sm"
+                    >42,500 km</span
+                  >
+                </div>
+                <div class="p-3 bg-white rounded-xl border border-slate-200/80">
+                  <span class="text-slate-400 block font-bold"
+                    >Recorded History</span
+                  >
+                  <span
+                    id="veh-records"
+                    class="font-extrabold text-blue-600 text-sm"
+                    >24 Refuels</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Feature Checklist & Why It Matters -->
+            <div class="space-y-4">
+              <h4 class="text-sm font-extrabold text-slate-900">
+                What you can do with Multi-Vehicle
+              </h4>
+              <ul
+                class="space-y-2 text-xs sm:text-sm font-semibold text-slate-700"
+              >
+                <li class="flex items-center gap-2">
+                  <span class="text-blue-600 font-extrabold">✓</span>
+                  <span
+                    >Add unlimited vehicle profiles without mixing up fuel
+                    history</span
+                  >
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-blue-600 font-extrabold">✓</span>
+                  <span
+                    >Switch between vehicles instantly with a single tap</span
+                  >
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-blue-600 font-extrabold">✓</span>
+                  <span>Edit vehicle specifications at any time</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-blue-600 font-extrabold">✓</span>
+                  <span
+                    >Store separate fuel histories and stats for every
+                    vehicle</span
+                  >
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-blue-600 font-extrabold">✓</span>
+                  <span>Track performance and health independently</span>
+                </li>
+              </ul>
+
+              <div
+                class="p-4 rounded-xl bg-blue-50/70 border border-blue-100 text-xs font-medium text-slate-700"
+              >
+                💡 <strong>Why it matters:</strong> Every vehicle performs
+                differently. Individual profiles ensure all fuel economy
+                calculations remain 100% accurate for each car.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. SMART REFUELING SECTION (Gas Station Quick Entry Showcase) -->
+      <section
+        id="smart-refueling"
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10"
+      >
+        <!-- Header -->
+        <div class="text-center space-y-3 max-w-2xl mx-auto">
+          <span
+            class="px-3.5 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-extrabold border border-blue-100"
+          >
+            ⛽ FAST LOGGING
+          </span>
+          <h2
+            class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight"
+          >
+            Smart Refueling
+          </h2>
+          <p class="text-sm text-slate-600 font-medium leading-relaxed">
+            The Smart Refueling section is where all of your fuel data begins.
+            Designed for quick use at the gas station, it helps you record every
+            refuel accurately while automatically checking for data errors that
+            could affect future calculations.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <!-- Form Feature Grid -->
+          <div class="lg:col-span-6 space-y-6">
+            <div class="space-y-4">
+              <h3 class="text-xl font-extrabold text-slate-900">
+                What You Record
+              </h3>
+              <div class="grid grid-cols-2 gap-3">
+                <div
+                  class="p-3.5 rounded-xl bg-white border border-slate-200 text-xs font-bold text-slate-800 flex items-center gap-2"
+                >
+                  <span>📟 Current Odometer</span>
+                </div>
+                <div
+                  class="p-3.5 rounded-xl bg-white border border-slate-200 text-xs font-bold text-slate-800 flex items-center gap-2"
+                >
+                  <span>🛢️ Fuel Volume (L or Gal)</span>
+                </div>
+                <div
+                  class="p-3.5 rounded-xl bg-white border border-slate-200 text-xs font-bold text-slate-800 flex items-center gap-2"
+                >
+                  <span>💵 Total Fuel Cost ($)</span>
+                </div>
+                <div
+                  class="p-3.5 rounded-xl bg-white border border-slate-200 text-xs font-bold text-slate-800 flex items-center gap-2"
+                >
+                  <span>🏬 Fuel Station Name</span>
+                </div>
+                <div
+                  class="p-3.5 rounded-xl bg-white border border-slate-200 text-xs font-bold text-slate-800 flex items-center gap-2"
+                >
+                  <span>📅 Refueling Date</span>
+                </div>
+                <div
+                  class="p-3.5 rounded-xl bg-white border border-slate-200 text-xs font-bold text-slate-800 flex items-center gap-2"
+                >
+                  <span>📝 Personal Notes</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Smart Features List -->
+            <div class="space-y-3 pt-2">
+              <h3 class="text-xl font-extrabold text-slate-900">
+                Smart Features Included
+              </h3>
+              <ul
+                class="space-y-2 text-xs sm:text-sm font-semibold text-slate-700"
+              >
+                <li class="flex items-center gap-2">
+                  <span
+                    class="w-5 h-5 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-bold"
+                    >✓</span
+                  >
+                  <span
+                    ><strong>Full Tank Indicator:</strong> Supports standard
+                    complete refuels</span
+                  >
+                </li>
+                <li class="flex items-center gap-2">
+                  <span
+                    class="w-5 h-5 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-bold"
+                    >✓</span
+                  >
+                  <span
+                    ><strong>Partial Refill Support:</strong> Handles partial
+                    fills seamlessly</span
+                  >
+                </li>
+                <li class="flex items-center gap-2">
+                  <span
+                    class="w-5 h-5 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-bold"
+                    >✓</span
+                  >
+                  <span
+                    ><strong>Missed Refuel Detection:</strong> Flags gaps so
+                    averages stay clean</span
+                  >
+                </li>
+                <li class="flex items-center gap-2">
+                  <span
+                    class="w-5 h-5 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-bold"
+                    >✓</span
+                  >
+                  <span
+                    ><strong>Odometer Validation:</strong> Prevents typos and
+                    accidental rollbacks</span
+                  >
+                </li>
+                <li class="flex items-center gap-2">
+                  <span
+                    class="w-5 h-5 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-bold"
+                    >✓</span
+                  >
+                  <span
+                    ><strong>Automatic Calculation Checks:</strong> Live unit
+                    price checks</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div
+              class="p-4 rounded-xl bg-blue-50 border border-blue-100 text-xs font-medium text-slate-700"
+            >
+              💡 <strong>Why it matters:</strong> Accurate refueling records
+              produce accurate fuel economy, cost analysis, and vehicle health
+              reports.
+            </div>
+          </div>
+
+          <!-- Mock Gas Station Quick Form Visual Card -->
+          <div
+            class="lg:col-span-6 p-8 rounded-3xl bg-white border border-slate-200/90 shadow-xl space-y-5"
+          >
+            <div
+              class="flex items-center justify-between border-b border-slate-100 pb-4"
+            >
+              <div class="flex items-center gap-2">
+                <span class="text-2xl">⛽</span>
+                <div>
+                  <h4 class="text-base font-extrabold text-slate-900">
+                    Add New Refuel
+                  </h4>
+                  <p class="text-[11px] text-slate-500 font-medium">
+                    Quick 15-second entry at pump
+                  </p>
+                </div>
+              </div>
+              <span
+                class="px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-700 text-xs font-extrabold border border-emerald-200"
+              >
+                Validated ✓
+              </span>
+            </div>
+
+            <div class="space-y-4 text-xs font-bold text-slate-700">
+              <div class="grid grid-cols-2 gap-4">
+                <div class="space-y-1">
+                  <label class="text-slate-500">Odometer (km)</label>
+                  <input
+                    type="text"
+                    value="44,280"
+                    readonly
+                    class="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-extrabold"
+                  />
+                </div>
+                <div class="space-y-1">
+                  <label class="text-slate-500">Fuel Amount (L)</label>
+                  <input
+                    type="text"
+                    value="42.50"
+                    readonly
+                    class="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-extrabold"
+                  />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div class="space-y-1">
+                  <label class="text-slate-500">Total Cost ($)</label>
+                  <input
+                    type="text"
+                    value="$70.12"
+                    readonly
+                    class="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-extrabold"
+                  />
+                </div>
+                <div class="space-y-1">
+                  <label class="text-slate-500">Gas Station</label>
+                  <input
+                    type="text"
+                    value="Shell Highway 1"
+                    readonly
+                    class="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-extrabold"
+                  />
+                </div>
+              </div>
+
+              <div
+                class="p-3.5 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-between text-blue-900"
+              >
+                <span>Calculated Unit Price:</span>
+                <span class="font-black">$1.650 / Liter</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. FUEL HISTORY & ANALYTICS SECTION -->
+      <section
+        id="history-analytics"
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10"
+      >
+        <!-- Header -->
+        <div class="text-center space-y-3 max-w-2xl mx-auto">
+          <span
+            class="px-3.5 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-extrabold border border-blue-100"
+          >
+            📈 COMPLETE TIMELINE
+          </span>
+          <h2
+            class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight"
+          >
+            Fuel History & Analytics
+          </h2>
+          <p class="text-sm text-slate-600 font-medium leading-relaxed">
+            Every refuel you record becomes part of your complete driving
+            history. Fuel Analyzer organizes all your fuel records into an
+            easy-to-read timeline with detailed statistics, charts, and powerful
+            search tools.
+          </p>
+        </div>
+
+        <!-- 4 Pillars Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Pillar 1: Lifetime Statistics -->
+          <div
+            class="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-xs space-y-4 hover:border-blue-300 transition-all"
+          >
+            <div
+              class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-lg border border-blue-100"
+            >
+              📊
+            </div>
+            <h3 class="text-base font-extrabold text-slate-900">
+              Lifetime Statistics
+            </h3>
+            <ul class="space-y-2 text-xs font-semibold text-slate-600">
+              <li class="flex items-center gap-1.5">• Total fuel spending</li>
+              <li class="flex items-center gap-1.5">• Total fuel purchased</li>
+              <li class="flex items-center gap-1.5">
+                • Total distance traveled
+              </li>
+              <li class="flex items-center gap-1.5">• Average fuel economy</li>
+              <li class="flex items-center gap-1.5">
+                • Best recorded efficiency
+              </li>
+            </ul>
+          </div>
+
+          <!-- Pillar 2: Search & Filters -->
+          <div
+            class="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-xs space-y-4 hover:border-blue-300 transition-all"
+          >
+            <div
+              class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-lg border border-blue-100"
+            >
+              🔍
+            </div>
+            <h3 class="text-base font-extrabold text-slate-900">
+              Search & Filters
+            </h3>
+            <ul class="space-y-2 text-xs font-semibold text-slate-600">
+              <li class="flex items-center gap-1.5">• Fuel type filtering</li>
+              <li class="flex items-center gap-1.5">• Custom date range</li>
+              <li class="flex items-center gap-1.5">
+                • Full or partial refuels
+              </li>
+              <li class="flex items-center gap-1.5">• Gas station filter</li>
+              <li class="flex items-center gap-1.5">
+                • Cost & efficiency range
+              </li>
+            </ul>
+          </div>
+
+          <!-- Pillar 3: Visual Reports -->
+          <div
+            class="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-xs space-y-4 hover:border-blue-300 transition-all"
+          >
+            <div
+              class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-lg border border-blue-100"
+            >
+              📈
+            </div>
+            <h3 class="text-base font-extrabold text-slate-900">
+              Visual Reports
+            </h3>
+            <ul class="space-y-2 text-xs font-semibold text-slate-600">
+              <li class="flex items-center gap-1.5">
+                • Fuel consumption trends
+              </li>
+              <li class="flex items-center gap-1.5">• Spending over time</li>
+              <li class="flex items-center gap-1.5">
+                • Efficiency improvements
+              </li>
+              <li class="flex items-center gap-1.5">
+                • Long-term vehicle health
+              </li>
+            </ul>
+          </div>
+
+          <!-- Pillar 4: Export & Backup -->
+          <div
+            class="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-xs space-y-4 hover:border-blue-300 transition-all"
+          >
+            <div
+              class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-lg border border-blue-100"
+            >
+              💾
+            </div>
+            <h3 class="text-base font-extrabold text-slate-900">
+              Export & Backup
+            </h3>
+            <ul class="space-y-2 text-xs font-semibold text-slate-600">
+              <li class="flex items-center gap-1.5">• Export history to CSV</li>
+              <li class="flex items-center gap-1.5">
+                • Export to Excel format
+              </li>
+              <li class="flex items-center gap-1.5">• Instant JSON backups</li>
+              <li class="flex items-center gap-1.5">• Import previous logs</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. AI FUEL INSIGHTS SECTION (Google Gemini Integration) -->
+      <section
+        id="ai-insights"
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10"
+      >
+        <!-- Header -->
+        <div class="text-center space-y-3 max-w-2xl mx-auto">
+          <span
+            class="px-3.5 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-extrabold border border-blue-100"
+          >
+            🤖 INTELLIGENT ASSISTANT
+          </span>
+          <h2
+            class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight"
+          >
+            AI Fuel Insights
+          </h2>
+          <p class="text-sm text-slate-600 font-medium leading-relaxed">
+            Fuel Analyzer includes an intelligent assistant powered by Google
+            Gemini AI that analyzes your driving history and fuel records to
+            provide personalized recommendations. Instead of showing only
+            numbers, AI explains what those numbers mean and suggests practical
+            ways to improve fuel efficiency.
+          </p>
+        </div>
+
+        <!-- AI Assistant Interactive Card -->
+        <div
+          class="p-8 sm:p-10 rounded-3xl bg-slate-900 text-white border border-slate-800 shadow-2xl space-y-8"
+        >
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <!-- Left: What AI Analyzes -->
+            <div class="lg:col-span-6 space-y-4">
+              <span
+                class="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-extrabold border border-blue-400/30"
+              >
+                Continuous Learning Engine
+              </span>
+              <h3 class="text-2xl font-black text-white">What AI Analyzes</h3>
+              <ul
+                class="space-y-2.5 text-xs sm:text-sm font-medium text-slate-300"
+              >
+                <li class="flex items-center gap-2.5">
+                  <span
+                    class="w-5 h-5 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold"
+                    >✓</span
+                  >
+                  <span>Fuel consumption patterns across road types</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <span
+                    class="w-5 h-5 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold"
+                    >✓</span
+                  >
+                  <span>Refueling habits & gas station price consistency</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <span
+                    class="w-5 h-5 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold"
+                    >✓</span
+                  >
+                  <span>Driving consistency & seasonal variances</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <span
+                    class="w-5 h-5 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold"
+                    >✓</span
+                  >
+                  <span>Vehicle efficiency relative to factory baselines</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <span
+                    class="w-5 h-5 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold"
+                    >✓</span
+                  >
+                  <span>Potential hidden fuel waste & cash leaks</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Right: AI Advice Box Sample -->
+            <div
+              class="lg:col-span-6 p-6 rounded-2xl bg-slate-800/90 border border-slate-700/80 space-y-4"
+            >
+              <div
+                class="flex items-center justify-between border-b border-slate-700 pb-3"
+              >
+                <div class="flex items-center gap-2">
+                  <span class="text-xl">✨</span>
+                  <span class="text-xs font-extrabold text-blue-300"
+                    >AI Personalized Coaching Report</span
+                  >
+                </div>
+                <span class="text-[10px] text-slate-400"
+                  >Updated with latest refuel</span
+                >
+              </div>
+
+              <div
+                class="space-y-2 text-xs sm:text-sm text-slate-300 font-medium leading-relaxed"
+              >
+                <p>
+                  <strong class="text-white">Analysis:</strong> Your last 3
+                  refuels show a 7.5% drop in efficiency during city commutes.
+                </p>
+                <div
+                  class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-700/60 space-y-1"
+                >
+                  <span class="text-xs font-bold text-emerald-400"
+                    >💡 Actionable Recommendation:</span
+                  >
+                  <p class="text-xs text-slate-300">
+                    Checking tire pressure could restore ~0.4 L/100km. Shifting
+                    cruising speed from 115 km/h to 95 km/h on highway segments
+                    will save approx <strong>$12.40 / month</strong>.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="pt-4 border-t border-slate-800 text-center text-xs font-bold text-slate-400"
+          >
+            🔄 Every time you add a new refueling record, AI reanalyzes your
+            data and provides updated insights.
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. PRIVACY & DATA SECURITY + GLOBAL MEASUREMENT SYSTEMS -->
+      <section
+        id="privacy"
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10"
+      >
+        <!-- Header -->
+        <div class="text-center space-y-3 max-w-2xl mx-auto">
+          <span
+            class="px-3.5 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-extrabold border border-blue-100"
+          >
+            🔒 PRIVACY FIRST & GLOBAL UNITS
+          </span>
+          <h2
+            class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight"
+          >
+            Privacy & Data Security
+          </h2>
+          <p class="text-sm text-slate-600 font-medium leading-relaxed">
+            Your privacy comes first. Fuel Analyzer stores all information
+            directly inside your browser. Your fuel history never needs to be
+            uploaded to external servers, and no account is required.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+          <!-- Privacy Features Card -->
+          <div
+            class="p-8 rounded-3xl bg-white border border-slate-200/90 shadow-sm space-y-6 flex flex-col justify-between"
+          >
+            <div class="space-y-4">
+              <h3 class="text-xl font-extrabold text-slate-900">
+                Your Data Stays Private
+              </h3>
+              <ul
+                class="space-y-3 text-xs sm:text-sm font-semibold text-slate-700"
+              >
+                <li
+                  class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200/60"
+                >
+                  <span class="text-lg">👤</span>
+                  <div>
+                    <span class="font-extrabold text-slate-900 block"
+                      >No Registration Required</span
+                    >
+                    <span class="text-xs text-slate-500 font-medium"
+                      >No account, no signup, no email needed.</span
+                    >
+                  </div>
+                </li>
+                <li
+                  class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200/60"
+                >
+                  <span class="text-lg">🚫</span>
+                  <div>
+                    <span class="font-extrabold text-slate-900 block"
+                      >No Tracking</span
+                    >
+                    <span class="text-xs text-slate-500 font-medium"
+                      >Zero tracking pixels or advertising telemetry.</span
+                    >
+                  </div>
+                </li>
+                <li
+                  class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200/60"
+                >
+                  <span class="text-lg">💾</span>
+                  <div>
+                    <span class="font-extrabold text-slate-900 block"
+                      >100% Local Data Storage</span
+                    >
+                    <span class="text-xs text-slate-500 font-medium"
+                      >All data stored safely inside your browser.</span
+                    >
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div
+              class="p-3 bg-blue-50 rounded-xl text-xs font-bold text-blue-700 text-center border border-blue-100"
+            >
+              🛡️ No Cloud Servers Required
+            </div>
+          </div>
+
+          <!-- Measurement Systems Switcher Card -->
+          <div
+            class="p-8 rounded-3xl bg-white border border-slate-200/90 shadow-sm space-y-6 flex flex-col justify-between"
+          >
+            <div class="space-y-4">
+              <h3 class="text-xl font-extrabold text-slate-900">
+                Built For Everyone Worldwide
+              </h3>
+              <p
+                class="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed"
+              >
+                Fuel Analyzer automatically supports different measurement
+                systems around the world.
+              </p>
+
+              <!-- Interactive Unit Switcher Preview -->
+              <div class="space-y-3 pt-2">
+                <div
+                  class="flex items-center justify-center gap-2 p-1.5 bg-slate-100 rounded-xl border border-slate-200"
+                >
+                  <button
+                    onclick="switchUnit('metric')"
+                    id="unit-btn-metric"
+                    class="unit-tab flex-1 py-2 rounded-lg text-xs font-extrabold transition-all bg-white text-blue-600 shadow-2xs"
+                  >
+                    Metric (L/100km)
+                  </button>
+                  <button
+                    onclick="switchUnit('us')"
+                    id="unit-btn-us"
+                    class="unit-tab flex-1 py-2 rounded-lg text-xs font-extrabold transition-all text-slate-600 hover:text-slate-900"
+                  >
+                    US MPG
+                  </button>
+                  <button
+                    onclick="switchUnit('uk')"
+                    id="unit-btn-uk"
+                    class="unit-tab flex-1 py-2 rounded-lg text-xs font-extrabold transition-all text-slate-600 hover:text-slate-900"
+                  >
+                    UK Imperial MPG
+                  </button>
+                </div>
+
+                <div
+                  id="unit-display-box"
+                  class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-center space-y-1"
+                >
+                  <span
+                    id="unit-display-title"
+                    class="text-xs font-bold text-slate-400 uppercase tracking-wider block"
+                    >Selected System</span
+                  >
+                  <div
+                    id="unit-display-value"
+                    class="text-xl font-black text-slate-900"
+                  >
+                    Liters & Kilometers (L/100km)
+                  </div>
+                  <p
+                    id="unit-display-desc"
+                    class="text-xs text-slate-500 font-medium"
+                  >
+                    Standard metric calculations used in Europe, Canada, Asia &
+                    worldwide.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="p-3 bg-slate-100 rounded-xl text-xs font-bold text-slate-700 text-center border border-slate-200"
+            >
+              🌐 Your preferred units are used consistently throughout every
+              calculation and report.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. FAQ SECTION (Rich Snippets Structured Markup & Visual Accordions) -->
+      <section
+        id="faq"
+        class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8"
+        itemscope
+        itemtype="https://schema.org/FAQPage"
+      >
+        <div class="text-center space-y-3">
+          <div
+            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-extrabold uppercase tracking-wider"
+          >
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            Help & Knowledge Base
+          </div>
+          <h2
+            class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight"
+          >
+            Frequently Asked Questions
+          </h2>
+          <p
+            class="text-slate-600 font-medium text-sm sm:text-base max-w-xl mx-auto"
+          >
+            Everything you need to know about Fuel Analyzer, calculations,
+            measurement systems, privacy, and vehicle tracking.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <!-- FAQ 1 -->
+          <details
+            class="group p-5 rounded-2xl bg-white border border-slate-200/90 hover:border-blue-400 transition-all shadow-2xs cursor-pointer"
+            itemprop="mainEntity"
+            itemscope
+            itemtype="https://schema.org/Question"
+          >
+            <summary
+              class="font-extrabold text-slate-900 text-base sm:text-lg flex items-center justify-between gap-4 select-none"
+              itemprop="name"
+            >
+              <span
+                >How many refuels do I need before Fuel Analyzer starts
+                calculating fuel consumption?</span
+              >
+              <div
+                class="w-8 h-8 rounded-full bg-slate-100 group-hover:bg-blue-50 group-hover:text-blue-600 text-slate-500 flex items-center justify-center shrink-0 transition-transform group-open:rotate-180"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+            </summary>
+            <div
+              class="pt-4 text-slate-600 text-sm sm:text-base leading-relaxed font-medium border-t border-slate-100 mt-4"
+              itemprop="acceptedAnswer"
+              itemscope
+              itemtype="https://schema.org/Answer"
+            >
+              <span itemprop="text">
+                You only need two complete refueling records. After your second
+                full refuel, Fuel Analyzer has enough information to calculate
+                your real fuel economy and unlock advanced analytics throughout
+                the dashboard.
+              </span>
+            </div>
+          </details>
+
+          <!-- FAQ 2 -->
+          <details
+            class="group p-5 rounded-2xl bg-white border border-slate-200/90 hover:border-blue-400 transition-all shadow-2xs cursor-pointer"
+            itemprop="mainEntity"
+            itemscope
+            itemtype="https://schema.org/Question"
+          >
+            <summary
+              class="font-extrabold text-slate-900 text-base sm:text-lg flex items-center justify-between gap-4 select-none"
+              itemprop="name"
+            >
+              <span>Do I need to fill the tank completely every time?</span>
+              <div
+                class="w-8 h-8 rounded-full bg-slate-100 group-hover:bg-blue-50 group-hover:text-blue-600 text-slate-500 flex items-center justify-center shrink-0 transition-transform group-open:rotate-180"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+            </summary>
+            <div
+              class="pt-4 text-slate-600 text-sm sm:text-base leading-relaxed font-medium border-t border-slate-100 mt-4"
+              itemprop="acceptedAnswer"
+              itemscope
+              itemtype="https://schema.org/Answer"
+            >
+              <span itemprop="text">
+                No. Partial refuels are fully supported and can still be
+                recorded. However, full tank refills provide the most accurate
+                fuel consumption calculations.
+              </span>
+            </div>
+          </details>
+
+          <!-- FAQ 3 -->
+          <details
+            class="group p-5 rounded-2xl bg-white border border-slate-200/90 hover:border-blue-400 transition-all shadow-2xs cursor-pointer"
+            itemprop="mainEntity"
+            itemscope
+            itemtype="https://schema.org/Question"
+          >
+            <summary
+              class="font-extrabold text-slate-900 text-base sm:text-lg flex items-center justify-between gap-4 select-none"
+              itemprop="name"
+            >
+              <span>Can I manage more than one vehicle?</span>
+              <div
+                class="w-8 h-8 rounded-full bg-slate-100 group-hover:bg-blue-50 group-hover:text-blue-600 text-slate-500 flex items-center justify-center shrink-0 transition-transform group-open:rotate-180"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+            </summary>
+            <div
+              class="pt-4 text-slate-600 text-sm sm:text-base leading-relaxed font-medium border-t border-slate-100 mt-4"
+              itemprop="acceptedAnswer"
+              itemscope
+              itemtype="https://schema.org/Answer"
+            >
+              <span itemprop="text">
+                Yes. Fuel Analyzer supports multiple vehicles. Each vehicle has
+                its own profile, fuel history, analytics, reports, and settings,
+                so your data always stays organized.
+              </span>
+            </div>
+          </details>
+
+          <!-- FAQ 4 -->
+          <details
+            class="group p-5 rounded-2xl bg-white border border-slate-200/90 hover:border-blue-400 transition-all shadow-2xs cursor-pointer"
+            itemprop="mainEntity"
+            itemscope
+            itemtype="https://schema.org/Question"
+          >
+            <summary
+              class="font-extrabold text-slate-900 text-base sm:text-lg flex items-center justify-between gap-4 select-none"
+              itemprop="name"
+            >
+              <span>Which measurement systems are supported?</span>
+              <div
+                class="w-8 h-8 rounded-full bg-slate-100 group-hover:bg-blue-50 group-hover:text-blue-600 text-slate-500 flex items-center justify-center shrink-0 transition-transform group-open:rotate-180"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+            </summary>
+            <div
+              class="pt-4 text-slate-600 text-sm sm:text-base leading-relaxed font-medium border-t border-slate-100 mt-4 space-y-3"
+              itemprop="acceptedAnswer"
+              itemscope
+              itemtype="https://schema.org/Answer"
+            >
+              <span itemprop="text">
+                <p>Fuel Analyzer automatically supports drivers worldwide.</p>
+                <p class="font-extrabold text-slate-800 pt-1">
+                  Available unit systems include:
+                </p>
+                <ul class="list-disc pl-5 space-y-1 text-slate-700">
+                  <li><strong>Metric</strong> (L/100km, km/L, kilometers)</li>
+                  <li><strong>US MPG</strong> (Miles per Gallon)</li>
+                  <li><strong>UK Imperial MPG</strong></li>
+                </ul>
+                <p class="pt-1">
+                  You can switch between measurement systems at any time.
+                </p>
+              </span>
+            </div>
+          </details>
+
+          <!-- FAQ 5 -->
+          <details
+            class="group p-5 rounded-2xl bg-white border border-slate-200/90 hover:border-blue-400 transition-all shadow-2xs cursor-pointer"
+            itemprop="mainEntity"
+            itemscope
+            itemtype="https://schema.org/Question"
+          >
+            <summary
+              class="font-extrabold text-slate-900 text-base sm:text-lg flex items-center justify-between gap-4 select-none"
+              itemprop="name"
+            >
+              <span>Is my data stored online?</span>
+              <div
+                class="w-8 h-8 rounded-full bg-slate-100 group-hover:bg-blue-50 group-hover:text-blue-600 text-slate-500 flex items-center justify-center shrink-0 transition-transform group-open:rotate-180"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+            </summary>
+            <div
+              class="pt-4 text-slate-600 text-sm sm:text-base leading-relaxed font-medium border-t border-slate-100 mt-4"
+              itemprop="acceptedAnswer"
+              itemscope
+              itemtype="https://schema.org/Answer"
+            >
+              <span itemprop="text">
+                <p class="font-extrabold text-slate-900">No.</p>
+                <p class="mt-1">
+                  All fuel records are stored locally inside your browser. Your
+                  information stays on your device and is never uploaded unless
+                  you choose to export it yourself.
+                </p>
+              </span>
+            </div>
+          </details>
+
+          <!-- FAQ 6 -->
+          <details
+            class="group p-5 rounded-2xl bg-white border border-slate-200/90 hover:border-blue-400 transition-all shadow-2xs cursor-pointer"
+            itemprop="mainEntity"
+            itemscope
+            itemtype="https://schema.org/Question"
+          >
+            <summary
+              class="font-extrabold text-slate-900 text-base sm:text-lg flex items-center justify-between gap-4 select-none"
+              itemprop="name"
+            >
+              <span>Do I need to create an account?</span>
+              <div
+                class="w-8 h-8 rounded-full bg-slate-100 group-hover:bg-blue-50 group-hover:text-blue-600 text-slate-500 flex items-center justify-center shrink-0 transition-transform group-open:rotate-180"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+            </summary>
+            <div
+              class="pt-4 text-slate-600 text-sm sm:text-base leading-relaxed font-medium border-t border-slate-100 mt-4"
+              itemprop="acceptedAnswer"
+              itemscope
+              itemtype="https://schema.org/Answer"
+            >
+              <span itemprop="text">
+                <p class="font-extrabold text-slate-900">
+                  No registration is required.
+                </p>
+                <p class="mt-1">
+                  Simply open the app, create a vehicle profile, and start
+                  tracking your fuel history immediately.
+                </p>
+              </span>
+            </div>
+          </details>
+
+          <!-- FAQ 7 -->
+          <details
+            class="group p-5 rounded-2xl bg-white border border-slate-200/90 hover:border-blue-400 transition-all shadow-2xs cursor-pointer"
+            itemprop="mainEntity"
+            itemscope
+            itemtype="https://schema.org/Question"
+          >
+            <summary
+              class="font-extrabold text-slate-900 text-base sm:text-lg flex items-center justify-between gap-4 select-none"
+              itemprop="name"
+            >
+              <span>Can I export my fuel history?</span>
+              <div
+                class="w-8 h-8 rounded-full bg-slate-100 group-hover:bg-blue-50 group-hover:text-blue-600 text-slate-500 flex items-center justify-center shrink-0 transition-transform group-open:rotate-180"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+            </summary>
+            <div
+              class="pt-4 text-slate-600 text-sm sm:text-base leading-relaxed font-medium border-t border-slate-100 mt-4"
+              itemprop="acceptedAnswer"
+              itemscope
+              itemtype="https://schema.org/Answer"
+            >
+              <span itemprop="text">
+                <p class="font-extrabold text-slate-900">Yes.</p>
+                <p class="mt-1">
+                  Your complete fuel log can be exported for backup, reporting,
+                  or transferring to another device. Existing data can also be
+                  imported whenever needed.
+                </p>
+              </span>
+            </div>
+          </details>
+
+          <!-- FAQ 8 -->
+          <details
+            class="group p-5 rounded-2xl bg-white border border-slate-200/90 hover:border-blue-400 transition-all shadow-2xs cursor-pointer"
+            itemprop="mainEntity"
+            itemscope
+            itemtype="https://schema.org/Question"
+          >
+            <summary
+              class="font-extrabold text-slate-900 text-base sm:text-lg flex items-center justify-between gap-4 select-none"
+              itemprop="name"
+            >
+              <span>How accurate are the calculations?</span>
+              <div
+                class="w-8 h-8 rounded-full bg-slate-100 group-hover:bg-blue-50 group-hover:text-blue-600 text-slate-500 flex items-center justify-center shrink-0 transition-transform group-open:rotate-180"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+            </summary>
+            <div
+              class="pt-4 text-slate-600 text-sm sm:text-base leading-relaxed font-medium border-t border-slate-100 mt-4"
+              itemprop="acceptedAnswer"
+              itemscope
+              itemtype="https://schema.org/Answer"
+            >
+              <span itemprop="text">
+                Fuel Analyzer uses your actual odometer readings and refueling
+                history instead of manufacturer estimates, providing
+                calculations that closely reflect your real driving conditions.
+              </span>
+            </div>
+          </details>
+
+          <!-- FAQ 9 -->
+          <details
+            class="group p-5 rounded-2xl bg-white border border-slate-200/90 hover:border-blue-400 transition-all shadow-2xs cursor-pointer"
+            itemprop="mainEntity"
+            itemscope
+            itemtype="https://schema.org/Question"
+          >
+            <summary
+              class="font-extrabold text-slate-900 text-base sm:text-lg flex items-center justify-between gap-4 select-none"
+              itemprop="name"
+            >
+              <span>What can the AI assistant do?</span>
+              <div
+                class="w-8 h-8 rounded-full bg-slate-100 group-hover:bg-blue-50 group-hover:text-blue-600 text-slate-500 flex items-center justify-center shrink-0 transition-transform group-open:rotate-180"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+            </summary>
+            <div
+              class="pt-4 text-slate-600 text-sm sm:text-base leading-relaxed font-medium border-t border-slate-100 mt-4"
+              itemprop="acceptedAnswer"
+              itemscope
+              itemtype="https://schema.org/Answer"
+            >
+              <span itemprop="text">
+                The AI assistant reviews your fuel history, driving patterns,
+                and vehicle performance to provide personalized recommendations
+                that help improve fuel economy, reduce fuel costs, and identify
+                unusual changes in efficiency.
+              </span>
+            </div>
+          </details>
+
+          <!-- FAQ 10 -->
+          <details
+            class="group p-5 rounded-2xl bg-white border border-slate-200/90 hover:border-blue-400 transition-all shadow-2xs cursor-pointer"
+            itemprop="mainEntity"
+            itemscope
+            itemtype="https://schema.org/Question"
+          >
+            <summary
+              class="font-extrabold text-slate-900 text-base sm:text-lg flex items-center justify-between gap-4 select-none"
+              itemprop="name"
+            >
+              <span>Is Fuel Analyzer free to use?</span>
+              <div
+                class="w-8 h-8 rounded-full bg-slate-100 group-hover:bg-blue-50 group-hover:text-blue-600 text-slate-500 flex items-center justify-center shrink-0 transition-transform group-open:rotate-180"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+            </summary>
+            <div
+              class="pt-4 text-slate-600 text-sm sm:text-base leading-relaxed font-medium border-t border-slate-100 mt-4"
+              itemprop="acceptedAnswer"
+              itemscope
+              itemtype="https://schema.org/Answer"
+            >
+              <span itemprop="text">
+                Yes. Fuel Analyzer is available as a free web application with
+                no registration required.
+              </span>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 10. WHY DRIVERS CHOOSE FUEL ANALYZER -->
+      <section id="why-choose" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="p-8 sm:p-12 rounded-3xl bg-slate-900 text-white shadow-xl space-y-8 relative overflow-hidden"
+        >
+          <div
+            class="absolute -right-20 -top-20 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl pointer-events-none"
+          ></div>
+
+          <div class="text-center space-y-3 relative z-10 max-w-2xl mx-auto">
+            <h2 class="text-3xl sm:text-4xl font-black tracking-tight">
+              Why Drivers Choose Fuel Analyzer
+            </h2>
+            <p class="text-slate-400 text-sm sm:text-base font-medium">
+              Built specifically for smart vehicle owners, fleet managers, and
+              budget-conscious drivers worldwide.
+            </p>
+          </div>
+
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 relative z-10"
+          >
+            <div
+              class="flex items-start gap-3.5 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+            >
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-500 text-slate-950 flex items-center justify-center font-black text-sm shrink-0 mt-0.5 shadow-md shadow-emerald-500/30"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+              <span class="text-sm font-bold text-slate-100 leading-snug"
+                >Real-world fuel economy based on actual refueling history</span
+              >
+            </div>
+
+            <div
+              class="flex items-start gap-3.5 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+            >
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-500 text-slate-950 flex items-center justify-center font-black text-sm shrink-0 mt-0.5 shadow-md shadow-emerald-500/30"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+              <span class="text-sm font-bold text-slate-100 leading-snug"
+                >Complete fuel expense tracking</span
+              >
+            </div>
+
+            <div
+              class="flex items-start gap-3.5 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+            >
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-500 text-slate-950 flex items-center justify-center font-black text-sm shrink-0 mt-0.5 shadow-md shadow-emerald-500/30"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+              <span class="text-sm font-bold text-slate-100 leading-snug"
+                >Intelligent vehicle health monitoring</span
+              >
+            </div>
+
+            <div
+              class="flex items-start gap-3.5 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+            >
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-500 text-slate-950 flex items-center justify-center font-black text-sm shrink-0 mt-0.5 shadow-md shadow-emerald-500/30"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+              <span class="text-sm font-bold text-slate-100 leading-snug"
+                >Speed and fuel efficiency simulator</span
+              >
+            </div>
+
+            <div
+              class="flex items-start gap-3.5 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+            >
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-500 text-slate-950 flex items-center justify-center font-black text-sm shrink-0 mt-0.5 shadow-md shadow-emerald-500/30"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+              <span class="text-sm font-bold text-slate-100 leading-snug"
+                >AI-powered driving insights</span
+              >
+            </div>
+
+            <div
+              class="flex items-start gap-3.5 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+            >
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-500 text-slate-950 flex items-center justify-center font-black text-sm shrink-0 mt-0.5 shadow-md shadow-emerald-500/30"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+              <span class="text-sm font-bold text-slate-100 leading-snug"
+                >Multi-vehicle support</span
+              >
+            </div>
+
+            <div
+              class="flex items-start gap-3.5 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+            >
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-500 text-slate-950 flex items-center justify-center font-black text-sm shrink-0 mt-0.5 shadow-md shadow-emerald-500/30"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+              <span class="text-sm font-bold text-slate-100 leading-snug"
+                >Interactive charts and reports</span
+              >
+            </div>
+
+            <div
+              class="flex items-start gap-3.5 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+            >
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-500 text-slate-950 flex items-center justify-center font-black text-sm shrink-0 mt-0.5 shadow-md shadow-emerald-500/30"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+              <span class="text-sm font-bold text-slate-100 leading-snug"
+                >CSV & Excel export</span
+              >
+            </div>
+
+            <div
+              class="flex items-start gap-3.5 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+            >
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-500 text-slate-950 flex items-center justify-center font-black text-sm shrink-0 mt-0.5 shadow-md shadow-emerald-500/30"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+              <span class="text-sm font-bold text-slate-100 leading-snug"
+                >Private local storage</span
+              >
+            </div>
+
+            <div
+              class="flex items-start gap-3.5 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+            >
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-500 text-slate-950 flex items-center justify-center font-black text-sm shrink-0 mt-0.5 shadow-md shadow-emerald-500/30"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+              <span class="text-sm font-bold text-slate-100 leading-snug"
+                >No account required</span
+              >
+            </div>
+
+            <div
+              class="flex items-start gap-3.5 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors sm:col-span-2 lg:col-span-1"
+            >
+              <div
+                class="w-7 h-7 rounded-lg bg-emerald-500 text-slate-950 flex items-center justify-center font-black text-sm shrink-0 mt-0.5 shadow-md shadow-emerald-500/30"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+              <span class="text-sm font-bold text-slate-100 leading-snug"
+                >Works worldwide with Metric, US and UK units</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11. FINAL CALL TO ACTION BANNER -->
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="p-8 sm:p-14 rounded-3xl bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white shadow-xl shadow-blue-600/25 flex flex-col lg:flex-row items-center justify-between gap-8 relative overflow-hidden"
+        >
+          <div class="space-y-4 text-left max-w-2xl relative z-10">
+            <h2
+              class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight"
+            >
+              Take Control of Every Mile.
+            </h2>
+            <p
+              class="text-sm sm:text-base text-blue-100 font-medium leading-relaxed"
+            >
+              Fuel costs add up faster than most drivers realize. Fuel Analyzer
+              gives you the tools to understand your vehicle, reduce unnecessary
+              fuel expenses, improve driving efficiency, and make smarter
+              decisions every time you refuel.
+            </p>
+            <p class="text-xs sm:text-sm font-extrabold text-amber-300">
+              ✨ Start tracking today and discover what your vehicle is really
+              costing you.
+            </p>
+            <div class="pt-2">
+              <a
+                href="https://fuel.cartools.app"
+                target="_blank"
+                class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-blue-700 hover:bg-blue-50 font-black text-sm shadow-xl transition-all transform hover:-translate-y-0.5 group"
+              >
+                <span>Start Tracking Today</span>
+                <svg
+                  class="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Car Visual Badge -->
+          <div
+            class="w-full lg:w-72 h-44 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 p-6 flex flex-col items-center justify-center text-center opacity-100 space-y-2 relative z-10 shrink-0"
+          >
+            <img
+              src="../../src/images/fuel_logo.svg"
+              alt="Fuel Analyzer Logo"
+              class="w-12 h-12 rounded-xl shadow-lg shadow-blue-900/40"
+            />
+            <span class="text-sm font-black text-white">Fuel Analyzer</span>
+            <span class="text-xs text-blue-200 font-medium"
+              >100% Free • Private • Offline</span
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="bg-white border-t border-slate-200/80 py-12 text-xs text-slate-500"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Brand Info -->
+          <div class="space-y-3 md:col-span-1">
+            <a href="../../index.html" class="flex items-center gap-2.5 group">
+              <img
+                src="../../src/images/fuel_logo.svg"
+                alt="Fuel Analyzer Logo"
+                class="w-7 h-7 rounded-lg shadow-sm transition-transform group-hover:scale-105"
+                decoding="async"
+              />
+              <span class="text-base font-black text-slate-900 tracking-tight"
+                >FUEL ANALYZER</span
+              >
+            </a>
+            <p class="max-w-xs text-slate-500 leading-relaxed font-medium">
+              Smart fuel economy, speed simulator & expense tracker. Private.
+              Offline. Simple.
+            </p>
+          </div>
+
+          <!-- Product Links -->
+          <div class="space-y-2">
+            <h5
+              class="font-extrabold text-slate-900 uppercase tracking-wider text-[11px]"
+            >
+              Product
+            </h5>
+            <ul class="space-y-1.5 font-medium">
+              <li>
+                <a
+                  href="#how-it-works"
+                  class="hover:text-blue-600 transition-colors"
+                  >How It Works</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#dashboard"
+                  class="hover:text-blue-600 transition-colors"
+                  >Dashboard</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#multi-vehicle"
+                  class="hover:text-blue-600 transition-colors"
+                  >Multi-Vehicle</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Features Links -->
+          <div class="space-y-2">
+            <h5
+              class="font-extrabold text-slate-900 uppercase tracking-wider text-[11px]"
+            >
+              Features
+            </h5>
+            <ul class="space-y-1.5 font-medium">
+              <li>
+                <a
+                  href="#smart-refueling"
+                  class="hover:text-blue-600 transition-colors"
+                  >Refueling Log</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#history-analytics"
+                  class="hover:text-blue-600 transition-colors"
+                  >Analytics & CSV</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#ai-insights"
+                  class="hover:text-blue-600 transition-colors"
+                  >AI Insights</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Connect Links -->
+          <div class="space-y-2">
+            <h5
+              class="font-extrabold text-slate-900 uppercase tracking-wider text-[11px]"
+            >
+              Privacy & Units
+            </h5>
+            <ul class="space-y-1.5 font-medium">
+              <li>
+                <a href="#privacy" class="hover:text-blue-600 transition-colors"
+                  >100% Offline</a
+                >
+              </li>
+              <li>
+                <a href="#privacy" class="hover:text-blue-600 transition-colors"
+                  >Metric & MPG</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="pt-8 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4 font-medium"
+        >
+          <p>© 2026 Fuel Analyzer. All rights reserved.</p>
+          <div
+            class="px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 text-[11px] font-semibold border border-slate-200"
+          >
+            Made with ❤️ for drivers worldwide
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Interactive Script Layer -->
+    <script>
+      // 1. Live Speed vs Fuel Drag Simulator Engine
+      const speedInput = document.getElementById('speedInput');
+      const speedValue = document.getElementById('speedValue');
+      const acToggle = document.getElementById('acToggle');
+      const rackToggle = document.getElementById('rackToggle');
+      const calculatedLiters = document.getElementById('calculatedLiters');
+      const calculatedMpg = document.getElementById('calculatedMpg');
+      const calculatedExtraCost = document.getElementById(
+        'calculatedExtraCost'
+      );
+      const dragZoneBadge = document.getElementById('dragZoneBadge');
+
+      function updateSpeedCalculator() {
+        if (!speedInput) return;
+        const speed = parseInt(speedInput.value);
+        const ac = acToggle ? acToggle.checked : false;
+        const rack = rackToggle ? rackToggle.checked : false;
+
+        speedValue.textContent = `${speed} km/h`;
+
+        // Physics-based formula
+        let baseLiters = 6.2; // Base optimal at 80 km/h
+        let speedPenalty = 0;
+        if (speed > 80) {
+          speedPenalty = Math.pow((speed - 80) / 10, 1.45) * 0.38;
+        } else if (speed < 70) {
+          speedPenalty = (70 - speed) * 0.04;
+        }
+
+        let acPenalty = ac ? 0.85 : 0;
+        let rackPenalty = rack ? 1.4 : 0;
+
+        let totalLiters = baseLiters + speedPenalty + acPenalty + rackPenalty;
+        let mpg = 235.215 / totalLiters;
+        let extraCost = Math.max(0, (totalLiters - 6.2) * 1.55);
+
+        calculatedLiters.textContent = totalLiters.toFixed(1);
+        calculatedMpg.textContent = `${mpg.toFixed(1)} US MPG`;
+        calculatedExtraCost.textContent = `+$${extraCost.toFixed(2)} / 100km`;
+
+        if (speed <= 90) {
+          dragZoneBadge.textContent = '🟢 Optimal Drag Zone';
+          dragZoneBadge.className =
+            'px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-300 text-[10px] font-extrabold border border-blue-400/30';
+        } else if (speed <= 120) {
+          dragZoneBadge.textContent = '🔵 Moderate Drag';
+          dragZoneBadge.className =
+            'px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-300 text-[10px] font-extrabold border border-blue-400/30';
+        } else {
+          dragZoneBadge.textContent = '⚡ High Air Drag!';
+          dragZoneBadge.className =
+            'px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-extrabold border border-amber-400/30';
+        }
+      }
+
+      if (speedInput) {
+        speedInput.addEventListener('input', updateSpeedCalculator);
+        if (acToggle)
+          acToggle.addEventListener('change', updateSpeedCalculator);
+        if (rackToggle)
+          rackToggle.addEventListener('change', updateSpeedCalculator);
+        updateSpeedCalculator();
+      }
+
+      // 2. Annual Fuel Savings Estimator Engine
+      const monthlyKmInput = document.getElementById('monthlyKmInput');
+      const monthlyKmValue = document.getElementById('monthlyKmValue');
+      const gasPriceInput = document.getElementById('gasPriceInput');
+      const gasPriceValue = document.getElementById('gasPriceValue');
+      const annualSavingsText = document.getElementById('annualSavingsText');
+
+      function updateSavingsCalculator() {
+        if (!monthlyKmInput || !gasPriceInput) return;
+        const km = parseInt(monthlyKmInput.value);
+        const price = parseFloat(gasPriceInput.value);
+
+        monthlyKmValue.textContent = `${km.toLocaleString()} km / month`;
+        gasPriceValue.textContent = `$${price.toFixed(2)} / Liter`;
+
+        let annualSavings = ((km * 12) / 100) * 1.85 * price;
+        annualSavingsText.innerHTML = `$${Math.round(annualSavings).toLocaleString()} <span class="text-sm font-bold text-slate-500">/ yr</span>`;
+      }
+
+      if (monthlyKmInput && gasPriceInput) {
+        monthlyKmInput.addEventListener('input', updateSavingsCalculator);
+        gasPriceInput.addEventListener('input', updateSavingsCalculator);
+        updateSavingsCalculator();
+      }
+
+      // 3. Multi-Vehicle Interactive Switcher
+      const vehiclesData = {
+        rav4: {
+          title: '2022 Toyota RAV4',
+          fuelTag: 'Gasoline',
+          tank: '55 Liters',
+          factory: '7.2 L/100km',
+          odo: '42,500 km',
+          records: '24 Refuels',
+        },
+        civic: {
+          title: '2020 Honda Civic',
+          fuelTag: 'Gasoline',
+          tank: '47 Liters',
+          factory: '6.1 L/100km',
+          odo: '68,100 km',
+          records: '38 Refuels',
+        },
+        f150: {
+          title: '2018 Ford F-150',
+          fuelTag: 'Diesel',
+          tank: '98 Liters',
+          factory: '11.4 L/100km',
+          odo: '115,400 km',
+          records: '52 Refuels',
+        },
+      };
+
+      function switchVehicle(vKey) {
+        const data = vehiclesData[vKey];
+        if (!data) return;
+
+        document.getElementById('veh-title').textContent = data.title;
+        document.getElementById('veh-fuel-tag').textContent = data.fuelTag;
+        document.getElementById('veh-tank').textContent = data.tank;
+        document.getElementById('veh-factory').textContent = data.factory;
+        document.getElementById('veh-odo').textContent = data.odo;
+        document.getElementById('veh-records').textContent = data.records;
+
+        document.querySelectorAll('.veh-tab').forEach((btn) => {
+          btn.className =
+            'veh-tab px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all bg-slate-100 text-slate-700 hover:bg-slate-200';
+        });
+
+        const activeBtn = document.getElementById(`veh-btn-${vKey}`);
+        if (activeBtn) {
+          activeBtn.className =
+            'veh-tab px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all bg-blue-600 text-white shadow-md shadow-blue-600/20';
+        }
+      }
+
+      // 4. Global Measurement Unit Switcher
+      const unitsData = {
+        metric: {
+          title: 'Liters & Kilometers (L/100km)',
+          desc: 'Standard metric calculations used in Europe, Canada, Asia & worldwide.',
+        },
+        us: {
+          title: 'US Miles Per Gallon (US MPG)',
+          desc: 'Standard US measurements using US Liquid Gallons & Miles.',
+        },
+        uk: {
+          title: 'UK Imperial Miles Per Gallon (UK MPG)',
+          desc: 'Imperial measurement system used in the United Kingdom.',
+        },
+      };
+
+      function switchUnit(uKey) {
+        const data = unitsData[uKey];
+        if (!data) return;
+
+        document.getElementById('unit-display-value').textContent = data.title;
+        document.getElementById('unit-display-desc').textContent = data.desc;
+
+        document.querySelectorAll('.unit-tab').forEach((btn) => {
+          btn.className =
+            'unit-tab flex-1 py-2 rounded-lg text-xs font-extrabold transition-all text-slate-600 hover:text-slate-900';
+        });
+
+        const activeBtn = document.getElementById(`unit-btn-${uKey}`);
+        if (activeBtn) {
+          activeBtn.className =
+            'unit-tab flex-1 py-2 rounded-lg text-xs font-extrabold transition-all bg-white text-blue-600 shadow-2xs';
+        }
+      }
+    </script>
+  </body>
+</html>

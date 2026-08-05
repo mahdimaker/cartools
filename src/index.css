@@ -1,0 +1,88 @@
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('./fonts/plus-jakarta-sans-latin.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: italic;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('./fonts/plus-jakarta-sans-latin-italic.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
+@layer base {
+  body {
+    font-family:
+      'Plus Jakarta Sans',
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      sans-serif;
+    background-color: #f8fafc;
+    color: #0f172a;
+    line-height: 1.6;
+  }
+}
+
+/* Custom crisp light-theme cards and shadows */
+.card-light {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+  border-radius: 1rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-light:hover {
+  box-shadow: 0 12px 32px -4px rgba(15, 23, 42, 0.08);
+  border-color: #cbd5e1;
+}
+
+/* Accent Glows for Light Theme */
+.fuel-gradient {
+  background: linear-gradient(135deg, #0284c7 0%, #0d9488 100%);
+}
+
+.gig-gradient {
+  background: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%);
+}
+
+.car-hero-badge {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+/* Smooth Pulse Animation */
+@keyframes softPulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.02);
+  }
+}
+
+.animate-soft-pulse {
+  animation: softPulse 4s ease-in-out infinite;
+}

@@ -1,0 +1,1811 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Gig Driver: 100% Free Financial Intelligence & Mileage Tracker for
+      Rideshare & Delivery Drivers
+    </title>
+    <meta
+      name="description"
+      content="Gig Driver is a 100% free financial management, mileage tracker, and accounting tool built for Uber, Lyft, DoorDash, UberEats, Instacart, Amazon Flex, and delivery drivers. Calculate true net profit after fuel, depreciation, tolls, and maintenance."
+    />
+    <meta
+      name="keywords"
+      content="gig driver, rideshare mileage tracker, uber driver earnings calculator, lyft net profit, doordash expense tracker, irs mileage deduction, gig economy accounting, amazon flex profit calculator, free mileage log"
+    />
+    <link
+      rel="canonical"
+      href="https://cartools.app/tools/gig-driver-calculator"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Gig Driver: 100% Free Financial Intelligence & Mileage Tracker"
+    />
+    <meta
+      property="og:description"
+      content="Calculate your true net profit after fuel, vehicle depreciation, tolls, and maintenance. 100% free tool for Uber, Lyft, DoorDash, and delivery drivers."
+    />
+    <meta
+      property="og:url"
+      content="https://cartools.app/tools/gig-driver-calculator"
+    />
+    <meta
+      property="og:image"
+      content="https://cartools.app/src/images/gig-desktop.webp"
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Gig Driver — Free Financial & Mileage Tracker"
+    />
+    <meta
+      name="twitter:description"
+      content="Calculate true net earnings for Uber, Lyft, DoorDash, and Flex drivers. 100% free with zero subscriptions."
+    />
+    <meta
+      name="twitter:image"
+      content="https://cartools.app/src/images/gig-desktop.webp"
+    />
+
+    <link
+      rel="icon"
+      type="image/webp"
+      href="../../src/images/cartools_logo.webp"
+    />
+    <link rel="stylesheet" href="../../src/index.css" />
+
+    <!-- JSON-LD Structured Data for SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Gig Driver",
+        "operatingSystem": "Web, iOS, Android",
+        "applicationCategory": "FinanceApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0.00",
+          "priceCurrency": "USD"
+        },
+        "description": "Gig Driver is a 100% free financial intelligence and mileage tracking platform for rideshare, delivery, and gig drivers.",
+        "url": "https://gig.cartools.app"
+      }
+    </script>
+
+    <!-- FAQPage JSON-LD Schema for Rich Snippets -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is Gig Driver completely free to use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, Gig Driver is 100% free. There are no premium subscriptions, hidden charges, or credit card requirements. You get full, unrestricted access to all shift logging, expense calculations, and performance analytics tools at zero cost."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does Gig Driver calculate my true net profit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Gig Driver calculates your true net profit by deducting hidden operating expenses from your gross earnings. It factors in your vehicle’s specific fuel consumption, real-time fuel prices, mileage depreciation (wear-and-tear), tolls, parking, and custom shift expenses to reveal your actual take-home pay."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need a live GPS connection to track my mileage with Gig Driver?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No, Gig Driver is a lightweight, privacy-focused manual shift and expense log. Instead of draining your battery with continuous live GPS tracking, you simply input your shift distance (miles or kilometers) to instantly compute your fuel costs, depreciation, and net earnings per mile."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use Gig Driver for multiple delivery and rideshare apps at the same time?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Absolutely. Gig Driver is built for multi-app drivers. You can track shift data and compare net earnings across major platforms like Uber, Lyft, DoorDash, UberEats, Instacart, Amazon Flex, and local courier services to see which app pays you the highest true net hourly rate."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does vehicle depreciation calculation work in the app?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Through the Calibration settings, you can customize your vehicle profile (Gasoline, Hybrid, EV, or Diesel) and set your estimated depreciation cost per mile/km. The app then automatically deducts this vehicle wear-and-tear expense from every shift you log."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I export my shift logs for tax reporting and deductions?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! You can export your full shift history, mileage records, and logged expenses into a structured CSV file anytime. This provides a clean audit trail of your driving activities and business expenses to share with your accountant or use during tax preparation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my financial shift data secure?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, your data belongs entirely to you. Gig Driver processes and retains your shift information securely, and you can easily back up, import, or export all your logs and settings to a CSV file whenever you need."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Gig Driver support both Metric and Imperial systems?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! Gig Driver fully supports Metric, Imperial, and UK measurement systems. Whether you calculate your efficiency in Miles/Gallons (US), Kilometers/Liters (Metric), or Miles/Liters (UK), you can easily toggle your preferred units in the Calibration settings for seamless, accurate tracking anywhere in the world."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body
+    class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-emerald-500 selection:text-white"
+  >
+    <!-- Fixed Floating Header -->
+    <header
+      id="header"
+      class="fixed top-4 inset-x-0 z-50 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto transition-all pointer-events-none"
+    >
+      <div
+        class="relative bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-xl shadow-slate-900/10 rounded-2xl h-16 sm:h-18 px-4 sm:px-6 flex items-center justify-between pointer-events-auto"
+      >
+        <!-- Logo & Main Hub Link -->
+        <a href="../../index.html" class="flex items-center gap-3 group">
+          <img
+            src="../../src/images/cartools_logo.webp"
+            alt="CarTools Logo"
+            class="h-9 sm:h-10 w-auto object-contain transition-transform group-hover:scale-105"
+            decoding="async"
+          />
+          <span
+            class="text-xs font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-lg border border-slate-200 hidden sm:inline-block"
+            >← Back to Main Hub</span
+          >
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav
+          class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600 absolute left-1/2 -translate-x-1/2"
+        >
+          <a
+            href="../../index.html"
+            class="hover:text-blue-600 transition-colors"
+            >Main Hub</a
+          >
+          <a
+            href="./tools/fuel-calculator"
+            class="hover:text-blue-600 transition-colors flex items-center gap-1.5"
+          >
+            <span class="w-2 h-2 rounded-full bg-blue-500"></span> Fuel
+            Analytics
+          </a>
+          <a
+            href="./tools/gig-driver-calculator"
+            class="text-emerald-600 font-bold flex items-center gap-1.5"
+          >
+            <span class="w-2 h-2 rounded-full bg-emerald-600"></span> Gig Driver
+          </a>
+        </nav>
+
+        <!-- Right Action Button -->
+        <div class="flex items-center gap-3">
+          <a
+            href="https://gig.cartools.app"
+            target="_blank"
+            class="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white text-xs sm:text-sm font-bold transition-all shadow-md shadow-emerald-500/20 cursor-pointer"
+          >
+            <span>Launch App</span>
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pb-20">
+      <!-- Hero Section (Full-Width from Top Header, matching cartools style) -->
+      <section
+        id="hero"
+        class="relative overflow-hidden pt-28 sm:pt-36 pb-16 sm:pb-20 border-b border-emerald-500/20 bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950 text-white"
+      >
+        <!-- Background Ambient Glow Effects & Grid Pattern -->
+        <div
+          class="absolute -top-20 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[32rem] bg-gradient-to-tr from-emerald-500/20 via-teal-500/15 to-cyan-500/20 blur-3xl pointer-events-none rounded-full"
+        ></div>
+        <div
+          class="absolute inset-0 bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:20px_20px] opacity-25 pointer-events-none"
+        ></div>
+
+        <div
+          class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 sm:space-y-8"
+        >
+          <!-- Badge -->
+          <div
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs sm:text-sm font-extrabold backdrop-blur-md shadow-inner"
+          >
+            <span
+              class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"
+            ></span>
+            <span>100% Free • Zero Subscriptions</span>
+          </div>
+
+          <!-- SEO Main H1 Title -->
+          <h1
+            class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight text-white drop-shadow-md"
+          >
+            Gig Driver:
+            <span
+              class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent"
+              >Free Financial Intelligence</span
+            >
+            for Rideshare & Delivery Drivers
+          </h1>
+
+          <!-- Hero Subtitle -->
+          <p
+            class="text-slate-300 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed font-medium"
+          >
+            Track your mileage, calculate true net profits after expenses, and
+            maximize your daily gig earnings.
+          </p>
+
+          <!-- Supported Platform Chips -->
+          <div class="pt-2">
+            <span
+              class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-3"
+              >Supported Gig Platforms</span
+            >
+            <div class="flex flex-wrap items-center justify-center gap-2">
+              <span
+                class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700/80 text-xs font-bold text-slate-200 flex items-center gap-1.5 shadow-xs"
+              >
+                <span class="w-2 h-2 rounded-full bg-slate-400"></span> Uber
+              </span>
+              <span
+                class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700/80 text-xs font-bold text-pink-300 flex items-center gap-1.5 shadow-xs"
+              >
+                <span class="w-2 h-2 rounded-full bg-pink-500"></span> Lyft
+              </span>
+              <span
+                class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700/80 text-xs font-bold text-red-400 flex items-center gap-1.5 shadow-xs"
+              >
+                <span class="w-2 h-2 rounded-full bg-red-500"></span> DoorDash
+              </span>
+              <span
+                class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700/80 text-xs font-bold text-emerald-400 flex items-center gap-1.5 shadow-xs"
+              >
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                Instacart
+              </span>
+              <span
+                class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700/80 text-xs font-bold text-amber-300 flex items-center gap-1.5 shadow-xs"
+              >
+                <span class="w-2 h-2 rounded-full bg-amber-500"></span> Amazon
+                Flex
+              </span>
+              <span
+                class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700/80 text-xs font-bold text-cyan-300 flex items-center gap-1.5 shadow-xs"
+              >
+                <span class="w-2 h-2 rounded-full bg-cyan-400"></span> UberEats
+              </span>
+            </div>
+          </div>
+
+          <!-- Quick Key Metrics Bar inside Hero -->
+          <div
+            class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto pt-2 text-left"
+          >
+            <div
+              class="p-3.5 rounded-2xl bg-slate-900/70 border border-slate-800 backdrop-blur-xs space-y-1"
+            >
+              <span class="text-xs font-medium text-slate-400 block"
+                >Unit System Support</span
+              >
+              <span
+                class="text-xs sm:text-sm font-black text-emerald-400 whitespace-nowrap"
+                >US, Metric & UK</span
+              >
+            </div>
+            <div
+              class="p-3.5 rounded-2xl bg-slate-900/70 border border-slate-800 backdrop-blur-xs space-y-1"
+            >
+              <span class="text-xs font-medium text-slate-400 block"
+                >Custom Depreciation</span
+              >
+              <span
+                class="text-xs sm:text-sm font-black text-teal-300 whitespace-nowrap"
+                >$0.15 / Mile</span
+              >
+            </div>
+            <div
+              class="p-3.5 rounded-2xl bg-slate-900/70 border border-slate-800 backdrop-blur-xs space-y-1"
+            >
+              <span class="text-xs font-medium text-slate-400 block"
+                >Net Profit Tracking</span
+              >
+              <span
+                class="text-xs sm:text-sm font-black text-cyan-300 whitespace-nowrap"
+                >Real-Time</span
+              >
+            </div>
+            <div
+              class="p-3.5 rounded-2xl bg-slate-900/70 border border-slate-800 backdrop-blur-xs space-y-1"
+            >
+              <span class="text-xs font-medium text-slate-400 block"
+                >Data Ownership</span
+              >
+              <span
+                class="text-xs sm:text-sm font-black text-amber-300 whitespace-nowrap"
+                >100% Private</span
+              >
+            </div>
+          </div>
+
+          <!-- Action CTAs -->
+          <div
+            class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+          >
+            <a
+              href="https://gig.cartools.app"
+              target="_blank"
+              class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-black text-base shadow-xl shadow-emerald-500/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2.5 group"
+            >
+              <span>Calculate Your True Net Profit – 100% Free</span>
+              <svg
+                class="w-5 h-5 text-slate-950 group-hover:translate-x-1 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2.5"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://gig.cartools.app"
+              target="_blank"
+              class="w-full sm:w-auto px-7 py-4 rounded-xl bg-slate-800/90 border border-slate-700 hover:bg-slate-800 text-white font-bold text-base shadow-xs transition-all flex items-center justify-center gap-2"
+            >
+              <span>Start Tracking for Free →</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Is Gig Driver 100% Free? Banner -->
+      <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-14">
+        <div
+          class="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-800 to-emerald-950 text-white border border-slate-800 shadow-xl space-y-6"
+        >
+          <div class="flex items-center gap-3">
+            <span
+              class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl font-black"
+              >💡</span
+            >
+            <div>
+              <h2 class="text-xl sm:text-2xl font-black text-white">
+                Why Is Gig Driver 100% Free?
+              </h2>
+              <p class="text-xs sm:text-sm text-slate-300">
+                Designed to cut your driving expenses—not add another monthly
+                bill to your list
+              </p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+            <div
+              class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-1.5"
+            >
+              <p class="font-bold text-sm text-emerald-400">
+                Lowering Expenses, Not Adding Them
+              </p>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Gig drivers already face high fuel, maintenance, and tax costs.
+                We created a free mileage and profit tracker so you don't have
+                to pay to manage your own money.
+              </p>
+            </div>
+
+            <div
+              class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-1.5"
+            >
+              <p class="font-bold text-sm text-emerald-400">
+                No Hidden Paywalls or Subscriptions
+              </p>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Unlike paid mileage tracking apps that lock essential tax and
+                profit tools behind subscriptions, every feature here stays 100%
+                free forever.
+              </p>
+            </div>
+
+            <div
+              class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-1.5"
+            >
+              <p class="font-bold text-sm text-emerald-400">
+                Built to Protect Your Bottom Line
+              </p>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Our goal is to help Uber, Lyft, and DoorDash drivers keep more
+                of their hard-earned income—starting with zero software fees and
+                no credit card required.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Effortless Tracking in 4 Simple Steps Section -->
+      <section
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 sm:mt-16 space-y-6 sm:space-y-12"
+      >
+        <!-- Section Title -->
+        <div class="text-center space-y-3">
+          <span
+            class="px-4 py-1.5 rounded-full bg-emerald-100/90 text-emerald-800 text-xs font-black uppercase tracking-wider inline-block border border-emerald-200 shadow-sm"
+          >
+            ⚡ 15-Second Workflow
+          </span>
+          <h2
+            class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight"
+          >
+            How It Works: 3 Steps to Calculate Your True Profit
+          </h2>
+          <p
+            class="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto font-medium"
+          >
+            Log your shift in seconds to automatically calculate real net
+            earnings, vehicle costs, true hourly pay, and complete platform
+            profitability.
+          </p>
+        </div>
+
+        <!-- 4 Steps in a Single Row Container -->
+        <div class="relative max-w-6xl mx-auto pt-2 lg:pt-14">
+          <!-- Desktop Arched Connecting Arrows Overlay -->
+          <div
+            class="hidden lg:block pointer-events-none absolute inset-x-0 -top-6 z-20 h-20"
+          >
+            <!-- Arch 1 -> 2 -->
+            <div
+              class="absolute left-[19%] w-[14%] h-20 transition-all duration-300"
+            >
+              <svg
+                viewBox="0 0 100 70"
+                class="w-full h-full overflow-visible drop-shadow-[0_6px_10px_rgba(16,185,129,0.4)]"
+              >
+                <defs>
+                  <linearGradient
+                    id="archGrad1"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="0%"
+                  >
+                    <stop offset="0%" stop-color="#10b981" />
+                    <stop offset="100%" stop-color="#3b82f6" />
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M 5 62 Q 50 -20 92 58"
+                  fill="none"
+                  stroke="url(#archGrad1)"
+                  stroke-width="6"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M 72 46 L 93 60 L 89 36"
+                  fill="none"
+                  stroke="url(#archGrad1)"
+                  stroke-width="6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+
+            <!-- Arch 2 -> 3 -->
+            <div
+              class="absolute left-[44%] w-[14%] h-20 transition-all duration-300"
+            >
+              <svg
+                viewBox="0 0 100 70"
+                class="w-full h-full overflow-visible drop-shadow-[0_6px_10px_rgba(59,130,246,0.4)]"
+              >
+                <defs>
+                  <linearGradient
+                    id="archGrad2"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="0%"
+                  >
+                    <stop offset="0%" stop-color="#3b82f6" />
+                    <stop offset="100%" stop-color="#a855f7" />
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M 5 62 Q 50 -20 92 58"
+                  fill="none"
+                  stroke="url(#archGrad2)"
+                  stroke-width="6"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M 72 46 L 93 60 L 89 36"
+                  fill="none"
+                  stroke="url(#archGrad2)"
+                  stroke-width="6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+
+            <!-- Arch 3 -> 4 -->
+            <div
+              class="absolute left-[69%] w-[14%] h-20 transition-all duration-300"
+            >
+              <svg
+                viewBox="0 0 100 70"
+                class="w-full h-full overflow-visible drop-shadow-[0_6px_10px_rgba(168,85,247,0.4)]"
+              >
+                <defs>
+                  <linearGradient
+                    id="archGrad3"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="0%"
+                  >
+                    <stop offset="0%" stop-color="#a855f7" />
+                    <stop offset="100%" stop-color="#10b981" />
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M 5 62 Q 50 -20 92 58"
+                  fill="none"
+                  stroke="url(#archGrad3)"
+                  stroke-width="6"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M 72 46 L 93 60 L 89 36"
+                  fill="none"
+                  stroke="url(#archGrad3)"
+                  stroke-width="6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- 4-Column Grid -->
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10"
+          >
+            <!-- Step 1 -->
+            <div
+              class="group flex flex-col justify-between text-center relative space-y-4"
+            >
+              <!-- Title & Caption -->
+              <div class="space-y-2 px-1">
+                <h3
+                  class="font-black text-slate-900 text-lg sm:text-xl group-hover:text-emerald-600 transition-colors tracking-tight"
+                >
+                  1. Enter Gross Earnings
+                </h3>
+                <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                  Input your total pay for the shift from Uber, Lyft, DoorDash,
+                  or any gig platform.
+                </p>
+              </div>
+
+              <!-- Image Container (No Card Borders!) -->
+              <div
+                class="relative w-full rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2.5 hover:drop-shadow-2xl mt-auto"
+              >
+                <!-- Color Badge Overlay (Top Left) -->
+                <div
+                  class="absolute top-3 left-3 z-20 flex items-center gap-1.5 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-black text-sm px-4 py-1.5 rounded-full shadow-lg shadow-emerald-600/40 ring-2 ring-white/90 group-hover:scale-110 transition-transform"
+                >
+                  <span
+                    class="w-2.5 h-2.5 rounded-full bg-emerald-200 animate-ping"
+                  ></span>
+                  <span>1</span>
+                </div>
+                <!-- Clean Image without frame borders -->
+                <img
+                  src="../../src/images/shift-log-01.webp"
+                  alt="Step 1: Enter Your Earnings"
+                  class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
+
+            <!-- Mobile Connecting Arrow 1 -> 2 -->
+            <div
+              class="flex lg:hidden justify-center items-center -my-2 text-emerald-500"
+            >
+              <svg
+                class="w-8 h-8 animate-bounce"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                  d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                />
+              </svg>
+            </div>
+
+            <!-- Step 2 -->
+            <div
+              class="group flex flex-col justify-between text-center relative space-y-4"
+            >
+              <!-- Title & Caption -->
+              <div class="space-y-2 px-1">
+                <h3
+                  class="font-black text-slate-900 text-lg sm:text-xl group-hover:text-blue-600 transition-colors tracking-tight"
+                >
+                  2. Input Total Mileage
+                </h3>
+                <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                  Enter your miles driven to factor in fuel costs, depreciation,
+                  and vehicle expenses.
+                </p>
+              </div>
+
+              <!-- Image Container (No Card Borders!) -->
+              <div
+                class="relative w-full rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2.5 hover:drop-shadow-2xl mt-auto"
+              >
+                <!-- Color Badge Overlay (Top Left) -->
+                <div
+                  class="absolute top-3 left-3 z-20 flex items-center gap-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-black text-sm px-4 py-1.5 rounded-full shadow-lg shadow-blue-600/40 ring-2 ring-white/90 group-hover:scale-110 transition-transform"
+                >
+                  <span
+                    class="w-2.5 h-2.5 rounded-full bg-blue-200 animate-ping"
+                  ></span>
+                  <span>2</span>
+                </div>
+                <!-- Clean Image without frame borders -->
+                <img
+                  src="../../src/images/shift-log-02.webp"
+                  alt="Step 2: Input Total Mileage"
+                  class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
+
+            <!-- Mobile Connecting Arrow 2 -> 3 -->
+            <div
+              class="flex lg:hidden justify-center items-center -my-2 text-blue-500"
+            >
+              <svg
+                class="w-8 h-8 animate-bounce"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                  d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                />
+              </svg>
+            </div>
+
+            <!-- Step 3 -->
+            <div
+              class="group flex flex-col justify-between text-center relative space-y-4"
+            >
+              <!-- Title & Caption -->
+              <div class="space-y-2 px-1">
+                <h3
+                  class="font-black text-slate-900 text-lg sm:text-xl group-hover:text-purple-600 transition-colors tracking-tight"
+                >
+                  3. Set Active Hours
+                </h3>
+                <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                  Select your shift duration to measure your actual hourly
+                  take-home rate after costs.
+                </p>
+              </div>
+
+              <!-- Image Container (No Card Borders!) -->
+              <div
+                class="relative w-full rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2.5 hover:drop-shadow-2xl mt-auto"
+              >
+                <!-- Color Badge Overlay (Top Left) -->
+                <div
+                  class="absolute top-3 left-3 z-20 flex items-center gap-1.5 bg-gradient-to-r from-purple-600 to-violet-600 text-white font-black text-sm px-4 py-1.5 rounded-full shadow-lg shadow-purple-600/40 ring-2 ring-white/90 group-hover:scale-110 transition-transform"
+                >
+                  <span
+                    class="w-2.5 h-2.5 rounded-full bg-purple-200 animate-ping"
+                  ></span>
+                  <span>3</span>
+                </div>
+                <!-- Clean Image without frame borders -->
+                <img
+                  src="../../src/images/shift-log-03.webp"
+                  alt="Step 3: Set Active Hours"
+                  class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
+
+            <!-- Mobile Connecting Arrow 3 -> 4 -->
+            <div
+              class="flex lg:hidden justify-center items-center -my-2 text-purple-500"
+            >
+              <svg
+                class="w-8 h-8 animate-bounce"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                  d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                />
+              </svg>
+            </div>
+
+            <!-- Step 4: Analytics Result -->
+            <div
+              class="group flex flex-col justify-between text-center relative space-y-4"
+            >
+              <!-- Title & Caption -->
+              <div class="space-y-2 px-1">
+                <h3
+                  class="font-black text-slate-900 text-lg sm:text-xl group-hover:text-emerald-600 transition-colors tracking-tight"
+                >
+                  ✨ Instant Analytics!
+                </h3>
+                <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                  Instantly see your true net hourly rate, expense breakdown,
+                  and most profitable gig platform.
+                </p>
+              </div>
+
+              <!-- Image Container with Stylish Gradient Border (No badge 4) -->
+              <div
+                class="relative w-full p-[3px] rounded-2xl bg-gradient-to-tr from-emerald-500 via-teal-400 to-amber-400 shadow-xl shadow-emerald-500/20 hover:shadow-emerald-500/40 transition-all duration-300 hover:-translate-y-2.5 mt-auto"
+              >
+                <div
+                  class="w-full h-full bg-white rounded-[13px] overflow-hidden"
+                >
+                  <img
+                    src="../../src/images/shift-log-analytics.webp"
+                    alt="Instant Analytics Breakdown"
+                    class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Deep Feature Breakdown (4 Core Sections with Screenshots) -->
+      <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 space-y-24">
+        <!-- Section 1: Dashboard -->
+        <div class="space-y-6">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <!-- Content & Features (Left Side) -->
+            <div class="lg:col-span-7 space-y-6">
+              <div class="border-b border-slate-200 pb-4">
+                <span
+                  class="text-xs font-extrabold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200"
+                  >Module 01</span
+                >
+                <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-2">
+                  1. Dashboard: Your Free Daily Shift Control Center
+                </h2>
+                <p
+                  class="text-slate-600 text-sm sm:text-base mt-2 leading-relaxed"
+                >
+                  The <strong>Dashboard</strong> acts as your day-to-day command
+                  center to log active shifts instantly and monitor real-time
+                  financial performance on the road.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div
+                  class="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs hover:border-emerald-300 transition-all space-y-2.5"
+                >
+                  <div
+                    class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-lg"
+                  >
+                    📝
+                  </div>
+                  <h3 class="font-black text-base text-slate-900">
+                    Core Shift Inputs
+                  </h3>
+                  <ul
+                    class="text-sm text-slate-700 space-y-2 list-disc pl-4 leading-relaxed font-medium"
+                  >
+                    <li>
+                      <strong class="text-slate-900 font-semibold"
+                        >Gig Platforms:</strong
+                      >
+                      Uber, Lyft, DoorDash, UberEats, Instacart, Flex.
+                    </li>
+                    <li>
+                      <strong class="text-slate-900 font-semibold"
+                        >Gross Revenue:</strong
+                      >
+                      Record earnings instantly.
+                    </li>
+                    <li>
+                      <strong class="text-slate-900 font-semibold"
+                        >Distance & Hours:</strong
+                      >
+                      Log miles and online time.
+                    </li>
+                  </ul>
+                </div>
+
+                <div
+                  class="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs hover:border-emerald-300 transition-all space-y-2.5"
+                >
+                  <div
+                    class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-lg"
+                  >
+                    ⚡
+                  </div>
+                  <h3 class="font-black text-base text-slate-900">
+                    Quick Expenses
+                  </h3>
+                  <p
+                    class="text-sm text-slate-700 leading-relaxed mb-2 font-medium"
+                  >
+                    One-tap buttons to log instant road costs:
+                  </p>
+                  <div class="flex flex-wrap gap-1.5 pt-1">
+                    <span
+                      class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-800 text-xs font-bold border border-slate-200 shadow-2xs"
+                      >🅿️ Parking</span
+                    >
+                    <span
+                      class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-800 text-xs font-bold border border-slate-200 shadow-2xs"
+                      >🛣️ Tolls</span
+                    >
+                    <span
+                      class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-800 text-xs font-bold border border-slate-200 shadow-2xs"
+                      >🧽 Wash</span
+                    >
+                  </div>
+                </div>
+
+                <div
+                  class="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs hover:border-emerald-300 transition-all space-y-2.5"
+                >
+                  <div
+                    class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-lg"
+                  >
+                    🧮
+                  </div>
+                  <h3 class="font-black text-base text-slate-900">
+                    Smart Estimator
+                  </h3>
+                  <ul
+                    class="text-sm text-slate-700 space-y-2 list-disc pl-4 leading-relaxed font-medium"
+                  >
+                    <li>
+                      <strong class="text-slate-900 font-semibold"
+                        >True Net Profit:</strong
+                      >
+                      Auto computes take-home pay.
+                    </li>
+                    <li>
+                      <strong class="text-slate-900 font-semibold"
+                        >Hourly & Mileage:</strong
+                      >
+                      Instant $/hr and $/mi metrics.
+                    </li>
+                    <li>
+                      <strong class="text-slate-900 font-semibold"
+                        >Fuel & Vehicle Costs:</strong
+                      >
+                      Real-time expense & fuel calculations
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Screenshot 1 (Right Side - Frameless) -->
+            <div
+              class="lg:col-span-5 rounded-2xl overflow-hidden group transition-all"
+            >
+              <img
+                src="../../src/images/gig-app-01.webp"
+                alt="Gig Driver Dashboard Screenshot"
+                class="w-full h-auto object-cover group-hover:scale-[1.01] transition-transform duration-300"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2: Shift Logs & History -->
+        <div class="space-y-6">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <!-- Screenshot 2 (Left Side on LG - Frameless) -->
+            <div
+              class="lg:col-span-5 order-2 lg:order-1 rounded-2xl overflow-hidden group transition-all"
+            >
+              <img
+                src="../../src/images/gig-app-02.webp"
+                alt="Gig Driver Shift Logs & History Screenshot"
+                class="w-full h-auto object-cover group-hover:scale-[1.01] transition-transform duration-300"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <!-- Content & Features (Right Side on LG) -->
+            <div class="lg:col-span-7 order-1 lg:order-2 space-y-6">
+              <div class="border-b border-slate-200 pb-4">
+                <span
+                  class="text-xs font-extrabold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200"
+                  >Module 02</span
+                >
+                <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-2">
+                  2. Shift Logs & History: Free Mileage & Expense Tracker
+                </h2>
+                <p
+                  class="text-slate-600 text-sm sm:text-base mt-2 leading-relaxed"
+                >
+                  The <strong>Shift Logs</strong> section maintains a complete
+                  audit trail of all your past shifts, complete with detailed
+                  expense breakdowns, net profits, and performance metrics.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div
+                  class="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-2"
+                >
+                  <h3
+                    class="font-black text-base text-slate-900 flex items-center gap-2"
+                  >
+                    <span class="text-emerald-600 font-black text-lg">✓</span>
+                    Shift Cards
+                  </h3>
+                  <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                    Quick-summary cards displaying date, online hours, mileage,
+                    gross revenue, and final net profit.
+                  </p>
+                </div>
+
+                <div
+                  class="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-2"
+                >
+                  <h3
+                    class="font-black text-base text-slate-900 flex items-center gap-2"
+                  >
+                    <span class="text-emerald-600 font-black text-lg">✓</span>
+                    Color-Coded Profitability
+                  </h3>
+                  <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                    Visual color indicators that let you gauge shift
+                    profitability and net margin at a glance.
+                  </p>
+                </div>
+
+                <div
+                  class="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-2"
+                >
+                  <h3
+                    class="font-black text-base text-slate-900 flex items-center gap-2"
+                  >
+                    <span class="text-emerald-600 font-black text-lg">✓</span>
+                    Expanded Details
+                  </h3>
+                  <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                    In-depth breakdown of fuel, depreciation, tolls, parking,
+                    custom expenses, $/hr, and $/mi.
+                  </p>
+                </div>
+
+                <div
+                  class="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-2"
+                >
+                  <h3
+                    class="font-black text-base text-slate-900 flex items-center gap-2"
+                  >
+                    <span class="text-emerald-600 font-black text-lg">✓</span>
+                    Search & Date Filters
+                  </h3>
+                  <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                    Filter shifts by Today, This Week, Month, Year, or Custom
+                    Ranges, plus keyword search.
+                  </p>
+                </div>
+
+                <div
+                  class="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-2 sm:col-span-2"
+                >
+                  <h3
+                    class="font-black text-base text-slate-900 flex items-center gap-2"
+                  >
+                    <span class="text-emerald-600 font-black text-lg">✓</span>
+                    Live Filtered Summary Banner
+                  </h3>
+                  <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                    Sticky header summarizing total gross revenue, true net
+                    profit, total distance, and working hours for your selected
+                    filtered view.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 3: Analytics & Financial Intelligence Hub -->
+        <div class="space-y-6">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <!-- Content & Features (Left Side) -->
+            <div class="lg:col-span-7 space-y-6">
+              <div class="border-b border-slate-200 pb-4">
+                <span
+                  class="text-xs font-extrabold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200"
+                  >Module 03</span
+                >
+                <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-2">
+                  3. Analytics & Financial Intelligence Hub
+                </h2>
+                <p
+                  class="text-slate-600 text-sm sm:text-base mt-2 leading-relaxed"
+                >
+                  The <strong>Analytics</strong> tab serves as the strategic
+                  command center of the app, analyzing historical shift data to
+                  deliver deep financial reports and actionable strategies—all
+                  completely free.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div
+                  class="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-2"
+                >
+                  <div class="text-xl">📊</div>
+                  <h3 class="font-black text-base text-slate-900">
+                    Financial Aggregates
+                  </h3>
+                  <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                    Gross revenue vs net profit, online hours, mileage driven,
+                    net per mile, and break-even hourly rates.
+                  </p>
+                </div>
+
+                <div
+                  class="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-2"
+                >
+                  <div class="text-xl">🎯</div>
+                  <h3 class="font-black text-base text-slate-900">
+                    Strategic Insights
+                  </h3>
+                  <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                    Dead-time alerts flagging excessive waiting, distance
+                    efficiency warnings, and optimal platform tips.
+                  </p>
+                </div>
+
+                <div
+                  class="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-2"
+                >
+                  <div class="text-xl">🏆</div>
+                  <h3 class="font-black text-base text-slate-900">
+                    Platform Rankings
+                  </h3>
+                  <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                    Compare Uber, Lyft, DoorDash, and Flex side-by-side sorted
+                    by Net Hourly Earnings ($/hr).
+                  </p>
+                </div>
+
+                <div
+                  class="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-2"
+                >
+                  <div class="text-xl">📅</div>
+                  <h3 class="font-black text-base text-slate-900">
+                    Weekday Planner
+                  </h3>
+                  <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                    Discover which gig app performs best on each specific day of
+                    the week with historical tips.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Screenshot 3 (Right Side - Frameless) -->
+            <div
+              class="lg:col-span-5 rounded-2xl overflow-hidden group transition-all"
+            >
+              <img
+                src="../../src/images/gig-app-03.webp"
+                alt="Gig Driver Analytics Hub Screenshot"
+                class="w-full h-auto object-cover group-hover:scale-[1.01] transition-transform duration-300"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 4: Calibration & Vehicle Settings -->
+        <div class="space-y-6">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <!-- Screenshot 4 (Left Side on LG - Frameless) -->
+            <div
+              class="lg:col-span-5 order-2 lg:order-1 rounded-2xl overflow-hidden group transition-all"
+            >
+              <img
+                src="../../src/images/gig-app-04.webp"
+                alt="Gig Driver Vehicle Calibration Screenshot"
+                class="w-full h-auto object-cover group-hover:scale-[1.01] transition-transform duration-300"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <!-- Content & Features (Right Side on LG) -->
+            <div class="lg:col-span-7 order-1 lg:order-2 space-y-6">
+              <div class="border-b border-slate-200 pb-4">
+                <span
+                  class="text-xs font-extrabold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200"
+                  >Module 04</span
+                >
+                <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-2">
+                  4. Calibration & Vehicle Settings
+                </h2>
+                <p
+                  class="text-slate-600 text-sm sm:text-base mt-2 leading-relaxed"
+                >
+                  Tailor all financial calculations to match your exact vehicle
+                  specifications for institutional-grade accounting accuracy.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div
+                  class="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-2"
+                >
+                  <div class="text-emerald-700 font-black text-base">
+                    🚗 Vehicle Profile
+                  </div>
+                  <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                    Set powertrain type (Gasoline, Diesel, Hybrid, EV), energy
+                    consumption rates (MPG, L/100km, mi/kWh), and switch
+                    effortlessly between Metric, US Imperial, and UK units.
+                  </p>
+                </div>
+
+                <div
+                  class="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-2"
+                >
+                  <div class="text-emerald-700 font-black text-base">
+                    ⛽ Fuel, Energy & Depreciation
+                  </div>
+                  <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                    Calibrate gas prices or electricity rates ($/kWh) and custom
+                    wear-and-tear per mile/km, supported by AAA industry
+                    benchmark tiers and historical audit logs.
+                  </p>
+                </div>
+
+                <div
+                  class="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-2"
+                >
+                  <div class="text-emerald-700 font-black text-base">
+                    ⚙️ Default Expenses
+                  </div>
+                  <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                    Set default toll, car wash, and parking rates to accelerate
+                    shift entries during high-pace driving shifts.
+                  </p>
+                </div>
+
+                <div
+                  class="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-2"
+                >
+                  <div class="text-emerald-700 font-black text-base">
+                    💾 Data Backup & CSV Export
+                  </div>
+                  <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                    Export shift history to CSV files for tax preparation or
+                    seamlessly import backup files to restore data.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- App Interface Showcase -->
+      <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 space-y-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-2xl font-black text-slate-900">
+              Native UI/UX & Desktop Experience
+            </h2>
+            <p class="text-xs text-slate-500">
+              Designed for comprehensive financial analytics, multi-column
+              reporting, and deep data visualization on desktop screens.
+            </p>
+          </div>
+          <a
+            href="https://gig.cartools.app"
+            target="_blank"
+            class="text-xs font-bold text-emerald-600 hover:underline"
+            >Launch App →</a
+          >
+        </div>
+
+        <div
+          class="rounded-2xl overflow-hidden border border-slate-200 shadow-xl bg-white group hover:border-emerald-300 hover:shadow-2xl transition-all"
+        >
+          <div
+            class="h-8 bg-slate-100 border-b border-slate-200 px-4 flex items-center gap-2"
+          >
+            <div class="flex items-center gap-1.5">
+              <span
+                class="w-3 h-3 rounded-full bg-rose-400 inline-block"
+              ></span>
+              <span
+                class="w-3 h-3 rounded-full bg-amber-400 inline-block"
+              ></span>
+              <span
+                class="w-3 h-3 rounded-full bg-emerald-400 inline-block"
+              ></span>
+            </div>
+            <div
+              class="mx-auto bg-white text-slate-600 text-[11px] font-mono px-4 py-0.5 rounded-md border border-slate-200"
+            >
+              gig.cartools.app
+            </div>
+          </div>
+          <img
+            src="../../src/images/gig-desktop.webp"
+            alt="Gig Driver Financial Analytics Dashboard"
+            class="w-full h-auto object-cover group-hover:scale-[1.01] transition-transform duration-300"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </section>
+
+      <!-- Interactive Net Profit & Tax Deduction Calculator Widget -->
+      <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+        <div
+          class="card-light p-8 sm:p-10 border-2 border-emerald-100 bg-gradient-to-br from-white via-emerald-50/20 to-white space-y-8 rounded-3xl shadow-lg"
+        >
+          <div
+            class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-emerald-100 pb-6"
+          >
+            <div>
+              <span
+                class="text-xs font-bold text-emerald-700 uppercase tracking-wider"
+                >Interactive Profit Calculator</span
+              >
+              <h2 class="text-2xl font-black text-slate-900 mt-1">
+                True Net Profit & IRS Tax Deduction Estimator
+              </h2>
+              <p class="text-xs text-slate-500 mt-1">
+                Calculate your real take-home pay after fuel, vehicle
+                depreciation, and potential tax write-offs.
+              </p>
+            </div>
+            <span
+              class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold self-start sm:self-auto border border-emerald-200"
+              >IRS Standard Rate ($0.67/mi)</span
+            >
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Inputs -->
+            <div class="space-y-4">
+              <div>
+                <label class="text-xs font-bold text-slate-700 block mb-1"
+                  >Weekly Gross Earnings ($)</label
+                >
+                <input
+                  type="number"
+                  id="gig-gross"
+                  value="1150"
+                  class="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm font-semibold text-slate-800 focus:outline-none focus:border-emerald-500"
+                />
+              </div>
+
+              <div>
+                <label class="text-xs font-bold text-slate-700 block mb-1"
+                  >Weekly Business Miles</label
+                >
+                <input
+                  type="number"
+                  id="gig-miles"
+                  value="550"
+                  class="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm font-semibold text-slate-800 focus:outline-none focus:border-emerald-500"
+                />
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <div>
+                  <label class="text-xs font-bold text-slate-700 block mb-1"
+                    >Vehicle MPG</label
+                  >
+                  <input
+                    type="number"
+                    id="gig-mpg"
+                    value="25"
+                    class="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm font-semibold text-slate-800 focus:outline-none focus:border-emerald-500"
+                  />
+                </div>
+                <div>
+                  <label class="text-xs font-bold text-slate-700 block mb-1"
+                    >Gas Price ($/gal)</label
+                  >
+                  <input
+                    type="number"
+                    step="0.1"
+                    id="gig-price"
+                    value="3.65"
+                    class="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm font-semibold text-slate-800 focus:outline-none focus:border-emerald-500"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Vehicle & Platform Details -->
+            <div class="space-y-4">
+              <div
+                class="p-3.5 rounded-xl bg-slate-100/80 text-xs text-slate-600 space-y-2 border border-slate-200"
+              >
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-slate-800"
+                    >Est. Weekly Fuel Cost:</span
+                  >
+                  <span
+                    id="gig-fuel-cost-text"
+                    class="font-black text-slate-900"
+                    >$80.30</span
+                  >
+                </div>
+                <div
+                  class="flex items-center justify-between border-t border-slate-200 pt-2"
+                >
+                  <span class="font-bold text-slate-800"
+                    >Est. Vehicle Wear ($0.15/mi):</span
+                  >
+                  <span id="gig-depr-text" class="font-black text-slate-900"
+                    >$82.50</span
+                  >
+                </div>
+              </div>
+
+              <div>
+                <label class="text-xs font-bold text-slate-700 block mb-1"
+                  >Supported Platforms</label
+                >
+                <div class="grid grid-cols-2 gap-2 pt-1">
+                  <span
+                    class="px-2.5 py-1.5 rounded-lg bg-slate-100 text-slate-800 text-xs font-bold border border-slate-200 flex items-center justify-center gap-1"
+                    >🚗 Uber</span
+                  >
+                  <span
+                    class="px-2.5 py-1.5 rounded-lg bg-slate-100 text-slate-800 text-xs font-bold border border-slate-200 flex items-center justify-center gap-1"
+                    >🚗 Lyft</span
+                  >
+                  <span
+                    class="px-2.5 py-1.5 rounded-lg bg-slate-100 text-slate-800 text-xs font-bold border border-slate-200 flex items-center justify-center gap-1"
+                    >🍔 DoorDash</span
+                  >
+                  <span
+                    class="px-2.5 py-1.5 rounded-lg bg-slate-100 text-slate-800 text-xs font-bold border border-slate-200 flex items-center justify-center gap-1"
+                    >📦 Amazon Flex</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Calculation Output -->
+            <div
+              class="p-6 rounded-2xl bg-emerald-600 text-white flex flex-col justify-between shadow-lg shadow-emerald-600/20"
+            >
+              <div class="space-y-1">
+                <span
+                  class="text-xs font-medium text-emerald-200 uppercase tracking-wide"
+                  >Weekly True Net Profit</span
+                >
+                <p id="gig-net-profit" class="text-3xl font-black">$922.50</p>
+                <p
+                  id="gig-profit-margin"
+                  class="text-xs text-emerald-100 font-semibold"
+                >
+                  Net Margin: 80.2% | Profit/Mile: $1.68
+                </p>
+              </div>
+
+              <div class="pt-4 border-t border-emerald-500/80 space-y-1">
+                <span class="text-xs font-bold text-emerald-100"
+                  >Est. Tax Deduction (IRS Standard):</span
+                >
+                <p
+                  id="gig-tax-deduction"
+                  class="text-sm font-extrabold text-amber-300"
+                >
+                  💵 $368.50 / week ($19,162 / yr)
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Additional Calculations in App CTA Button -->
+          <div
+            class="pt-6 border-t border-emerald-100 flex flex-col sm:flex-row items-center justify-between gap-4"
+          >
+            <p
+              class="text-xs text-slate-500 font-medium text-center sm:text-left"
+            >
+              Need deeper multi-platform analytics, shift log tracking, and
+              custom expense management?
+            </p>
+            <a
+              href="https://gig.cartools.app"
+              target="_blank"
+              class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 group"
+            >
+              <span>More Calculations in App →</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section for SEO -->
+      <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 space-y-8">
+        <div class="text-center space-y-2">
+          <span
+            class="text-xs font-bold text-emerald-700 uppercase tracking-wider"
+            >Frequently Asked Questions</span
+          >
+          <h2 class="text-3xl font-black text-slate-900">Gig Driver FAQ</h2>
+          <p class="text-slate-600 text-sm max-w-xl mx-auto">
+            Everything you need to know about tracking rideshare and delivery
+            earnings completely free.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div
+            class="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-2.5"
+          >
+            <h3 class="font-bold text-slate-900 text-base leading-snug">
+              Is Gig Driver completely free to use?
+            </h3>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">
+              Yes, Gig Driver is 100% free. There are no premium subscriptions,
+              hidden charges, or credit card requirements. You get full,
+              unrestricted access to all shift logging, expense calculations,
+              and performance analytics tools at zero cost.
+            </p>
+          </div>
+
+          <div
+            class="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-2.5"
+          >
+            <h3 class="font-bold text-slate-900 text-base leading-snug">
+              How does Gig Driver calculate my true net profit?
+            </h3>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">
+              Gig Driver calculates your true net profit by deducting hidden
+              operating expenses from your gross earnings. It factors in your
+              vehicle’s specific fuel consumption, real-time fuel prices,
+              mileage depreciation (wear-and-tear), tolls, parking, and custom
+              shift expenses to reveal your actual take-home pay.
+            </p>
+          </div>
+
+          <div
+            class="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-2.5"
+          >
+            <h3 class="font-bold text-slate-900 text-base leading-snug">
+              Do I need a live GPS connection to track my mileage with Gig
+              Driver?
+            </h3>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">
+              No, Gig Driver is a lightweight, privacy-focused manual shift and
+              expense log. Instead of draining your battery with continuous live
+              GPS tracking, you simply input your shift distance (miles or
+              kilometers) to instantly compute your fuel costs, depreciation,
+              and net earnings per mile.
+            </p>
+          </div>
+
+          <div
+            class="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-2.5"
+          >
+            <h3 class="font-bold text-slate-900 text-base leading-snug">
+              Can I use Gig Driver for multiple delivery and rideshare apps at
+              the same time?
+            </h3>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">
+              Absolutely. Gig Driver is built for multi-app drivers. You can
+              track shift data and compare net earnings across major platforms
+              like Uber, Lyft, DoorDash, UberEats, Instacart, Amazon Flex, and
+              local courier services to see which app pays you the highest true
+              net hourly rate.
+            </p>
+          </div>
+
+          <div
+            class="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-2.5"
+          >
+            <h3 class="font-bold text-slate-900 text-base leading-snug">
+              How does vehicle depreciation calculation work in the app?
+            </h3>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">
+              Through the Calibration settings, you can customize your vehicle
+              profile (Gasoline, Hybrid, EV, or Diesel) and set your estimated
+              depreciation cost per mile/km. The app then automatically deducts
+              this vehicle wear-and-tear expense from every shift you log.
+            </p>
+          </div>
+
+          <div
+            class="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-2.5"
+          >
+            <h3 class="font-bold text-slate-900 text-base leading-snug">
+              Can I export my shift logs for tax reporting and deductions?
+            </h3>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">
+              Yes! You can export your full shift history, mileage records, and
+              logged expenses into a structured CSV file anytime. This provides
+              a clean audit trail of your driving activities and business
+              expenses to share with your accountant or use during tax
+              preparation.
+            </p>
+          </div>
+
+          <div
+            class="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-2.5"
+          >
+            <h3 class="font-bold text-slate-900 text-base leading-snug">
+              Is my financial shift data secure?
+            </h3>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">
+              Yes, your data belongs entirely to you. Gig Driver processes and
+              retains your shift information securely, and you can easily back
+              up, import, or export all your logs and settings to a CSV file
+              whenever you need.
+            </p>
+          </div>
+
+          <div
+            class="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-2.5"
+          >
+            <h3 class="font-bold text-slate-900 text-base leading-snug">
+              Does Gig Driver support both Metric and Imperial systems?
+            </h3>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">
+              Yes! Gig Driver fully supports Metric, Imperial, and UK
+              measurement systems. Whether you calculate your efficiency in
+              Miles/Gallons (US), Kilometers/Liters (Metric), or Miles/Liters
+              (UK), you can easily toggle your preferred units in the
+              Calibration settings for seamless, accurate tracking anywhere in
+              the world.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom Launch CTA Banner -->
+      <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+        <div
+          class="p-10 rounded-3xl bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white text-center space-y-6 shadow-2xl shadow-emerald-600/30"
+        >
+          <h2 class="text-3xl sm:text-4xl font-black">
+            Maximize Your Driving Profits Today
+          </h2>
+          <p class="text-emerald-100 max-w-xl mx-auto text-sm sm:text-base">
+            Start tracking shift earnings, compare platform profitability, and
+            keep track of every tax deduction with Gig Driver—100% Free.
+          </p>
+          <div
+            class="flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <a
+              href="https://gig.cartools.app"
+              target="_blank"
+              class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white text-emerald-800 font-black text-base shadow-lg hover:bg-emerald-50 transition-all"
+            >
+              Calculate Your True Net Profit – 100% Free →
+            </a>
+            <a
+              href="/tools/fuel-calculator"
+              class="w-full sm:w-auto px-7 py-4 rounded-xl bg-emerald-700/80 hover:bg-emerald-700 text-white font-bold text-base border border-emerald-400/40 transition-all"
+            >
+              Check out Fuel Analytics Page →
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div
+          class="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-slate-800 pb-8"
+        >
+          <div class="flex items-center gap-3">
+            <img
+              src="../../src/images/cartools_logo.webp"
+              alt="CarTools Logo"
+              class="h-10 w-auto object-contain rounded-lg"
+              loading="lazy"
+              decoding="async"
+            />
+            <div>
+              <span class="text-white text-lg font-bold">CarTools</span>
+              <span class="text-xs text-slate-500 block">cartools.app</span>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-6 text-sm font-medium">
+            <a
+              href="../../index.html"
+              class="hover:text-white transition-colors"
+              >Main Hub</a
+            >
+            <a
+              href="./tools/fuel-calculator"
+              class="hover:text-blue-400 transition-colors"
+              >Fuel Analytics</a
+            >
+            <a
+              href="./tools/gig-driver-calculator"
+              class="text-emerald-400 font-bold"
+              >GIG Driver</a
+            >
+          </div>
+        </div>
+
+        <div
+          class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500"
+        >
+          <p>© 2026 CarTools Suite (cartools.app). All rights reserved.</p>
+          <p>Built for drivers everywhere.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Interactive Profit Calculator Script -->
+    <script>
+      function updateGigCalculator() {
+        const gross = parseFloat(
+          document.getElementById('gig-gross')?.value || '1150'
+        );
+        const miles = parseFloat(
+          document.getElementById('gig-miles')?.value || '550'
+        );
+        const mpg = parseFloat(
+          document.getElementById('gig-mpg')?.value || '25'
+        );
+        const price = parseFloat(
+          document.getElementById('gig-price')?.value || '3.65'
+        );
+
+        const fuelCost = mpg > 0 ? (miles / mpg) * price : 0;
+        const deprRate = 0.15; // $0.15/mile
+        const deprCost = miles * deprRate;
+        const totalExpenses = fuelCost + deprCost;
+        const netProfit = gross - totalExpenses;
+        const profitMargin = gross > 0 ? (netProfit / gross) * 100 : 0;
+        const profitPerMile = miles > 0 ? netProfit / miles : 0;
+
+        const irsRate = 0.67; // $0.67 per mile IRS deduction
+        const weeklyDeduction = miles * irsRate;
+        const annualDeduction = weeklyDeduction * 52;
+
+        const netProfitEl = document.getElementById('gig-net-profit');
+        const marginEl = document.getElementById('gig-profit-margin');
+        const fuelCostTextEl = document.getElementById('gig-fuel-cost-text');
+        const deprTextEl = document.getElementById('gig-depr-text');
+        const taxEl = document.getElementById('gig-tax-deduction');
+
+        if (fuelCostTextEl)
+          fuelCostTextEl.textContent = '$' + fuelCost.toFixed(2);
+        if (deprTextEl) deprTextEl.textContent = '$' + deprCost.toFixed(2);
+        if (netProfitEl)
+          netProfitEl.textContent =
+            '$' +
+            netProfit.toLocaleString('en-US', {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            });
+        if (marginEl)
+          marginEl.textContent =
+            'Net Margin: ' +
+            profitMargin.toFixed(1) +
+            '% | Profit/Mile: $' +
+            profitPerMile.toFixed(2);
+        if (taxEl)
+          taxEl.textContent =
+            '💵 $' +
+            weeklyDeduction.toLocaleString('en-US', {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            }) +
+            ' / week ($' +
+            Math.round(annualDeduction).toLocaleString() +
+            ' / yr)';
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        ['gig-gross', 'gig-miles', 'gig-mpg', 'gig-price'].forEach((id) => {
+          document
+            .getElementById(id)
+            ?.addEventListener('input', updateGigCalculator);
+        });
+        updateGigCalculator();
+      });
+    </script>
+  </body>
+</html>
