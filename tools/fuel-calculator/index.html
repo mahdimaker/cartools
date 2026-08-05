@@ -16,6 +16,7 @@
       name="keywords"
       content="fuel consumption analyzer, gas log app, mileage tracker, speed vs fuel consumption simulator, fuel waste calculator, trip cost estimator, fuel economy calculator"
     />
+    <link rel="canonical" href="https://fuel.cartools.app/" />
     <meta
       property="og:title"
       content="Fuel Analyzer — Master Your Fuel Economy & Eliminate Hidden Fuel Costs"
@@ -33,7 +34,7 @@
       href="../../src/images/fuel_logo.svg"
     />
     <link rel="stylesheet" href="../../src/index.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../src/main.css" />
 
     <!-- WebApplication JSON-LD Schema -->
     <script type="application/ld+json">
@@ -167,7 +168,10 @@
           <img
             src="../../src/images/fuel_logo.svg"
             alt="Fuel Analyzer Logo"
+            width="40"
+            height="40"
             class="w-9 h-9 sm:w-10 sm:h-10 object-contain rounded-xl shadow-md shadow-blue-600/20 transition-transform group-hover:scale-105"
+            loading="eager"
             decoding="async"
           />
           <span class="text-lg font-black tracking-tight text-slate-900">
@@ -177,13 +181,18 @@
 
         <!-- Navigation Links -->
         <nav
-          class="hidden lg:flex items-center gap-7 text-xs sm:text-sm font-bold text-slate-600"
+          class="hidden lg:flex items-center gap-6 text-xs sm:text-sm font-bold text-slate-600"
         >
+          <a
+            href="../../index.html"
+            class="hover:text-blue-600 transition-colors"
+            >Main Hub</a
+          >
           <a href="#how-it-works" class="hover:text-blue-600 transition-colors"
             >How It Works</a
           >
           <a href="#dashboard" class="hover:text-blue-600 transition-colors"
-            >Dashboard</a
+            >Analytics Dashboard</a
           >
           <a href="#multi-vehicle" class="hover:text-blue-600 transition-colors"
             >Multi-Vehicle</a
@@ -196,13 +205,10 @@
           <a
             href="#history-analytics"
             class="hover:text-blue-600 transition-colors"
-            >Analytics</a
+            >Fuel History & Reports</a
           >
           <a href="#ai-insights" class="hover:text-blue-600 transition-colors"
             >AI Insights</a
-          >
-          <a href="#privacy" class="hover:text-blue-600 transition-colors"
-            >Privacy</a
           >
         </nav>
 
@@ -345,7 +351,11 @@
             <img
               src="../../src/images/fuel-app-2x-hiro.webp"
               alt="Fuel Economy Tracker App Preview"
+              width="1839"
+              height="3840"
               class="w-full max-w-xs sm:max-w-sm h-auto object-contain"
+              loading="eager"
+              decoding="async"
             />
           </div>
         </div>
@@ -445,8 +455,11 @@
                   <img
                     src="../../src/images/fuel-app-step-2x-01.webp"
                     alt="Fuel Analyzer Step 1 - Vehicle Setup"
+                    width="750"
+                    height="1624"
                     class="w-full h-auto object-cover rounded-2xl"
                     loading="lazy"
+                    decoding="async"
                   />
                 </div>
               </div>
@@ -508,8 +521,11 @@
                   <img
                     src="../../src/images/fuel-app-step-2x-02.webp"
                     alt="Fuel Analyzer Step 2 - Record Refuel"
+                    width="744"
+                    height="1624"
                     class="w-full h-auto object-cover rounded-2xl"
                     loading="lazy"
+                    decoding="async"
                   />
                 </div>
               </div>
@@ -571,8 +587,11 @@
                   <img
                     src="../../src/images/fuel-app-step-2x-03.webp"
                     alt="Fuel Analyzer Step 3 - Real Insights"
+                    width="748"
+                    height="1622"
                     class="w-full h-auto object-cover rounded-2xl"
                     loading="lazy"
+                    decoding="async"
                   />
                 </div>
               </div>
@@ -1638,7 +1657,7 @@
         </div>
       </section>
 
-      <!-- 6. FUEL HISTORY & ANALYTICS SECTION -->
+      <!-- 6. FUEL HISTORY & REPORTS SECTION -->
       <section
         id="history-analytics"
         class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10"
@@ -1653,7 +1672,7 @@
           <h2
             class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight"
           >
-            Fuel History & Analytics
+            Fuel History & Reports
           </h2>
           <p class="text-sm text-slate-600 font-medium leading-relaxed">
             Every refuel you record becomes part of your complete driving
@@ -2917,7 +2936,11 @@
             <img
               src="../../src/images/fuel_logo.svg"
               alt="Fuel Analyzer Logo"
+              width="48"
+              height="48"
               class="w-12 h-12 rounded-xl shadow-lg shadow-blue-900/40"
+              loading="lazy"
+              decoding="async"
             />
             <span class="text-sm font-black text-white">Fuel Analyzer</span>
             <span class="text-xs text-blue-200 font-medium"
@@ -2940,7 +2963,10 @@
               <img
                 src="../../src/images/fuel_logo.svg"
                 alt="Fuel Analyzer Logo"
+                width="28"
+                height="28"
                 class="w-7 h-7 rounded-lg shadow-sm transition-transform group-hover:scale-105"
+                loading="lazy"
                 decoding="async"
               />
               <span class="text-base font-black text-slate-900 tracking-tight"
@@ -3017,22 +3043,31 @@
             </ul>
           </div>
 
-          <!-- Connect Links -->
+          <!-- CarTools Suite Links -->
           <div class="space-y-2">
             <h5
               class="font-extrabold text-slate-900 uppercase tracking-wider text-[11px]"
             >
-              Privacy & Units
+              CarTools Suite
             </h5>
             <ul class="space-y-1.5 font-medium">
               <li>
-                <a href="#privacy" class="hover:text-blue-600 transition-colors"
-                  >100% Offline</a
+                <a
+                  href="../../index.html"
+                  class="hover:text-blue-600 transition-colors"
+                  >CarTools Main Hub</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../../tools/gig-driver-calculator"
+                  class="hover:text-emerald-600 transition-colors"
+                  >GIG Driver App</a
                 >
               </li>
               <li>
                 <a href="#privacy" class="hover:text-blue-600 transition-colors"
-                  >Metric & MPG</a
+                  >100% Private & Offline</a
                 >
               </li>
             </ul>

@@ -19,7 +19,6 @@
       rel="canonical"
       href="https://cartools.app/tools/gig-driver-calculator"
     />
-    <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website" />
@@ -37,7 +36,7 @@
     />
     <meta
       property="og:image"
-      content="https://cartools.app/src/images/gig-desktop.webp"
+      content="https://cartools.app/images/gig-desktop.webp"
     />
 
     <!-- Twitter -->
@@ -52,7 +51,7 @@
     />
     <meta
       name="twitter:image"
-      content="https://cartools.app/src/images/gig-desktop.webp"
+      content="https://cartools.app/images/gig-desktop.webp"
     />
 
     <link
@@ -61,6 +60,7 @@
       href="../../src/images/cartools_logo.webp"
     />
     <link rel="stylesheet" href="../../src/index.css" />
+    <link rel="stylesheet" href="../../src/main.css" />
 
     <!-- JSON-LD Structured Data for SEO -->
     <script type="application/ld+json">
@@ -165,42 +165,48 @@
       <div
         class="relative bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-xl shadow-slate-900/10 rounded-2xl h-16 sm:h-18 px-4 sm:px-6 flex items-center justify-between pointer-events-auto"
       >
-        <!-- Logo & Main Hub Link -->
+        <!-- Logo -->
         <a href="../../index.html" class="flex items-center gap-3 group">
           <img
             src="../../src/images/cartools_logo.webp"
             alt="CarTools Logo"
+            width="1000"
+            height="318"
             class="h-9 sm:h-10 w-auto object-contain transition-transform group-hover:scale-105"
+            loading="eager"
             decoding="async"
           />
-          <span
-            class="text-xs font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-lg border border-slate-200 hidden sm:inline-block"
-            >← Back to Main Hub</span
-          >
         </a>
 
-        <!-- Desktop Navigation Links -->
+        <!-- Navigation Links (Targeting Page Content) -->
         <nav
-          class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600 absolute left-1/2 -translate-x-1/2"
+          class="hidden lg:flex items-center gap-6 text-xs sm:text-sm font-bold text-slate-600"
         >
           <a
             href="../../index.html"
-            class="hover:text-blue-600 transition-colors"
+            class="hover:text-emerald-600 transition-colors"
             >Main Hub</a
           >
           <a
-            href="./tools/fuel-calculator"
-            class="hover:text-blue-600 transition-colors flex items-center gap-1.5"
+            href="#how-it-works"
+            class="hover:text-emerald-600 transition-colors"
+            >How It Works</a
           >
-            <span class="w-2 h-2 rounded-full bg-blue-500"></span> Fuel
-            Analytics
-          </a>
-          <a
-            href="./tools/gig-driver-calculator"
-            class="text-emerald-600 font-bold flex items-center gap-1.5"
+          <a href="#module-01" class="hover:text-emerald-600 transition-colors"
+            >Dashboard</a
           >
-            <span class="w-2 h-2 rounded-full bg-emerald-600"></span> Gig Driver
-          </a>
+          <a href="#module-02" class="hover:text-emerald-600 transition-colors"
+            >Shift Logs</a
+          >
+          <a href="#module-03" class="hover:text-emerald-600 transition-colors"
+            >Analytics</a
+          >
+          <a href="#module-04" class="hover:text-emerald-600 transition-colors"
+            >Calibration</a
+          >
+          <a href="#faq" class="hover:text-emerald-600 transition-colors"
+            >FAQ</a
+          >
         </nav>
 
         <!-- Right Action Button -->
@@ -470,6 +476,7 @@
 
       <!-- Effortless Tracking in 4 Simple Steps Section -->
       <section
+        id="how-it-works"
         class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 sm:mt-16 space-y-6 sm:space-y-12"
       >
         <!-- Section Title -->
@@ -652,6 +659,8 @@
                 <img
                   src="../../src/images/shift-log-01.webp"
                   alt="Step 1: Enter Your Earnings"
+                  width="373"
+                  height="803"
                   class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                   decoding="async"
@@ -712,6 +721,8 @@
                 <img
                   src="../../src/images/shift-log-02.webp"
                   alt="Step 2: Input Total Mileage"
+                  width="373"
+                  height="803"
                   class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                   decoding="async"
@@ -772,6 +783,8 @@
                 <img
                   src="../../src/images/shift-log-03.webp"
                   alt="Step 3: Set Active Hours"
+                  width="373"
+                  height="803"
                   class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                   decoding="async"
@@ -825,6 +838,8 @@
                   <img
                     src="../../src/images/shift-log-analytics.webp"
                     alt="Instant Analytics Breakdown"
+                    width="373"
+                    height="803"
                     class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                     decoding="async"
@@ -837,9 +852,12 @@
       </section>
 
       <!-- Deep Feature Breakdown (4 Core Sections with Screenshots) -->
-      <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 space-y-24">
+      <section
+        id="features"
+        class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 space-y-24"
+      >
         <!-- Section 1: Dashboard -->
-        <div class="space-y-6">
+        <div id="module-01" class="space-y-6">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             <!-- Content & Features (Left Side) -->
             <div class="lg:col-span-7 space-y-6">
@@ -972,6 +990,8 @@
               <img
                 src="../../src/images/gig-app-01.webp"
                 alt="Gig Driver Dashboard Screenshot"
+                width="800"
+                height="1166"
                 class="w-full h-auto object-cover group-hover:scale-[1.01] transition-transform duration-300"
                 loading="lazy"
                 decoding="async"
@@ -981,7 +1001,7 @@
         </div>
 
         <!-- Section 2: Shift Logs & History -->
-        <div class="space-y-6">
+        <div id="module-02" class="space-y-6">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             <!-- Screenshot 2 (Left Side on LG - Frameless) -->
             <div
@@ -990,6 +1010,8 @@
               <img
                 src="../../src/images/gig-app-02.webp"
                 alt="Gig Driver Shift Logs & History Screenshot"
+                width="800"
+                height="1166"
                 class="w-full h-auto object-cover group-hover:scale-[1.01] transition-transform duration-300"
                 loading="lazy"
                 decoding="async"
@@ -1097,7 +1119,7 @@
         </div>
 
         <!-- Section 3: Analytics & Financial Intelligence Hub -->
-        <div class="space-y-6">
+        <div id="module-03" class="space-y-6">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             <!-- Content & Features (Left Side) -->
             <div class="lg:col-span-7 space-y-6">
@@ -1181,6 +1203,8 @@
               <img
                 src="../../src/images/gig-app-03.webp"
                 alt="Gig Driver Analytics Hub Screenshot"
+                width="800"
+                height="1166"
                 class="w-full h-auto object-cover group-hover:scale-[1.01] transition-transform duration-300"
                 loading="lazy"
                 decoding="async"
@@ -1190,7 +1214,7 @@
         </div>
 
         <!-- Section 4: Calibration & Vehicle Settings -->
-        <div class="space-y-6">
+        <div id="module-04" class="space-y-6">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             <!-- Screenshot 4 (Left Side on LG - Frameless) -->
             <div
@@ -1199,6 +1223,8 @@
               <img
                 src="../../src/images/gig-app-04.webp"
                 alt="Gig Driver Vehicle Calibration Screenshot"
+                width="800"
+                height="1166"
                 class="w-full h-auto object-cover group-hover:scale-[1.01] transition-transform duration-300"
                 loading="lazy"
                 decoding="async"
@@ -1280,7 +1306,10 @@
       </section>
 
       <!-- App Interface Showcase -->
-      <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 space-y-6">
+      <section
+        id="desktop-preview"
+        class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 space-y-6"
+      >
         <div class="flex items-center justify-between">
           <div>
             <h2 class="text-2xl font-black text-slate-900">
@@ -1325,6 +1354,8 @@
           <img
             src="../../src/images/gig-desktop.webp"
             alt="Gig Driver Financial Analytics Dashboard"
+            width="1608"
+            height="849"
             class="w-full h-auto object-cover group-hover:scale-[1.01] transition-transform duration-300"
             loading="lazy"
             decoding="async"
@@ -1333,7 +1364,10 @@
       </section>
 
       <!-- Interactive Net Profit & Tax Deduction Calculator Widget -->
-      <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+      <section
+        id="calculator"
+        class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-20"
+      >
         <div
           class="card-light p-8 sm:p-10 border-2 border-emerald-100 bg-gradient-to-br from-white via-emerald-50/20 to-white space-y-8 rounded-3xl shadow-lg"
         >
@@ -1519,7 +1553,10 @@
       </section>
 
       <!-- FAQ Section for SEO -->
-      <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 space-y-8">
+      <section
+        id="faq"
+        class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 space-y-8"
+      >
         <div class="text-center space-y-2">
           <span
             class="text-xs font-bold text-emerald-700 uppercase tracking-wider"
@@ -1689,49 +1726,138 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
+    <footer
+      class="bg-white border-t border-slate-200/80 py-12 text-xs text-slate-500"
+    >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <div
-          class="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-slate-800 pb-8"
-        >
-          <div class="flex items-center gap-3">
-            <img
-              src="../../src/images/cartools_logo.webp"
-              alt="CarTools Logo"
-              class="h-10 w-auto object-contain rounded-lg"
-              loading="lazy"
-              decoding="async"
-            />
-            <div>
-              <span class="text-white text-lg font-bold">CarTools</span>
-              <span class="text-xs text-slate-500 block">cartools.app</span>
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Brand Info -->
+          <div class="space-y-3 md:col-span-1">
+            <a href="../../index.html" class="flex items-center gap-2.5 group">
+              <img
+                src="../../src/images/cartools_logo.webp"
+                alt="CarTools Logo"
+                width="1000"
+                height="318"
+                class="h-8 w-auto object-contain rounded-lg"
+                loading="lazy"
+                decoding="async"
+              />
+              <div>
+                <span
+                  class="text-base font-extrabold text-slate-900 tracking-tight block"
+                  >GIG DRIVER</span
+                >
+                <span class="text-xs text-slate-500 font-medium"
+                  >gig.cartools.app</span
+                >
+              </div>
+            </a>
+            <p class="max-w-xs text-slate-500 leading-relaxed font-medium">
+              Smart shift earnings, mileage tracker & IRS tax estimator for
+              rideshare & delivery drivers. 100% Free.
+            </p>
           </div>
 
-          <div class="flex flex-wrap items-center gap-6 text-sm font-medium">
-            <a
-              href="../../index.html"
-              class="hover:text-white transition-colors"
-              >Main Hub</a
+          <!-- Product Links -->
+          <div class="space-y-2">
+            <h5
+              class="font-extrabold text-slate-900 uppercase tracking-wider text-[11px]"
             >
-            <a
-              href="./tools/fuel-calculator"
-              class="hover:text-blue-400 transition-colors"
-              >Fuel Analytics</a
+              Product
+            </h5>
+            <ul class="space-y-1.5 font-medium">
+              <li>
+                <a
+                  href="#how-it-works"
+                  class="hover:text-emerald-600 transition-colors"
+                  >How It Works</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#features"
+                  class="hover:text-emerald-600 transition-colors"
+                  >Shift Modules</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#desktop-preview"
+                  class="hover:text-emerald-600 transition-colors"
+                  >Desktop Experience</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Features Links -->
+          <div class="space-y-2">
+            <h5
+              class="font-extrabold text-slate-900 uppercase tracking-wider text-[11px]"
             >
-            <a
-              href="./tools/gig-driver-calculator"
-              class="text-emerald-400 font-bold"
-              >GIG Driver</a
+              Calculators
+            </h5>
+            <ul class="space-y-1.5 font-medium">
+              <li>
+                <a
+                  href="#calculator"
+                  class="hover:text-emerald-600 transition-colors"
+                  >Net Profit Estimator</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#calculator"
+                  class="hover:text-emerald-600 transition-colors"
+                  >IRS Tax Deduction</a
+                >
+              </li>
+              <li>
+                <a href="#faq" class="hover:text-emerald-600 transition-colors"
+                  >Gig Driver FAQ</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Suite Links -->
+          <div class="space-y-2">
+            <h5
+              class="font-extrabold text-slate-900 uppercase tracking-wider text-[11px]"
             >
+              CarTools Suite
+            </h5>
+            <ul class="space-y-1.5 font-medium">
+              <li>
+                <a
+                  href="../../index.html"
+                  class="hover:text-emerald-600 transition-colors"
+                  >CarTools Main Hub</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/tools/fuel-calculator"
+                  class="hover:text-blue-600 transition-colors"
+                  >Fuel Analyzer App</a
+                >
+              </li>
+            </ul>
           </div>
         </div>
 
         <div
-          class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500"
+          class="pt-8 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4 font-medium"
         >
-          <p>© 2026 CarTools Suite (cartools.app). All rights reserved.</p>
-          <p>Built for drivers everywhere.</p>
+          <p>
+            © 2026 Gig Driver by CarTools (cartools.app). All rights reserved.
+          </p>
+          <div
+            class="px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 text-[11px] font-semibold border border-slate-200"
+          >
+            Made with ❤️ for gig drivers worldwide
+          </div>
         </div>
       </div>
     </footer>
