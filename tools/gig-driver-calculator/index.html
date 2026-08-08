@@ -54,13 +54,8 @@
       content="https://cartools.app/images/gig-desktop.webp"
     />
 
-    <link
-      rel="icon"
-      type="image/webp"
-      href="../../src/images/cartools_logo.webp"
-    />
-    <link rel="stylesheet" href="../../src/index.css" />
-    <link rel="stylesheet" href="../../src/main.css" />
+    <link rel="icon" type="image/webp" href="../../images/cartools_logo.webp" />
+    <link rel="stylesheet" href="../../src/style.css" />
 
     <!-- JSON-LD Structured Data for SEO -->
     <script type="application/ld+json">
@@ -168,13 +163,14 @@
         <!-- Logo -->
         <a href="../../index.html" class="flex items-center gap-3 group">
           <img
-            src="../../src/images/cartools_logo.webp"
+            src="../../images/cartools_logo.webp"
             alt="CarTools Logo"
             width="1000"
             height="318"
             class="h-9 sm:h-10 w-auto object-contain transition-transform group-hover:scale-105"
             loading="eager"
             decoding="async"
+            fetchpriority="high"
           />
         </a>
 
@@ -209,12 +205,13 @@
           >
         </nav>
 
-        <!-- Right Action Button -->
-        <div class="flex items-center gap-3">
+        <!-- Right Action Button & Mobile Menu Toggle -->
+        <div class="flex items-center gap-2">
           <a
             href="https://gig.cartools.app"
             target="_blank"
-            class="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white text-xs sm:text-sm font-bold transition-all shadow-md shadow-emerald-500/20 cursor-pointer"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white text-xs sm:text-sm font-bold transition-all shadow-md shadow-emerald-500/20 cursor-pointer"
           >
             <span>Launch App</span>
             <svg
@@ -231,7 +228,89 @@
               />
             </svg>
           </a>
+          <button
+            id="gig-mobile-menu-btn"
+            type="button"
+            aria-label="Toggle Navigation"
+            class="lg:hidden p-2 rounded-xl border border-slate-200/90 bg-slate-50/90 text-slate-700 hover:text-emerald-600 focus:outline-none cursor-pointer"
+          >
+            <svg
+              id="gig-hamburger-icon"
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+            <svg
+              id="gig-close-icon"
+              class="w-5 h-5 hidden"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
         </div>
+      </div>
+
+      <!-- Mobile Dropdown Navigation -->
+      <div
+        id="gig-mobile-menu"
+        class="hidden lg:hidden pointer-events-auto mt-2 bg-white/98 backdrop-blur-2xl border border-slate-200/90 rounded-2xl shadow-2xl p-4 space-y-2 max-h-[70vh] overflow-y-auto"
+      >
+        <a
+          href="../../index.html"
+          class="block py-2 px-3 rounded-xl text-xs font-bold text-slate-700 hover:bg-emerald-50"
+          >🏠 Main Hub</a
+        >
+        <a
+          href="#how-it-works"
+          class="gig-mobile-link block py-2 px-3 rounded-xl text-xs font-bold text-slate-700 hover:bg-emerald-50"
+          >How It Works</a
+        >
+        <a
+          href="#module-01"
+          class="gig-mobile-link block py-2 px-3 rounded-xl text-xs font-bold text-slate-700 hover:bg-emerald-50"
+          >Dashboard</a
+        >
+        <a
+          href="#module-02"
+          class="gig-mobile-link block py-2 px-3 rounded-xl text-xs font-bold text-slate-700 hover:bg-emerald-50"
+          >Shift Logs</a
+        >
+        <a
+          href="#module-03"
+          class="gig-mobile-link block py-2 px-3 rounded-xl text-xs font-bold text-slate-700 hover:bg-emerald-50"
+          >Analytics</a
+        >
+        <a
+          href="#module-04"
+          class="gig-mobile-link block py-2 px-3 rounded-xl text-xs font-bold text-slate-700 hover:bg-emerald-50"
+          >Calibration</a
+        >
+        <a
+          href="#faq"
+          class="gig-mobile-link block py-2 px-3 rounded-xl text-xs font-bold text-slate-700 hover:bg-emerald-50"
+          >FAQ</a
+        >
+        <a
+          href="/tools/fuel-calculator"
+          class="block py-2 px-3 rounded-xl text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100"
+          >Fuel Analyzer Tool →</a
+        >
       </div>
     </header>
 
@@ -382,6 +461,7 @@
             <a
               href="https://gig.cartools.app"
               target="_blank"
+              rel="noopener noreferrer"
               class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-black text-base shadow-xl shadow-emerald-500/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2.5 group"
             >
               <span>Calculate Your True Net Profit – 100% Free</span>
@@ -402,6 +482,7 @@
             <a
               href="https://gig.cartools.app"
               target="_blank"
+              rel="noopener noreferrer"
               class="w-full sm:w-auto px-7 py-4 rounded-xl bg-slate-800/90 border border-slate-700 hover:bg-slate-800 text-white font-bold text-base shadow-xs transition-all flex items-center justify-center gap-2"
             >
               <span>Start Tracking for Free →</span>
@@ -657,7 +738,7 @@
                 </div>
                 <!-- Clean Image without frame borders -->
                 <img
-                  src="../../src/images/shift-log-01.webp"
+                  src="../../images/shift-log-01.webp"
                   alt="Step 1: Enter Your Earnings"
                   width="373"
                   height="803"
@@ -719,7 +800,7 @@
                 </div>
                 <!-- Clean Image without frame borders -->
                 <img
-                  src="../../src/images/shift-log-02.webp"
+                  src="../../images/shift-log-02.webp"
                   alt="Step 2: Input Total Mileage"
                   width="373"
                   height="803"
@@ -781,7 +862,7 @@
                 </div>
                 <!-- Clean Image without frame borders -->
                 <img
-                  src="../../src/images/shift-log-03.webp"
+                  src="../../images/shift-log-03.webp"
                   alt="Step 3: Set Active Hours"
                   width="373"
                   height="803"
@@ -836,7 +917,7 @@
                   class="w-full h-full bg-white rounded-[13px] overflow-hidden"
                 >
                   <img
-                    src="../../src/images/shift-log-analytics.webp"
+                    src="../../images/shift-log-analytics.webp"
                     alt="Instant Analytics Breakdown"
                     width="373"
                     height="803"
@@ -988,7 +1069,7 @@
               class="lg:col-span-5 rounded-2xl overflow-hidden group transition-all"
             >
               <img
-                src="../../src/images/gig-app-01.webp"
+                src="../../images/gig-app-01.webp"
                 alt="Gig Driver Dashboard Screenshot"
                 width="800"
                 height="1166"
@@ -1008,7 +1089,7 @@
               class="lg:col-span-5 order-2 lg:order-1 rounded-2xl overflow-hidden group transition-all"
             >
               <img
-                src="../../src/images/gig-app-02.webp"
+                src="../../images/gig-app-02.webp"
                 alt="Gig Driver Shift Logs & History Screenshot"
                 width="800"
                 height="1166"
@@ -1201,7 +1282,7 @@
               class="lg:col-span-5 rounded-2xl overflow-hidden group transition-all"
             >
               <img
-                src="../../src/images/gig-app-03.webp"
+                src="../../images/gig-app-03.webp"
                 alt="Gig Driver Analytics Hub Screenshot"
                 width="800"
                 height="1166"
@@ -1221,7 +1302,7 @@
               class="lg:col-span-5 order-2 lg:order-1 rounded-2xl overflow-hidden group transition-all"
             >
               <img
-                src="../../src/images/gig-app-04.webp"
+                src="../../images/gig-app-04.webp"
                 alt="Gig Driver Vehicle Calibration Screenshot"
                 width="800"
                 height="1166"
@@ -1323,6 +1404,7 @@
           <a
             href="https://gig.cartools.app"
             target="_blank"
+            rel="noopener noreferrer"
             class="text-xs font-bold text-emerald-600 hover:underline"
             >Launch App →</a
           >
@@ -1352,7 +1434,7 @@
             </div>
           </div>
           <img
-            src="../../src/images/gig-desktop.webp"
+            src="../../images/gig-desktop.webp"
             alt="Gig Driver Financial Analytics Dashboard"
             width="1608"
             height="849"
@@ -1397,43 +1479,54 @@
             <!-- Inputs -->
             <div class="space-y-4">
               <div>
-                <label class="text-xs font-bold text-slate-700 block mb-1"
+                <label
+                  for="gig-gross"
+                  class="text-xs font-bold text-slate-700 block mb-1"
                   >Weekly Gross Earnings ($)</label
                 >
                 <input
                   type="number"
                   id="gig-gross"
                   value="1150"
+                  aria-label="Weekly Gross Earnings"
                   class="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm font-semibold text-slate-800 focus:outline-none focus:border-emerald-500"
                 />
               </div>
 
               <div>
-                <label class="text-xs font-bold text-slate-700 block mb-1"
+                <label
+                  for="gig-miles"
+                  class="text-xs font-bold text-slate-700 block mb-1"
                   >Weekly Business Miles</label
                 >
                 <input
                   type="number"
                   id="gig-miles"
                   value="550"
+                  aria-label="Weekly Business Miles"
                   class="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm font-semibold text-slate-800 focus:outline-none focus:border-emerald-500"
                 />
               </div>
 
               <div class="grid grid-cols-2 gap-2">
                 <div>
-                  <label class="text-xs font-bold text-slate-700 block mb-1"
+                  <label
+                    for="gig-mpg"
+                    class="text-xs font-bold text-slate-700 block mb-1"
                     >Vehicle MPG</label
                   >
                   <input
                     type="number"
                     id="gig-mpg"
                     value="25"
+                    aria-label="Vehicle MPG"
                     class="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm font-semibold text-slate-800 focus:outline-none focus:border-emerald-500"
                   />
                 </div>
                 <div>
-                  <label class="text-xs font-bold text-slate-700 block mb-1"
+                  <label
+                    for="gig-price"
+                    class="text-xs font-bold text-slate-700 block mb-1"
                     >Gas Price ($/gal)</label
                   >
                   <input
@@ -1441,6 +1534,7 @@
                     step="0.1"
                     id="gig-price"
                     value="3.65"
+                    aria-label="Gas Price per Gallon"
                     class="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm font-semibold text-slate-800 focus:outline-none focus:border-emerald-500"
                   />
                 </div>
@@ -1544,6 +1638,7 @@
             <a
               href="https://gig.cartools.app"
               target="_blank"
+              rel="noopener noreferrer"
               class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 group"
             >
               <span>More Calculations in App →</span>
@@ -1710,6 +1805,7 @@
             <a
               href="https://gig.cartools.app"
               target="_blank"
+              rel="noopener noreferrer"
               class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white text-emerald-800 font-black text-base shadow-lg hover:bg-emerald-50 transition-all"
             >
               Calculate Your True Net Profit – 100% Free →
@@ -1735,7 +1831,7 @@
           <div class="space-y-3 md:col-span-1">
             <a href="../../index.html" class="flex items-center gap-2.5 group">
               <img
-                src="../../src/images/cartools_logo.webp"
+                src="../../images/cartools_logo.webp"
                 alt="CarTools Logo"
                 width="1000"
                 height="318"
@@ -1931,6 +2027,36 @@
             ?.addEventListener('input', updateGigCalculator);
         });
         updateGigCalculator();
+
+        // Mobile menu logic
+        const gigBtn = document.getElementById('gig-mobile-menu-btn');
+        const gigMenu = document.getElementById('gig-mobile-menu');
+        const gigHamIcon = document.getElementById('gig-hamburger-icon');
+        const gigCloseIcon = document.getElementById('gig-close-icon');
+
+        if (gigBtn && gigMenu) {
+          gigBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isHidden = gigMenu.classList.contains('hidden');
+            if (isHidden) {
+              gigMenu.classList.remove('hidden');
+              gigHamIcon?.classList.add('hidden');
+              gigCloseIcon?.classList.remove('hidden');
+            } else {
+              gigMenu.classList.add('hidden');
+              gigHamIcon?.classList.remove('hidden');
+              gigCloseIcon?.classList.add('hidden');
+            }
+          });
+
+          document.querySelectorAll('.gig-mobile-link').forEach((link) => {
+            link.addEventListener('click', () => {
+              gigMenu.classList.add('hidden');
+              gigHamIcon?.classList.remove('hidden');
+              gigCloseIcon?.classList.add('hidden');
+            });
+          });
+        }
       });
     </script>
   </body>

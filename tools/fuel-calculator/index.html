@@ -28,13 +28,8 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://fuel.cartools.app" />
 
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="../../src/images/fuel_logo.svg"
-    />
-    <link rel="stylesheet" href="../../src/index.css" />
-    <link rel="stylesheet" href="../../src/main.css" />
+    <link rel="icon" type="image/svg+xml" href="../../images/fuel_logo.svg" />
+    <link rel="stylesheet" href="../../src/style.css" />
 
     <!-- WebApplication JSON-LD Schema -->
     <script type="application/ld+json">
@@ -166,7 +161,7 @@
         <!-- Logo & Brand Name -->
         <a href="../../index.html" class="flex items-center gap-3 group">
           <img
-            src="../../src/images/fuel_logo.svg"
+            src="../../images/fuel_logo.svg"
             alt="Fuel Analyzer Logo"
             width="40"
             height="40"
@@ -212,16 +207,99 @@
           >
         </nav>
 
-        <!-- Right CTA Button -->
-        <div class="flex items-center gap-3">
+        <!-- Right CTA Button & Mobile Menu Toggle -->
+        <div class="flex items-center gap-2">
           <a
             href="https://fuel.cartools.app"
             target="_blank"
-            class="px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold transition-all shadow-md shadow-blue-600/20 hover:shadow-lg hover:shadow-blue-600/30 transform hover:-translate-y-0.5"
+            rel="noopener noreferrer"
+            class="px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold transition-all shadow-md shadow-blue-600/20 hover:shadow-lg hover:shadow-blue-600/30 transform hover:-translate-y-0.5"
           >
             Open App
           </a>
+          <button
+            id="fuel-mobile-menu-btn"
+            type="button"
+            aria-label="Toggle Navigation"
+            class="lg:hidden p-2 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 hover:text-blue-600 focus:outline-none cursor-pointer"
+          >
+            <svg
+              id="fuel-hamburger-icon"
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+            <svg
+              id="fuel-close-icon"
+              class="w-5 h-5 hidden"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
         </div>
+      </div>
+
+      <!-- Mobile Dropdown Navigation -->
+      <div
+        id="fuel-mobile-menu"
+        class="hidden lg:hidden bg-white border-b border-slate-200 px-4 py-3 space-y-1.5 shadow-xl max-h-[70vh] overflow-y-auto"
+      >
+        <a
+          href="../../index.html"
+          class="block py-2 px-3 rounded-lg text-xs font-bold text-slate-700 hover:bg-blue-50"
+          >🏠 Main Hub</a
+        >
+        <a
+          href="#how-it-works"
+          class="fuel-mobile-link block py-2 px-3 rounded-lg text-xs font-bold text-slate-700 hover:bg-blue-50"
+          >How It Works</a
+        >
+        <a
+          href="#dashboard"
+          class="fuel-mobile-link block py-2 px-3 rounded-lg text-xs font-bold text-slate-700 hover:bg-blue-50"
+          >Analytics Dashboard</a
+        >
+        <a
+          href="#multi-vehicle"
+          class="fuel-mobile-link block py-2 px-3 rounded-lg text-xs font-bold text-slate-700 hover:bg-blue-50"
+          >Multi-Vehicle</a
+        >
+        <a
+          href="#smart-refueling"
+          class="fuel-mobile-link block py-2 px-3 rounded-lg text-xs font-bold text-slate-700 hover:bg-blue-50"
+          >Refueling</a
+        >
+        <a
+          href="#history-analytics"
+          class="fuel-mobile-link block py-2 px-3 rounded-lg text-xs font-bold text-slate-700 hover:bg-blue-50"
+          >Fuel History & Reports</a
+        >
+        <a
+          href="#ai-insights"
+          class="fuel-mobile-link block py-2 px-3 rounded-lg text-xs font-bold text-slate-700 hover:bg-blue-50"
+          >AI Insights</a
+        >
+        <a
+          href="/tools/gig-driver-calculator"
+          class="block py-2 px-3 rounded-lg text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100"
+          >GIG Driver Tool →</a
+        >
       </div>
     </header>
 
@@ -320,6 +398,7 @@
               <a
                 href="https://fuel.cartools.app"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="px-7 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-sm shadow-lg shadow-blue-600/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 group"
               >
                 <span>Open Fuel Analyzer App</span>
@@ -349,13 +428,14 @@
           <!-- Right Column Preview Image -->
           <div class="lg:col-span-5 flex items-center justify-center p-2">
             <img
-              src="../../src/images/fuel-app-2x-hiro.webp"
+              src="../../images/fuel-app-2x-hiro.webp"
               alt="Fuel Economy Tracker App Preview"
               width="1839"
               height="3840"
               class="w-full max-w-xs sm:max-w-sm h-auto object-contain"
               loading="eager"
               decoding="async"
+              fetchpriority="high"
             />
           </div>
         </div>
@@ -453,7 +533,7 @@
                   class="rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/80 shadow-inner group-hover:shadow-md transition-all transform group-hover:scale-[1.02]"
                 >
                   <img
-                    src="../../src/images/fuel-app-step-2x-01.webp"
+                    src="../../images/fuel-app-step-2x-01.webp"
                     alt="Fuel Analyzer Step 1 - Vehicle Setup"
                     width="750"
                     height="1624"
@@ -519,7 +599,7 @@
                   class="rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/80 shadow-inner group-hover:shadow-md transition-all transform group-hover:scale-[1.02]"
                 >
                   <img
-                    src="../../src/images/fuel-app-step-2x-02.webp"
+                    src="../../images/fuel-app-step-2x-02.webp"
                     alt="Fuel Analyzer Step 2 - Record Refuel"
                     width="744"
                     height="1624"
@@ -585,7 +665,7 @@
                   class="rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/80 shadow-inner group-hover:shadow-md transition-all transform group-hover:scale-[1.02]"
                 >
                   <img
-                    src="../../src/images/fuel-app-step-2x-03.webp"
+                    src="../../images/fuel-app-step-2x-03.webp"
                     alt="Fuel Analyzer Step 3 - Real Insights"
                     width="748"
                     height="1622"
@@ -866,6 +946,7 @@
                       max="4000"
                       value="1500"
                       step="100"
+                      aria-label="Monthly Mileage"
                       class="w-full accent-blue-600 h-1.5 bg-slate-200 rounded-lg cursor-pointer"
                     />
                   </div>
@@ -885,6 +966,7 @@
                       max="3.00"
                       value="1.65"
                       step="0.05"
+                      aria-label="Gas Price per Liter"
                       class="w-full accent-blue-600 h-1.5 bg-slate-200 rounded-lg cursor-pointer"
                     />
                   </div>
@@ -964,6 +1046,7 @@
                     max="170"
                     value="110"
                     step="5"
+                    aria-label="Cruising Speed"
                     class="w-full accent-blue-600 h-2 bg-slate-200 rounded-lg cursor-pointer"
                   />
                   <div
@@ -984,6 +1067,7 @@
                       id="acToggle"
                       type="checkbox"
                       checked
+                      aria-label="Air Conditioning Toggle"
                       class="w-4 h-4 accent-blue-600 rounded cursor-pointer"
                     />
                   </label>
@@ -994,6 +1078,7 @@
                     <input
                       id="rackToggle"
                       type="checkbox"
+                      aria-label="Roof Cargo Rack Toggle"
                       class="w-4 h-4 accent-blue-600 rounded cursor-pointer"
                     />
                   </label>
@@ -2909,6 +2994,7 @@
               <a
                 href="https://fuel.cartools.app"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-blue-700 hover:bg-blue-50 font-black text-sm shadow-xl transition-all transform hover:-translate-y-0.5 group"
               >
                 <span>Start Tracking Today</span>
@@ -2934,7 +3020,7 @@
             class="w-full lg:w-72 h-44 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 p-6 flex flex-col items-center justify-center text-center opacity-100 space-y-2 relative z-10 shrink-0"
           >
             <img
-              src="../../src/images/fuel_logo.svg"
+              src="../../images/fuel_logo.svg"
               alt="Fuel Analyzer Logo"
               width="48"
               height="48"
@@ -2961,7 +3047,7 @@
           <div class="space-y-3 md:col-span-1">
             <a href="../../index.html" class="flex items-center gap-2.5 group">
               <img
-                src="../../src/images/fuel_logo.svg"
+                src="../../images/fuel_logo.svg"
                 alt="Fuel Analyzer Logo"
                 width="28"
                 height="28"
@@ -3060,7 +3146,7 @@
               </li>
               <li>
                 <a
-                  href="../../tools/gig-driver-calculator"
+                  href="/tools/gig-driver-calculator"
                   class="hover:text-emerald-600 transition-colors"
                   >GIG Driver App</a
                 >
@@ -3262,6 +3348,36 @@
           activeBtn.className =
             'unit-tab flex-1 py-2 rounded-lg text-xs font-extrabold transition-all bg-white text-blue-600 shadow-2xs';
         }
+      }
+
+      // 5. Mobile Menu Toggle
+      const fuelBtn = document.getElementById('fuel-mobile-menu-btn');
+      const fuelMenu = document.getElementById('fuel-mobile-menu');
+      const fuelHamIcon = document.getElementById('fuel-hamburger-icon');
+      const fuelCloseIcon = document.getElementById('fuel-close-icon');
+
+      if (fuelBtn && fuelMenu) {
+        fuelBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const isHidden = fuelMenu.classList.contains('hidden');
+          if (isHidden) {
+            fuelMenu.classList.remove('hidden');
+            fuelHamIcon?.classList.add('hidden');
+            fuelCloseIcon?.classList.remove('hidden');
+          } else {
+            fuelMenu.classList.add('hidden');
+            fuelHamIcon?.classList.remove('hidden');
+            fuelCloseIcon?.classList.add('hidden');
+          }
+        });
+
+        document.querySelectorAll('.fuel-mobile-link').forEach((link) => {
+          link.addEventListener('click', () => {
+            fuelMenu.classList.add('hidden');
+            fuelHamIcon?.classList.remove('hidden');
+            fuelCloseIcon?.classList.add('hidden');
+          });
+        });
       }
     </script>
   </body>

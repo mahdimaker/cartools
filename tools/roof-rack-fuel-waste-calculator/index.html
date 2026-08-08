@@ -1,0 +1,1730 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How Much Fuel Does a Roof Rack Waste? (Calculator & Test)</title>
+    <meta
+      name="description"
+      content="Calculate how much fuel, gas mileage (MPG), and money a roof rack, roof box, or bike mount wastes due to aerodynamic drag. Real wind-tunnel benchmark physics calculator."
+    />
+    <meta name="theme-color" content="#f8fafc" />
+    <link rel="canonical" href="https://fuel.cartools.app" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f59e0b'><path d='M3 22v-3h18v3H3zm2-5V5c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v12H5zm4-8h6V7H9v4z'/></svg>"
+    />
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="How Much Fuel Does a Roof Rack Waste? (Aerodynamic Calculator)"
+    />
+    <meta
+      property="og:description"
+      content="Calculate the exact extra fuel, financial cost, and drag coefficient (Cd) overhead caused by roof boxes, crossbars, and bike racks."
+    />
+    <meta property="og:url" content="https://fuel.cartools.app" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Roof Rack Fuel Waste Calculator & Test"
+    />
+    <meta
+      name="twitter:description"
+      content="Find out how much gas your roof box or bike rack wastes on highway drives."
+    />
+
+    <!-- Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS v4 CDN -->
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- JSON-LD Structured Data for SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Roof Rack Fuel Waste Calculator",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "All",
+        "description": "Calculate aerodynamic drag and fuel consumption penalty caused by roof racks, roof boxes, and bike mounts.",
+        "url": "https://fuel.cartools.app"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do empty roof bars affect gas mileage?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, even empty roof bars noticeably reduce fuel economy. Carrying bare crossbars alone increases aerodynamic drag and degrades fuel economy by 8% to 11% at highway speeds (65+ mph). Over 12,000 miles of driving, an empty roof rack can waste $150 to $280 in unnecessary fuel costs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is a roof box better than a soft cargo bag for fuel economy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, a hard-shell roof box is significantly more fuel-efficient. Hard-shell cargo boxes are engineered with streamlined aerodynamic profiles (adding roughly +18% drag), whereas non-aerodynamic soft cargo bags catch much more wind and can increase aerodynamic drag by up to +35%, resulting in nearly double the extra fuel consumption."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much money do you actually save by removing a roof rack?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Removing a roof rack when not in use can save you between $150 and $300+ per year in gas. For long highway trips or yearly commutes, removing empty bars, cargo boxes, or roof bike mounts reduces aerodynamic drag back to your vehicle's factory efficiency baseline."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body
+    class="bg-slate-50 text-slate-900 font-['Plus_Jakarta_Sans',sans-serif] antialiased selection:bg-amber-100 selection:text-amber-900 pb-12 sm:pb-0"
+  >
+    <div id="app-wrapper" class="min-h-screen flex flex-col justify-between">
+      <div>
+        <!-- Top Sticky Header -->
+        <header
+          id="main-header"
+          class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-xs"
+        >
+          <div
+            class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between"
+          >
+            <!-- Brand Logo & Name -->
+            <div id="header-brand" class="flex items-center gap-2.5">
+              <div
+                class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-600 flex items-center justify-center text-white shadow-sm"
+              >
+                <svg
+                  class="w-5 h-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M3 22v-3h18v3H3zm2-5V5c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v12H5zm4-8h6V7H9v4z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <span
+                  class="font-['Outfit'] font-bold text-lg text-slate-900 tracking-tight flex items-center gap-1.5"
+                >
+                  Roof Rack Fuel Test
+                  <span
+                    class="hidden sm:inline-block px-2 py-0.5 text-[11px] font-semibold bg-amber-100 text-amber-800 rounded-full border border-amber-200"
+                  >
+                    Aerodynamic Calculator
+                  </span>
+                </span>
+                <p class="text-xs text-slate-500 hidden sm:block">
+                  Calculate aerodynamic drag & fuel penalty
+                </p>
+              </div>
+            </div>
+
+            <!-- Right side controls: Unit Switcher & External CTA -->
+            <div id="header-actions" class="flex items-center gap-3">
+              <!-- Unit Toggle Switch -->
+              <div
+                class="bg-slate-100 p-1 rounded-lg border border-slate-200 flex items-center text-xs font-medium"
+              >
+                <button
+                  id="unit-imperial-btn"
+                  type="button"
+                  aria-pressed="true"
+                  aria-label="Switch to US Imperial units"
+                  class="px-2.5 py-1 rounded-md transition-all cursor-pointer bg-white text-slate-900 shadow-xs font-semibold"
+                >
+                  US (Miles / $ / Gal)
+                </button>
+                <button
+                  id="unit-metric-btn"
+                  type="button"
+                  aria-pressed="false"
+                  aria-label="Switch to Metric units"
+                  class="px-2.5 py-1 rounded-md transition-all cursor-pointer text-slate-600 hover:text-slate-900"
+                >
+                  Metric (km / € / L)
+                </button>
+              </div>
+
+              <!-- Quick CTA link -->
+              <a
+                id="nav-cta-link"
+                href="https://fuel.cartools.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hidden md:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-white transition-all shadow-xs hover:shadow-sm"
+              >
+                <span>fuel.cartools.app</span>
+                <svg
+                  class="w-3.5 h-3.5 opacity-80"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                  />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </header>
+
+        <!-- Central Calculator Tool Section -->
+        <main id="main-content">
+          <section
+            id="calculator-section"
+            class="w-full py-8 md:py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto"
+          >
+            <!-- Top Heading Banner -->
+            <div
+              id="calculator-hero-header"
+              class="text-center max-w-3xl mx-auto mb-8 sm:mb-12"
+            >
+              <div
+                class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200/80 text-amber-900 text-xs font-semibold mb-3"
+              >
+                <svg
+                  class="w-3.5 h-3.5 text-amber-600"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3z"
+                  />
+                </svg>
+                <span>Interactive Aerodynamic Test Tool</span>
+              </div>
+              <h1
+                class="font-['Outfit'] font-extrabold text-3xl sm:text-4xl md:text-5xl text-slate-900 tracking-tight leading-tight"
+              >
+                How Much Fuel Does a Roof Rack Waste?
+              </h1>
+              <p
+                class="mt-3 text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto"
+              >
+                Calculate the exact additional fuel, financial cost, and extra
+                drag coefficient (Cd) caused by carrying a roof box, rack, or
+                bicycle.
+              </p>
+            </div>
+
+            <!-- Main Grid: Inputs on Left, Live Aerodynamic Graphic & Metric Output Cards on Right -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+              <!-- Left Column: Inputs -->
+              <div
+                id="calculator-inputs-card"
+                class="lg:col-span-7 bg-white rounded-2xl p-5 sm:p-7 border border-slate-200/90 shadow-sm space-y-6"
+              >
+                <!-- Header Row with Quick Reset -->
+                <div
+                  class="flex items-center justify-between border-b border-slate-100 pb-4"
+                >
+                  <h2 class="font-['Outfit'] font-bold text-lg text-slate-900">
+                    Trip & Vehicle Parameters
+                  </h2>
+                  <button
+                    id="calculator-reset-btn"
+                    type="button"
+                    class="text-xs font-medium text-slate-500 hover:text-slate-900 flex items-center gap-1 transition-colors px-2.5 py-1 rounded-md hover:bg-slate-100 cursor-pointer"
+                  >
+                    <svg
+                      class="w-3.5 h-3.5"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"
+                      />
+                      <path d="M3 3v5h5" />
+                    </svg>
+                    <span>Reset</span>
+                  </button>
+                </div>
+
+                <!-- Extra Fuel Cost Banner -->
+                <div
+                  id="quick-overhead-banner"
+                  class="bg-slate-100/80 rounded-2xl p-4 sm:p-5 border border-slate-200/80 flex items-center justify-between gap-3 relative"
+                >
+                  <div class="flex items-center gap-3 sm:gap-4">
+                    <div
+                      class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-red-100/60 text-red-600 flex items-center justify-center shrink-0 border border-red-200/70"
+                    >
+                      <svg
+                        class="w-5 h-5 text-red-600"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"
+                        />
+                        <line x1="12" y1="9" x2="12" y2="13" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                      </svg>
+                    </div>
+                    <div>
+                      <span
+                        class="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-slate-700 block"
+                      >
+                        EXTRA FUEL COST
+                      </span>
+                      <div
+                        class="flex flex-wrap items-center gap-2 sm:gap-3 mt-1"
+                      >
+                        <span
+                          id="quick-extra-cost"
+                          class="font-['Outfit'] font-black text-2xl sm:text-3xl text-red-600 tracking-tight"
+                        >
+                          +$11.83
+                        </span>
+                        <span
+                          id="quick-wasted-fuel"
+                          class="text-xs sm:text-sm font-extrabold text-white bg-red-600 px-3 py-1 rounded-full shadow-xs whitespace-nowrap"
+                        >
+                          3.2 gal wasted
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Distance Input & Slider -->
+                <div id="distance-input-group" class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <label
+                      htmlFor="distance-number-input"
+                      class="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5 cursor-pointer"
+                    >
+                      <svg
+                        class="w-4 h-4 text-amber-600"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <polygon points="3 11 22 2 13 21 11 13 3 11" />
+                      </svg>
+                      <span>Trip Distance</span>
+                    </label>
+                    <div
+                      class="flex items-center gap-1 bg-slate-100 px-3 py-1 rounded-lg border border-slate-200"
+                    >
+                      <input
+                        id="distance-number-input"
+                        type="number"
+                        min="1"
+                        max="3000"
+                        value="250"
+                        aria-label="Trip Distance"
+                        class="w-16 font-mono font-bold text-slate-900 text-sm text-right bg-transparent outline-none"
+                      />
+                      <span
+                        id="distance-unit-label"
+                        class="text-xs font-semibold text-slate-600"
+                        >miles</span
+                      >
+                    </div>
+                  </div>
+                  <input
+                    id="distance-range-slider"
+                    type="range"
+                    min="10"
+                    max="1500"
+                    step="10"
+                    value="250"
+                    aria-label="Trip Distance Slider"
+                    class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-amber-500"
+                  />
+                  <div
+                    class="flex justify-between text-xs font-bold text-slate-700 font-mono pt-0.5"
+                  >
+                    <span id="distance-min-label">10 mi</span>
+                    <span id="distance-mid-label">500 mi</span>
+                    <span id="distance-max-label">1,500 mi</span>
+                  </div>
+                </div>
+
+                <!-- Speed Input & Slider -->
+                <div id="speed-input-group" class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <label
+                      htmlFor="speed-number-input"
+                      class="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5 cursor-pointer"
+                    >
+                      <svg
+                        class="w-4 h-4 text-amber-600"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="m12 14 4-4" />
+                        <path d="M3.34 19a10 10 0 1 1 17.32 0" />
+                      </svg>
+                      <span>Cruising Speed</span>
+                    </label>
+                    <div
+                      class="flex items-center gap-1 bg-slate-100 px-3 py-1 rounded-lg border border-slate-200"
+                    >
+                      <input
+                        id="speed-number-input"
+                        type="number"
+                        min="35"
+                        max="90"
+                        value="65"
+                        aria-label="Cruising Speed"
+                        class="w-14 font-mono font-bold text-slate-900 text-sm text-right bg-transparent outline-none"
+                      />
+                      <span
+                        id="speed-unit-label"
+                        class="text-xs font-semibold text-slate-600"
+                        >mph</span
+                      >
+                    </div>
+                  </div>
+                  <input
+                    id="speed-range-slider"
+                    type="range"
+                    min="40"
+                    max="85"
+                    step="1"
+                    value="65"
+                    aria-label="Cruising Speed Slider"
+                    class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-amber-500"
+                  />
+                  <p class="text-[11px] text-slate-600 italic">
+                    *Note: Aerodynamic drag increases exponentially with speed
+                    squared (Fd ∝ v²).
+                  </p>
+                </div>
+
+                <!-- Attachment Type Selector -->
+                <div id="attachment-selector-group">
+                  <label
+                    class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2.5"
+                  >
+                    Roof Attachment / Cargo Type
+                  </label>
+                  <div id="attachments-grid" class="grid grid-cols-2 gap-2.5">
+                    <button
+                      id="attachment-btn-empty_bars"
+                      type="button"
+                      aria-pressed="false"
+                      class="p-3 rounded-xl border text-left transition-all relative flex flex-col justify-between cursor-pointer bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-800"
+                    >
+                      <div>
+                        <div class="flex justify-end mb-1.5">
+                          <span
+                            class="text-xs font-mono px-2 py-0.5 rounded font-bold bg-slate-200/90 text-slate-800"
+                            >+11% Drag</span
+                          >
+                        </div>
+                        <span class="font-bold text-sm block mb-1 leading-snug"
+                          >Empty Bars</span
+                        >
+                        <p
+                          class="text-xs sm:text-sm leading-relaxed text-slate-600"
+                        >
+                          Bare crossbars or empty factory roof rack rails
+                        </p>
+                      </div>
+                      <div
+                        class="mt-2.5 text-xs font-mono font-semibold text-slate-600"
+                      >
+                        +Cd 0.045
+                      </div>
+                    </button>
+
+                    <button
+                      id="attachment-btn-roof_box"
+                      type="button"
+                      aria-pressed="true"
+                      class="p-3 rounded-xl border text-left transition-all relative flex flex-col justify-between cursor-pointer bg-amber-500 text-white border-amber-600 shadow-sm ring-2 ring-amber-400/50"
+                    >
+                      <div>
+                        <div class="flex justify-end mb-1.5">
+                          <span
+                            class="text-xs font-mono px-2 py-0.5 rounded font-bold bg-amber-600 text-white"
+                            >+18% Drag</span
+                          >
+                        </div>
+                        <span class="font-bold text-sm block mb-1 leading-snug"
+                          >Cargo Roof Box</span
+                        >
+                        <p
+                          class="text-xs sm:text-sm leading-relaxed text-amber-100"
+                        >
+                          Aerodynamic hard-shell luggage box
+                        </p>
+                      </div>
+                      <div
+                        class="mt-2.5 text-xs font-mono font-semibold text-amber-100"
+                      >
+                        +Cd 0.085
+                      </div>
+                    </button>
+
+                    <button
+                      id="attachment-btn-bike_rack"
+                      type="button"
+                      aria-pressed="false"
+                      class="p-3 rounded-xl border text-left transition-all relative flex flex-col justify-between cursor-pointer bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-800"
+                    >
+                      <div>
+                        <div class="flex justify-end mb-1.5">
+                          <span
+                            class="text-xs font-mono px-2 py-0.5 rounded font-bold bg-slate-200/90 text-slate-800"
+                            >+28% Drag</span
+                          >
+                        </div>
+                        <span class="font-bold text-sm block mb-1 leading-snug"
+                          >Roof Bicycle</span
+                        >
+                        <p
+                          class="text-xs sm:text-sm leading-relaxed text-slate-600"
+                        >
+                          Upright bicycle mounted on roof rack
+                        </p>
+                      </div>
+                      <div
+                        class="mt-2.5 text-xs font-mono font-semibold text-slate-600"
+                      >
+                        +Cd 0.135
+                      </div>
+                    </button>
+
+                    <button
+                      id="attachment-btn-bulky_bag"
+                      type="button"
+                      aria-pressed="false"
+                      class="p-3 rounded-xl border text-left transition-all relative flex flex-col justify-between cursor-pointer bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-800"
+                    >
+                      <div>
+                        <div class="flex justify-end mb-1.5">
+                          <span
+                            class="text-xs font-mono px-2 py-0.5 rounded font-bold bg-slate-200/90 text-slate-800"
+                            >+35% Drag</span
+                          >
+                        </div>
+                        <span class="font-bold text-sm block mb-1 leading-snug"
+                          >Soft Cargo Bag</span
+                        >
+                        <p
+                          class="text-xs sm:text-sm leading-relaxed text-slate-600"
+                        >
+                          Non-aerodynamic soft luggage bag or kayak
+                        </p>
+                      </div>
+                      <div
+                        class="mt-2.5 text-xs font-mono font-semibold text-slate-600"
+                      >
+                        +Cd 0.165
+                      </div>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Vehicle Type Selector -->
+                <div id="vehicle-selector-group">
+                  <label
+                    class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2"
+                  >
+                    Vehicle Type
+                  </label>
+                  <div
+                    id="vehicles-grid"
+                    class="grid grid-cols-1 sm:grid-cols-3 gap-2.5"
+                  >
+                    <button
+                      id="vehicle-btn-sedan"
+                      type="button"
+                      aria-pressed="false"
+                      class="p-3 sm:p-3.5 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-800"
+                    >
+                      <div>
+                        <div class="flex justify-end mb-1.5">
+                          <span
+                            class="text-xs font-mono px-2 py-0.5 rounded font-bold bg-slate-200/90 text-slate-800"
+                            >Base Drag</span
+                          >
+                        </div>
+                        <span class="font-bold text-sm block mb-1 leading-snug"
+                          >Compact</span
+                        >
+                        <p
+                          class="text-xs sm:text-sm leading-relaxed text-slate-600"
+                        >
+                          Sleek aerodynamic body profile (e.g., Civic, Model 3)
+                        </p>
+                      </div>
+                      <div
+                        class="mt-2.5 text-xs font-mono font-semibold text-slate-600"
+                      >
+                        Base Cd 0.28
+                      </div>
+                    </button>
+
+                    <button
+                      id="vehicle-btn-crossover"
+                      type="button"
+                      aria-pressed="true"
+                      class="p-3 sm:p-3.5 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between bg-slate-900 text-white border-slate-900 shadow-md shadow-slate-900/20"
+                    >
+                      <div>
+                        <div class="flex justify-end mb-1.5">
+                          <span
+                            class="text-xs font-mono px-2 py-0.5 rounded font-bold bg-slate-700 text-white"
+                            >+18% Drag</span
+                          >
+                        </div>
+                        <span class="font-bold text-sm block mb-1 leading-snug"
+                          >Crossover</span
+                        >
+                        <p
+                          class="text-xs sm:text-sm leading-relaxed text-slate-300"
+                        >
+                          Medium roof height & elevated profile (e.g., RAV4,
+                          CR-V)
+                        </p>
+                      </div>
+                      <div
+                        class="mt-2.5 text-xs font-mono font-semibold text-slate-300"
+                      >
+                        Base Cd 0.33
+                      </div>
+                    </button>
+
+                    <button
+                      id="vehicle-btn-suv"
+                      type="button"
+                      aria-pressed="false"
+                      class="p-3 sm:p-3.5 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-800"
+                    >
+                      <div>
+                        <div class="flex justify-end mb-1.5">
+                          <span
+                            class="text-xs font-mono px-2 py-0.5 rounded font-bold bg-slate-200/90 text-slate-800"
+                            >+36% Drag</span
+                          >
+                        </div>
+                        <span class="font-bold text-sm block mb-1 leading-snug"
+                          >Full SUV</span
+                        >
+                        <p
+                          class="text-xs sm:text-sm leading-relaxed text-slate-600"
+                        >
+                          Large frontal surface & upright stance (e.g., Tahoe,
+                          F-150)
+                        </p>
+                      </div>
+                      <div
+                        class="mt-2.5 text-xs font-mono font-semibold text-slate-600"
+                      >
+                        Base Cd 0.38
+                      </div>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Fuel Price Input -->
+                <div
+                  id="fuel-price-input-group"
+                  class="pt-2 border-t border-slate-100 flex items-center justify-between"
+                >
+                  <label
+                    htmlFor="fuel-price-number-input"
+                    class="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5 cursor-pointer"
+                  >
+                    <svg
+                      class="w-4 h-4 text-emerald-600"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8" />
+                      <path d="M12 6v2" />
+                      <path d="M12 16v2" />
+                    </svg>
+                    <span
+                      >Fuel Price (<span id="fuel-price-unit-label"
+                        >$/Gallon</span
+                      >)</span
+                    >
+                  </label>
+                  <div
+                    class="flex items-center gap-1 bg-slate-100 px-3 py-1 rounded-lg border border-slate-200"
+                  >
+                    <span class="text-xs font-semibold text-slate-600">$</span>
+                    <input
+                      id="fuel-price-number-input"
+                      type="number"
+                      step="0.05"
+                      min="0.5"
+                      max="10"
+                      value="3.65"
+                      aria-label="Fuel Price"
+                      class="w-16 font-mono font-bold text-slate-900 text-sm text-right bg-transparent outline-none"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column: Live Aerodynamic Simulation & Results Output -->
+              <div
+                id="calculator-results-wrapper"
+                class="lg:col-span-5 space-y-5"
+              >
+                <!-- SVG Simulation Canvas Box -->
+                <div
+                  id="car-graphic-container"
+                  class="bg-gradient-to-b from-slate-900 to-slate-950 rounded-2xl p-5 text-white border border-slate-800 shadow-xl overflow-hidden relative"
+                >
+                  <div
+                    class="flex items-center justify-between border-b border-slate-800/80 pb-3 mb-4"
+                  >
+                    <div class="flex items-center gap-2">
+                      <svg
+                        class="w-5 h-5 text-amber-400 animate-pulse"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2" />
+                        <path d="M9.6 4.6A2 2 0 1 1 11 8H2" />
+                        <path d="M12.6 19.4A2 2 0 1 0 14 16H2" />
+                      </svg>
+                      <span
+                        class="font-['Outfit'] font-bold text-sm tracking-wide text-slate-200"
+                      >
+                        Real-Time Aerodynamic Simulation
+                      </span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span
+                        id="graphic-overhead-badge"
+                        class="text-xs px-2.5 py-1 rounded-full font-semibold border border-amber-500/40 bg-amber-500/15 text-amber-400"
+                      >
+                        +18.2% Fuel Overhead
+                      </span>
+                      <span
+                        id="graphic-speed-display"
+                        class="text-xs text-slate-400 font-mono hidden sm:inline"
+                      >
+                        Speed: 65 mph
+                      </span>
+                    </div>
+                  </div>
+
+                  <div
+                    id="car-svg-wrapper"
+                    class="relative w-full h-48 sm:h-56 flex items-center justify-center my-2"
+                  >
+                    <!-- SVG injected dynamically by app.js -->
+                  </div>
+
+                  <div
+                    class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-3 border-t border-slate-800/80 text-xs"
+                  >
+                    <div
+                      class="bg-slate-800/50 p-2.5 rounded-xl border border-slate-800"
+                    >
+                      <span class="text-slate-400 block mb-0.5"
+                        >Base Drag (Cd)</span
+                      >
+                      <span
+                        id="graphic-base-cd"
+                        class="font-bold text-slate-100 text-sm font-mono"
+                        >0.33</span
+                      >
+                    </div>
+                    <div
+                      class="bg-slate-800/50 p-2.5 rounded-xl border border-slate-800"
+                    >
+                      <span class="text-slate-400 block mb-0.5"
+                        >Added Drag (+Cd)</span
+                      >
+                      <span
+                        id="graphic-delta-cd"
+                        class="font-bold text-amber-400 text-sm font-mono"
+                        >+0.085</span
+                      >
+                    </div>
+                    <div
+                      class="col-span-2 sm:col-span-1 bg-slate-800/50 p-2.5 rounded-xl border border-slate-800 flex items-center justify-between"
+                    >
+                      <div>
+                        <span class="text-slate-400 block mb-0.5"
+                          >Drag Increase</span
+                        >
+                        <span
+                          id="graphic-cd-increase"
+                          class="font-bold text-red-400 text-sm font-mono"
+                          >+25.8%</span
+                        >
+                      </div>
+                      <svg
+                        class="w-4 h-4 text-red-400 opacity-80"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Primary Result Headline Card -->
+                <div
+                  id="result-headline-card"
+                  class="bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100/70 rounded-2xl p-6 border border-amber-200/90 shadow-sm relative overflow-hidden"
+                >
+                  <div class="flex items-start justify-between">
+                    <div>
+                      <span
+                        class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-amber-950 flex items-center gap-1.5"
+                      >
+                        <svg
+                          class="w-4 h-4 text-amber-600"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path
+                            d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"
+                          />
+                        </svg>
+                        Aerodynamic Fuel Penalty
+                      </span>
+                      <div class="mt-2 flex items-baseline gap-2">
+                        <span
+                          id="result-penalty-percent"
+                          class="font-['Outfit'] font-black text-4xl sm:text-5xl text-amber-950 tracking-tight"
+                        >
+                          +18.2%
+                        </span>
+                        <span
+                          class="text-xs font-extrabold text-amber-900 bg-amber-200/90 px-2.5 py-1 rounded-md border border-amber-300 uppercase"
+                        >
+                          Fuel Overhead
+                        </span>
+                      </div>
+                    </div>
+                    <div
+                      id="result-wasted-badge"
+                      class="bg-amber-500 text-white font-mono font-black text-xs sm:text-sm px-3 py-1.5 rounded-xl shadow-xs border border-amber-600 whitespace-nowrap"
+                    >
+                      +3.2 gal wasted
+                    </div>
+                  </div>
+
+                  <p
+                    id="result-description"
+                    class="mt-3.5 text-sm sm:text-base text-slate-800 leading-relaxed font-normal"
+                  >
+                    Your Streamlined Roof Box adds
+                    <strong class="text-slate-950 font-extrabold"
+                      >+0.085 Cd</strong
+                    >
+                    to aerodynamic drag, burning an extra
+                    <strong class="text-amber-950 font-extrabold"
+                      >3.2 gal</strong
+                    >
+                    of fuel over 250 miles.
+                  </p>
+
+                  <!-- Quick Metrics Breakdown Table -->
+                  <div
+                    id="results-breakdown-grid"
+                    class="grid grid-cols-2 gap-2.5 mt-5 pt-4 border-t border-amber-200/80"
+                  >
+                    <div
+                      class="bg-white/90 p-3 rounded-xl border border-amber-200/80"
+                    >
+                      <span
+                        class="text-xs text-slate-700 font-medium block mb-0.5"
+                        >Baseline Fuel</span
+                      >
+                      <span
+                        id="res-base-fuel"
+                        class="font-bold text-slate-900 text-sm font-mono"
+                      >
+                        8.3 gal
+                      </span>
+                    </div>
+                    <div
+                      class="bg-white/90 p-3 rounded-xl border border-amber-200/80"
+                    >
+                      <span
+                        class="text-xs text-amber-900 font-bold block mb-0.5"
+                        >With Roof Rack</span
+                      >
+                      <span
+                        id="res-new-fuel"
+                        class="font-bold text-amber-950 text-sm font-mono"
+                      >
+                        11.5 gal
+                      </span>
+                    </div>
+                    <div
+                      class="bg-white/90 p-3 rounded-xl border border-amber-200/80"
+                    >
+                      <span
+                        class="text-xs text-slate-700 font-medium block mb-0.5"
+                        >Trip Fuel Cost</span
+                      >
+                      <span
+                        id="res-new-cost"
+                        class="font-bold text-slate-900 text-sm font-mono"
+                      >
+                        $42.08
+                      </span>
+                    </div>
+                    <div
+                      class="bg-white/90 p-3 rounded-xl border border-amber-200/80 flex items-center justify-between"
+                    >
+                      <div>
+                        <span
+                          class="text-xs text-slate-700 font-medium block mb-0.5"
+                          >Extra CO₂</span
+                        >
+                        <span
+                          id="res-extra-co2"
+                          class="font-bold text-slate-900 text-sm font-mono"
+                        >
+                          +28.8 kg
+                        </span>
+                      </div>
+                      <svg
+                        class="w-4 h-4 text-emerald-600 opacity-90"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"
+                        />
+                        <path
+                          d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Yearly Projection Warning Card -->
+                <div
+                  id="yearly-projection-card"
+                  class="bg-slate-900 text-white rounded-2xl p-5 sm:p-6 border border-slate-800 shadow-md relative"
+                >
+                  <div class="flex items-center gap-2 mb-2.5">
+                    <svg
+                      class="w-4.5 h-4.5 text-amber-400 shrink-0"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+                      <line x1="16" y1="2" x2="16" y2="6" />
+                      <line x1="8" y1="2" x2="8" y2="6" />
+                      <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                    <span
+                      id="yearly-distance-title"
+                      class="font-['Outfit'] font-extrabold text-xs sm:text-sm uppercase tracking-wider text-slate-200"
+                    >
+                      IF LEFT ON ROOF YEAR-ROUND (12,000 MI)
+                    </span>
+                  </div>
+                  <div
+                    class="flex flex-wrap items-baseline justify-between gap-2 mt-2"
+                  >
+                    <div class="flex items-baseline gap-2">
+                      <span
+                        id="yearly-extra-cost"
+                        class="font-['Outfit'] font-black text-3xl sm:text-4xl text-amber-400 tracking-tight"
+                      >
+                        +$568.12
+                      </span>
+                      <span
+                        class="text-xs sm:text-sm font-medium text-slate-300"
+                        >extra gas wasted / year</span
+                      >
+                    </div>
+                    <span
+                      id="yearly-extra-fuel"
+                      class="text-xs sm:text-sm font-mono font-extrabold bg-amber-400 text-slate-950 px-3 py-1.5 rounded-lg shadow-xs"
+                    >
+                      +155.6 gal
+                    </span>
+                  </div>
+                  <p
+                    class="text-xs sm:text-sm text-slate-200 mt-3.5 leading-relaxed font-normal"
+                  >
+                    Removing your roof attachment when not actively carrying
+                    cargo saves hundreds of dollars annually in unnecessary
+                    aerodynamic air drag.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Test Facts & Aerodynamic Physics Section -->
+          <section
+            id="test-results-section"
+            class="w-full py-12 bg-white border-y border-slate-200/80 my-8"
+          >
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+              <!-- Section Title -->
+              <div class="text-center max-w-2xl mx-auto mb-10">
+                <span
+                  class="text-xs font-bold uppercase tracking-widest text-amber-600 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full"
+                >
+                  Real Wind Tunnel & Track Data
+                </span>
+                <h2
+                  class="font-['Outfit'] font-bold text-2xl sm:text-3xl text-slate-900 mt-3"
+                >
+                  Why Does a Roof Rack Waste So Much Fuel?
+                </h2>
+                <p class="text-sm text-slate-600 mt-2">
+                  At highway speeds (65+ mph / 105+ km/h), over 60% of engine
+                  power goes purely into pushing through air resistance.
+                </p>
+              </div>
+
+              <!-- 3 Real Test Fact Cards -->
+              <div
+                id="test-cards-grid"
+                class="grid grid-cols-1 md:grid-cols-3 gap-6"
+              >
+                <div
+                  class="bg-slate-50/80 rounded-2xl p-6 border border-slate-200/90 shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
+                >
+                  <div>
+                    <div
+                      class="flex items-center gap-2 text-xs font-extrabold text-amber-800 bg-amber-100 px-3 py-1 rounded-md w-fit mb-3"
+                    >
+                      <svg
+                        class="w-4 h-4 stroke-[2.5]"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        <path d="m9 12 2 2 4-4" />
+                      </svg>
+                      <span>Consumer Reports Wind & Track Test</span>
+                    </div>
+                    <h3
+                      class="font-['Outfit'] font-bold text-base sm:text-lg text-slate-900 mb-2"
+                    >
+                      Empty Crossbars at 65 MPH
+                    </h3>
+                    <p class="text-sm text-slate-700 leading-relaxed mb-4">
+                      Carrying empty roof rack crossbars alone degrades fuel
+                      economy by 11% on sedans and 8% on SUVs.
+                    </p>
+                  </div>
+                  <div
+                    class="pt-3 border-t border-slate-200 text-xs sm:text-sm font-bold text-slate-900 flex items-center gap-2"
+                  >
+                    <svg
+                      class="w-4 h-4 text-amber-600 shrink-0"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <circle cx="12" cy="12" r="10" />
+                      <line x1="12" y1="8" x2="12" y2="12" />
+                      <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <span
+                      >Costing $150–$280 in wasted gas annually if never
+                      removed.</span
+                    >
+                  </div>
+                </div>
+
+                <div
+                  class="bg-slate-50/80 rounded-2xl p-6 border border-slate-200/90 shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
+                >
+                  <div>
+                    <div
+                      class="flex items-center gap-2 text-xs font-extrabold text-amber-800 bg-amber-100 px-3 py-1 rounded-md w-fit mb-3"
+                    >
+                      <svg
+                        class="w-4 h-4 stroke-[2.5]"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        <path d="m9 12 2 2 4-4" />
+                      </svg>
+                      <span>ADAC German Automobile Association</span>
+                    </div>
+                    <h3
+                      class="font-['Outfit'] font-bold text-base sm:text-lg text-slate-900 mb-2"
+                    >
+                      Roof Box at 80 MPH (130 km/h)
+                    </h3>
+                    <p class="text-sm text-slate-700 leading-relaxed mb-4">
+                      A roof cargo box increases fuel consumption by up to 2.0
+                      Liters per 100 km (approx +22% higher fuel usage).
+                    </p>
+                  </div>
+                  <div
+                    class="pt-3 border-t border-slate-200 text-xs sm:text-sm font-bold text-slate-900 flex items-center gap-2"
+                  >
+                    <svg
+                      class="w-4 h-4 text-amber-600 shrink-0"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <circle cx="12" cy="12" r="10" />
+                      <line x1="12" y1="8" x2="12" y2="12" />
+                      <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <span
+                      >At highway speeds, air drag increases exponentially with
+                      velocity squared (v²).</span
+                    >
+                  </div>
+                </div>
+
+                <div
+                  class="bg-slate-50/80 rounded-2xl p-6 border border-slate-200/90 shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
+                >
+                  <div>
+                    <div
+                      class="flex items-center gap-2 text-xs font-extrabold text-amber-800 bg-amber-100 px-3 py-1 rounded-md w-fit mb-3"
+                    >
+                      <svg
+                        class="w-4 h-4 stroke-[2.5]"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        <path d="m9 12 2 2 4-4" />
+                      </svg>
+                      <span>Edmunds Highway Aerodynamic Study</span>
+                    </div>
+                    <h3
+                      class="font-['Outfit'] font-bold text-base sm:text-lg text-slate-900 mb-2"
+                    >
+                      Roof-Mounted Bicycles
+                    </h3>
+                    <p class="text-sm text-slate-700 leading-relaxed mb-4">
+                      Two bicycles mounted on the roof created the largest
+                      aerodynamic drag spike, reducing overall range by 31%.
+                    </p>
+                  </div>
+                  <div
+                    class="pt-3 border-t border-slate-200 text-xs sm:text-sm font-bold text-slate-900 flex items-center gap-2"
+                  >
+                    <svg
+                      class="w-4 h-4 text-amber-600 shrink-0"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <circle cx="12" cy="12" r="10" />
+                      <line x1="12" y1="8" x2="12" y2="12" />
+                      <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <span
+                      >Rear hitch-mounted bike racks are up to 3x more fuel
+                      efficient than roof racks.</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- 3 Smart Fuel Saving Rules -->
+              <div
+                id="fuel-tips-banner"
+                class="mt-10 bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-2xl p-6 sm:p-8 border border-slate-800 shadow-md"
+              >
+                <div
+                  class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center"
+                >
+                  <div class="lg:col-span-5">
+                    <span
+                      class="text-xs font-mono font-bold text-amber-400 uppercase tracking-widest block mb-1"
+                    >
+                      Aerodynamic Efficiency Tips
+                    </span>
+                    <h3
+                      class="font-['Outfit'] font-extrabold text-xl sm:text-2xl text-white"
+                    >
+                      How to Reduce Roof Drag & Save Fuel
+                    </h3>
+                    <p
+                      class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed"
+                    >
+                      Simple structural changes can drastically reduce your fuel
+                      bill on your next road trip.
+                    </p>
+                  </div>
+
+                  <div
+                    class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4"
+                  >
+                    <div
+                      class="bg-slate-800/90 p-4 sm:p-5 rounded-xl border border-slate-700/80 shadow-sm"
+                    >
+                      <div
+                        class="w-8 h-8 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center font-black text-sm mb-2.5"
+                      >
+                        1
+                      </div>
+                      <h4 class="font-bold text-sm sm:text-base text-white">
+                        Remove Empty Racks
+                      </h4>
+                      <p
+                        class="text-xs sm:text-sm text-slate-200 mt-1.5 leading-relaxed font-normal"
+                      >
+                        Take off empty crossbars when not in use to save up to
+                        11% fuel.
+                      </p>
+                    </div>
+
+                    <div
+                      class="bg-slate-800/90 p-4 sm:p-5 rounded-xl border border-slate-700/80 shadow-sm"
+                    >
+                      <div
+                        class="w-8 h-8 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center font-black text-sm mb-2.5"
+                      >
+                        2
+                      </div>
+                      <h4 class="font-bold text-sm sm:text-base text-white">
+                        Use Rear Hitch Racks
+                      </h4>
+                      <p
+                        class="text-xs sm:text-sm text-slate-200 mt-1.5 leading-relaxed font-normal"
+                      >
+                        Rear hitch bike mounts create ~70% less aerodynamic drag
+                        than roof mounts.
+                      </p>
+                    </div>
+
+                    <div
+                      class="bg-slate-800/90 p-4 sm:p-5 rounded-xl border border-slate-700/80 shadow-sm"
+                    >
+                      <div
+                        class="w-8 h-8 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center font-black text-sm mb-2.5"
+                      >
+                        3
+                      </div>
+                      <h4 class="font-bold text-sm sm:text-base text-white">
+                        Lower Cruising Speed
+                      </h4>
+                      <p
+                        class="text-xs sm:text-sm text-slate-200 mt-1.5 leading-relaxed font-normal"
+                      >
+                        Cruising at 65 mph instead of 75 mph cuts roof drag
+                        overhead by nearly half!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Frequently Asked Questions -->
+          <section
+            id="faq-section"
+            class="max-w-4xl mx-auto px-4 sm:px-6 my-10 sm:my-14"
+          >
+            <div
+              class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs"
+            >
+              <div class="flex items-center gap-2.5 mb-6">
+                <div class="p-2 rounded-xl bg-amber-100 text-amber-800">
+                  <svg
+                    class="w-5 h-5 stroke-[2.5]"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                    <line x1="12" y1="17" x2="12.01" y2="17" />
+                  </svg>
+                </div>
+                <h2
+                  class="font-['Outfit'] font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight"
+                >
+                  FAQ
+                </h2>
+              </div>
+
+              <div class="space-y-4">
+                <div
+                  class="border border-slate-200/90 rounded-2xl overflow-hidden transition-all duration-200 bg-slate-50/50 hover:bg-slate-50"
+                >
+                  <button
+                    id="faq-btn-1"
+                    type="button"
+                    aria-expanded="true"
+                    aria-controls="faq-answer-1"
+                    class="w-full p-4 sm:p-5 text-left flex items-start justify-between gap-4 cursor-pointer focus:outline-none"
+                  >
+                    <span
+                      class="font-['Outfit'] font-bold text-base sm:text-lg text-slate-900 leading-snug"
+                    >
+                      1. Do empty roof bars affect gas mileage?
+                    </span>
+                    <div
+                      id="faq-icon-1"
+                      class="shrink-0 mt-0.5 p-1 rounded-full bg-slate-200/70 text-slate-700 transition-transform duration-200 rotate-180 bg-amber-200 text-amber-900"
+                    >
+                      <svg
+                        class="w-4 h-4"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <polyline points="6 9 12 15 18 9" />
+                      </svg>
+                    </div>
+                  </button>
+                  <div
+                    id="faq-answer-1"
+                    class="px-5 pb-5 sm:px-6 sm:pb-6 text-slate-800 text-sm sm:text-base leading-relaxed sm:leading-loose border-t border-slate-200/70 pt-4"
+                  >
+                    <p class="font-normal text-slate-700">
+                      Yes, even empty roof bars noticeably reduce fuel economy.
+                      Carrying bare crossbars alone increases aerodynamic drag
+                      and degrades fuel economy by 8% to 11% at highway speeds
+                      (65+ mph). Over 12,000 miles of driving, an empty roof
+                      rack can waste $150 to $280 in unnecessary fuel costs.
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  class="border border-slate-200/90 rounded-2xl overflow-hidden transition-all duration-200 bg-slate-50/50 hover:bg-slate-50"
+                >
+                  <button
+                    id="faq-btn-2"
+                    type="button"
+                    aria-expanded="true"
+                    aria-controls="faq-answer-2"
+                    class="w-full p-4 sm:p-5 text-left flex items-start justify-between gap-4 cursor-pointer focus:outline-none"
+                  >
+                    <span
+                      class="font-['Outfit'] font-bold text-base sm:text-lg text-slate-900 leading-snug"
+                    >
+                      2. Is a roof box better than a soft cargo bag for fuel
+                      economy?
+                    </span>
+                    <div
+                      id="faq-icon-2"
+                      class="shrink-0 mt-0.5 p-1 rounded-full bg-slate-200/70 text-slate-700 transition-transform duration-200 rotate-180 bg-amber-200 text-amber-900"
+                    >
+                      <svg
+                        class="w-4 h-4"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <polyline points="6 9 12 15 18 9" />
+                      </svg>
+                    </div>
+                  </button>
+                  <div
+                    id="faq-answer-2"
+                    class="px-5 pb-5 sm:px-6 sm:pb-6 text-slate-800 text-sm sm:text-base leading-relaxed sm:leading-loose border-t border-slate-200/70 pt-4"
+                  >
+                    <p class="font-normal text-slate-700">
+                      Yes, a hard-shell roof box is significantly more
+                      fuel-efficient. Hard-shell cargo boxes are engineered with
+                      streamlined aerodynamic profiles (adding roughly +18%
+                      drag), whereas non-aerodynamic soft cargo bags catch much
+                      more wind and can increase aerodynamic drag by up to +35%,
+                      resulting in nearly double the extra fuel consumption.
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  class="border border-slate-200/90 rounded-2xl overflow-hidden transition-all duration-200 bg-slate-50/50 hover:bg-slate-50"
+                >
+                  <button
+                    id="faq-btn-3"
+                    type="button"
+                    aria-expanded="true"
+                    aria-controls="faq-answer-3"
+                    class="w-full p-4 sm:p-5 text-left flex items-start justify-between gap-4 cursor-pointer focus:outline-none"
+                  >
+                    <span
+                      class="font-['Outfit'] font-bold text-base sm:text-lg text-slate-900 leading-snug"
+                    >
+                      3. How much money do you actually save by removing a roof
+                      rack?
+                    </span>
+                    <div
+                      id="faq-icon-3"
+                      class="shrink-0 mt-0.5 p-1 rounded-full bg-slate-200/70 text-slate-700 transition-transform duration-200 rotate-180 bg-amber-200 text-amber-900"
+                    >
+                      <svg
+                        class="w-4 h-4"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <polyline points="6 9 12 15 18 9" />
+                      </svg>
+                    </div>
+                  </button>
+                  <div
+                    id="faq-answer-3"
+                    class="px-5 pb-5 sm:px-6 sm:pb-6 text-slate-800 text-sm sm:text-base leading-relaxed sm:leading-loose border-t border-slate-200/70 pt-4"
+                  >
+                    <p class="font-normal text-slate-700">
+                      Removing a roof rack when not in use can save you between
+                      $150 and $300+ per year in gas. For long highway trips or
+                      yearly commutes, removing empty bars, cargo boxes, or roof
+                      bike mounts reduces aerodynamic drag back to your
+                      vehicle's factory efficiency baseline.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+
+      <!-- Prominent Call To Action Footer -->
+      <footer
+        id="main-cta-footer"
+        class="w-full bg-slate-900 text-white pt-12 pb-16 border-t border-slate-800"
+      >
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            id="cta-box"
+            class="bg-gradient-to-br from-amber-500 via-amber-600 to-orange-600 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden text-center sm:text-left"
+          >
+            <div
+              class="absolute -right-16 -bottom-16 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none"
+            ></div>
+
+            <div
+              class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10"
+            >
+              <div class="lg:col-span-8 space-y-4">
+                <div
+                  class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/20 backdrop-blur-md text-amber-100 text-xs font-semibold"
+                >
+                  <svg
+                    class="w-3.5 h-3.5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3z"
+                    />
+                  </svg>
+                  <span>Want More Detailed Vehicle Fuel & Trip Analysis?</span>
+                </div>
+
+                <h2
+                  class="font-['Outfit'] font-black text-2xl sm:text-4xl tracking-tight leading-snug"
+                >
+                  Calculate Complete Trip Costs &amp; Real-World MPG for Your
+                  Car
+                </h2>
+
+                <p
+                  class="text-sm sm:text-base text-amber-100/90 max-w-xl leading-relaxed"
+                >
+                  This simulator is just the start. Use Fuel Analyzer to log
+                  real fill-ups, calculate exact speed penalties for your
+                  specific vehicle, and optimize every trip.
+                </p>
+
+                <div
+                  class="flex flex-wrap items-center justify-center sm:justify-start gap-4 text-xs font-semibold text-amber-50 pt-2"
+                >
+                  <div class="flex items-center gap-1.5">
+                    <svg
+                      class="w-4 h-4 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    <span>Exact Fuel Cost Breakdown</span>
+                  </div>
+                  <div class="flex items-center gap-1.5">
+                    <svg
+                      class="w-4 h-4 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    <span>Real-World Consumption Logs</span>
+                  </div>
+                  <div class="flex items-center gap-1.5">
+                    <svg
+                      class="w-4 h-4 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    <span>Hidden Fuel Loss Calculator</span>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="lg:col-span-4 flex flex-col items-center sm:items-end justify-center"
+              >
+                <a
+                  id="main-cta-button"
+                  href="https://fuel.cartools.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-slate-900 hover:bg-slate-950 text-white font-['Outfit'] font-extrabold text-sm sm:text-base transition-all shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 group cursor-pointer"
+                >
+                  <span>Analyze My Car&apos;s Fuel Cost</span>
+                  <svg
+                    class="w-5 h-5 text-amber-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <line x1="7" y1="17" x2="17" y2="7" />
+                    <polyline points="7 7 17 7 17 17" />
+                  </svg>
+                </a>
+                <span class="text-xs text-amber-100/80 mt-2 font-mono">
+                  fuel.cartools.app
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4"
+          >
+            <div class="flex items-center gap-2">
+              <svg
+                class="w-4 h-4 text-amber-500"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M3 22v-3h18v3H3zm2-5V5c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v12H5zm4-8h6V7H9v4z"
+                />
+              </svg>
+              <span class="font-bold text-slate-300"
+                >Roof Rack Fuel Waste Calculator</span
+              >
+              <span>&copy; 2026</span>
+            </div>
+
+            <p class="text-slate-500 text-center sm:text-right">
+              Based on aerodynamic drag equation physics &amp; wind tunnel
+              benchmark data.
+            </p>
+          </div>
+        </div>
+      </footer>
+
+      <!-- Mobile Floating Sticky CTA -->
+      <div
+        id="floating-sticky-cta-container"
+        class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[88%] max-w-xs sm:hidden transition-all duration-500 ease-out opacity-0 translate-y-10 scale-95 pointer-events-none"
+      >
+        <a
+          href="https://fuel.cartools.app"
+          id="floating-sticky-cta"
+          aria-label="Launch Full App on fuel.cartools.app"
+          class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-full bg-amber-500/90 hover:bg-amber-500 text-white backdrop-blur-md border border-amber-300/80 shadow-lg shadow-amber-500/30 text-xs font-extrabold font-['Outfit'] tracking-wider active:scale-95 transition-all text-center"
+        >
+          <span>Launch Full App</span>
+          <svg
+            class="w-3.5 h-3.5 text-white stroke-[2.5]"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+            />
+            <polyline points="15 3 21 3 21 9" />
+            <line x1="10" y1="14" x2="21" y2="3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Application Script -->
+    <script src="./js/app.js"></script>
+  </body>
+</html>

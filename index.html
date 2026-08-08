@@ -9,9 +9,93 @@
       content="CarTools is a growing suite of intelligent web applications for drivers: Fuel Analyzer (fuel.cartools.app) and GIG Driver (gig.cartools.app)."
     />
     <link rel="canonical" href="https://cartools.app/" />
-    <link rel="icon" type="image/webp" href="./src/images/cartools_logo.webp" />
-    <link rel="stylesheet" href="./src/index.css" />
-    <link rel="stylesheet" href="./src/main.css" />
+    <link rel="icon" type="image/webp" href="./images/cartools_logo.webp" />
+    <link rel="stylesheet" href="./src/style.css" />
+
+    <!-- WebSite JSON-LD Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "CarTools",
+        "url": "https://cartools.app/",
+        "description": "CarTools is a growing suite of intelligent web applications for drivers: Fuel Analyzer and GIG Driver."
+      }
+    </script>
+
+    <!-- FAQPage JSON-LD Rich Snippet Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is CarTools?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CarTools is a collection of intelligent web applications designed to help drivers manage their vehicles more efficiently. From fuel consumption tracking to gig driver profit analysis, every tool is built to turn driving data into practical insights."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which applications are available?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CarTools currently offers two applications: Fuel Analytics (Monitor fuel consumption, vehicle health, and driving efficiency) and GIG DRIVER (Track income, expenses, and true profitability for rideshare and delivery drivers)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need to install anything?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. CarTools is completely web-based. Simply open the application in your browser and start using it—no installation required."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use CarTools on my phone?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Every CarTools application is fully responsive and optimized for desktop, tablet, and mobile devices, providing a smooth experience wherever you are."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my data private?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Protecting your privacy is a priority. Many features store data locally in your browser, giving you control over your information while minimizing unnecessary data collection."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which countries are supported?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CarTools is designed for drivers worldwide. Applications support multiple measurement systems, including Metric, US Imperial, and UK units, with automatic region detection where available."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Who is CarTools built for?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CarTools is designed for everyday drivers, car enthusiasts, rideshare and delivery drivers, small fleet owners, and anyone looking to better understand the real cost of driving."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will more tools be added?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. CarTools is actively expanding with new features, calculators, and analytical modules to support drivers in every aspect of vehicle management."
+            }
+          }
+        ]
+      }
+    </script>
   </head>
   <body
     class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-500 selection:text-white"
@@ -27,7 +111,7 @@
         <!-- Logo & Domain -->
         <a href="#" id="brand-logo" class="flex items-center group">
           <img
-            src="./src/images/cartools_logo.webp"
+            src="./images/cartools_logo.webp"
             alt="CarTools Logo"
             width="1000"
             height="318"
@@ -41,34 +125,460 @@
         <nav
           class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600 absolute left-1/2 -translate-x-1/2"
         >
+          <!-- Tools Dropdown -->
+          <div class="relative group py-2">
+            <button
+              type="button"
+              class="hover:text-blue-600 transition-colors flex items-center gap-1.5 focus:outline-none cursor-pointer py-1"
+              aria-expanded="false"
+            >
+              <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+              <span>Tools</span>
+              <svg
+                class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+
+            <!-- Dropdown Menu (3 Columns) -->
+            <div
+              class="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[720px] max-w-[90vw] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out z-50 pointer-events-none group-hover:pointer-events-auto"
+            >
+              <div
+                class="bg-white/95 backdrop-blur-xl border border-slate-200/90 rounded-2xl shadow-2xl shadow-slate-900/15 p-5 grid grid-cols-3 gap-5 text-left"
+              >
+                <!-- Column 1: Full Apps -->
+                <div class="space-y-3">
+                  <div
+                    class="flex items-center gap-2 pb-2 border-b border-slate-100"
+                  >
+                    <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                    <span
+                      class="text-xs font-extrabold uppercase tracking-wider text-slate-800"
+                      >Full Apps</span
+                    >
+                  </div>
+                  <div class="space-y-1.5">
+                    <a
+                      href="./tools/fuel-calculator"
+                      class="flex items-start gap-2.5 p-2 rounded-xl hover:bg-blue-50/80 transition-colors group/item"
+                    >
+                      <div
+                        class="w-8 h-8 rounded-lg bg-blue-100/60 border border-blue-200/60 flex items-center justify-center shrink-0 group-hover/item:bg-blue-600 transition-colors mt-0.5"
+                      >
+                        <svg
+                          class="w-4 h-4 text-blue-600 group-hover/item:text-white transition-colors"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M13 10V3L4 14h7v7l9-11h-7z"
+                          />
+                        </svg>
+                      </div>
+                      <div>
+                        <div
+                          class="text-xs font-bold text-slate-900 group-hover/item:text-blue-600 transition-colors"
+                        >
+                          Fuel Analyzer
+                        </div>
+                        <div
+                          class="text-[11px] text-slate-500 font-normal leading-snug"
+                        >
+                          Full fuel consumption & expense app
+                        </div>
+                      </div>
+                    </a>
+
+                    <a
+                      href="./tools/gig-driver-calculator"
+                      class="flex items-start gap-2.5 p-2 rounded-xl hover:bg-emerald-50/80 transition-colors group/item"
+                    >
+                      <div
+                        class="w-8 h-8 rounded-lg bg-emerald-100/60 border border-emerald-200/60 flex items-center justify-center shrink-0 group-hover/item:bg-emerald-600 transition-colors mt-0.5"
+                      >
+                        <svg
+                          class="w-4 h-4 text-emerald-600 group-hover/item:text-white transition-colors"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                      </div>
+                      <div>
+                        <div
+                          class="text-xs font-bold text-slate-900 group-hover/item:text-emerald-600 transition-colors"
+                        >
+                          GIG Driver
+                        </div>
+                        <div
+                          class="text-[11px] text-slate-500 font-normal leading-snug"
+                        >
+                          Rideshare & delivery net profit analytics
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Column 2: Fuel Micro-tools -->
+                <div class="space-y-3">
+                  <div
+                    class="flex items-center gap-2 pb-2 border-b border-slate-100"
+                  >
+                    <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                    <span
+                      class="text-xs font-extrabold uppercase tracking-wider text-slate-800"
+                      >Fuel Micro-tools</span
+                    >
+                  </div>
+                  <div class="space-y-1.5">
+                    <a
+                      href="./tools/roof-rack-fuel-waste-calculator"
+                      class="flex items-start gap-2.5 p-2 rounded-xl hover:bg-amber-50/80 transition-colors group/item"
+                    >
+                      <div
+                        class="w-8 h-8 rounded-lg bg-amber-100/60 border border-amber-200/60 flex items-center justify-center shrink-0 group-hover/item:bg-amber-500 transition-colors mt-0.5"
+                      >
+                        <svg
+                          class="w-4 h-4 text-amber-600 group-hover/item:text-white transition-colors"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"
+                          />
+                        </svg>
+                      </div>
+                      <div>
+                        <div
+                          class="text-xs font-bold text-slate-900 group-hover/item:text-amber-600 transition-colors"
+                        >
+                          Roof Rack Fuel Waste
+                        </div>
+                        <div
+                          class="text-[11px] text-slate-500 font-normal leading-snug"
+                        >
+                          Aerodynamic drag & mpg penalty calculator
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Column 3: Gig Micro-tools -->
+                <div class="space-y-3">
+                  <div
+                    class="flex items-center gap-2 pb-2 border-b border-slate-100"
+                  >
+                    <span class="w-2 h-2 rounded-full bg-teal-500"></span>
+                    <span
+                      class="text-xs font-extrabold uppercase tracking-wider text-slate-800"
+                      >Gig Micro-tools</span
+                    >
+                  </div>
+                  <div class="space-y-1.5">
+                    <a
+                      href="./tools/gig-driver-profit-calculator"
+                      class="flex items-start gap-2.5 p-2 rounded-xl hover:bg-teal-50/80 transition-colors group/item"
+                    >
+                      <div
+                        class="w-8 h-8 rounded-lg bg-teal-100/60 border border-teal-200/60 flex items-center justify-center shrink-0 group-hover/item:bg-teal-600 transition-colors mt-0.5"
+                      >
+                        <svg
+                          class="w-4 h-4 text-teal-600 group-hover/item:text-white transition-colors"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                          />
+                        </svg>
+                      </div>
+                      <div>
+                        <div
+                          class="text-xs font-bold text-slate-900 group-hover/item:text-teal-600 transition-colors"
+                        >
+                          Gig Net Profit Calculator
+                        </div>
+                        <div
+                          class="text-[11px] text-slate-500 font-normal leading-snug"
+                        >
+                          Quick net income & mileage tax estimator
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <a
-            href="./tools/fuel-calculator"
+            href="#why-cartools"
             class="hover:text-blue-600 transition-colors flex items-center gap-1.5"
           >
-            <span class="w-2 h-2 rounded-full bg-blue-500"></span> Fuel
-            Analytics
+            Why CarTools
           </a>
-          <a
-            href="./tools/gig-driver-calculator"
-            class="hover:text-emerald-600 transition-colors flex items-center gap-1.5"
-          >
-            <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Gig Driver
-          </a>
+
           <a
             href="#faq"
             class="hover:text-blue-600 transition-colors flex items-center gap-1.5"
           >
-            <span class="w-2 h-2 rounded-full bg-blue-500"></span> FAQ
+            FAQ
           </a>
         </nav>
 
-        <!-- Right Side: Quick Launch Button -->
-        <div class="flex items-center gap-3">
+        <!-- Right Side: Quick Launch Button & Mobile Hamburger -->
+        <div class="flex items-center gap-2 sm:gap-3">
           <a
             href="#apps"
-            class="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs sm:text-sm font-bold transition-all shadow-md shadow-blue-500/20 cursor-pointer"
+            class="inline-flex items-center gap-2 px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs sm:text-sm font-bold transition-all shadow-md shadow-blue-500/20 cursor-pointer"
           >
             <span>Get started</span>
+          </a>
+
+          <!-- Mobile Menu Hamburger Button -->
+          <button
+            id="mobile-menu-btn"
+            type="button"
+            aria-label="Toggle Mobile Navigation"
+            aria-expanded="false"
+            class="md:hidden p-2 rounded-xl border border-slate-200/90 bg-slate-50/90 text-slate-700 hover:text-blue-600 hover:bg-slate-100 transition-colors focus:outline-none cursor-pointer"
+          >
+            <svg
+              id="hamburger-icon"
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+            <svg
+              id="close-icon"
+              class="w-5 h-5 hidden"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation Dropdown Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden pointer-events-auto mt-2 bg-white/98 backdrop-blur-2xl border border-slate-200/90 rounded-2xl shadow-2xl p-4 space-y-4 max-h-[80vh] overflow-y-auto transition-all duration-200"
+      >
+        <!-- Tools & Calculators Heading -->
+        <div
+          class="text-[11px] font-black uppercase tracking-wider text-slate-400 px-1"
+        >
+          Tools & Calculators
+        </div>
+
+        <!-- Section 1: Full Apps -->
+        <div class="space-y-1.5 pt-1">
+          <div class="flex items-center gap-2 px-2 pb-1">
+            <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+            <span
+              class="text-xs font-extrabold uppercase tracking-wider text-slate-800"
+              >Full Apps</span
+            >
+          </div>
+          <a
+            href="./tools/fuel-calculator"
+            class="mobile-nav-link flex items-center gap-3 p-2.5 rounded-xl hover:bg-blue-50/80 transition-colors"
+          >
+            <div
+              class="w-8 h-8 rounded-lg bg-blue-100/60 border border-blue-200/60 flex items-center justify-center shrink-0"
+            >
+              <svg
+                class="w-4 h-4 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"
+                />
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-slate-900">Fuel Analyzer</div>
+              <div class="text-[11px] text-slate-500 font-normal">
+                Full fuel consumption & expense app
+              </div>
+            </div>
+          </a>
+          <a
+            href="./tools/gig-driver-calculator"
+            class="mobile-nav-link flex items-center gap-3 p-2.5 rounded-xl hover:bg-emerald-50/80 transition-colors"
+          >
+            <div
+              class="w-8 h-8 rounded-lg bg-emerald-100/60 border border-emerald-200/60 flex items-center justify-center shrink-0"
+            >
+              <svg
+                class="w-4 h-4 text-emerald-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-slate-900">GIG Driver</div>
+              <div class="text-[11px] text-slate-500 font-normal">
+                Rideshare & delivery net profit analytics
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Section 2: Fuel Micro-tools -->
+        <div class="space-y-1.5 pt-2 border-t border-slate-100">
+          <div class="flex items-center gap-2 px-2 pb-1">
+            <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+            <span
+              class="text-xs font-extrabold uppercase tracking-wider text-slate-800"
+              >Fuel Micro-tools</span
+            >
+          </div>
+          <a
+            href="./tools/roof-rack-fuel-waste-calculator"
+            class="mobile-nav-link flex items-center gap-3 p-2.5 rounded-xl hover:bg-amber-50/80 transition-colors"
+          >
+            <div
+              class="w-8 h-8 rounded-lg bg-amber-100/60 border border-amber-200/60 flex items-center justify-center shrink-0"
+            >
+              <svg
+                class="w-4 h-4 text-amber-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"
+                />
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-slate-900">
+                Roof Rack Fuel Waste
+              </div>
+              <div class="text-[11px] text-slate-500 font-normal">
+                Aerodynamic drag & mpg penalty calculator
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Section 3: Gig Micro-tools -->
+        <div class="space-y-1.5 pt-2 border-t border-slate-100">
+          <div class="flex items-center gap-2 px-2 pb-1">
+            <span class="w-2 h-2 rounded-full bg-teal-500"></span>
+            <span
+              class="text-xs font-extrabold uppercase tracking-wider text-slate-800"
+              >Gig Micro-tools</span
+            >
+          </div>
+          <a
+            href="./tools/gig-driver-profit-calculator"
+            class="mobile-nav-link flex items-center gap-3 p-2.5 rounded-xl hover:bg-teal-50/80 transition-colors"
+          >
+            <div
+              class="w-8 h-8 rounded-lg bg-teal-100/60 border border-teal-200/60 flex items-center justify-center shrink-0"
+            >
+              <svg
+                class="w-4 h-4 text-teal-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                />
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-slate-900">
+                Gig Net Profit Calculator
+              </div>
+              <div class="text-[11px] text-slate-500 font-normal">
+                Quick net income & mileage tax estimator
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- General Links -->
+        <div class="pt-2 border-t border-slate-100 flex flex-col gap-1">
+          <a
+            href="#why-cartools"
+            class="mobile-nav-link p-2.5 rounded-xl text-xs font-bold text-slate-700 hover:bg-slate-100 transition-colors flex items-center gap-2"
+          >
+            <span>Why CarTools</span>
+          </a>
+          <a
+            href="#faq"
+            class="mobile-nav-link p-2.5 rounded-xl text-xs font-bold text-slate-700 hover:bg-slate-100 transition-colors flex items-center gap-2"
+          >
+            <span>FAQ</span>
           </a>
         </div>
       </div>
@@ -83,13 +593,14 @@
       <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <!-- The uploaded cartools.webp image as background -->
         <img
-          src="./src/images/cartools.webp"
+          src="./images/cartools.webp"
           alt="CarTools Tech Background"
           width="1408"
           height="768"
           class="w-full h-full object-cover object-center filter contrast-[1.05] brightness-[0.82] opacity-85 sm:opacity-90"
           loading="eager"
           decoding="async"
+          fetchpriority="high"
         />
 
         <!-- High-Tech Color & Vignette Gradients -->
@@ -341,7 +852,7 @@
               >
                 <div class="flex items-center gap-4">
                   <img
-                    src="./src/images/fuel_logo.svg"
+                    src="./images/fuel_logo.svg"
                     alt="Fuel Analyzer Logo"
                     width="48"
                     height="48"
@@ -373,6 +884,7 @@
                   <a
                     href="https://fuel.cartools.app"
                     target="_blank"
+                    rel="noopener noreferrer"
                     class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm shadow-md transition-all"
                   >
                     <span>Launch App (fuel.cartools.app)</span>
@@ -429,7 +941,7 @@
                     class="w-44 sm:w-52 rounded-2xl overflow-hidden shadow-xl group relative"
                   >
                     <img
-                      src="./src/images/fuel-mobile.webp"
+                      src="./images/fuel-mobile.webp"
                       alt="Fuel Analyzer Mobile Interface"
                       width="1290"
                       height="2796"
@@ -625,7 +1137,7 @@
                     </div>
                   </div>
                   <img
-                    src="./src/images/fuel-desktop.webp"
+                    src="./images/fuel-desktop.webp"
                     alt="Fuel Analyzer Desktop Interface"
                     width="1553"
                     height="846"
@@ -690,6 +1202,7 @@
                   <a
                     href="https://gig.cartools.app"
                     target="_blank"
+                    rel="noopener noreferrer"
                     class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm shadow-md transition-all"
                   >
                     <span>Launch App (gig.cartools.app)</span>
@@ -747,7 +1260,7 @@
                     class="w-44 sm:w-52 rounded-2xl overflow-hidden shadow-xl group relative"
                   >
                     <img
-                      src="./src/images/gig-mobile.webp"
+                      src="./images/gig-mobile.webp"
                       alt="GIG Driver Mobile Interface"
                       width="1290"
                       height="2796"
@@ -961,7 +1474,7 @@
                     </div>
                   </div>
                   <img
-                    src="./src/images/gig-desktop.webp"
+                    src="./images/gig-desktop.webp"
                     alt="GIG Driver Desktop Interface"
                     width="1608"
                     height="849"
@@ -1100,7 +1613,7 @@
         <!-- Standalone Frameless Prominent Logo -->
         <div class="flex justify-center items-center">
           <img
-            src="./src/images/cartools_logo.webp"
+            src="./images/cartools_logo.webp"
             alt="CarTools Logo"
             width="1000"
             height="318"
@@ -1562,7 +2075,7 @@
         >
           <div class="flex items-center gap-3">
             <img
-              src="./src/images/cartools_logo.webp"
+              src="./images/cartools_logo.webp"
               alt="CarTools Logo"
               width="1000"
               height="318"
@@ -1580,12 +2093,14 @@
             <a
               href="https://fuel.cartools.app"
               target="_blank"
+              rel="noopener noreferrer"
               class="hover:text-blue-400 transition-colors"
               >Fuel Analyzer (fuel.cartools.app)</a
             >
             <a
               href="https://gig.cartools.app"
               target="_blank"
+              rel="noopener noreferrer"
               class="hover:text-emerald-400 transition-colors"
               >GIG Driver (gig.cartools.app)</a
             >
@@ -1615,6 +2130,6 @@
     </footer>
 
     <!-- Vanilla TS Application Code -->
-    <script src="./src/main.js"></script>
+    <script src="./src/main.ts"></script>
   </body>
 </html>
