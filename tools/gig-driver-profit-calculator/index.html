@@ -1,1347 +1,2326 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="scroll-smooth">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gig Driver Profit Calculator | True Net Earnings & Cost Audit | CarTools</title>
-  <meta name="description" content="Free gig driver profit calculator for Uber, Lyft, DoorDash, UberEats, and Instacart. Calculate your real take-home pay after gas, car depreciation, and taxes in 30 seconds.">
-  <link rel="canonical" href="https://cartools.app/tools/gig-driver-calculator">
-  
-  <!-- Open Graph / Social Sharing -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://cartools.app/tools/gig-driver-calculator">
-  <meta property="og:title" content="Gig Driver Profit Calculator | Reveal Your Real Take-Home Pay">
-  <meta property="og:description" content="Stop driving blind. Calculate your true hourly profit after gas, vehicle depreciation, and hidden mileage wear. 100% Free by CarTools.">
-  <meta property="og:image" content="assets/cartools-logo.webp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Gig Driver Profit Calculator | True Net Earnings & Cost Audit | CarTools
+    </title>
+    <meta
+      name="description"
+      content="Free gig driver profit calculator for Uber, Lyft, DoorDash, UberEats, and Instacart. Calculate your real take-home pay after gas, car depreciation, and taxes in 30 seconds."
+    />
+    <link
+      rel="canonical"
+      href="https://cartools.app/tools/gig-driver-calculator"
+    />
 
-  <!-- Google Fonts: Inter & JetBrains Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://cartools.app/tools/gig-driver-calculator"
+    />
+    <meta
+      property="og:title"
+      content="Gig Driver Profit Calculator | Reveal Your Real Take-Home Pay"
+    />
+    <meta
+      property="og:description"
+      content="Stop driving blind. Calculate your true hourly profit after gas, vehicle depreciation, and hidden mileage wear. 100% Free by CarTools."
+    />
+    <meta property="og:image" content="/images/cartools-logo.webp" />
 
-  <!-- Tailwind CSS via CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              navy: '#0E3860',
-              'navy-dark': '#092540',
-              'navy-light': '#1E4D7A',
-              orange: '#FF7A00',
-              'orange-hover': '#EA6800',
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                navy: '#0E3860',
+                'navy-dark': '#092540',
+                'navy-light': '#1E4D7A',
+                orange: '#FF7A00',
+                'orange-hover': '#EA6800',
+              },
+              net: {
+                green: '#059669',
+                'green-light': '#10B981',
+                'green-bg': '#ECFDF5',
+                'green-border': '#A7F3D0',
+              },
+              loss: {
+                red: '#DC2626',
+                'red-bg': '#FEF2F2',
+                'red-border': '#FECACA',
+              },
             },
-            net: {
-              green: '#059669',
-              'green-light': '#10B981',
-              'green-bg': '#ECFDF5',
-              'green-border': '#A7F3D0',
+            fontFamily: {
+              sans: ['Inter', 'system-ui', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
             },
-            loss: {
-              red: '#DC2626',
-              'red-bg': '#FEF2F2',
-              'red-border': '#FECACA',
-            }
           },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-          }
-        }
+        },
+      };
+    </script>
+
+    <style>
+      /* Custom Range Slider Styling */
+      input[type='range'] {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 8px;
+        border-radius: 9999px;
+        background: #e2e8f0;
+        outline: none;
+        transition: background 0.15s ease-in-out;
       }
-    }
-  </script>
+      input[type='range']::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: #0e3860;
+        border: 3px solid #ffffff;
+        box-shadow: 0 2px 6px rgba(14, 56, 96, 0.35);
+        cursor: pointer;
+        transition:
+          transform 0.1s ease,
+          background 0.15s ease;
+      }
+      input[type='range']::-webkit-slider-thumb:hover {
+        transform: scale(1.15);
+        background: #ff7a00;
+      }
+      input[type='range']::-moz-range-thumb {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: #0e3860;
+        border: 3px solid #ffffff;
+        box-shadow: 0 2px 6px rgba(14, 56, 96, 0.35);
+        cursor: pointer;
+      }
 
-  <style>
-    /* Custom Range Slider Styling */
-    input[type="range"] {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 100%;
-      height: 8px;
-      border-radius: 9999px;
-      background: #E2E8F0;
-      outline: none;
-      transition: background 0.15s ease-in-out;
-    }
-    input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: #0E3860;
-      border: 3px solid #FFFFFF;
-      box-shadow: 0 2px 6px rgba(14, 56, 96, 0.35);
-      cursor: pointer;
-      transition: transform 0.1s ease, background 0.15s ease;
-    }
-    input[type="range"]::-webkit-slider-thumb:hover {
-      transform: scale(1.15);
-      background: #FF7A00;
-    }
-    input[type="range"]::-moz-range-thumb {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: #0E3860;
-      border: 3px solid #FFFFFF;
-      box-shadow: 0 2px 6px rgba(14, 56, 96, 0.35);
-      cursor: pointer;
-    }
-
-    /* Lightbox modal backdrop */
-    .lightbox-backdrop {
-      background: rgba(9, 37, 64, 0.85);
-      backdrop-filter: blur(8px);
-    }
-  </style>
-</head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-orange selection:text-white">
-
-  <!-- ================================================================= -->
-  <!-- 1. TOP ANNOUNCEMENT BANNER -->
-  <!-- ================================================================= -->
-  <div class="bg-gradient-to-r from-brand-navy-dark via-brand-navy to-slate-900 text-white text-xs sm:text-sm font-medium py-2.5 px-4 text-center border-b border-brand-navy-light/40">
-    <div class="max-w-7xl mx-auto flex items-center justify-center gap-2 flex-wrap">
-      <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-brand-orange text-white shadow-sm">
-        100% FREE
-      </span>
-      <span>Comprehensive Gig Driver Suite & Real-Time Cost Simulator is live!</span>
-      <a href="https://gig.cartools.app" target="_blank" rel="noopener noreferrer" class="underline hover:text-brand-orange font-semibold inline-flex items-center gap-1 transition-colors">
-        Open Full App
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-      </a>
-    </div>
-  </div>
-
-  <!-- ================================================================= -->
-  <!-- 2. STICKY HEADER & NAVBAR -->
-  <!-- ================================================================= -->
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 transition-all">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      
-      <!-- Brand Logo -->
-      <div class="flex items-center gap-3">
-        <a href="https://cartools.app" class="group flex items-center gap-2.5 focus:outline-none focus:ring-2 focus:ring-brand-navy rounded-lg p-1" title="CarTools Home">
-          <img src="assets/cartools-logo.webp" alt="CarTools Logo" class="h-9 sm:h-10 w-auto object-contain transition-transform group-hover:scale-105 duration-200">
-        </a>
-        <span class="hidden sm:inline-block h-6 w-px bg-slate-200"></span>
-        <span class="hidden sm:inline-flex items-center gap-1 text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full">
-          <svg class="w-3.5 h-3.5 text-brand-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-          Gig Driver Audit
+      /* Lightbox modal backdrop */
+      .lightbox-backdrop {
+        background: rgba(9, 37, 64, 0.85);
+        backdrop-filter: blur(8px);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-orange selection:text-white"
+  >
+    <!-- ================================================================= -->
+    <!-- 1. TOP ANNOUNCEMENT BANNER -->
+    <!-- ================================================================= -->
+    <div
+      class="bg-gradient-to-r from-brand-navy-dark via-brand-navy to-slate-900 text-white text-xs sm:text-sm font-medium py-2.5 px-4 text-center border-b border-brand-navy-light/40"
+    >
+      <div
+        class="max-w-7xl mx-auto flex items-center justify-center gap-2 flex-wrap"
+      >
+        <span
+          class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-brand-orange text-white shadow-sm"
+        >
+          100% FREE
         </span>
+        <span
+          >Comprehensive Gig Driver Suite & Real-Time Cost Simulator is
+          live!</span
+        >
+        <a
+          href="https://gig.cartools.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline hover:text-brand-orange font-semibold inline-flex items-center gap-1 transition-colors"
+        >
+          Open Full App
+          <svg
+            class="w-3.5 h-3.5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M14 5l7 7m0 0l-7 7m7-7H3"
+            />
+          </svg>
+        </a>
       </div>
-
-      <!-- Navigation Links -->
-      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600">
-        <a href="https://cartools.app" target="_blank" rel="noopener noreferrer" class="hover:text-brand-navy transition-colors inline-flex items-center gap-1.5 font-semibold text-brand-navy">
-          <span>Main Hub</span>
-          <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-        </a>
-        <a href="#calculator" class="hover:text-brand-navy transition-colors">Quick Calculator</a>
-        <a href="#hidden-costs" class="hover:text-brand-navy transition-colors">The Hidden Bleed</a>
-        <a href="#features" class="hover:text-brand-navy transition-colors">Full Suite Features</a>
-        <a href="#faq" class="hover:text-brand-navy transition-colors">FAQ</a>
-      </nav>
-
-      <!-- Header Action CTAs -->
-      <div class="flex items-center gap-3">
-        <a href="https://cartools.app" target="_blank" rel="noopener noreferrer" class="md:hidden text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 px-3 py-2 rounded-lg transition-colors">
-          Main Hub ↗
-        </a>
-        <a href="https://gig.cartools.app" target="_blank" rel="noopener noreferrer" class="relative group inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl text-sm font-bold text-white bg-brand-navy hover:bg-brand-navy-dark shadow-sm hover:shadow-md transition-all active:scale-[0.98]">
-          <span>Launch Full App</span>
-          <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-extrabold uppercase tracking-wider bg-brand-orange text-white">Free</span>
-          <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-        </a>
-      </div>
-
     </div>
-  </header>
 
-  <!-- ================================================================= -->
-  <!-- 3. HERO SECTION -->
-  <!-- ================================================================= -->
-  <section class="pt-12 sm:pt-16 pb-12 bg-gradient-to-b from-white via-slate-50 to-slate-100 border-b border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <!-- Headline & Hook -->
-      <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200 text-brand-orange text-xs sm:text-sm font-bold mb-4 shadow-sm">
-          <span class="w-2 h-2 rounded-full bg-brand-orange animate-pulse"></span>
-          REALITY CHECK FOR GIG WORKERS
+    <!-- ================================================================= -->
+    <!-- 2. STICKY HEADER & NAVBAR -->
+    <!-- ================================================================= -->
+    <header
+      class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 transition-all"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between"
+      >
+        <!-- Brand Logo -->
+        <div class="flex items-center gap-3">
+          <a
+            href="https://cartools.app"
+            class="group flex items-center gap-2.5 focus:outline-none focus:ring-2 focus:ring-brand-navy rounded-lg p-1"
+            title="CarTools Home"
+          >
+            <img
+              src="/images/cartools-logo.webp"
+              alt="CarTools Logo"
+              class="h-9 sm:h-10 w-auto object-contain transition-transform group-hover:scale-105 duration-200"
+            />
+          </a>
+          <span class="hidden sm:inline-block h-6 w-px bg-slate-200"></span>
+          <span
+            class="hidden sm:inline-flex items-center gap-1 text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full"
+          >
+            <svg
+              class="w-3.5 h-3.5 text-brand-navy"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+              />
+            </svg>
+            Gig Driver Audit
+          </span>
         </div>
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight sm:leading-tight">
-          Are You Really Making <span class="text-brand-navy underline decoration-brand-orange decoration-4 underline-offset-6">$25/Hour</span> Driving Gig?
-        </h1>
-        <p class="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
-          Rideshare and delivery apps brag about your <strong class="text-slate-900 font-semibold">Gross Payout</strong>. CarTools strips away gas burn, vehicle depreciation, tire wear, and dead miles to reveal your <strong class="text-emerald-700 font-semibold">True Net Hourly Take-Home Pay</strong>.
-        </p>
-        
-        <!-- Platform badges row -->
-        <div class="mt-6 flex items-center justify-center gap-3 flex-wrap text-xs font-semibold text-slate-500">
-          <span>Accurate calculations for:</span>
-          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-900 text-white font-medium">Uber</span>
-          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#FF00BF] text-white font-medium">Lyft</span>
-          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#FF3008] text-white font-medium">DoorDash</span>
-          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#06C167] text-white font-medium">UberEats</span>
-          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#43B02A] text-white font-medium">Instacart</span>
+
+        <!-- Navigation Links -->
+        <nav
+          class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600"
+        >
+          <a
+            href="https://cartools.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-brand-navy transition-colors inline-flex items-center gap-1.5 font-semibold text-brand-navy"
+          >
+            <span>Main Hub</span>
+            <svg
+              class="w-3.5 h-3.5 text-slate-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+              />
+            </svg>
+          </a>
+          <a href="#calculator" class="hover:text-brand-navy transition-colors"
+            >Quick Calculator</a
+          >
+          <a
+            href="#hidden-costs"
+            class="hover:text-brand-navy transition-colors"
+            >The Hidden Bleed</a
+          >
+          <a href="#features" class="hover:text-brand-navy transition-colors"
+            >Full Suite Features</a
+          >
+          <a href="#faq" class="hover:text-brand-navy transition-colors">FAQ</a>
+        </nav>
+
+        <!-- Header Action CTAs -->
+        <div class="flex items-center gap-3">
+          <a
+            href="https://cartools.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="md:hidden text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 px-3 py-2 rounded-lg transition-colors"
+          >
+            Main Hub ↗
+          </a>
+          <a
+            href="https://gig.cartools.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="relative group inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl text-sm font-bold text-white bg-brand-navy hover:bg-brand-navy-dark shadow-sm hover:shadow-md transition-all active:scale-[0.98]"
+          >
+            <span>Launch Full App</span>
+            <span
+              class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-extrabold uppercase tracking-wider bg-brand-orange text-white"
+              >Free</span
+            >
+            <svg
+              class="w-4 h-4 transition-transform group-hover:translate-x-0.5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
+            </svg>
+          </a>
         </div>
       </div>
+    </header>
 
-      <!-- ================================================================= -->
-      <!-- 4. INTERACTIVE CALCULATOR WIDGET (THE HERO HOOK) -->
-      <!-- ================================================================= -->
-      <div id="calculator" class="max-w-5xl mx-auto bg-white rounded-3xl shadow-xl shadow-slate-200/70 border border-slate-200 overflow-hidden">
-        
-        <!-- Calculator Header Bar -->
-        <div class="bg-slate-900 text-white px-6 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-800">
-          <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-xl bg-brand-navy flex items-center justify-center text-brand-orange font-bold text-lg border border-slate-700">
-              ⚡
-            </div>
-            <div>
-              <div class="text-xs uppercase tracking-wider font-bold text-slate-400">CarTools Quick Engine</div>
-              <h2 class="text-base font-bold text-white">Instant Gig Profit & Cost Auditor</h2>
-            </div>
+    <!-- ================================================================= -->
+    <!-- 3. HERO SECTION -->
+    <!-- ================================================================= -->
+    <section
+      class="pt-12 sm:pt-16 pb-12 bg-gradient-to-b from-white via-slate-50 to-slate-100 border-b border-slate-200"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Headline & Hook -->
+        <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+          <div
+            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200 text-brand-orange text-xs sm:text-sm font-bold mb-4 shadow-sm"
+          >
+            <span
+              class="w-2 h-2 rounded-full bg-brand-orange animate-pulse"
+            ></span>
+            REALITY CHECK FOR GIG WORKERS
           </div>
-          <div class="flex items-center gap-2 self-end sm:self-auto">
-            <span class="inline-flex items-center gap-1.5 text-xs bg-emerald-950/80 text-emerald-400 border border-emerald-800 px-3 py-1 rounded-full font-medium">
-              <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Live Auditor Active
-            </span>
+          <h1
+            class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight sm:leading-tight"
+          >
+            Are You Really Making
+            <span
+              class="text-brand-navy underline decoration-brand-orange decoration-4 underline-offset-6"
+              >$25/Hour</span
+            >
+            Driving Gig?
+          </h1>
+          <p class="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
+            Rideshare and delivery apps brag about your
+            <strong class="text-slate-900 font-semibold">Gross Payout</strong>.
+            CarTools strips away gas burn, vehicle depreciation, tire wear, and
+            dead miles to reveal your
+            <strong class="text-emerald-700 font-semibold"
+              >True Net Hourly Take-Home Pay</strong
+            >.
+          </p>
+
+          <!-- Platform badges row -->
+          <div
+            class="mt-6 flex items-center justify-center gap-3 flex-wrap text-xs font-semibold text-slate-500"
+          >
+            <span>Accurate calculations for:</span>
+            <span
+              class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-900 text-white font-medium"
+              >Uber</span
+            >
+            <span
+              class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#FF00BF] text-white font-medium"
+              >Lyft</span
+            >
+            <span
+              class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#FF3008] text-white font-medium"
+              >DoorDash</span
+            >
+            <span
+              class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#06C167] text-white font-medium"
+              >UberEats</span
+            >
+            <span
+              class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#43B02A] text-white font-medium"
+              >Instacart</span
+            >
           </div>
         </div>
 
-        <!-- 2-Column Grid Body -->
-        <div class="grid grid-cols-1 lg:grid-cols-12">
-          
-          <!-- LEFT COLUMN: INPUTS (7 Cols) -->
-          <div class="lg:col-span-7 p-6 sm:p-8 space-y-7 border-b lg:border-b-0 lg:border-r border-slate-200 bg-white">
-            
-            <!-- Platform Picker -->
-            <div>
-              <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2.5">
-                1. Select Primary Platform
-              </label>
-              <div class="grid grid-cols-3 sm:grid-cols-5 gap-2" id="platform-selector">
-                <button type="button" data-platform="uber" class="platform-btn active flex flex-col items-center justify-center py-2.5 px-2 rounded-xl border-2 border-slate-900 bg-slate-900 text-white text-xs font-bold transition-all shadow-sm">
-                  <span>Uber</span>
-                </button>
-                <button type="button" data-platform="lyft" class="platform-btn flex flex-col items-center justify-center py-2.5 px-2 rounded-xl border-2 border-slate-200 hover:border-pink-500 bg-slate-50 hover:bg-pink-50 text-slate-700 text-xs font-bold transition-all">
-                  <span>Lyft</span>
-                </button>
-                <button type="button" data-platform="doordash" class="platform-btn flex flex-col items-center justify-center py-2.5 px-2 rounded-xl border-2 border-slate-200 hover:border-red-500 bg-slate-50 hover:bg-red-50 text-slate-700 text-xs font-bold transition-all">
-                  <span>DoorDash</span>
-                </button>
-                <button type="button" data-platform="ubereats" class="platform-btn flex flex-col items-center justify-center py-2.5 px-2 rounded-xl border-2 border-slate-200 hover:border-emerald-500 bg-slate-50 hover:bg-emerald-50 text-slate-700 text-xs font-bold transition-all">
-                  <span>UberEats</span>
-                </button>
-                <button type="button" data-platform="instacart" class="platform-btn flex flex-col items-center justify-center py-2.5 px-2 rounded-xl border-2 border-slate-200 hover:border-amber-500 bg-slate-50 hover:bg-amber-50 text-slate-700 text-xs font-bold transition-all">
-                  <span>Instacart</span>
-                </button>
+        <!-- ================================================================= -->
+        <!-- 4. INTERACTIVE CALCULATOR WIDGET (THE HERO HOOK) -->
+        <!-- ================================================================= -->
+        <div
+          id="calculator"
+          class="max-w-5xl mx-auto bg-white rounded-3xl shadow-xl shadow-slate-200/70 border border-slate-200 overflow-hidden"
+        >
+          <!-- Calculator Header Bar -->
+          <div
+            class="bg-slate-900 text-white px-6 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-800"
+          >
+            <div class="flex items-center gap-3">
+              <div
+                class="w-9 h-9 rounded-xl bg-brand-navy flex items-center justify-center text-brand-orange font-bold text-lg border border-slate-700"
+              >
+                ⚡
+              </div>
+              <div>
+                <div
+                  class="text-xs uppercase tracking-wider font-bold text-slate-400"
+                >
+                  CarTools Quick Engine
+                </div>
+                <h2 class="text-base font-bold text-white">
+                  Instant Gig Profit & Cost Auditor
+                </h2>
               </div>
             </div>
+            <div class="flex items-center gap-2 self-end sm:self-auto">
+              <span
+                class="inline-flex items-center gap-1.5 text-xs bg-emerald-950/80 text-emerald-400 border border-emerald-800 px-3 py-1 rounded-full font-medium"
+              >
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Live
+                Auditor Active
+              </span>
+            </div>
+          </div>
 
-            <!-- Vehicle Powertrain Type -->
-            <div>
-              <div class="flex items-center justify-between mb-2.5">
-                <label class="text-xs font-bold uppercase tracking-wider text-slate-500">
-                  2. Vehicle Fuel & Efficiency Profile
+          <!-- 2-Column Grid Body -->
+          <div class="grid grid-cols-1 lg:grid-cols-12">
+            <!-- LEFT COLUMN: INPUTS (7 Cols) -->
+            <div
+              class="lg:col-span-7 p-6 sm:p-8 space-y-7 border-b lg:border-b-0 lg:border-r border-slate-200 bg-white"
+            >
+              <!-- Platform Picker -->
+              <div>
+                <label
+                  class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2.5"
+                >
+                  1. Select Primary Platform
                 </label>
-                <button type="button" id="toggle-custom-rates" class="text-xs font-semibold text-brand-navy hover:text-brand-orange transition-colors">
-                  ⚙️ Customize Rates
-                </button>
-              </div>
-              <div class="grid grid-cols-3 gap-2.5" id="powertrain-selector">
-                <button type="button" data-powertrain="gas" class="powertrain-btn flex flex-col p-3 rounded-xl border-2 border-slate-200 hover:border-slate-400 bg-slate-50 text-left transition-all">
-                  <span class="text-sm font-bold text-slate-800 flex items-center gap-1.5">
-                    ⛽ Gas
-                  </span>
-                  <span class="text-[11px] text-slate-500 mt-1">28 MPG • $3.85/gal</span>
-                </button>
-                <button type="button" data-powertrain="hybrid" class="powertrain-btn active flex flex-col p-3 rounded-xl border-2 border-emerald-600 bg-emerald-50 text-left transition-all shadow-sm">
-                  <span class="text-sm font-bold text-emerald-900 flex items-center gap-1.5">
-                    🌱 Hybrid
-                  </span>
-                  <span class="text-[11px] text-emerald-700 mt-1">52 MPG • Prius rate</span>
-                </button>
-                <button type="button" data-powertrain="ev" class="powertrain-btn flex flex-col p-3 rounded-xl border-2 border-slate-200 hover:border-slate-400 bg-slate-50 text-left transition-all">
-                  <span class="text-sm font-bold text-slate-800 flex items-center gap-1.5">
-                    ⚡ Electric
-                  </span>
-                  <span class="text-[11px] text-slate-500 mt-1">3.5 mi/kWh • EV</span>
-                </button>
-              </div>
-
-              <!-- Collapsible Custom Tuning Panel -->
-              <div id="custom-tuning-panel" class="hidden mt-3 p-4 bg-slate-100 rounded-xl border border-slate-200 space-y-3">
-                <div class="text-xs font-bold text-slate-700 flex items-center justify-between">
-                  <span>Custom Expense Calibration</span>
-                  <span class="text-[10px] text-slate-500 font-normal">Adjust values for your exact vehicle</span>
-                </div>
-                <div class="grid grid-cols-3 gap-3">
-                  <div>
-                    <label class="block text-[11px] font-semibold text-slate-600 mb-1" id="label-efficiency">Fuel Econ (MPG)</label>
-                    <input type="number" id="custom-mpg" value="52" step="1" class="w-full px-2.5 py-1.5 bg-white border border-slate-300 rounded-lg text-xs font-mono font-bold text-slate-800 focus:ring-2 focus:ring-brand-navy focus:outline-none">
-                  </div>
-                  <div>
-                    <label class="block text-[11px] font-semibold text-slate-600 mb-1" id="label-fuel-price">Fuel Cost ($/gal)</label>
-                    <input type="number" id="custom-fuel-price" value="3.85" step="0.05" class="w-full px-2.5 py-1.5 bg-white border border-slate-300 rounded-lg text-xs font-mono font-bold text-slate-800 focus:ring-2 focus:ring-brand-navy focus:outline-none">
-                  </div>
-                  <div>
-                    <label class="block text-[11px] font-semibold text-slate-600 mb-1">Wear Rate ($/mi)</label>
-                    <input type="number" id="custom-depreciation" value="0.15" step="0.01" class="w-full px-2.5 py-1.5 bg-white border border-slate-300 rounded-lg text-xs font-mono font-bold text-slate-800 focus:ring-2 focus:ring-brand-navy focus:outline-none">
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Input 1: Gross Earnings -->
-            <div class="space-y-2">
-              <div class="flex items-center justify-between">
-                <label for="input-gross" class="text-xs font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1.5">
-                  <span class="w-2 h-2 rounded-full bg-brand-navy"></span>
-                  Weekly Gross Earnings
-                </label>
-                <div class="flex items-center gap-1 bg-slate-100 px-3 py-1 rounded-lg border border-slate-200">
-                  <span class="text-sm font-bold text-slate-500 font-mono">$</span>
-                  <input type="number" id="input-gross" value="850" min="50" max="4000" step="10" class="w-20 bg-transparent text-sm font-bold font-mono text-slate-900 text-right focus:outline-none">
-                </div>
-              </div>
-              <input type="range" id="slider-gross" min="100" max="3000" step="10" value="850">
-              <div class="flex justify-between text-[11px] text-slate-400 font-mono">
-                <span>$100</span>
-                <span>$1,500</span>
-                <span>$3,000+</span>
-              </div>
-            </div>
-
-            <!-- Input 2: Online Hours -->
-            <div class="space-y-2">
-              <div class="flex items-center justify-between">
-                <label for="input-hours" class="text-xs font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1.5">
-                  <span class="w-2 h-2 rounded-full bg-brand-navy"></span>
-                  Hours Online / Shift Time
-                </label>
-                <div class="flex items-center gap-1 bg-slate-100 px-3 py-1 rounded-lg border border-slate-200">
-                  <input type="number" id="input-hours" value="32" min="1" max="80" step="1" class="w-14 bg-transparent text-sm font-bold font-mono text-slate-900 text-right focus:outline-none">
-                  <span class="text-xs font-bold text-slate-500">hrs</span>
-                </div>
-              </div>
-              <input type="range" id="slider-hours" min="5" max="70" step="1" value="32">
-              <div class="flex justify-between text-[11px] text-slate-400 font-mono">
-                <span>5 hrs (Part-Time)</span>
-                <span>35 hrs</span>
-                <span>70 hrs (Full-Time)</span>
-              </div>
-            </div>
-
-            <!-- Input 3: Miles Driven -->
-            <div class="space-y-2">
-              <div class="flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                  <label for="input-miles" class="text-xs font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-brand-navy"></span>
-                    Total Distance Driven
-                  </label>
-                  <button type="button" id="btn-auto-miles" class="text-[11px] font-semibold text-brand-navy bg-slate-100 hover:bg-slate-200 px-2 py-0.5 rounded transition-colors" title="Estimate miles based on standard 19 miles per online hour">
-                    Auto-Estimate
+                <div
+                  class="grid grid-cols-3 sm:grid-cols-5 gap-2"
+                  id="platform-selector"
+                >
+                  <button
+                    type="button"
+                    data-platform="uber"
+                    class="platform-btn active flex flex-col items-center justify-center py-2.5 px-2 rounded-xl border-2 border-slate-900 bg-slate-900 text-white text-xs font-bold transition-all shadow-sm"
+                  >
+                    <span>Uber</span>
+                  </button>
+                  <button
+                    type="button"
+                    data-platform="lyft"
+                    class="platform-btn flex flex-col items-center justify-center py-2.5 px-2 rounded-xl border-2 border-slate-200 hover:border-pink-500 bg-slate-50 hover:bg-pink-50 text-slate-700 text-xs font-bold transition-all"
+                  >
+                    <span>Lyft</span>
+                  </button>
+                  <button
+                    type="button"
+                    data-platform="doordash"
+                    class="platform-btn flex flex-col items-center justify-center py-2.5 px-2 rounded-xl border-2 border-slate-200 hover:border-red-500 bg-slate-50 hover:bg-red-50 text-slate-700 text-xs font-bold transition-all"
+                  >
+                    <span>DoorDash</span>
+                  </button>
+                  <button
+                    type="button"
+                    data-platform="ubereats"
+                    class="platform-btn flex flex-col items-center justify-center py-2.5 px-2 rounded-xl border-2 border-slate-200 hover:border-emerald-500 bg-slate-50 hover:bg-emerald-50 text-slate-700 text-xs font-bold transition-all"
+                  >
+                    <span>UberEats</span>
+                  </button>
+                  <button
+                    type="button"
+                    data-platform="instacart"
+                    class="platform-btn flex flex-col items-center justify-center py-2.5 px-2 rounded-xl border-2 border-slate-200 hover:border-amber-500 bg-slate-50 hover:bg-amber-50 text-slate-700 text-xs font-bold transition-all"
+                  >
+                    <span>Instacart</span>
                   </button>
                 </div>
-                <div class="flex items-center gap-1 bg-slate-100 px-3 py-1 rounded-lg border border-slate-200">
-                  <input type="number" id="input-miles" value="620" min="10" max="2500" step="10" class="w-16 bg-transparent text-sm font-bold font-mono text-slate-900 text-right focus:outline-none">
-                  <span class="text-xs font-bold text-slate-500">miles</span>
+              </div>
+
+              <!-- Vehicle Powertrain Type -->
+              <div>
+                <div class="flex items-center justify-between mb-2.5">
+                  <label
+                    class="text-xs font-bold uppercase tracking-wider text-slate-500"
+                  >
+                    2. Vehicle Fuel & Efficiency Profile
+                  </label>
+                  <button
+                    type="button"
+                    id="toggle-custom-rates"
+                    class="text-xs font-semibold text-brand-navy hover:text-brand-orange transition-colors"
+                  >
+                    ⚙️ Customize Rates
+                  </button>
+                </div>
+                <div class="grid grid-cols-3 gap-2.5" id="powertrain-selector">
+                  <button
+                    type="button"
+                    data-powertrain="gas"
+                    class="powertrain-btn flex flex-col p-3 rounded-xl border-2 border-slate-200 hover:border-slate-400 bg-slate-50 text-left transition-all"
+                  >
+                    <span
+                      class="text-sm font-bold text-slate-800 flex items-center gap-1.5"
+                    >
+                      ⛽ Gas
+                    </span>
+                    <span class="text-[11px] text-slate-500 mt-1"
+                      >28 MPG • $3.85/gal</span
+                    >
+                  </button>
+                  <button
+                    type="button"
+                    data-powertrain="hybrid"
+                    class="powertrain-btn active flex flex-col p-3 rounded-xl border-2 border-emerald-600 bg-emerald-50 text-left transition-all shadow-sm"
+                  >
+                    <span
+                      class="text-sm font-bold text-emerald-900 flex items-center gap-1.5"
+                    >
+                      🌱 Hybrid
+                    </span>
+                    <span class="text-[11px] text-emerald-700 mt-1"
+                      >52 MPG • Prius rate</span
+                    >
+                  </button>
+                  <button
+                    type="button"
+                    data-powertrain="ev"
+                    class="powertrain-btn flex flex-col p-3 rounded-xl border-2 border-slate-200 hover:border-slate-400 bg-slate-50 text-left transition-all"
+                  >
+                    <span
+                      class="text-sm font-bold text-slate-800 flex items-center gap-1.5"
+                    >
+                      ⚡ Electric
+                    </span>
+                    <span class="text-[11px] text-slate-500 mt-1"
+                      >3.5 mi/kWh • EV</span
+                    >
+                  </button>
+                </div>
+
+                <!-- Collapsible Custom Tuning Panel -->
+                <div
+                  id="custom-tuning-panel"
+                  class="hidden mt-3 p-4 bg-slate-100 rounded-xl border border-slate-200 space-y-3"
+                >
+                  <div
+                    class="text-xs font-bold text-slate-700 flex items-center justify-between"
+                  >
+                    <span>Custom Expense Calibration</span>
+                    <span class="text-[10px] text-slate-500 font-normal"
+                      >Adjust values for your exact vehicle</span
+                    >
+                  </div>
+                  <div class="grid grid-cols-3 gap-3">
+                    <div>
+                      <label
+                        class="block text-[11px] font-semibold text-slate-600 mb-1"
+                        id="label-efficiency"
+                        >Fuel Econ (MPG)</label
+                      >
+                      <input
+                        type="number"
+                        id="custom-mpg"
+                        value="52"
+                        step="1"
+                        class="w-full px-2.5 py-1.5 bg-white border border-slate-300 rounded-lg text-xs font-mono font-bold text-slate-800 focus:ring-2 focus:ring-brand-navy focus:outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        class="block text-[11px] font-semibold text-slate-600 mb-1"
+                        id="label-fuel-price"
+                        >Fuel Cost ($/gal)</label
+                      >
+                      <input
+                        type="number"
+                        id="custom-fuel-price"
+                        value="3.85"
+                        step="0.05"
+                        class="w-full px-2.5 py-1.5 bg-white border border-slate-300 rounded-lg text-xs font-mono font-bold text-slate-800 focus:ring-2 focus:ring-brand-navy focus:outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        class="block text-[11px] font-semibold text-slate-600 mb-1"
+                        >Wear Rate ($/mi)</label
+                      >
+                      <input
+                        type="number"
+                        id="custom-depreciation"
+                        value="0.15"
+                        step="0.01"
+                        class="w-full px-2.5 py-1.5 bg-white border border-slate-300 rounded-lg text-xs font-mono font-bold text-slate-800 focus:ring-2 focus:ring-brand-navy focus:outline-none"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
-              <input type="range" id="slider-miles" min="50" max="2000" step="10" value="620">
-              <div class="flex justify-between text-[11px] text-slate-400 font-mono">
-                <span>50 mi</span>
-                <span>1,000 mi</span>
-                <span>2,000+ mi</span>
+
+              <!-- Input 1: Gross Earnings -->
+              <div class="space-y-2">
+                <div class="flex items-center justify-between">
+                  <label
+                    for="input-gross"
+                    class="text-xs font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1.5"
+                  >
+                    <span class="w-2 h-2 rounded-full bg-brand-navy"></span>
+                    Weekly Gross Earnings
+                  </label>
+                  <div
+                    class="flex items-center gap-1 bg-slate-100 px-3 py-1 rounded-lg border border-slate-200"
+                  >
+                    <span class="text-sm font-bold text-slate-500 font-mono"
+                      >$</span
+                    >
+                    <input
+                      type="number"
+                      id="input-gross"
+                      value="850"
+                      min="50"
+                      max="4000"
+                      step="10"
+                      class="w-20 bg-transparent text-sm font-bold font-mono text-slate-900 text-right focus:outline-none"
+                    />
+                  </div>
+                </div>
+                <input
+                  type="range"
+                  id="slider-gross"
+                  min="100"
+                  max="3000"
+                  step="10"
+                  value="850"
+                />
+                <div
+                  class="flex justify-between text-[11px] text-slate-400 font-mono"
+                >
+                  <span>$100</span>
+                  <span>$1,500</span>
+                  <span>$3,000+</span>
+                </div>
+              </div>
+
+              <!-- Input 2: Online Hours -->
+              <div class="space-y-2">
+                <div class="flex items-center justify-between">
+                  <label
+                    for="input-hours"
+                    class="text-xs font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1.5"
+                  >
+                    <span class="w-2 h-2 rounded-full bg-brand-navy"></span>
+                    Hours Online / Shift Time
+                  </label>
+                  <div
+                    class="flex items-center gap-1 bg-slate-100 px-3 py-1 rounded-lg border border-slate-200"
+                  >
+                    <input
+                      type="number"
+                      id="input-hours"
+                      value="32"
+                      min="1"
+                      max="80"
+                      step="1"
+                      class="w-14 bg-transparent text-sm font-bold font-mono text-slate-900 text-right focus:outline-none"
+                    />
+                    <span class="text-xs font-bold text-slate-500">hrs</span>
+                  </div>
+                </div>
+                <input
+                  type="range"
+                  id="slider-hours"
+                  min="5"
+                  max="70"
+                  step="1"
+                  value="32"
+                />
+                <div
+                  class="flex justify-between text-[11px] text-slate-400 font-mono"
+                >
+                  <span>5 hrs (Part-Time)</span>
+                  <span>35 hrs</span>
+                  <span>70 hrs (Full-Time)</span>
+                </div>
+              </div>
+
+              <!-- Input 3: Miles Driven -->
+              <div class="space-y-2">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <label
+                      for="input-miles"
+                      class="text-xs font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1.5"
+                    >
+                      <span class="w-2 h-2 rounded-full bg-brand-navy"></span>
+                      Total Distance Driven
+                    </label>
+                    <button
+                      type="button"
+                      id="btn-auto-miles"
+                      class="text-[11px] font-semibold text-brand-navy bg-slate-100 hover:bg-slate-200 px-2 py-0.5 rounded transition-colors"
+                      title="Estimate miles based on standard 19 miles per online hour"
+                    >
+                      Auto-Estimate
+                    </button>
+                  </div>
+                  <div
+                    class="flex items-center gap-1 bg-slate-100 px-3 py-1 rounded-lg border border-slate-200"
+                  >
+                    <input
+                      type="number"
+                      id="input-miles"
+                      value="620"
+                      min="10"
+                      max="2500"
+                      step="10"
+                      class="w-16 bg-transparent text-sm font-bold font-mono text-slate-900 text-right focus:outline-none"
+                    />
+                    <span class="text-xs font-bold text-slate-500">miles</span>
+                  </div>
+                </div>
+                <input
+                  type="range"
+                  id="slider-miles"
+                  min="50"
+                  max="2000"
+                  step="10"
+                  value="620"
+                />
+                <div
+                  class="flex justify-between text-[11px] text-slate-400 font-mono"
+                >
+                  <span>50 mi</span>
+                  <span>1,000 mi</span>
+                  <span>2,000+ mi</span>
+                </div>
               </div>
             </div>
 
-          </div>
+            <!-- RIGHT COLUMN: REALITY RESULT CARD (5 Cols) -->
+            <div
+              class="lg:col-span-5 p-6 sm:p-8 bg-slate-50/80 flex flex-col justify-between space-y-6"
+            >
+              <!-- Real Net Display Block -->
+              <div>
+                <div class="flex items-center justify-between">
+                  <span
+                    class="text-xs font-bold uppercase tracking-wider text-slate-500"
+                    >Calculated Real Net Profit</span
+                  >
+                  <span
+                    id="margin-badge"
+                    class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-100 text-emerald-800 border border-emerald-200"
+                  >
+                    Margin: 84.4%
+                  </span>
+                </div>
 
-          <!-- RIGHT COLUMN: REALITY RESULT CARD (5 Cols) -->
-          <div class="lg:col-span-5 p-6 sm:p-8 bg-slate-50/80 flex flex-col justify-between space-y-6">
-            
-            <!-- Real Net Display Block -->
+                <!-- Large Net Number -->
+                <div class="mt-2 flex items-baseline gap-1">
+                  <span
+                    class="text-4xl sm:text-5xl font-extrabold text-emerald-600 font-mono tracking-tight"
+                    id="val-net-profit"
+                  >
+                    $711.10
+                  </span>
+                  <span
+                    class="text-xs font-semibold text-slate-400 uppercase tracking-wider"
+                    >/ week</span
+                  >
+                </div>
+                <div
+                  class="text-xs text-slate-500 font-mono mt-1"
+                  id="val-net-subtext"
+                >
+                  Gross: $850.00 | Total Expense: -$138.90
+                </div>
+              </div>
+
+              <!-- Gross vs Real Hourly Comparison Tiles -->
+              <div class="grid grid-cols-2 gap-3">
+                <div
+                  class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm"
+                >
+                  <div
+                    class="text-[11px] uppercase tracking-wider font-bold text-slate-400"
+                  >
+                    Gross App Rate
+                  </div>
+                  <div
+                    class="text-lg sm:text-xl font-bold font-mono text-slate-700 mt-1"
+                    id="val-gross-hourly"
+                  >
+                    $26.56<span class="text-xs font-normal text-slate-400"
+                      >/hr</span
+                    >
+                  </div>
+                  <div class="text-[10px] text-slate-400 mt-0.5">
+                    App headline rate
+                  </div>
+                </div>
+
+                <div
+                  class="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 shadow-sm"
+                >
+                  <div
+                    class="text-[11px] uppercase tracking-wider font-bold text-emerald-800 flex items-center justify-between"
+                  >
+                    <span>Real Net Take-Home</span>
+                    <span class="text-emerald-600 font-extrabold">✓</span>
+                  </div>
+                  <div
+                    class="text-lg sm:text-xl font-bold font-mono text-emerald-700 mt-1"
+                    id="val-net-hourly"
+                  >
+                    $22.22<span class="text-xs font-normal text-emerald-600"
+                      >/hr</span
+                    >
+                  </div>
+                  <div
+                    class="text-[10px] text-emerald-700 font-medium mt-0.5"
+                    id="val-hourly-gap"
+                  >
+                    -$4.34/hr real loss
+                  </div>
+                </div>
+              </div>
+
+              <!-- Deductions Breakdown -->
+              <div
+                class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm space-y-2.5 text-xs"
+              >
+                <div
+                  class="font-bold text-slate-700 uppercase tracking-wider text-[11px] flex items-center justify-between pb-1 border-b border-slate-100"
+                >
+                  <span>Cost Deductions Breakdown</span>
+                  <span class="text-slate-400 font-normal">Per Week</span>
+                </div>
+
+                <div class="flex items-center justify-between">
+                  <span class="text-slate-600 flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                    Fuel / Energy Burn:
+                  </span>
+                  <span
+                    class="font-mono font-bold text-amber-700"
+                    id="val-deduction-fuel"
+                    >-$45.90</span
+                  >
+                </div>
+
+                <div class="flex items-center justify-between">
+                  <span class="text-slate-600 flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                    Tires, Wear & Depreciation:
+                  </span>
+                  <span
+                    class="font-mono font-bold text-red-600"
+                    id="val-deduction-wear"
+                    >-$93.00</span
+                  >
+                </div>
+
+                <div
+                  class="flex items-center justify-between pt-1 border-t border-slate-100 text-[11px]"
+                >
+                  <span class="text-slate-500 flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                    IRS Tax Shield (@ $0.67/mi):
+                  </span>
+                  <span
+                    class="font-mono font-bold text-sky-700"
+                    id="val-irs-shield"
+                    >+$415.40</span
+                  >
+                </div>
+              </div>
+
+              <!-- Dynamic Driver Truth Callout (Matching App Style) -->
+              <div
+                class="p-3.5 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 text-xs leading-relaxed space-y-1"
+              >
+                <div
+                  class="font-bold text-brand-orange text-[11px] uppercase tracking-wider flex items-center gap-1"
+                >
+                  <span>⚠️ DRIVER TRUTH</span>
+                </div>
+                <p id="driver-truth-text" class="text-slate-300 text-[11px]">
+                  Rideshare platforms advertise high gross payouts, but driving
+                  consumes vehicle equity. Your true earning rate is
+                  <strong class="text-emerald-400 font-mono">$22.22/hr</strong>
+                  instead of
+                  <strong class="text-slate-400 font-mono">$26.56/hr</strong>.
+                </p>
+              </div>
+
+              <!-- Conversion Action Box -->
+              <div class="pt-2">
+                <a
+                  href="https://gig.cartools.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-brand-navy hover:bg-brand-navy-dark text-white font-bold text-sm shadow-md hover:shadow-lg transition-all active:scale-[0.98]"
+                >
+                  <span>Launch Full Dashboard</span>
+                  <span
+                    class="inline-flex items-center px-2 py-0.5 rounded text-xs font-extrabold uppercase bg-brand-orange text-white"
+                    >100% Free</span
+                  >
+                  <svg
+                    class="w-4 h-4 transition-transform group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </a>
+                <p class="text-center text-[11px] text-slate-500 mt-2">
+                  ✓ No credit card • ✓ No signup required • ✓ Instant web access
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- 5. THE HIDDEN BLEED — WHY GIG DRIVERS GO BROKE -->
+    <!-- ================================================================= -->
+    <section
+      id="hidden-costs"
+      class="py-16 sm:py-24 bg-white border-b border-slate-200"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2
+            class="text-xs font-bold uppercase tracking-wider text-brand-orange mb-2"
+          >
+            The Illusion of Profit
+          </h2>
+          <h3
+            class="text-3xl font-extrabold text-slate-900 tracking-tight sm:text-4xl"
+          >
+            Where Does Your Gig Money Actually Go?
+          </h3>
+          <p class="mt-4 text-slate-600 text-base sm:text-lg">
+            Uber, Lyft, and DoorDash show you a big number on your direct
+            deposit. But every mile you drive takes money straight out of your
+            pocket in 4 hidden ways:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Card 1 -->
+          <div
+            class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-slate-300 transition-all hover:shadow-md flex flex-col justify-between"
+          >
             <div>
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Calculated Real Net Profit</span>
-                <span id="margin-badge" class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
-                  Margin: 84.4%
-                </span>
+              <div
+                class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl font-bold mb-4"
+              >
+                ⛽
               </div>
-              
-              <!-- Large Net Number -->
-              <div class="mt-2 flex items-baseline gap-1">
-                <span class="text-4xl sm:text-5xl font-extrabold text-emerald-600 font-mono tracking-tight" id="val-net-profit">
-                  $711.10
-                </span>
-                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">/ week</span>
-              </div>
-              <div class="text-xs text-slate-500 font-mono mt-1" id="val-net-subtext">
-                Gross: $850.00 | Total Expense: -$138.90
-              </div>
-            </div>
-
-            <!-- Gross vs Real Hourly Comparison Tiles -->
-            <div class="grid grid-cols-2 gap-3">
-              <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm">
-                <div class="text-[11px] uppercase tracking-wider font-bold text-slate-400">Gross App Rate</div>
-                <div class="text-lg sm:text-xl font-bold font-mono text-slate-700 mt-1" id="val-gross-hourly">
-                  $26.56<span class="text-xs font-normal text-slate-400">/hr</span>
-                </div>
-                <div class="text-[10px] text-slate-400 mt-0.5">App headline rate</div>
-              </div>
-
-              <div class="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 shadow-sm">
-                <div class="text-[11px] uppercase tracking-wider font-bold text-emerald-800 flex items-center justify-between">
-                  <span>Real Net Take-Home</span>
-                  <span class="text-emerald-600 font-extrabold">✓</span>
-                </div>
-                <div class="text-lg sm:text-xl font-bold font-mono text-emerald-700 mt-1" id="val-net-hourly">
-                  $22.22<span class="text-xs font-normal text-emerald-600">/hr</span>
-                </div>
-                <div class="text-[10px] text-emerald-700 font-medium mt-0.5" id="val-hourly-gap">-$4.34/hr real loss</div>
-              </div>
-            </div>
-
-            <!-- Deductions Breakdown -->
-            <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm space-y-2.5 text-xs">
-              <div class="font-bold text-slate-700 uppercase tracking-wider text-[11px] flex items-center justify-between pb-1 border-b border-slate-100">
-                <span>Cost Deductions Breakdown</span>
-                <span class="text-slate-400 font-normal">Per Week</span>
-              </div>
-              
-              <div class="flex items-center justify-between">
-                <span class="text-slate-600 flex items-center gap-1.5">
-                  <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
-                  Fuel / Energy Burn:
-                </span>
-                <span class="font-mono font-bold text-amber-700" id="val-deduction-fuel">-$45.90</span>
-              </div>
-
-              <div class="flex items-center justify-between">
-                <span class="text-slate-600 flex items-center gap-1.5">
-                  <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
-                  Tires, Wear & Depreciation:
-                </span>
-                <span class="font-mono font-bold text-red-600" id="val-deduction-wear">-$93.00</span>
-              </div>
-
-              <div class="flex items-center justify-between pt-1 border-t border-slate-100 text-[11px]">
-                <span class="text-slate-500 flex items-center gap-1.5">
-                  <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
-                  IRS Tax Shield (@ $0.67/mi):
-                </span>
-                <span class="font-mono font-bold text-sky-700" id="val-irs-shield">+$415.40</span>
-              </div>
-            </div>
-
-            <!-- Dynamic Driver Truth Callout (Matching App Style) -->
-            <div class="p-3.5 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 text-xs leading-relaxed space-y-1">
-              <div class="font-bold text-brand-orange text-[11px] uppercase tracking-wider flex items-center gap-1">
-                <span>⚠️ DRIVER TRUTH</span>
-              </div>
-              <p id="driver-truth-text" class="text-slate-300 text-[11px]">
-                Rideshare platforms advertise high gross payouts, but driving consumes vehicle equity. Your true earning rate is <strong class="text-emerald-400 font-mono">$22.22/hr</strong> instead of <strong class="text-slate-400 font-mono">$26.56/hr</strong>.
+              <h4 class="text-lg font-bold text-slate-900">
+                Fuel & Energy Drain
+              </h4>
+              <p class="text-xs font-mono text-amber-700 font-semibold mt-0.5">
+                15% - 25% of Gross Income
+              </p>
+              <p class="text-slate-600 text-xs sm:text-sm mt-3 leading-relaxed">
+                Rising pump prices and idling in drive-thrus silently consume a
+                quarter of every payout. What looked like a $12 order turns into
+                $8.50 before you even park.
               </p>
             </div>
+            <div
+              class="mt-4 pt-4 border-t border-slate-200 text-xs text-slate-500 font-medium"
+            >
+              CarTools solution: Real-time MPG & kWh cost tracking.
+            </div>
+          </div>
 
-            <!-- Conversion Action Box -->
+          <!-- Card 2 -->
+          <div
+            class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-slate-300 transition-all hover:shadow-md flex flex-col justify-between"
+          >
+            <div>
+              <div
+                class="w-12 h-12 rounded-xl bg-red-100 text-red-600 flex items-center justify-center text-xl font-bold mb-4"
+              >
+                📉
+              </div>
+              <h4 class="text-lg font-bold text-slate-900">
+                Vehicle Equity Drop
+              </h4>
+              <p class="text-xs font-mono text-red-600 font-semibold mt-0.5">
+                $0.15 - $0.22 per Mile Driven
+              </p>
+              <p class="text-slate-600 text-xs sm:text-sm mt-3 leading-relaxed">
+                Every 1,000 gig miles permanently drops your car's resale value
+                and accelerates tire wear, brake pads, transmission fluid, and
+                suspension repair cycles.
+              </p>
+            </div>
+            <div
+              class="mt-4 pt-4 border-t border-slate-200 text-xs text-slate-500 font-medium"
+            >
+              CarTools solution: Vehicle-specific depreciation tuning.
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div
+            class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-slate-300 transition-all hover:shadow-md flex flex-col justify-between"
+          >
+            <div>
+              <div
+                class="w-12 h-12 rounded-xl bg-slate-200 text-slate-800 flex items-center justify-center text-xl font-bold mb-4"
+              >
+                ⏳
+              </div>
+              <h4 class="text-lg font-bold text-slate-900">
+                Unpaid "Dead-Time"
+              </h4>
+              <p class="text-xs font-mono text-slate-700 font-semibold mt-0.5">
+                25% - 35% of Online Hours
+              </p>
+              <p class="text-slate-600 text-xs sm:text-sm mt-3 leading-relaxed">
+                Apps only compensate you when on an active trip. Circling
+                downtown waiting for pings or driving home empty-handed cuts
+                your real hourly rate in half.
+              </p>
+            </div>
+            <div
+              class="mt-4 pt-4 border-t border-slate-200 text-xs text-slate-500 font-medium"
+            >
+              CarTools solution: Dead-time alert & active hourly metrics.
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div
+            class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-slate-300 transition-all hover:shadow-md flex flex-col justify-between"
+          >
+            <div>
+              <div
+                class="w-12 h-12 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center text-xl font-bold mb-4"
+              >
+                📑
+              </div>
+              <h4 class="text-lg font-bold text-slate-900">
+                Self-Employment Tax
+              </h4>
+              <p class="text-xs font-mono text-sky-700 font-semibold mt-0.5">
+                15.3% FICA + Income Taxes
+              </p>
+              <p class="text-slate-600 text-xs sm:text-sm mt-3 leading-relaxed">
+                As a 1099 independent contractor, you owe both employee and
+                employer taxes. Without an IRS-compliant mileage audit log, you
+                hand thousands in unneeded taxes to the government.
+              </p>
+            </div>
+            <div
+              class="mt-4 pt-4 border-t border-slate-200 text-xs text-slate-500 font-medium"
+            >
+              CarTools solution: Built-in IRS mileage deduction calculator.
+            </div>
+          </div>
+        </div>
+
+        <!-- Callout quote -->
+        <div
+          class="mt-12 bg-slate-900 rounded-2xl p-6 sm:p-8 text-white flex flex-col md:flex-row items-center justify-between gap-6"
+        >
+          <div class="space-y-1 text-center md:text-left">
+            <div
+              class="text-brand-orange text-xs uppercase font-bold tracking-wider"
+            >
+              The Bottom Line
+            </div>
+            <div class="text-lg sm:text-xl font-bold">
+              Knowing your numbers is the difference between making $20/hr and
+              losing money on wheels.
+            </div>
+            <div class="text-xs text-slate-400">
+              Audit your shifts for free in the full CarTools suite.
+            </div>
+          </div>
+          <a
+            href="https://gig.cartools.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="whitespace-nowrap px-6 py-3 rounded-xl bg-brand-orange hover:bg-brand-orange-hover text-white font-bold text-sm shadow-md transition-all"
+          >
+            Open Full App (100% Free) →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- 6. FULL SUITE SHOWCASE (BASED ON YOUR SCREENSHOTS) -->
+    <!-- ================================================================= -->
+    <section
+      id="features"
+      class="py-16 sm:py-24 bg-slate-50 border-b border-slate-200"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div
+            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-navy/10 text-brand-navy text-xs font-bold mb-3"
+          >
+            <span>COMPREHENSIVE WEB APPLICATION</span>
+          </div>
+          <h2
+            class="text-3xl font-extrabold text-slate-900 tracking-tight sm:text-4xl"
+          >
+            Everything You Get in the Full Free Suite
+          </h2>
+          <p class="mt-4 text-slate-600 text-base sm:text-lg">
+            The quick calculator above gives you an initial estimate. The full
+            application at
+            <a
+              href="https://gig.cartools.app"
+              target="_blank"
+              class="text-brand-navy font-bold underline"
+              >gig.cartools.app</a
+            >
+            gives you complete control over your gig business — completely free.
+          </p>
+        </div>
+
+        <!-- Feature Showcase 1: Dashboard Simulator -->
+        <div
+          class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center mb-20"
+        >
+          <div class="lg:col-span-5 space-y-4">
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider"
+            >
+              <span>Feature 01</span> • Real-Time Engine
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+              Real-Time Cost Simulator & Vehicle Presets
+            </h3>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+              Configure your continuous real-time cost calculation engine
+              tailored to your exact car (e.g. 2021 Toyota Prius with 52 MPG and
+              $0.15/mi depreciation). Quick-select platforms with a single click
+              and monitor your live hourly net rate in real time.
+            </p>
+            <ul class="space-y-2 text-sm text-slate-700 font-medium">
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-500 font-bold">✓</span> Real Net
+                Profit vs Gross Income comparison
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-500 font-bold">✓</span> Fuel surcharge
+                & wear cost breakdown
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-500 font-bold">✓</span> Instant Driver
+                Truth alerts on every shift
+              </li>
+            </ul>
             <div class="pt-2">
-              <a href="https://gig.cartools.app" target="_blank" rel="noopener noreferrer" class="group w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-brand-navy hover:bg-brand-navy-dark text-white font-bold text-sm shadow-md hover:shadow-lg transition-all active:scale-[0.98]">
-                <span>Launch Full Dashboard</span>
-                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-extrabold uppercase bg-brand-orange text-white">100% Free</span>
-                <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              <a
+                href="https://gig.cartools.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 text-sm font-bold text-brand-navy hover:text-brand-orange transition-colors"
+              >
+                <span>Try Simulator on gig.cartools.app</span>
+                <span>→</span>
               </a>
-              <p class="text-center text-[11px] text-slate-500 mt-2">
-                ✓ No credit card  •  ✓ No signup required  •  ✓ Instant web access
-              </p>
             </div>
-
           </div>
-
+          <div class="lg:col-span-7">
+            <div
+              class="rounded-2xl overflow-hidden shadow-2xl border border-slate-200/80 bg-slate-900 p-2 sm:p-3 group cursor-pointer"
+              onclick="
+                openLightbox(
+                  '/images/dashboard-simulator.png',
+                  'Real-Time Cost Simulator Dashboard'
+                )
+              "
+            >
+              <img
+                src="/images/dashboard-simulator.png"
+                alt="Real-Time Cost Simulator Dashboard"
+                class="w-full h-auto rounded-xl object-cover transition-transform duration-300 group-hover:scale-[1.01]"
+              />
+              <div class="text-center text-xs text-slate-400 py-1 font-mono">
+                Click image to enlarge preview 🔍
+              </div>
+            </div>
+          </div>
         </div>
 
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ================================================================= -->
-  <!-- 5. THE HIDDEN BLEED — WHY GIG DRIVERS GO BROKE -->
-  <!-- ================================================================= -->
-  <section id="hidden-costs" class="py-16 sm:py-24 bg-white border-b border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-xs font-bold uppercase tracking-wider text-brand-orange mb-2">The Illusion of Profit</h2>
-        <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight sm:text-4xl">
-          Where Does Your Gig Money Actually Go?
-        </h3>
-        <p class="mt-4 text-slate-600 text-base sm:text-lg">
-          Uber, Lyft, and DoorDash show you a big number on your direct deposit. But every mile you drive takes money straight out of your pocket in 4 hidden ways:
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        
-        <!-- Card 1 -->
-        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-slate-300 transition-all hover:shadow-md flex flex-col justify-between">
-          <div>
-            <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl font-bold mb-4">
-              ⛽
+        <!-- Feature Showcase 2: Shift Logs & Multi-Platform Tracking -->
+        <div
+          class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center mb-20 lg:flex-row-reverse"
+        >
+          <div class="lg:col-span-7 order-2 lg:order-1">
+            <div
+              class="rounded-2xl overflow-hidden shadow-2xl border border-slate-200/80 bg-slate-900 p-2 sm:p-3 group cursor-pointer"
+              onclick="
+                openLightbox(
+                  '/images/shift-logs.png',
+                  'Multi-Platform Shift Logs & Audit Trail'
+                )
+              "
+            >
+              <img
+                src="/images/shift-logs.png"
+                alt="Multi-Platform Shift Logs"
+                class="w-full h-auto rounded-xl object-cover transition-transform duration-300 group-hover:scale-[1.01]"
+              />
+              <div class="text-center text-xs text-slate-400 py-1 font-mono">
+                Click image to enlarge preview 🔍
+              </div>
             </div>
-            <h4 class="text-lg font-bold text-slate-900">Fuel & Energy Drain</h4>
-            <p class="text-xs font-mono text-amber-700 font-semibold mt-0.5">15% - 25% of Gross Income</p>
-            <p class="text-slate-600 text-xs sm:text-sm mt-3 leading-relaxed">
-              Rising pump prices and idling in drive-thrus silently consume a quarter of every payout. What looked like a $12 order turns into $8.50 before you even park.
+          </div>
+          <div class="lg:col-span-5 space-y-4 order-1 lg:order-2">
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-sky-100 text-sky-800 text-xs font-bold uppercase tracking-wider"
+            >
+              <span>Feature 02</span> • Shift History
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+              Multi-Platform Shift Logs & Audit History
+            </h3>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+              Keep an audit trail of every shift across Uber, Lyft, DoorDash,
+              and UberEats. Filter shifts by platform or date, log extra
+              expenses (tolls, parking, cleaning), and track your cumulative
+              take-home profit with precision.
             </p>
-          </div>
-          <div class="mt-4 pt-4 border-t border-slate-200 text-xs text-slate-500 font-medium">
-            CarTools solution: Real-time MPG & kWh cost tracking.
+            <ul class="space-y-2 text-sm text-slate-700 font-medium">
+              <li class="flex items-center gap-2">
+                <span class="text-sky-600 font-bold">✓</span> Log duration,
+                gross payout, and true net profit
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-sky-600 font-bold">✓</span> Filter by
+                platform, date range, or shift notes
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-sky-600 font-bold">✓</span> Summary totals:
+                Total hours, Net revenue, and Average hourly wage
+              </li>
+            </ul>
           </div>
         </div>
 
-        <!-- Card 2 -->
-        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-slate-300 transition-all hover:shadow-md flex flex-col justify-between">
-          <div>
-            <div class="w-12 h-12 rounded-xl bg-red-100 text-red-600 flex items-center justify-center text-xl font-bold mb-4">
-              📉
+        <!-- Feature Showcase 3: Deep Analytics & Profit Margins -->
+        <div
+          class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center mb-20"
+        >
+          <div class="lg:col-span-5 space-y-4">
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-purple-100 text-purple-800 text-xs font-bold uppercase tracking-wider"
+            >
+              <span>Feature 03</span> • Deep Analytics
             </div>
-            <h4 class="text-lg font-bold text-slate-900">Vehicle Equity Drop</h4>
-            <p class="text-xs font-mono text-red-600 font-semibold mt-0.5">$0.15 - $0.22 per Mile Driven</p>
-            <p class="text-slate-600 text-xs sm:text-sm mt-3 leading-relaxed">
-              Every 1,000 gig miles permanently drops your car's resale value and accelerates tire wear, brake pads, transmission fluid, and suspension repair cycles.
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+              Smart Recommendations & Break-Even Rates
+            </h3>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+              Get instant algorithmic insights on your gig performance. Learn
+              your exact Net Active Hourly rate, Net per Mile ($1.31/mi),
+              Break-Even threshold ($3.57/hr), and overhead percentage.
             </p>
+            <ul class="space-y-2 text-sm text-slate-700 font-medium">
+              <li class="flex items-center gap-2">
+                <span class="text-purple-600 font-bold">✓</span> Smart
+                recommendations: which apps yield higher net hourly
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-purple-600 font-bold">✓</span> True asset
+                efficiency: Net per mile calculation
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-purple-600 font-bold">✓</span> Tax-deductible
+                ready audited gig net earnings
+              </li>
+            </ul>
           </div>
-          <div class="mt-4 pt-4 border-t border-slate-200 text-xs text-slate-500 font-medium">
-            CarTools solution: Vehicle-specific depreciation tuning.
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-slate-300 transition-all hover:shadow-md flex flex-col justify-between">
-          <div>
-            <div class="w-12 h-12 rounded-xl bg-slate-200 text-slate-800 flex items-center justify-center text-xl font-bold mb-4">
-              ⏳
+          <div class="lg:col-span-7">
+            <div
+              class="rounded-2xl overflow-hidden shadow-2xl border border-slate-200/80 bg-slate-900 p-2 sm:p-3 group cursor-pointer"
+              onclick="
+                openLightbox(
+                  '/images/analytics-overview.png',
+                  'Deep Analytics & Smart Recommendations'
+                )
+              "
+            >
+              <img
+                src="/images/analytics-overview.png"
+                alt="Analytics Overview"
+                class="w-full h-auto rounded-xl object-cover transition-transform duration-300 group-hover:scale-[1.01]"
+              />
+              <div class="text-center text-xs text-slate-400 py-1 font-mono">
+                Click image to enlarge preview 🔍
+              </div>
             </div>
-            <h4 class="text-lg font-bold text-slate-900">Unpaid "Dead-Time"</h4>
-            <p class="text-xs font-mono text-slate-700 font-semibold mt-0.5">25% - 35% of Online Hours</p>
-            <p class="text-slate-600 text-xs sm:text-sm mt-3 leading-relaxed">
-              Apps only compensate you when on an active trip. Circling downtown waiting for pings or driving home empty-handed cuts your real hourly rate in half.
-            </p>
-          </div>
-          <div class="mt-4 pt-4 border-t border-slate-200 text-xs text-slate-500 font-medium">
-            CarTools solution: Dead-time alert & active hourly metrics.
           </div>
         </div>
 
-        <!-- Card 4 -->
-        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-slate-300 transition-all hover:shadow-md flex flex-col justify-between">
-          <div>
-            <div class="w-12 h-12 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center text-xl font-bold mb-4">
-              📑
+        <!-- Feature Showcase 4: Platform Efficiency Rank & Weekday Planner -->
+        <div
+          class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center mb-20 lg:flex-row-reverse"
+        >
+          <div class="lg:col-span-7 order-2 lg:order-1">
+            <div
+              class="rounded-2xl overflow-hidden shadow-2xl border border-slate-200/80 bg-slate-900 p-2 sm:p-3 group cursor-pointer"
+              onclick="
+                openLightbox(
+                  '/images/platform-efficiency.png',
+                  'Platform Efficiency Rank & Weekday Planner'
+                )
+              "
+            >
+              <img
+                src="/images/platform-efficiency.png"
+                alt="Platform Efficiency Rank"
+                class="w-full h-auto rounded-xl object-cover transition-transform duration-300 group-hover:scale-[1.01]"
+              />
+              <div class="text-center text-xs text-slate-400 py-1 font-mono">
+                Click image to enlarge preview 🔍
+              </div>
             </div>
-            <h4 class="text-lg font-bold text-slate-900">Self-Employment Tax</h4>
-            <p class="text-xs font-mono text-sky-700 font-semibold mt-0.5">15.3% FICA + Income Taxes</p>
-            <p class="text-slate-600 text-xs sm:text-sm mt-3 leading-relaxed">
-              As a 1099 independent contractor, you owe both employee and employer taxes. Without an IRS-compliant mileage audit log, you hand thousands in unneeded taxes to the government.
-            </p>
           </div>
-          <div class="mt-4 pt-4 border-t border-slate-200 text-xs text-slate-500 font-medium">
-            CarTools solution: Built-in IRS mileage deduction calculator.
+          <div class="lg:col-span-5 space-y-4 order-1 lg:order-2">
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wider"
+            >
+              <span>Feature 04</span> • Platform Ranking
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+              Platform Efficiency Rank & Weekday Planner
+            </h3>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+              Stop guessing which app pays the most. CarTools automatically
+              ranks Uber vs Lyft vs DoorDash vs UberEats based on your actual
+              net hourly take-home pay, detects dead unpaid waiting time, and
+              gives you a day-by-day weekday schedule plan.
+            </p>
+            <ul class="space-y-2 text-sm text-slate-700 font-medium">
+              <li class="flex items-center gap-2">
+                <span class="text-amber-600 font-bold">✓</span> Ranked Platform
+                Leaderboard with margin percentages
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-amber-600 font-bold">✓</span> Dead-Time Alert:
+                pinpoint unpaid waiting loss
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-amber-600 font-bold">✓</span> Weekday
+                Efficiency Planner (Monday through Sunday)
+              </li>
+            </ul>
           </div>
         </div>
 
+        <!-- Feature Showcase 5: Vehicle Calibration & IRS Tax Deductions -->
+        <div
+          class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center"
+        >
+          <div class="lg:col-span-5 space-y-4">
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider"
+            >
+              <span>Feature 05</span> • Precise Calibration
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+              Vehicle Expense Tuning & IRS Tax Deduction
+            </h3>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+              Calibrate your fuel consumption and true depreciation rate per
+              unit driven. Supports Gas/Diesel, Hybrid, and Electric vehicles,
+              with flexible units (US Imperial, Metric km/L, UK System) and
+              transparent formulas.
+            </p>
+            <ul class="space-y-2 text-sm text-slate-700 font-medium">
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-500 font-bold">✓</span> Vehicle
+                profile with Make, Model, and Year tuning
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-500 font-bold">✓</span> Price
+                calibration audit history
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-500 font-bold">✓</span> IRS Standard
+                Mileage Tax Deduction Estimator
+              </li>
+            </ul>
+            <div class="pt-2">
+              <a
+                href="https://gig.cartools.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-navy hover:bg-brand-navy-dark text-white font-bold text-sm shadow transition-all"
+              >
+                <span>Open Vehicle Calibration in App</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+          <div class="lg:col-span-7">
+            <div
+              class="rounded-2xl overflow-hidden shadow-2xl border border-slate-200/80 bg-slate-900 p-2 sm:p-3 group cursor-pointer"
+              onclick="
+                openLightbox(
+                  '/images/vehicle-calibration.png',
+                  'Vehicle Calibration & Expense Tuning'
+                )
+              "
+            >
+              <img
+                src="/images/vehicle-calibration.png"
+                alt="Vehicle Calibration"
+                class="w-full h-auto rounded-xl object-cover transition-transform duration-300 group-hover:scale-[1.01]"
+              />
+              <div class="text-center text-xs text-slate-400 py-1 font-mono">
+                Click image to enlarge preview 🔍
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <!-- Callout quote -->
-      <div class="mt-12 bg-slate-900 rounded-2xl p-6 sm:p-8 text-white flex flex-col md:flex-row items-center justify-between gap-6">
-        <div class="space-y-1 text-center md:text-left">
-          <div class="text-brand-orange text-xs uppercase font-bold tracking-wider">The Bottom Line</div>
-          <div class="text-lg sm:text-xl font-bold">Knowing your numbers is the difference between making $20/hr and losing money on wheels.</div>
-          <div class="text-xs text-slate-400">Audit your shifts for free in the full CarTools suite.</div>
+    <!-- ================================================================= -->
+    <!-- 7. COMPARISON TABLE: LANDING CALCULATOR VS FULL APP -->
+    <!-- ================================================================= -->
+    <section class="py-16 sm:py-24 bg-white border-b border-slate-200">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2
+            class="text-xs font-bold uppercase tracking-wider text-brand-orange mb-2"
+          >
+            Compare Your Options
+          </h2>
+          <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">
+            Quick Calculator vs. Full Free Dashboard
+          </h3>
+          <p class="mt-3 text-slate-600 text-sm sm:text-base">
+            Both tools are 100% free by CarTools. Choose what fits your
+            immediate need:
+          </p>
         </div>
-        <a href="https://gig.cartools.app" target="_blank" rel="noopener noreferrer" class="whitespace-nowrap px-6 py-3 rounded-xl bg-brand-orange hover:bg-brand-orange-hover text-white font-bold text-sm shadow-md transition-all">
-          Open Full App (100% Free) →
-        </a>
+
+        <div
+          class="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden shadow-sm"
+        >
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-sm">
+              <thead>
+                <tr class="border-b border-slate-200 bg-slate-100/70">
+                  <th class="py-4 px-5 font-bold text-slate-700">
+                    Capabilities
+                  </th>
+                  <th
+                    class="py-4 px-5 font-bold text-slate-600 text-center w-1/3"
+                  >
+                    Quick Calculator<br /><span
+                      class="text-xs font-normal text-slate-400"
+                      >(This Page)</span
+                    >
+                  </th>
+                  <th
+                    class="py-4 px-5 font-bold text-brand-navy bg-brand-navy/5 text-center w-1/3"
+                  >
+                    Full Dashboard<br /><span
+                      class="text-xs font-bold text-brand-orange"
+                      >gig.cartools.app (Free)</span
+                    >
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 text-slate-700">
+                <tr>
+                  <td class="py-3.5 px-5 font-medium">
+                    Instant Take-Home Pay Estimate
+                  </td>
+                  <td
+                    class="py-3.5 px-5 text-center text-emerald-600 font-bold"
+                  >
+                    ✓ Included
+                  </td>
+                  <td
+                    class="py-3.5 px-5 text-center text-emerald-600 font-bold bg-brand-navy/5"
+                  >
+                    ✓ Included
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-3.5 px-5 font-medium">
+                    Fuel & Depreciation Deduction
+                  </td>
+                  <td
+                    class="py-3.5 px-5 text-center text-emerald-600 font-bold"
+                  >
+                    ✓ Preset Rates
+                  </td>
+                  <td
+                    class="py-3.5 px-5 text-center text-emerald-600 font-bold bg-brand-navy/5"
+                  >
+                    ✓ Exact Vehicle Calibration
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-3.5 px-5 font-medium">
+                    Shift Stopwatch & Live Real-Time Costing
+                  </td>
+                  <td class="py-3.5 px-5 text-center text-slate-400">—</td>
+                  <td
+                    class="py-3.5 px-5 text-center text-emerald-600 font-bold bg-brand-navy/5"
+                  >
+                    ✓ Live Simulator
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-3.5 px-5 font-medium">
+                    Multi-Shift Audit Logs & History
+                  </td>
+                  <td class="py-3.5 px-5 text-center text-slate-400">—</td>
+                  <td
+                    class="py-3.5 px-5 text-center text-emerald-600 font-bold bg-brand-navy/5"
+                  >
+                    ✓ Permanent Logging
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-3.5 px-5 font-medium">
+                    Platform Efficiency Rank (Uber vs Lyft vs Dash)
+                  </td>
+                  <td class="py-3.5 px-5 text-center text-slate-400">—</td>
+                  <td
+                    class="py-3.5 px-5 text-center text-emerald-600 font-bold bg-brand-navy/5"
+                  >
+                    ✓ Leaderboard & Margins
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-3.5 px-5 font-medium">
+                    Weekday Efficiency Planner
+                  </td>
+                  <td class="py-3.5 px-5 text-center text-slate-400">—</td>
+                  <td
+                    class="py-3.5 px-5 text-center text-emerald-600 font-bold bg-brand-navy/5"
+                  >
+                    ✓ Mon - Sun Ranking
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-3.5 px-5 font-medium">
+                    IRS Tax Standard Mileage Estimator
+                  </td>
+                  <td class="py-3.5 px-5 text-center text-slate-500 text-xs">
+                    Basic Shield Estimate
+                  </td>
+                  <td
+                    class="py-3.5 px-5 text-center text-emerald-600 font-bold bg-brand-navy/5"
+                  >
+                    ✓ Tax Deduction Engine
+                  </td>
+                </tr>
+                <tr class="bg-slate-100/40">
+                  <td class="py-4 px-5 font-bold text-slate-900">
+                    Cost & Access
+                  </td>
+                  <td class="py-4 px-5 text-center font-bold text-slate-800">
+                    100% Free
+                  </td>
+                  <td
+                    class="py-4 px-5 text-center font-bold text-brand-orange bg-brand-navy/5"
+                  >
+                    100% Free Forever
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div
+            class="p-5 bg-white border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4"
+          >
+            <div class="text-xs text-slate-500 text-center sm:text-left">
+              No credit card, account creation, or software installation
+              required.
+            </div>
+            <a
+              href="https://gig.cartools.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-5 py-2.5 rounded-xl bg-brand-navy hover:bg-brand-navy-dark text-white font-bold text-sm shadow transition-all whitespace-nowrap"
+            >
+              Launch Full Free Suite Now →
+            </a>
+          </div>
+        </div>
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <!-- ================================================================= -->
-  <!-- 6. FULL SUITE SHOWCASE (BASED ON YOUR SCREENSHOTS) -->
-  <!-- ================================================================= -->
-  <section id="features" class="py-16 sm:py-24 bg-slate-50 border-b border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-navy/10 text-brand-navy text-xs font-bold mb-3">
-          <span>COMPREHENSIVE WEB APPLICATION</span>
+    <!-- ================================================================= -->
+    <!-- 8. FREQUENTLY ASKED QUESTIONS (FAQ) -->
+    <!-- ================================================================= -->
+    <section
+      id="faq"
+      class="py-16 sm:py-24 bg-slate-50 border-b border-slate-200"
+    >
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-14">
+          <h2
+            class="text-xs font-bold uppercase tracking-wider text-brand-orange mb-2"
+          >
+            Got Questions?
+          </h2>
+          <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">
+            Frequently Asked Questions
+          </h3>
+          <p class="mt-3 text-slate-600 text-sm sm:text-base">
+            Everything you need to know about the calculator, formulas, and the
+            CarTools platform.
+          </p>
         </div>
-        <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight sm:text-4xl">
-          Everything You Get in the Full Free Suite
+
+        <div class="space-y-4" id="faq-accordion">
+          <!-- Item 1 -->
+          <div
+            class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm transition-all"
+          >
+            <button
+              type="button"
+              class="faq-toggle w-full p-5 text-left font-bold text-slate-900 text-base flex items-center justify-between gap-4 focus:outline-none"
+            >
+              <span
+                >How does CarTools calculate real vehicle depreciation?</span
+              >
+              <span
+                class="faq-icon text-slate-400 text-xl font-bold transition-transform"
+                >+</span
+              >
+            </button>
+            <div
+              class="faq-content hidden px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-3"
+            >
+              Most drivers only count gas, ignoring vehicle wear. CarTools uses
+              a calibrated rate (defaulting to $0.15/mile for typical sedans
+              like the Toyota Prius, or customizable in your vehicle profile)
+              covering tire wear, scheduled fluid changes (oil, brakes,
+              transmission), routine wear items, and vehicle resale equity loss.
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div
+            class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm transition-all"
+          >
+            <button
+              type="button"
+              class="faq-toggle w-full p-5 text-left font-bold text-slate-900 text-base flex items-center justify-between gap-4 focus:outline-none"
+            >
+              <span
+                >Is the full application at gig.cartools.app really 100%
+                free?</span
+              >
+              <span
+                class="faq-icon text-slate-400 text-xl font-bold transition-transform"
+                >+</span
+              >
+            </button>
+            <div
+              class="faq-content hidden px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-3"
+            >
+              Yes! Both the quick landing calculator and the full dashboard
+              suite at
+              <a
+                href="https://gig.cartools.app"
+                target="_blank"
+                class="text-brand-navy font-bold underline"
+                >gig.cartools.app</a
+              >
+              are 100% free to use. There are no paywalls, credit cards, or
+              hidden subscription tiers.
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div
+            class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm transition-all"
+          >
+            <button
+              type="button"
+              class="faq-toggle w-full p-5 text-left font-bold text-slate-900 text-base flex items-center justify-between gap-4 focus:outline-none"
+            >
+              <span>Do I need to link my bank account or rideshare login?</span>
+              <span
+                class="faq-icon text-slate-400 text-xl font-bold transition-transform"
+                >+</span
+              >
+            </button>
+            <div
+              class="faq-content hidden px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-3"
+            >
+              Never. We prioritize driver privacy. You don't need to link your
+              Uber, Lyft, or bank credentials. You maintain 100% control over
+              your data, entering shift times and mileage directly or logging
+              shifts with our live shift stopwatch.
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div
+            class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm transition-all"
+          >
+            <button
+              type="button"
+              class="faq-toggle w-full p-5 text-left font-bold text-slate-900 text-base flex items-center justify-between gap-4 focus:outline-none"
+            >
+              <span>How does the IRS Standard Mileage Rate work?</span>
+              <span
+                class="faq-icon text-slate-400 text-xl font-bold transition-transform"
+                >+</span
+              >
+            </button>
+            <div
+              class="faq-content hidden px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-3"
+            >
+              The IRS allows independent contractors to deduct $0.67 per
+              business mile driven (standard rate). In our calculator and full
+              dashboard, we calculate this tax shield so you can see how much
+              taxable income your shift miles offset when filing Schedule C.
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div
+            class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm transition-all"
+          >
+            <button
+              type="button"
+              class="faq-toggle w-full p-5 text-left font-bold text-slate-900 text-base flex items-center justify-between gap-4 focus:outline-none"
+            >
+              <span
+                >Can I tune the calculator for my Electric Vehicle (EV) or
+                Hybrid?</span
+              >
+              <span
+                class="faq-icon text-slate-400 text-xl font-bold transition-transform"
+                >+</span
+              >
+            </button>
+            <div
+              class="faq-content hidden px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-3"
+            >
+              Yes! You can toggle between Standard Gas (28 MPG), Hybrid (52
+              MPG), and Electric (3.5 mi/kWh) right on the calculator. In the
+              full dashboard, you can calibrate exact vehicle profiles with
+              make, model, year, and regional electricity or gas prices.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- 9. FINAL CALL-TO-ACTION (CTA) SECTION -->
+    <!-- ================================================================= -->
+    <section
+      class="py-16 sm:py-20 bg-gradient-to-br from-brand-navy-dark via-brand-navy to-slate-950 text-white text-center relative overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 opacity-10 bg-[radial-gradient(#FF7A00_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"
+      ></div>
+      <div
+        class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6"
+      >
+        <span
+          class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-orange text-white"
+        >
+          Start Driving Smarter Today
+        </span>
+        <h2
+          class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight"
+        >
+          Never Guess Your Real Take-Home Pay Again.
         </h2>
-        <p class="mt-4 text-slate-600 text-base sm:text-lg">
-          The quick calculator above gives you an initial estimate. The full application at <a href="https://gig.cartools.app" target="_blank" class="text-brand-navy font-bold underline">gig.cartools.app</a> gives you complete control over your gig business — completely free.
+        <p
+          class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed"
+        >
+          Join gig drivers across Uber, Lyft, DoorDash, and Instacart who use
+          CarTools to audit expenses, eliminate dead time, and maximize net
+          profits.
         </p>
+        <div
+          class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4"
+        >
+          <a
+            href="https://gig.cartools.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-extrabold text-brand-navy bg-white hover:bg-slate-100 shadow-xl transition-all hover:scale-105 active:scale-95"
+          >
+            <span>Open Full Dashboard (100% Free)</span>
+            <span class="text-brand-orange font-mono">→</span>
+          </a>
+          <a
+            href="https://cartools.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-sm font-bold text-white bg-slate-800/80 hover:bg-slate-800 border border-slate-700 transition-all"
+          >
+            <span>Visit CarTools Main Hub</span>
+            <svg
+              class="w-4 h-4 text-slate-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+              />
+            </svg>
+          </a>
+        </div>
+        <div class="text-xs text-slate-400 pt-2">
+          Instant browser access • No downloads • Works on iPhone, Android &
+          Desktop
+        </div>
       </div>
+    </section>
 
-      <!-- Feature Showcase 1: Dashboard Simulator -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center mb-20">
-        <div class="lg:col-span-5 space-y-4">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider">
-            <span>Feature 01</span> • Real-Time Engine
-          </div>
-          <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
-            Real-Time Cost Simulator & Vehicle Presets
-          </h3>
-          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-            Configure your continuous real-time cost calculation engine tailored to your exact car (e.g. 2021 Toyota Prius with 52 MPG and $0.15/mi depreciation). Quick-select platforms with a single click and monitor your live hourly net rate in real time.
-          </p>
-          <ul class="space-y-2 text-sm text-slate-700 font-medium">
-            <li class="flex items-center gap-2">
-              <span class="text-emerald-500 font-bold">✓</span> Real Net Profit vs Gross Income comparison
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-emerald-500 font-bold">✓</span> Fuel surcharge & wear cost breakdown
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-emerald-500 font-bold">✓</span> Instant Driver Truth alerts on every shift
-            </li>
-          </ul>
-          <div class="pt-2">
-            <a href="https://gig.cartools.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-bold text-brand-navy hover:text-brand-orange transition-colors">
-              <span>Try Simulator on gig.cartools.app</span>
-              <span>→</span>
+    <!-- ================================================================= -->
+    <!-- 10. CARTOOLS BRANDED FOOTER -->
+    <!-- ================================================================= -->
+    <footer
+      class="bg-white border-t border-slate-200 py-12 text-slate-600 text-xs sm:text-sm"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-slate-200"
+        >
+          <!-- Brand column -->
+          <div class="md:col-span-2 space-y-3">
+            <a
+              href="https://cartools.app"
+              class="inline-block"
+              title="CarTools Home"
+            >
+              <img
+                src="/images/cartools-logo.webp"
+                alt="CarTools"
+                class="h-9 w-auto object-contain"
+              />
             </a>
+            <p class="text-slate-500 text-xs max-w-sm leading-relaxed">
+              CarTools provides modern, transparent, and precision automotive
+              financial utilities for rideshare drivers, delivery couriers, and
+              vehicle owners worldwide.
+            </p>
+            <div class="text-xs font-semibold text-slate-400">
+              Dedicated tool link:
+              <a
+                href="https://cartools.app/tools/gig-driver-calculator"
+                class="text-brand-navy hover:underline"
+                >cartools.app/tools/gig-driver-calculator</a
+              >
+            </div>
+          </div>
+
+          <!-- CarTools Ecosystem -->
+          <div class="space-y-2.5">
+            <div
+              class="text-xs font-bold uppercase tracking-wider text-slate-900"
+            >
+              Ecosystem
+            </div>
+            <ul class="space-y-2 text-xs">
+              <li>
+                <a
+                  href="https://cartools.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-brand-navy font-semibold text-brand-navy flex items-center gap-1"
+                >
+                  <span>CarTools Main Hub</span>
+                  <span class="text-[10px] text-slate-400">↗</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://gig.cartools.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-brand-navy text-slate-700 flex items-center gap-1"
+                >
+                  <span>Gig Driver Full Suite</span>
+                  <span
+                    class="text-[9px] px-1 py-0.2 rounded bg-brand-orange text-white font-bold"
+                    >FREE</span
+                  >
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://cartools.app/tools/gig-driver-calculator"
+                  class="hover:text-brand-navy text-slate-700"
+                >
+                  <span>Landing Calculator</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Legal & Disclaimers -->
+          <div class="space-y-2.5">
+            <div
+              class="text-xs font-bold uppercase tracking-wider text-slate-900"
+            >
+              Transparency
+            </div>
+            <p class="text-[11px] text-slate-400 leading-relaxed">
+              CarTools is an independent automotive and gig utility. Uber, Lyft,
+              DoorDash, UberEats, and Instacart are registered trademarks of
+              their respective owners and are referenced solely for comparative
+              auditing purposes.
+            </p>
           </div>
         </div>
-        <div class="lg:col-span-7">
-          <div class="rounded-2xl overflow-hidden shadow-2xl border border-slate-200/80 bg-slate-900 p-2 sm:p-3 group cursor-pointer" onclick="openLightbox('assets/screenshots/dashboard-simulator.png', 'Real-Time Cost Simulator Dashboard')">
-            <img src="assets/screenshots/dashboard-simulator.png" alt="Real-Time Cost Simulator Dashboard" class="w-full h-auto rounded-xl object-cover transition-transform duration-300 group-hover:scale-[1.01]">
-            <div class="text-center text-xs text-slate-400 py-1 font-mono">Click image to enlarge preview 🔍</div>
+
+        <!-- Bottom copyright row -->
+        <div
+          class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500"
+        >
+          <div>
+            © <span id="year">2026</span> CarTools.app. All rights reserved.
+          </div>
+          <div class="flex items-center gap-4">
+            <a
+              href="https://cartools.app"
+              target="_blank"
+              class="hover:text-brand-navy"
+              >Privacy</a
+            >
+            <a
+              href="https://cartools.app"
+              target="_blank"
+              class="hover:text-brand-navy"
+              >Terms of Service</a
+            >
+            <a
+              href="https://gig.cartools.app"
+              target="_blank"
+              class="text-brand-navy font-bold hover:text-brand-orange"
+              >Launch Gig App ↗</a
+            >
           </div>
         </div>
       </div>
+    </footer>
 
-      <!-- Feature Showcase 2: Shift Logs & Multi-Platform Tracking -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center mb-20 lg:flex-row-reverse">
-        <div class="lg:col-span-7 order-2 lg:order-1">
-          <div class="rounded-2xl overflow-hidden shadow-2xl border border-slate-200/80 bg-slate-900 p-2 sm:p-3 group cursor-pointer" onclick="openLightbox('assets/screenshots/shift-logs.png', 'Multi-Platform Shift Logs & Audit Trail')">
-            <img src="assets/screenshots/shift-logs.png" alt="Multi-Platform Shift Logs" class="w-full h-auto rounded-xl object-cover transition-transform duration-300 group-hover:scale-[1.01]">
-            <div class="text-center text-xs text-slate-400 py-1 font-mono">Click image to enlarge preview 🔍</div>
-          </div>
+    <!-- ================================================================= -->
+    <!-- 11. LIGHTBOX MODAL FOR SCREENSHOT PREVIEWS -->
+    <!-- ================================================================= -->
+    <div
+      id="lightbox-modal"
+      class="fixed inset-0 z-50 hidden items-center justify-center p-4 lightbox-backdrop"
+      onclick="closeLightbox()"
+    >
+      <div
+        class="relative max-w-5xl w-full bg-slate-900 rounded-2xl overflow-hidden shadow-2xl border border-slate-700"
+        onclick="event.stopPropagation()"
+      >
+        <div
+          class="flex items-center justify-between px-4 py-3 bg-slate-950 border-b border-slate-800 text-white"
+        >
+          <span
+            id="lightbox-title"
+            class="text-xs font-bold font-mono text-slate-300"
+            >Preview</span
+          >
+          <button
+            type="button"
+            onclick="closeLightbox()"
+            class="text-slate-400 hover:text-white text-xl font-bold px-2 py-0.5 rounded focus:outline-none"
+          >
+            ✕
+          </button>
         </div>
-        <div class="lg:col-span-5 space-y-4 order-1 lg:order-2">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-sky-100 text-sky-800 text-xs font-bold uppercase tracking-wider">
-            <span>Feature 02</span> • Shift History
-          </div>
-          <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
-            Multi-Platform Shift Logs & Audit History
-          </h3>
-          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-            Keep an audit trail of every shift across Uber, Lyft, DoorDash, and UberEats. Filter shifts by platform or date, log extra expenses (tolls, parking, cleaning), and track your cumulative take-home profit with precision.
-          </p>
-          <ul class="space-y-2 text-sm text-slate-700 font-medium">
-            <li class="flex items-center gap-2">
-              <span class="text-sky-600 font-bold">✓</span> Log duration, gross payout, and true net profit
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-sky-600 font-bold">✓</span> Filter by platform, date range, or shift notes
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-sky-600 font-bold">✓</span> Summary totals: Total hours, Net revenue, and Average hourly wage
-            </li>
-          </ul>
+        <div
+          class="p-2 sm:p-4 bg-slate-950/60 max-h-[80vh] overflow-auto flex items-center justify-center"
+        >
+          <img
+            id="lightbox-img"
+            src=""
+            alt="Enlarged screenshot"
+            class="max-h-[75vh] w-auto rounded-lg shadow-lg"
+          />
         </div>
-      </div>
-
-      <!-- Feature Showcase 3: Deep Analytics & Profit Margins -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center mb-20">
-        <div class="lg:col-span-5 space-y-4">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-purple-100 text-purple-800 text-xs font-bold uppercase tracking-wider">
-            <span>Feature 03</span> • Deep Analytics
-          </div>
-          <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
-            Smart Recommendations & Break-Even Rates
-          </h3>
-          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-            Get instant algorithmic insights on your gig performance. Learn your exact Net Active Hourly rate, Net per Mile ($1.31/mi), Break-Even threshold ($3.57/hr), and overhead percentage.
-          </p>
-          <ul class="space-y-2 text-sm text-slate-700 font-medium">
-            <li class="flex items-center gap-2">
-              <span class="text-purple-600 font-bold">✓</span> Smart recommendations: which apps yield higher net hourly
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-purple-600 font-bold">✓</span> True asset efficiency: Net per mile calculation
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-purple-600 font-bold">✓</span> Tax-deductible ready audited gig net earnings
-            </li>
-          </ul>
-        </div>
-        <div class="lg:col-span-7">
-          <div class="rounded-2xl overflow-hidden shadow-2xl border border-slate-200/80 bg-slate-900 p-2 sm:p-3 group cursor-pointer" onclick="openLightbox('assets/screenshots/analytics-overview.png', 'Deep Analytics & Smart Recommendations')">
-            <img src="assets/screenshots/analytics-overview.png" alt="Analytics Overview" class="w-full h-auto rounded-xl object-cover transition-transform duration-300 group-hover:scale-[1.01]">
-            <div class="text-center text-xs text-slate-400 py-1 font-mono">Click image to enlarge preview 🔍</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Feature Showcase 4: Platform Efficiency Rank & Weekday Planner -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center mb-20 lg:flex-row-reverse">
-        <div class="lg:col-span-7 order-2 lg:order-1">
-          <div class="rounded-2xl overflow-hidden shadow-2xl border border-slate-200/80 bg-slate-900 p-2 sm:p-3 group cursor-pointer" onclick="openLightbox('assets/screenshots/platform-efficiency.png', 'Platform Efficiency Rank & Weekday Planner')">
-            <img src="assets/screenshots/platform-efficiency.png" alt="Platform Efficiency Rank" class="w-full h-auto rounded-xl object-cover transition-transform duration-300 group-hover:scale-[1.01]">
-            <div class="text-center text-xs text-slate-400 py-1 font-mono">Click image to enlarge preview 🔍</div>
-          </div>
-        </div>
-        <div class="lg:col-span-5 space-y-4 order-1 lg:order-2">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wider">
-            <span>Feature 04</span> • Platform Ranking
-          </div>
-          <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
-            Platform Efficiency Rank & Weekday Planner
-          </h3>
-          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-            Stop guessing which app pays the most. CarTools automatically ranks Uber vs Lyft vs DoorDash vs UberEats based on your actual net hourly take-home pay, detects dead unpaid waiting time, and gives you a day-by-day weekday schedule plan.
-          </p>
-          <ul class="space-y-2 text-sm text-slate-700 font-medium">
-            <li class="flex items-center gap-2">
-              <span class="text-amber-600 font-bold">✓</span> Ranked Platform Leaderboard with margin percentages
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-amber-600 font-bold">✓</span> Dead-Time Alert: pinpoint unpaid waiting loss
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-amber-600 font-bold">✓</span> Weekday Efficiency Planner (Monday through Sunday)
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Feature Showcase 5: Vehicle Calibration & IRS Tax Deductions -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center">
-        <div class="lg:col-span-5 space-y-4">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider">
-            <span>Feature 05</span> • Precise Calibration
-          </div>
-          <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
-            Vehicle Expense Tuning & IRS Tax Deduction
-          </h3>
-          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-            Calibrate your fuel consumption and true depreciation rate per unit driven. Supports Gas/Diesel, Hybrid, and Electric vehicles, with flexible units (US Imperial, Metric km/L, UK System) and transparent formulas.
-          </p>
-          <ul class="space-y-2 text-sm text-slate-700 font-medium">
-            <li class="flex items-center gap-2">
-              <span class="text-emerald-500 font-bold">✓</span> Vehicle profile with Make, Model, and Year tuning
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-emerald-500 font-bold">✓</span> Price calibration audit history
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-emerald-500 font-bold">✓</span> IRS Standard Mileage Tax Deduction Estimator
-            </li>
-          </ul>
-          <div class="pt-2">
-            <a href="https://gig.cartools.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-navy hover:bg-brand-navy-dark text-white font-bold text-sm shadow transition-all">
-              <span>Open Vehicle Calibration in App</span>
-              <span>→</span>
-            </a>
-          </div>
-        </div>
-        <div class="lg:col-span-7">
-          <div class="rounded-2xl overflow-hidden shadow-2xl border border-slate-200/80 bg-slate-900 p-2 sm:p-3 group cursor-pointer" onclick="openLightbox('assets/screenshots/vehicle-calibration.png', 'Vehicle Calibration & Expense Tuning')">
-            <img src="assets/screenshots/vehicle-calibration.png" alt="Vehicle Calibration" class="w-full h-auto rounded-xl object-cover transition-transform duration-300 group-hover:scale-[1.01]">
-            <div class="text-center text-xs text-slate-400 py-1 font-mono">Click image to enlarge preview 🔍</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ================================================================= -->
-  <!-- 7. COMPARISON TABLE: LANDING CALCULATOR VS FULL APP -->
-  <!-- ================================================================= -->
-  <section class="py-16 sm:py-24 bg-white border-b border-slate-200">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center mb-12">
-        <h2 class="text-xs font-bold uppercase tracking-wider text-brand-orange mb-2">Compare Your Options</h2>
-        <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">
-          Quick Calculator vs. Full Free Dashboard
-        </h3>
-        <p class="mt-3 text-slate-600 text-sm sm:text-base">
-          Both tools are 100% free by CarTools. Choose what fits your immediate need:
-        </p>
-      </div>
-
-      <div class="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
-        <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse text-sm">
-            <thead>
-              <tr class="border-b border-slate-200 bg-slate-100/70">
-                <th class="py-4 px-5 font-bold text-slate-700">Capabilities</th>
-                <th class="py-4 px-5 font-bold text-slate-600 text-center w-1/3">Quick Calculator<br><span class="text-xs font-normal text-slate-400">(This Page)</span></th>
-                <th class="py-4 px-5 font-bold text-brand-navy bg-brand-navy/5 text-center w-1/3">Full Dashboard<br><span class="text-xs font-bold text-brand-orange">gig.cartools.app (Free)</span></th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-200 text-slate-700">
-              <tr>
-                <td class="py-3.5 px-5 font-medium">Instant Take-Home Pay Estimate</td>
-                <td class="py-3.5 px-5 text-center text-emerald-600 font-bold">✓ Included</td>
-                <td class="py-3.5 px-5 text-center text-emerald-600 font-bold bg-brand-navy/5">✓ Included</td>
-              </tr>
-              <tr>
-                <td class="py-3.5 px-5 font-medium">Fuel & Depreciation Deduction</td>
-                <td class="py-3.5 px-5 text-center text-emerald-600 font-bold">✓ Preset Rates</td>
-                <td class="py-3.5 px-5 text-center text-emerald-600 font-bold bg-brand-navy/5">✓ Exact Vehicle Calibration</td>
-              </tr>
-              <tr>
-                <td class="py-3.5 px-5 font-medium">Shift Stopwatch & Live Real-Time Costing</td>
-                <td class="py-3.5 px-5 text-center text-slate-400">—</td>
-                <td class="py-3.5 px-5 text-center text-emerald-600 font-bold bg-brand-navy/5">✓ Live Simulator</td>
-              </tr>
-              <tr>
-                <td class="py-3.5 px-5 font-medium">Multi-Shift Audit Logs & History</td>
-                <td class="py-3.5 px-5 text-center text-slate-400">—</td>
-                <td class="py-3.5 px-5 text-center text-emerald-600 font-bold bg-brand-navy/5">✓ Permanent Logging</td>
-              </tr>
-              <tr>
-                <td class="py-3.5 px-5 font-medium">Platform Efficiency Rank (Uber vs Lyft vs Dash)</td>
-                <td class="py-3.5 px-5 text-center text-slate-400">—</td>
-                <td class="py-3.5 px-5 text-center text-emerald-600 font-bold bg-brand-navy/5">✓ Leaderboard & Margins</td>
-              </tr>
-              <tr>
-                <td class="py-3.5 px-5 font-medium">Weekday Efficiency Planner</td>
-                <td class="py-3.5 px-5 text-center text-slate-400">—</td>
-                <td class="py-3.5 px-5 text-center text-emerald-600 font-bold bg-brand-navy/5">✓ Mon - Sun Ranking</td>
-              </tr>
-              <tr>
-                <td class="py-3.5 px-5 font-medium">IRS Tax Standard Mileage Estimator</td>
-                <td class="py-3.5 px-5 text-center text-slate-500 text-xs">Basic Shield Estimate</td>
-                <td class="py-3.5 px-5 text-center text-emerald-600 font-bold bg-brand-navy/5">✓ Tax Deduction Engine</td>
-              </tr>
-              <tr class="bg-slate-100/40">
-                <td class="py-4 px-5 font-bold text-slate-900">Cost & Access</td>
-                <td class="py-4 px-5 text-center font-bold text-slate-800">100% Free</td>
-                <td class="py-4 px-5 text-center font-bold text-brand-orange bg-brand-navy/5">100% Free Forever</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="p-5 bg-white border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div class="text-xs text-slate-500 text-center sm:text-left">
-            No credit card, account creation, or software installation required.
-          </div>
-          <a href="https://gig.cartools.app" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-brand-navy hover:bg-brand-navy-dark text-white font-bold text-sm shadow transition-all whitespace-nowrap">
-            Launch Full Free Suite Now →
+        <div class="p-3 bg-slate-900 text-center border-t border-slate-800">
+          <a
+            href="https://gig.cartools.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-brand-orange hover:bg-brand-orange-hover text-white text-xs font-bold shadow transition-all"
+          >
+            <span>Open This Feature in Full App (100% Free)</span>
+            <span>→</span>
           </a>
         </div>
       </div>
-
     </div>
-  </section>
 
-  <!-- ================================================================= -->
-  <!-- 8. FREQUENTLY ASKED QUESTIONS (FAQ) -->
-  <!-- ================================================================= -->
-  <section id="faq" class="py-16 sm:py-24 bg-slate-50 border-b border-slate-200">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center mb-14">
-        <h2 class="text-xs font-bold uppercase tracking-wider text-brand-orange mb-2">Got Questions?</h2>
-        <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">
-          Frequently Asked Questions
-        </h3>
-        <p class="mt-3 text-slate-600 text-sm sm:text-base">
-          Everything you need to know about the calculator, formulas, and the CarTools platform.
-        </p>
-      </div>
+    <!-- ================================================================= -->
+    <!-- 12. CALCULATOR ENGINE SCRIPT -->
+    <!-- ================================================================= -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-      <div class="space-y-4" id="faq-accordion">
-        
-        <!-- Item 1 -->
-        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm transition-all">
-          <button type="button" class="faq-toggle w-full p-5 text-left font-bold text-slate-900 text-base flex items-center justify-between gap-4 focus:outline-none">
-            <span>How does CarTools calculate real vehicle depreciation?</span>
-            <span class="faq-icon text-slate-400 text-xl font-bold transition-transform">+</span>
-          </button>
-          <div class="faq-content hidden px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-3">
-            Most drivers only count gas, ignoring vehicle wear. CarTools uses a calibrated rate (defaulting to $0.15/mile for typical sedans like the Toyota Prius, or customizable in your vehicle profile) covering tire wear, scheduled fluid changes (oil, brakes, transmission), routine wear items, and vehicle resale equity loss.
-          </div>
-        </div>
+        // Elements
+        const sliderGross = document.getElementById('slider-gross');
+        const inputGross = document.getElementById('input-gross');
+        const sliderHours = document.getElementById('slider-hours');
+        const inputHours = document.getElementById('input-hours');
+        const sliderMiles = document.getElementById('slider-miles');
+        const inputMiles = document.getElementById('input-miles');
+        const btnAutoMiles = document.getElementById('btn-auto-miles');
 
-        <!-- Item 2 -->
-        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm transition-all">
-          <button type="button" class="faq-toggle w-full p-5 text-left font-bold text-slate-900 text-base flex items-center justify-between gap-4 focus:outline-none">
-            <span>Is the full application at gig.cartools.app really 100% free?</span>
-            <span class="faq-icon text-slate-400 text-xl font-bold transition-transform">+</span>
-          </button>
-          <div class="faq-content hidden px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-3">
-            Yes! Both the quick landing calculator and the full dashboard suite at <a href="https://gig.cartools.app" target="_blank" class="text-brand-navy font-bold underline">gig.cartools.app</a> are 100% free to use. There are no paywalls, credit cards, or hidden subscription tiers.
-          </div>
-        </div>
+        // Custom rates toggle & inputs
+        const toggleCustomRates = document.getElementById(
+          'toggle-custom-rates'
+        );
+        const customTuningPanel = document.getElementById(
+          'custom-tuning-panel'
+        );
+        const customMpg = document.getElementById('custom-mpg');
+        const customFuelPrice = document.getElementById('custom-fuel-price');
+        const customDepreciation = document.getElementById(
+          'custom-depreciation'
+        );
+        const labelEfficiency = document.getElementById('label-efficiency');
+        const labelFuelPrice = document.getElementById('label-fuel-price');
 
-        <!-- Item 3 -->
-        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm transition-all">
-          <button type="button" class="faq-toggle w-full p-5 text-left font-bold text-slate-900 text-base flex items-center justify-between gap-4 focus:outline-none">
-            <span>Do I need to link my bank account or rideshare login?</span>
-            <span class="faq-icon text-slate-400 text-xl font-bold transition-transform">+</span>
-          </button>
-          <div class="faq-content hidden px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-3">
-            Never. We prioritize driver privacy. You don't need to link your Uber, Lyft, or bank credentials. You maintain 100% control over your data, entering shift times and mileage directly or logging shifts with our live shift stopwatch.
-          </div>
-        </div>
+        // Output Elements
+        const valNetProfit = document.getElementById('val-net-profit');
+        const valNetSubtext = document.getElementById('val-net-subtext');
+        const marginBadge = document.getElementById('margin-badge');
+        const valGrossHourly = document.getElementById('val-gross-hourly');
+        const valNetHourly = document.getElementById('val-net-hourly');
+        const valHourlyGap = document.getElementById('val-hourly-gap');
+        const valDeductionFuel = document.getElementById('val-deduction-fuel');
+        const valDeductionWear = document.getElementById('val-deduction-wear');
+        const valIrsShield = document.getElementById('val-irs-shield');
+        const driverTruthText = document.getElementById('driver-truth-text');
 
-        <!-- Item 4 -->
-        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm transition-all">
-          <button type="button" class="faq-toggle w-full p-5 text-left font-bold text-slate-900 text-base flex items-center justify-between gap-4 focus:outline-none">
-            <span>How does the IRS Standard Mileage Rate work?</span>
-            <span class="faq-icon text-slate-400 text-xl font-bold transition-transform">+</span>
-          </button>
-          <div class="faq-content hidden px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-3">
-            The IRS allows independent contractors to deduct $0.67 per business mile driven (standard rate). In our calculator and full dashboard, we calculate this tax shield so you can see how much taxable income your shift miles offset when filing Schedule C.
-          </div>
-        </div>
-
-        <!-- Item 5 -->
-        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm transition-all">
-          <button type="button" class="faq-toggle w-full p-5 text-left font-bold text-slate-900 text-base flex items-center justify-between gap-4 focus:outline-none">
-            <span>Can I tune the calculator for my Electric Vehicle (EV) or Hybrid?</span>
-            <span class="faq-icon text-slate-400 text-xl font-bold transition-transform">+</span>
-          </button>
-          <div class="faq-content hidden px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-3">
-            Yes! You can toggle between Standard Gas (28 MPG), Hybrid (52 MPG), and Electric (3.5 mi/kWh) right on the calculator. In the full dashboard, you can calibrate exact vehicle profiles with make, model, year, and regional electricity or gas prices.
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ================================================================= -->
-  <!-- 9. FINAL CALL-TO-ACTION (CTA) SECTION -->
-  <!-- ================================================================= -->
-  <section class="py-16 sm:py-20 bg-gradient-to-br from-brand-navy-dark via-brand-navy to-slate-950 text-white text-center relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#FF7A00_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
-      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-orange text-white">
-        Start Driving Smarter Today
-      </span>
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
-        Never Guess Your Real Take-Home Pay Again.
-      </h2>
-      <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-        Join gig drivers across Uber, Lyft, DoorDash, and Instacart who use CarTools to audit expenses, eliminate dead time, and maximize net profits.
-      </p>
-      <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="https://gig.cartools.app" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-extrabold text-brand-navy bg-white hover:bg-slate-100 shadow-xl transition-all hover:scale-105 active:scale-95">
-          <span>Open Full Dashboard (100% Free)</span>
-          <span class="text-brand-orange font-mono">→</span>
-        </a>
-        <a href="https://cartools.app" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-sm font-bold text-white bg-slate-800/80 hover:bg-slate-800 border border-slate-700 transition-all">
-          <span>Visit CarTools Main Hub</span>
-          <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-        </a>
-      </div>
-      <div class="text-xs text-slate-400 pt-2">
-        Instant browser access • No downloads • Works on iPhone, Android & Desktop
-      </div>
-    </div>
-  </section>
-
-  <!-- ================================================================= -->
-  <!-- 10. CARTOOLS BRANDED FOOTER -->
-  <!-- ================================================================= -->
-  <footer class="bg-white border-t border-slate-200 py-12 text-slate-600 text-xs sm:text-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-slate-200">
-        
-        <!-- Brand column -->
-        <div class="md:col-span-2 space-y-3">
-          <a href="https://cartools.app" class="inline-block" title="CarTools Home">
-            <img src="assets/cartools-logo.webp" alt="CarTools" class="h-9 w-auto object-contain">
-          </a>
-          <p class="text-slate-500 text-xs max-w-sm leading-relaxed">
-            CarTools provides modern, transparent, and precision automotive financial utilities for rideshare drivers, delivery couriers, and vehicle owners worldwide.
-          </p>
-          <div class="text-xs font-semibold text-slate-400">
-            Dedicated tool link: <a href="https://cartools.app/tools/gig-driver-calculator" class="text-brand-navy hover:underline">cartools.app/tools/gig-driver-calculator</a>
-          </div>
-        </div>
-
-        <!-- CarTools Ecosystem -->
-        <div class="space-y-2.5">
-          <div class="text-xs font-bold uppercase tracking-wider text-slate-900">Ecosystem</div>
-          <ul class="space-y-2 text-xs">
-            <li>
-              <a href="https://cartools.app" target="_blank" rel="noopener noreferrer" class="hover:text-brand-navy font-semibold text-brand-navy flex items-center gap-1">
-                <span>CarTools Main Hub</span>
-                <span class="text-[10px] text-slate-400">↗</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://gig.cartools.app" target="_blank" rel="noopener noreferrer" class="hover:text-brand-navy text-slate-700 flex items-center gap-1">
-                <span>Gig Driver Full Suite</span>
-                <span class="text-[9px] px-1 py-0.2 rounded bg-brand-orange text-white font-bold">FREE</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://cartools.app/tools/gig-driver-calculator" class="hover:text-brand-navy text-slate-700">
-                <span>Landing Calculator</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Legal & Disclaimers -->
-        <div class="space-y-2.5">
-          <div class="text-xs font-bold uppercase tracking-wider text-slate-900">Transparency</div>
-          <p class="text-[11px] text-slate-400 leading-relaxed">
-            CarTools is an independent automotive and gig utility. Uber, Lyft, DoorDash, UberEats, and Instacart are registered trademarks of their respective owners and are referenced solely for comparative auditing purposes.
-          </p>
-        </div>
-
-      </div>
-
-      <!-- Bottom copyright row -->
-      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
-        <div>
-          © <span id="year">2026</span> CarTools.app. All rights reserved.
-        </div>
-        <div class="flex items-center gap-4">
-          <a href="https://cartools.app" target="_blank" class="hover:text-brand-navy">Privacy</a>
-          <a href="https://cartools.app" target="_blank" class="hover:text-brand-navy">Terms of Service</a>
-          <a href="https://gig.cartools.app" target="_blank" class="text-brand-navy font-bold hover:text-brand-orange">Launch Gig App ↗</a>
-        </div>
-      </div>
-
-    </div>
-  </footer>
-
-  <!-- ================================================================= -->
-  <!-- 11. LIGHTBOX MODAL FOR SCREENSHOT PREVIEWS -->
-  <!-- ================================================================= -->
-  <div id="lightbox-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 lightbox-backdrop" onclick="closeLightbox()">
-    <div class="relative max-w-5xl w-full bg-slate-900 rounded-2xl overflow-hidden shadow-2xl border border-slate-700" onclick="event.stopPropagation()">
-      <div class="flex items-center justify-between px-4 py-3 bg-slate-950 border-b border-slate-800 text-white">
-        <span id="lightbox-title" class="text-xs font-bold font-mono text-slate-300">Preview</span>
-        <button type="button" onclick="closeLightbox()" class="text-slate-400 hover:text-white text-xl font-bold px-2 py-0.5 rounded focus:outline-none">
-          ✕
-        </button>
-      </div>
-      <div class="p-2 sm:p-4 bg-slate-950/60 max-h-[80vh] overflow-auto flex items-center justify-center">
-        <img id="lightbox-img" src="" alt="Enlarged screenshot" class="max-h-[75vh] w-auto rounded-lg shadow-lg">
-      </div>
-      <div class="p-3 bg-slate-900 text-center border-t border-slate-800">
-        <a href="https://gig.cartools.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-brand-orange hover:bg-brand-orange-hover text-white text-xs font-bold shadow transition-all">
-          <span>Open This Feature in Full App (100% Free)</span>
-          <span>→</span>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ================================================================= -->
-  <!-- 12. CALCULATOR ENGINE SCRIPT -->
-  <!-- ================================================================= -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Set current year
-      document.getElementById('year').textContent = new Date().getFullYear();
-
-      // Elements
-      const sliderGross = document.getElementById('slider-gross');
-      const inputGross = document.getElementById('input-gross');
-      const sliderHours = document.getElementById('slider-hours');
-      const inputHours = document.getElementById('input-hours');
-      const sliderMiles = document.getElementById('slider-miles');
-      const inputMiles = document.getElementById('input-miles');
-      const btnAutoMiles = document.getElementById('btn-auto-miles');
-
-      // Custom rates toggle & inputs
-      const toggleCustomRates = document.getElementById('toggle-custom-rates');
-      const customTuningPanel = document.getElementById('custom-tuning-panel');
-      const customMpg = document.getElementById('custom-mpg');
-      const customFuelPrice = document.getElementById('custom-fuel-price');
-      const customDepreciation = document.getElementById('custom-depreciation');
-      const labelEfficiency = document.getElementById('label-efficiency');
-      const labelFuelPrice = document.getElementById('label-fuel-price');
-
-      // Output Elements
-      const valNetProfit = document.getElementById('val-net-profit');
-      const valNetSubtext = document.getElementById('val-net-subtext');
-      const marginBadge = document.getElementById('margin-badge');
-      const valGrossHourly = document.getElementById('val-gross-hourly');
-      const valNetHourly = document.getElementById('val-net-hourly');
-      const valHourlyGap = document.getElementById('val-hourly-gap');
-      const valDeductionFuel = document.getElementById('val-deduction-fuel');
-      const valDeductionWear = document.getElementById('val-deduction-wear');
-      const valIrsShield = document.getElementById('val-irs-shield');
-      const driverTruthText = document.getElementById('driver-truth-text');
-
-      // Current State
-      let state = {
-        platform: 'uber',
-        powertrain: 'hybrid',
-        mpg: 52,
-        fuelPrice: 3.85,
-        depreciationPerMile: 0.15,
-        irsRate: 0.67
-      };
-
-      // Powertrain Presets
-      const presets = {
-        gas: {
-          mpg: 28,
-          fuelPrice: 3.85,
-          depreciation: 0.17,
-          effLabel: 'Fuel Econ (MPG)',
-          priceLabel: 'Fuel Cost ($/gal)'
-        },
-        hybrid: {
+        // Current State
+        let state = {
+          platform: 'uber',
+          powertrain: 'hybrid',
           mpg: 52,
           fuelPrice: 3.85,
-          depreciation: 0.14,
-          effLabel: 'Fuel Econ (MPG)',
-          priceLabel: 'Fuel Cost ($/gal)'
-        },
-        ev: {
-          mpg: 3.5, // miles per kWh
-          fuelPrice: 0.16, // $ per kWh
-          depreciation: 0.13,
-          effLabel: 'Efficiency (mi/kWh)',
-          priceLabel: 'Electricity ($/kWh)'
-        }
-      };
+          depreciationPerMile: 0.15,
+          irsRate: 0.67,
+        };
 
-      // Platform selection handlers
-      const platformBtns = document.querySelectorAll('.platform-btn');
-      platformBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          platformBtns.forEach(b => {
-            b.classList.remove('active', 'bg-slate-900', 'text-white', 'border-slate-900');
-            b.classList.add('bg-slate-50', 'text-slate-700', 'border-slate-200');
+        // Powertrain Presets
+        const presets = {
+          gas: {
+            mpg: 28,
+            fuelPrice: 3.85,
+            depreciation: 0.17,
+            effLabel: 'Fuel Econ (MPG)',
+            priceLabel: 'Fuel Cost ($/gal)',
+          },
+          hybrid: {
+            mpg: 52,
+            fuelPrice: 3.85,
+            depreciation: 0.14,
+            effLabel: 'Fuel Econ (MPG)',
+            priceLabel: 'Fuel Cost ($/gal)',
+          },
+          ev: {
+            mpg: 3.5, // miles per kWh
+            fuelPrice: 0.16, // $ per kWh
+            depreciation: 0.13,
+            effLabel: 'Efficiency (mi/kWh)',
+            priceLabel: 'Electricity ($/kWh)',
+          },
+        };
+
+        // Platform selection handlers
+        const platformBtns = document.querySelectorAll('.platform-btn');
+        platformBtns.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            platformBtns.forEach((b) => {
+              b.classList.remove(
+                'active',
+                'bg-slate-900',
+                'text-white',
+                'border-slate-900'
+              );
+              b.classList.add(
+                'bg-slate-50',
+                'text-slate-700',
+                'border-slate-200'
+              );
+            });
+            btn.classList.remove(
+              'bg-slate-50',
+              'text-slate-700',
+              'border-slate-200'
+            );
+            btn.classList.add(
+              'active',
+              'bg-slate-900',
+              'text-white',
+              'border-slate-900'
+            );
+            state.platform = btn.dataset.platform;
+            calculate();
           });
-          btn.classList.remove('bg-slate-50', 'text-slate-700', 'border-slate-200');
-          btn.classList.add('active', 'bg-slate-900', 'text-white', 'border-slate-900');
-          state.platform = btn.dataset.platform;
-          calculate();
         });
-      });
 
-      // Powertrain toggle handlers
-      const powertrainBtns = document.querySelectorAll('.powertrain-btn');
-      powertrainBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          powertrainBtns.forEach(b => {
-            b.classList.remove('active', 'border-emerald-600', 'bg-emerald-50', 'shadow-sm');
-            b.classList.add('border-slate-200', 'bg-slate-50');
-            const title = b.querySelector('span:first-child');
-            if (title) title.className = 'text-sm font-bold text-slate-800 flex items-center gap-1.5';
+        // Powertrain toggle handlers
+        const powertrainBtns = document.querySelectorAll('.powertrain-btn');
+        powertrainBtns.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            powertrainBtns.forEach((b) => {
+              b.classList.remove(
+                'active',
+                'border-emerald-600',
+                'bg-emerald-50',
+                'shadow-sm'
+              );
+              b.classList.add('border-slate-200', 'bg-slate-50');
+              const title = b.querySelector('span:first-child');
+              if (title)
+                title.className =
+                  'text-sm font-bold text-slate-800 flex items-center gap-1.5';
+            });
+            btn.classList.remove('border-slate-200', 'bg-slate-50');
+            btn.classList.add(
+              'active',
+              'border-emerald-600',
+              'bg-emerald-50',
+              'shadow-sm'
+            );
+            const activeTitle = btn.querySelector('span:first-child');
+            if (activeTitle)
+              activeTitle.className =
+                'text-sm font-bold text-emerald-900 flex items-center gap-1.5';
+
+            const pt = btn.dataset.powertrain;
+            state.powertrain = pt;
+            const conf = presets[pt];
+            state.mpg = conf.mpg;
+            state.fuelPrice = conf.fuelPrice;
+            state.depreciationPerMile = conf.depreciation;
+
+            // Update inputs
+            customMpg.value = conf.mpg;
+            customFuelPrice.value = conf.fuelPrice;
+            customDepreciation.value = conf.depreciation;
+            labelEfficiency.textContent = conf.effLabel;
+            labelFuelPrice.textContent = conf.priceLabel;
+
+            calculate();
           });
-          btn.classList.remove('border-slate-200', 'bg-slate-50');
-          btn.classList.add('active', 'border-emerald-600', 'bg-emerald-50', 'shadow-sm');
-          const activeTitle = btn.querySelector('span:first-child');
-          if (activeTitle) activeTitle.className = 'text-sm font-bold text-emerald-900 flex items-center gap-1.5';
-
-          const pt = btn.dataset.powertrain;
-          state.powertrain = pt;
-          const conf = presets[pt];
-          state.mpg = conf.mpg;
-          state.fuelPrice = conf.fuelPrice;
-          state.depreciationPerMile = conf.depreciation;
-
-          // Update inputs
-          customMpg.value = conf.mpg;
-          customFuelPrice.value = conf.fuelPrice;
-          customDepreciation.value = conf.depreciation;
-          labelEfficiency.textContent = conf.effLabel;
-          labelFuelPrice.textContent = conf.priceLabel;
-
-          calculate();
         });
-      });
 
-      // Toggle custom panel
-      toggleCustomRates.addEventListener('click', () => {
-        const isHidden = customTuningPanel.classList.contains('hidden');
-        if (isHidden) {
-          customTuningPanel.classList.remove('hidden');
-          toggleCustomRates.textContent = '✕ Hide Custom Rates';
-        } else {
-          customTuningPanel.classList.add('hidden');
-          toggleCustomRates.textContent = '⚙️ Customize Rates';
-        }
-      });
-
-      // Custom rate inputs
-      customMpg.addEventListener('input', () => {
-        state.mpg = parseFloat(customMpg.value) || 28;
-        calculate();
-      });
-      customFuelPrice.addEventListener('input', () => {
-        state.fuelPrice = parseFloat(customFuelPrice.value) || 3.85;
-        calculate();
-      });
-      customDepreciation.addEventListener('input', () => {
-        state.depreciationPerMile = parseFloat(customDepreciation.value) || 0.15;
-        calculate();
-      });
-
-      // Synchronize Slider & Number Inputs
-      function syncInputs(slider, input) {
-        slider.addEventListener('input', () => {
-          input.value = slider.value;
-          calculate();
-        });
-        input.addEventListener('input', () => {
-          let val = parseFloat(input.value);
-          if (isNaN(val)) val = 0;
-          slider.value = val;
-          calculate();
-        });
-      }
-
-      syncInputs(sliderGross, inputGross);
-      syncInputs(sliderHours, inputHours);
-      syncInputs(sliderMiles, inputMiles);
-
-      // Auto estimate miles (19 miles per hour average for mixed gig driving)
-      btnAutoMiles.addEventListener('click', () => {
-        const hours = parseFloat(inputHours.value) || 32;
-        const estimatedMiles = Math.round(hours * 19);
-        inputMiles.value = estimatedMiles;
-        sliderMiles.value = estimatedMiles;
-        calculate();
-      });
-
-      // Main Calculation Logic
-      function calculate() {
-        const gross = parseFloat(inputGross.value) || 0;
-        const hours = parseFloat(inputHours.value) || 1;
-        const miles = parseFloat(inputMiles.value) || 0;
-
-        // 1. Fuel / Energy calculation
-        let fuelCost = 0;
-        if (state.powertrain === 'ev') {
-          // miles / mi_per_kwh * price_per_kwh
-          fuelCost = (miles / Math.max(state.mpg, 0.5)) * state.fuelPrice;
-        } else {
-          // miles / mpg * price_per_gal
-          fuelCost = (miles / Math.max(state.mpg, 1)) * state.fuelPrice;
-        }
-
-        // 2. Wear & Depreciation
-        const wearCost = miles * state.depreciationPerMile;
-
-        // 3. Real Net
-        const totalExpenses = fuelCost + wearCost;
-        const netProfit = Math.max(gross - totalExpenses, 0);
-
-        // 4. Hourly Rates
-        const validHours = Math.max(hours, 0.5);
-        const grossHourly = gross / validHours;
-        const netHourly = netProfit / validHours;
-        const hourlyLoss = grossHourly - netHourly;
-
-        // 5. Margin
-        const marginPct = gross > 0 ? ((netProfit / gross) * 100).toFixed(1) : '0.0';
-
-        // 6. IRS Mileage Shield (@ $0.67/mile standard)
-        const irsShield = miles * state.irsRate;
-
-        // Render Values
-        valNetProfit.textContent = `$${netProfit.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-        valNetSubtext.textContent = `Gross: $${gross.toFixed(2)} | Total Expense: -$${totalExpenses.toFixed(2)}`;
-        
-        marginBadge.textContent = `Margin: ${marginPct}%`;
-        if (parseFloat(marginPct) >= 75) {
-          marginBadge.className = 'px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-100 text-emerald-800 border border-emerald-200';
-        } else if (parseFloat(marginPct) >= 60) {
-          marginBadge.className = 'px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-amber-100 text-amber-800 border border-amber-200';
-        } else {
-          marginBadge.className = 'px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-red-100 text-red-800 border border-red-200';
-        }
-
-        valGrossHourly.innerHTML = `$${grossHourly.toFixed(2)}<span class="text-xs font-normal text-slate-400">/hr</span>`;
-        valNetHourly.innerHTML = `$${netHourly.toFixed(2)}<span class="text-xs font-normal text-emerald-600">/hr</span>`;
-        valHourlyGap.textContent = `-$${hourlyLoss.toFixed(2)}/hr real loss`;
-
-        valDeductionFuel.textContent = `-$${fuelCost.toFixed(2)}`;
-        valDeductionWear.textContent = `-$${wearCost.toFixed(2)}`;
-        valIrsShield.textContent = `+$${irsShield.toFixed(2)}`;
-
-        // Dynamic Driver Truth statement
-        const platformName = state.platform.charAt(0).toUpperCase() + state.platform.slice(1);
-        driverTruthText.innerHTML = `
-          ${platformName} advertises high gross payouts, but driving consumes vehicle equity. After <strong>$${fuelCost.toFixed(2)}</strong> in fuel and <strong>$${wearCost.toFixed(2)}</strong> in car wear, your real earning rate is <strong class="text-emerald-400 font-mono">$${netHourly.toFixed(2)}/hr</strong> instead of <strong class="text-slate-400 font-mono">$${grossHourly.toFixed(2)}/hr</strong>.
-        `;
-      }
-
-      // Initial run
-      calculate();
-
-      // FAQ Accordion logic
-      const faqToggles = document.querySelectorAll('.faq-toggle');
-      faqToggles.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const content = btn.nextElementSibling;
-          const icon = btn.querySelector('.faq-icon');
-          const isHidden = content.classList.contains('hidden');
-          
+        // Toggle custom panel
+        toggleCustomRates.addEventListener('click', () => {
+          const isHidden = customTuningPanel.classList.contains('hidden');
           if (isHidden) {
-            content.classList.remove('hidden');
-            icon.textContent = '−';
-            icon.classList.add('text-brand-orange');
+            customTuningPanel.classList.remove('hidden');
+            toggleCustomRates.textContent = '✕ Hide Custom Rates';
           } else {
-            content.classList.add('hidden');
-            icon.textContent = '+';
-            icon.classList.remove('text-brand-orange');
+            customTuningPanel.classList.add('hidden');
+            toggleCustomRates.textContent = '⚙️ Customize Rates';
           }
         });
+
+        // Custom rate inputs
+        customMpg.addEventListener('input', () => {
+          state.mpg = parseFloat(customMpg.value) || 28;
+          calculate();
+        });
+        customFuelPrice.addEventListener('input', () => {
+          state.fuelPrice = parseFloat(customFuelPrice.value) || 3.85;
+          calculate();
+        });
+        customDepreciation.addEventListener('input', () => {
+          state.depreciationPerMile =
+            parseFloat(customDepreciation.value) || 0.15;
+          calculate();
+        });
+
+        // Synchronize Slider & Number Inputs
+        function syncInputs(slider, input) {
+          slider.addEventListener('input', () => {
+            input.value = slider.value;
+            calculate();
+          });
+          input.addEventListener('input', () => {
+            let val = parseFloat(input.value);
+            if (isNaN(val)) val = 0;
+            slider.value = val;
+            calculate();
+          });
+        }
+
+        syncInputs(sliderGross, inputGross);
+        syncInputs(sliderHours, inputHours);
+        syncInputs(sliderMiles, inputMiles);
+
+        // Auto estimate miles (19 miles per hour average for mixed gig driving)
+        btnAutoMiles.addEventListener('click', () => {
+          const hours = parseFloat(inputHours.value) || 32;
+          const estimatedMiles = Math.round(hours * 19);
+          inputMiles.value = estimatedMiles;
+          sliderMiles.value = estimatedMiles;
+          calculate();
+        });
+
+        // Main Calculation Logic
+        function calculate() {
+          const gross = parseFloat(inputGross.value) || 0;
+          const hours = parseFloat(inputHours.value) || 1;
+          const miles = parseFloat(inputMiles.value) || 0;
+
+          // 1. Fuel / Energy calculation
+          let fuelCost = 0;
+          if (state.powertrain === 'ev') {
+            // miles / mi_per_kwh * price_per_kwh
+            fuelCost = (miles / Math.max(state.mpg, 0.5)) * state.fuelPrice;
+          } else {
+            // miles / mpg * price_per_gal
+            fuelCost = (miles / Math.max(state.mpg, 1)) * state.fuelPrice;
+          }
+
+          // 2. Wear & Depreciation
+          const wearCost = miles * state.depreciationPerMile;
+
+          // 3. Real Net
+          const totalExpenses = fuelCost + wearCost;
+          const netProfit = Math.max(gross - totalExpenses, 0);
+
+          // 4. Hourly Rates
+          const validHours = Math.max(hours, 0.5);
+          const grossHourly = gross / validHours;
+          const netHourly = netProfit / validHours;
+          const hourlyLoss = grossHourly - netHourly;
+
+          // 5. Margin
+          const marginPct =
+            gross > 0 ? ((netProfit / gross) * 100).toFixed(1) : '0.0';
+
+          // 6. IRS Mileage Shield (@ $0.67/mile standard)
+          const irsShield = miles * state.irsRate;
+
+          // Render Values
+          valNetProfit.textContent = `$${netProfit.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+          valNetSubtext.textContent = `Gross: $${gross.toFixed(2)} | Total Expense: -$${totalExpenses.toFixed(2)}`;
+
+          marginBadge.textContent = `Margin: ${marginPct}%`;
+          if (parseFloat(marginPct) >= 75) {
+            marginBadge.className =
+              'px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-100 text-emerald-800 border border-emerald-200';
+          } else if (parseFloat(marginPct) >= 60) {
+            marginBadge.className =
+              'px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-amber-100 text-amber-800 border border-amber-200';
+          } else {
+            marginBadge.className =
+              'px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-red-100 text-red-800 border border-red-200';
+          }
+
+          valGrossHourly.innerHTML = `$${grossHourly.toFixed(2)}<span class="text-xs font-normal text-slate-400">/hr</span>`;
+          valNetHourly.innerHTML = `$${netHourly.toFixed(2)}<span class="text-xs font-normal text-emerald-600">/hr</span>`;
+          valHourlyGap.textContent = `-$${hourlyLoss.toFixed(2)}/hr real loss`;
+
+          valDeductionFuel.textContent = `-$${fuelCost.toFixed(2)}`;
+          valDeductionWear.textContent = `-$${wearCost.toFixed(2)}`;
+          valIrsShield.textContent = `+$${irsShield.toFixed(2)}`;
+
+          // Dynamic Driver Truth statement
+          const platformName =
+            state.platform.charAt(0).toUpperCase() + state.platform.slice(1);
+          driverTruthText.innerHTML = `
+          ${platformName} advertises high gross payouts, but driving consumes vehicle equity. After <strong>$${fuelCost.toFixed(2)}</strong> in fuel and <strong>$${wearCost.toFixed(2)}</strong> in car wear, your real earning rate is <strong class="text-emerald-400 font-mono">$${netHourly.toFixed(2)}/hr</strong> instead of <strong class="text-slate-400 font-mono">$${grossHourly.toFixed(2)}/hr</strong>.
+        `;
+        }
+
+        // Initial run
+        calculate();
+
+        // FAQ Accordion logic
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        faqToggles.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('.faq-icon');
+            const isHidden = content.classList.contains('hidden');
+
+            if (isHidden) {
+              content.classList.remove('hidden');
+              icon.textContent = '−';
+              icon.classList.add('text-brand-orange');
+            } else {
+              content.classList.add('hidden');
+              icon.textContent = '+';
+              icon.classList.remove('text-brand-orange');
+            }
+          });
+        });
       });
-    });
 
-    // Lightbox Modal Functions
-    function openLightbox(imgSrc, title) {
-      const modal = document.getElementById('lightbox-modal');
-      const img = document.getElementById('lightbox-img');
-      const titleEl = document.getElementById('lightbox-title');
-      
-      img.src = imgSrc;
-      titleEl.textContent = title || 'App Screenshot Preview';
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-      document.body.style.overflow = 'hidden';
-    }
+      // Lightbox Modal Functions
+      function openLightbox(imgSrc, title) {
+        const modal = document.getElementById('lightbox-modal');
+        const img = document.getElementById('lightbox-img');
+        const titleEl = document.getElementById('lightbox-title');
 
-    function closeLightbox() {
-      const modal = document.getElementById('lightbox-modal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-      document.body.style.overflow = 'auto';
-    }
+        img.src = imgSrc;
+        titleEl.textContent = title || 'App Screenshot Preview';
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
 
-    // Close on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
-    });
-  </script>
+      function closeLightbox() {
+        const modal = document.getElementById('lightbox-modal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+      }
 
-</body>
+      // Close on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+      });
+    </script>
+  </body>
 </html>
